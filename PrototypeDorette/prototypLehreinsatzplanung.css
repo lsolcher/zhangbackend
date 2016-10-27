@@ -72,6 +72,7 @@ header {
 }
 
 .menu-list {
+    float: right;
     list-style: none;
 }
 
@@ -95,9 +96,9 @@ a:hover {
 
 .kalender {
 	display: block;
-	margin: 20px 0 30px 20px;
+  margin: 20px auto;
+  width: 64.5%;
 }
-
 
 .kopfzeile {
 	padding: 10px 0 10px 90px;
@@ -130,10 +131,6 @@ a:hover {
   width: 120px;
 }
 
-.preferred {
-	border: 2px solid red;
-}
-
 h2 {
 	font-weight: bold;
 	margin: 10px 0;
@@ -145,12 +142,8 @@ h2 {
 
 .raumsonderwuensche {
 	/*display: none;*/
-	margin: 30px 20px 30px 20px;
-}
-
-.sonderwuensche, .raumwuensche {
-	/*display: none;*/
-	margin-bottom: 30px;
+	margin: 30px auto;
+  width: 64%;
 }
 
 
