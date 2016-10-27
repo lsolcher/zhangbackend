@@ -235,9 +235,18 @@
 				<div class="cool-class">
 					<ul id="priority-list">
 						<h2>Sonderwünsche</h2>
-						<li class="priority-entry" ng-repeat="entry in priorities">{{entry}}</li>
+						<!--li class="priority-entry" ng-repeat="entry in priorities" priority-directive>
+							<div class="priority-label">
+								{{entry.label}}
+							</div>
+							<div class="priority-content">
+								{{entry.content}}
+							</div>
+						</li -->
 					</ul>
-					<input type="text" ng-model="currentPriority" ng-keyup="addPriority($event)" placeholder="Neuen Wunsch hier eintragen" title="Enter drücken, zum hinzufügen">
+					<!-- input type="text" ng-model="currentPriority" ng-keyup="addPriority($event)" placeholder="Neuen Wunsch hier eintragen" title="Enter drücken, zum hinzufügen"-->
+					<select id="priority-select" ng-model="selectedPrio" ng-options="option.label for option in possiblePriorities track by option.id">
+					</select>
 			</div>
 
 
