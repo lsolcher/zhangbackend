@@ -78,6 +78,7 @@ header {
 
 .menu-list li {
     float: left;
+    font-weight: bold;
     padding: 0 20px;
 }
 
@@ -134,6 +135,7 @@ a:hover {
 h2 {
 	font-weight: bold;
 	margin: 10px 0;
+  text-align: center;
 }
 
 /* ============================================
