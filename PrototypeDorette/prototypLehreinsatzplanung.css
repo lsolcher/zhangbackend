@@ -52,6 +52,10 @@ table {
    Author's custom styles
    ========================================================================== */
 
+body {
+  font: 15px/16px  "Droid Sans", Arial;
+}
+
 /* ============================================
    Menü
    ============================================ */
@@ -134,7 +138,7 @@ a:hover {
 
 h2 {
 	font-weight: bold;
-	margin: 10px 0;
+	margin: 30px 0;
   text-align: center;
 }
 
