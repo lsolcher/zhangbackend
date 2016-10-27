@@ -61,7 +61,7 @@ body {
    ============================================ */
 
 header {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 160, 0, 0.7);
     height: 40px;
     padding: 20px 0 0;
 }
@@ -130,7 +130,7 @@ a:hover {
 }
 
 .kalender-input {
-	background: #555;
+	background: #080;
   height: 25px;
 	margin: 0 3px;
   width: 120px;
