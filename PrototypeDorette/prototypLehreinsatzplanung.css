@@ -52,12 +52,16 @@ table {
    Author's custom styles
    ========================================================================== */
 
+body {
+  font: 15px/16px  "Droid Sans", Arial;
+}
+
 /* ============================================
    Menü
    ============================================ */
 
 header {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 160, 0, 0.7);
     height: 40px;
     padding: 20px 0 0;
 }
@@ -72,11 +76,13 @@ header {
 }
 
 .menu-list {
+    float: right;
     list-style: none;
 }
 
 .menu-list li {
     float: left;
+    font-weight: bold;
     padding: 0 20px;
 }
 
@@ -95,24 +101,16 @@ a:hover {
 
 .kalender {
 	display: block;
-	margin: 20px 0 30px 20px;
+  margin: 20px auto;
+  width: 64.5%;
 }
-
 
 .kopfzeile {
 	padding: 10px 0 10px 90px;
 }
 
 .wochentag {
-	padding: 0 60px;
-}
-
-.wochentag:first-child {
-	padding: 0 60px 0 45px;
-}
-
-.wochentag:last-child {
-	padding: 0 45px 0 60px;
+	padding: 0 52px;
 }
 
 .btn-kalender {
@@ -132,18 +130,16 @@ a:hover {
 }
 
 .kalender-input {
-	background: #555;
+	background: #080;
+  height: 25px;
 	margin: 0 3px;
-	padding: 5px 45px;
-}
-
-.preferred {
-	border: 2px solid red;
+  width: 120px;
 }
 
 h2 {
 	font-weight: bold;
-	margin: 10px 0;
+	margin: 30px 0;
+  text-align: center;
 }
 
 /* ============================================
@@ -152,12 +148,8 @@ h2 {
 
 .raumsonderwuensche {
 	/*display: none;*/
-	margin: 30px 20px 30px 20px;
-}
-
-.sonderwuensche, .raumwuensche {
-	/*display: none;*/
-	margin-bottom: 30px;
+	margin: 30px auto;
+  width: 64%;
 }
 
 
