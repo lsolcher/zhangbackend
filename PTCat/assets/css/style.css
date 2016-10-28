@@ -13,26 +13,40 @@ body {
 
 /* colors */
 .blue {
-	background-color: blue;
+	background-color: #2055A1;
 }
 
 .brightblue {
-	background-color: bright-blue;
+	background-color: #5D83BA;
 }
 
 .greyed {
-	border-color: #ddd;
+	background-color: #ddd;
 }
+
+.orange {
+	background-color: #D68E00;
+}
+
+.brown {
+	background-color: #553E11;
+}
+
+.grau {
+	background-color: #aaa;
+}
+
+
 
 @media screen and (min-width: 768px) {
 /* navbar */
 .navbar-bright {
-	background-color:#111155;
+	background-color:#112D55;
     color:#fff;
 }
 
 .navbar-bright a:hover {
-	background-color:#111155;
+	background-color:#112D55;
 	color:#fff;
 }
 
@@ -59,13 +73,13 @@ body {
 
 	width: 20px;
 	height: 20px;
-	background-color: #aaa;
-	margin: 3px;
 	border-radius: 2px;
 
-	color: #eee;
 	line-height: 20px;
 	text-align: center;
+	color: #eee;
+	margin: 0 3px;
+
 }
 
 
