@@ -1,0 +1,55 @@
+#calendar {
+  display: flex;
+	flex-direction: row;
+}
+
+
+
+.day {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.slot {
+  width: 100px;
+  height: 35px;
+	background-color: #aaa;
+	margin: 3px;
+	border-radius: 1px;
+
+	color: #eee;
+	line-height: 35px;
+	text-align: center;
+
+}
+
+.dayname {
+  width: 100px;
+	height: 35px;
+  background-color: #eee;
+  color: #111;
+  margin: 2px;
+	border-radius: 1px;
+  line-height: 35px;
+  text-align: center;
+}
+
+.slot-hover {
+  width: 100px;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.slot-choice{
+  width: 25px;
+  height: 35px;
+}
+
+.slot-choice:hover{
+  width: 25px;
+  height: 35px;
+  display: none;
+}

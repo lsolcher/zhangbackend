@@ -13,27 +13,27 @@ body {
 
 /* colors */
 .blue {
-	background-color: #2055A1;
+	background-color: #2055A1 !important;
 }
 
 .brightblue {
-	background-color: #5D83BA;
+	background-color: #5D83BA !important;
 }
 
 .greyed {
-	background-color: #ddd;
+	background-color: #ddd !important;
 }
 
 .orange {
-	background-color: #D68E00;
+	background-color: #D68E00 !important;
 }
 
 .brown {
-	background-color: #553E11;
+	background-color: #553E11 !important;
 }
 
 .grau {
-	background-color: #aaa;
+	background-color: #aaa !important;
 }
 
 
@@ -93,7 +93,6 @@ body {
 	height: 70px;
 	text-align: left;
 	line-height: 70px;
-	padding-left: 10px;
 
 }
 
