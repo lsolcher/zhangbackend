@@ -20,6 +20,10 @@
 	color: #eee;
 	line-height: 35px;
 	text-align: center;
+
+}
+
+.slot:hover {
 }
 
 .dayname {
@@ -40,9 +44,12 @@
   width: 100px;
   height: 35px;
   display: flex;
+  margin: 3px;
   flex-direction: row;
   cursor: pointer;
+}
 
+.slot-hover:hover {
 }
 
 .slot-choice{

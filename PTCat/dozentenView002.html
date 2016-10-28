@@ -55,7 +55,7 @@
 			</div>
 		</header>
 
-<section>		<div class="row content">
+		<section>		<div class="row content">
 			<div class="col-md-12">
 				<div class="row">
 					<div class="col-md-2">
@@ -65,15 +65,17 @@
 						<div class="legende">
 							<div class="item-legende"><div class="slot-legende greyed"> </div><p> No Way Jose</p></div>
 							<div class="item-legende"><div class="slot-legende grau"> </div><p> Unbefummelt</p></div>
- 							<div class="item-legende"><div class="slot-legende brightblue">  </div><p> Gerne</p></div>
+							<div class="item-legende"><div class="slot-legende brightblue">  </div><p> Gerne</p></div>
 							<div class="item-legende"><div class="slot-legende blue"></div><p> Unbedingt</p></div>
-							<div class="slot-hover">
-								<div class="slot-choice no-go greyed"></div>
-								<div class="slot-choice untouched grau"></div>
-								<div class="slot-choice wish brightblue"></div>
-								<div class="slot-choice need blue"></div>
+							<div class="overslot">
+								<div class="slot-hover">
+									<div class="slot-choice no-go greyed"></div>
+									<div class="slot-choice untouched grau"></div>
+									<div class="slot-choice wish brightblue"></div>
+									<div class="slot-choice need blue"></div>
+								</div>
 							</div>
-							</div>
+						</div>
 
 					</div>
 					<div class="col-md-6">
@@ -82,9 +84,7 @@
 						<div id="calendar">
 							<div class="day">
 								<div class="dayname">MO</div>
-								<div class="overslot">
 								<div class="slot"> 08:00 </div>
-								</div>
 								<div class="slot"> 09:45 </div>
 								<div class="slot"> 10:30 </div>
 								<div class="slot"> 12:15 </div>
@@ -152,23 +152,33 @@
 					</div>
 					<div class="col-md-4">
 						<h3>Und hier gehts weiter zu den Extrawürsten (ausklappbare Panels)...</h3>
-						<div class="panel-group" id="panel-536752">
+						<div class="panel-group" id="extrawurst">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<a class="panel-title" data-toggle="collapse" data-parent="#panel-536752" href="#panel-element-944703">Zeitwünsche</a>
+									<a class="panel-title" data-toggle="collapse" data-parent="#extrawurst" href="#zeitwunsch">Zeitwünsche</a>
 								</div>
-								<div id="panel-element-944703" class="panel-collapse collapse in">
+								<div id="zeitwunsch" class="panel-collapse collapse">
 									<div class="panel-body">
 										blubla									</div>
 									</div>
 								</div>
 								<div class="panel panel-default">
 									<div class="panel-heading">
-										<a class="panel-title" data-toggle="collapse" data-parent="#panel-536752" href="#panel-element-206376">Andere Extrawürste</a>
+										<a class="panel-title" data-toggle="collapse" data-parent="#extrawurst" href="#raumwunsch">Raumwünsche</a>
 									</div>
-									<div id="panel-element-206376" class="panel-collapse collapse">
+									<div id="raumwunsch" class="panel-collapse collapse">
 										<div class="panel-body">
-											blubla
+											blubla									</div>
+										</div>
+									</div>
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<a class="panel-title" data-toggle="collapse" data-parent="#extrawurst" href="#mehr-wurst">Andere Extrawürste</a>
+										</div>
+										<div id="mehr-wurst" class="panel-collapse collapse">
+											<div class="panel-body">
+												blubla
+											</div>
 										</div>
 									</div>
 								</div>
@@ -176,7 +186,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-		<footer></footer>
+			</section>
+			<footer></footer>
 			</html>
