@@ -8,7 +8,6 @@
 .day {
   display: flex;
   flex-direction: column;
-
 }
 
 .slot {
@@ -21,7 +20,6 @@
 	color: #eee;
 	line-height: 35px;
 	text-align: center;
-
 }
 
 .dayname {
@@ -33,6 +31,9 @@
 	border-radius: 1px;
   line-height: 35px;
   text-align: center;
+}
+
+.overslot {
 }
 
 .slot-hover {
@@ -49,7 +50,5 @@
 }
 
 .slot-choice:hover{
-  width: 25px;
-  height: 35px;
-  display: none;
+ border: 2px #fff solid;
 }
