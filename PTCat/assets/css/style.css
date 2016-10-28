@@ -7,12 +7,16 @@ body {
 	margin-top: 60px;
 }
 
+.content {
+	marging: 20px;
+}
+
 /* colors */
 .blue {
 	background-color: blue;
 }
 
-.bright-blue {
+.brightblue {
 	background-color: bright-blue;
 }
 
@@ -85,8 +89,6 @@ body {
 }
 
 .slot {
-	display: flex;
-	flex-direction: column nowrap;
 
 	width: 70px;
 	height: 70px;
@@ -97,5 +99,6 @@ body {
 	color: #eee;
 	line-height: 70px;
 	text-align: center;
+	font-size: 1.1em;
 
 }
