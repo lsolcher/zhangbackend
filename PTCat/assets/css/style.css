@@ -1,0 +1,101 @@
+/* general */
+body {
+	background-color: #333;
+}
+
+.main-container {
+	margin-top: 60px;
+}
+
+/* colors */
+.blue {
+	background-color: blue;
+}
+
+.bright-blue {
+	background-color: bright-blue;
+}
+
+.greyed {
+	border-color: #ddd;
+}
+
+@media screen and (min-width: 768px) {
+/* navbar */
+.navbar-bright {
+	background-color:#111155;
+    color:#fff;
+}
+
+.navbar-bright a:hover {
+	background-color:#111155;
+	color:#fff;
+}
+
+.navbar-bright a{
+  	color:#aaaacc;
+}
+
+/* sidebar */
+
+.legende {
+	display: flex;
+	flex-direction: column;
+}
+
+.item-legende {
+	display: flex;
+	flex-direction: row;
+	line-height: 20px;
+}
+
+.slot-legende {
+	display: flex;
+	flex-direction: column nowrap;
+
+	width: 20px;
+	height: 20px;
+	background-color: #aaa;
+	margin: 3px;
+	border-radius: 2px;
+
+	color: #eee;
+	line-height: 20px;
+	text-align: center;
+}
+
+
+/* calendar */
+#calendar {
+
+}
+
+.dayname {
+	width: 45px;
+	height: 70px;
+	text-align: left;
+	line-height: 70px;
+	padding-left: 10px;
+
+}
+
+.day {
+	display: flex;
+	flex-direction: row nowrap;
+}
+
+.slot {
+	display: flex;
+	flex-direction: column nowrap;
+
+	width: 70px;
+	height: 70px;
+	background-color: #aaa;
+	margin: 3px;
+	border-radius: 1px;
+
+	color: #eee;
+	line-height: 70px;
+	text-align: center;
+
+}

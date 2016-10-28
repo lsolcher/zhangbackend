@@ -2,83 +2,170 @@
 
 <html ng-app="zhang-app">
 
-	<head>
-		<meta charset="utf-8">
-		<title>Lehreinsatzplanung Dozenten</title>
-		<!--link rel="stylesheet" href="style_reset.css" /-->
-		<link rel="stylesheet" href="assets/css/style.css"/>
-		<link rel="stylesheet" href="assets/css/bootstrap.css"/>
+<head>
+	<meta charset="utf-8">
+	<title>StundenplanBaustelle</title>
+
+	<link rel="stylesheet" href="assets/css/style.css"/>
+	<link rel="stylesheet" href="assets/css/bootstrap.css"/>
 
 
-		<!-- libs -->
-		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
-	  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
-		<script src="assets/js/priorities.js"></script>
-		<script src="assets/js/bootstrap.js"></script>
 
-		<!-- libs end -->
+	<!-- libs -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+	<script src="assets/js/priorities.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
 
-	</head>
-	<body>
-		<header>
-			<nav class="navbar navbar-inverse">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<a class="navbar-brand" href="#">Lehreinsatzplanung</a>
-					</div>
-					<ul class="nav navbar-nav pull-right">
-						<li class="active"><a href="#">Dozentenauswahl</a></li>
-						<li><a href="#">Tool für Frau Zahn</a></li>
-						<li><a href="#">Semesterplan Ergebnis</a></li>
-					</ul>
+
+
+	<!-- libs end -->
+
+</head>
+<body>
+	<div class="container-fluid main-container">
+
+		<header class="navbar navbar-bright navbar-fixed-top" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/" class="navbar-brand">StundenplanBaukasten</a>
 				</div>
-			</nav>
-		</header>
-		<div class="container">
-		<div class="panel panel-default">
-  <div class="panel-heading">Bevorzugte Belegungszeiten</div>
-  <div class="panel-body">
-
-</div>
-</div>
-
-
-			<div class="raumsonderwuensche group" ng-controller="prioController">
-
-				<div class="cool-class">
-					<ul id="priority-list">
-						<h2>Sonderwünsche</h2>
-						<li class="priority-entry" ng-repeat="entry in priorities">{{entry}}</li>
+				<nav class="collapse navbar-collapse" role="navigation">
+					<ul class="nav navbar-nav pull-right">
+						<li>
+							<a href="#sec">Wunschkonzert</a>
+						</li>
+						<li>
+							<a href="#sec">Puzzle Bar</a>
+						</li>
+						<li>
+							<a href="#sec">Kleinster Gemeinsamer Nenner</a>
+						</li>
 					</ul>
-					<input type="text" ng-model="currentPriority" ng-keyup="addPriority($event)" placeholder="Neuen Wunsch hier eintragen" title="Enter drücken, zum hinzufügen">
+				</nav>
 			</div>
+		</header>
 
+<section>		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-3">
+						<h3>How To</h3>
+						<p>Nun bitte erstmal generelle Verfügbarkeiten angeben trallala und evt noch paar Auswahloptionen mit schicken Slidern.</p>
+						<p>Drunter noch ne Legende mit den Kalenderfarben.</p>
+						<div class="legende">
+							<div class="item-legende"><div class="slot-legende"> </div><p> Unbefummelt</p></div>
+							<div class="item-legende"><div class="slot-legende blue"></div><p> Unbedingt</p></div>
+							<div class="item-legende"><div class="slot-legende brightblue">  </div><p> Gerne</p></div>
+							<div class="item-legende"><div class="slot-legende lightgrey"> </div><p> No Way Jose</p></div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<h3>Kalender</h3>
 
-				<!-- <h2>Sonderwünsche</h2>
-				<form class="sonderwuensche">
-					<input type="checkbox">keine Schlauchräume</input>
-					<input type="checkbox">Labor benötigt</input>
-					<input type="checkbox">keine Computer benötigt</input>
-					<input type="checkbox">Blockunterricht unabdingbar</input>
-					<input type="checkbox">Wenn abends Unterricht, dann nicht morgens am darauffolgenden Tag</input>
-					<input type="checkbox">...</input>
-				</form> -->
-				<select class="raumwuensche" size="20" multiple>
-	  				<option value="WHC 376">WHC 376</option>
-	  				<option value="WHC 576">WHC 576</option>
-	  				<option value="WHC 249">WHC 249</option>
-	  				<option value="WHC ...">PBH 5009</option>
-	  				<option value="WHC ...">WHC ...</option>
-				</select>
+						<div id="calendar">
+							<div class="day">
+								<div class="dayname">MO</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+							<div class="day">
+								<div class="dayname">DI</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+							<div class="day">
+								<div class="dayname">MI</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+							<div class="day">
+								<div class="dayname">DO</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+							<div class="day">
+								<div class="dayname">FR</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+							<div class="day">
+								<div class="dayname">SA</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<h3>Und hier gehts weiter zu den Extrawürsten...</h3>
+						<div class="panel-group" id="panel-536752">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<a class="panel-title" data-toggle="collapse" data-parent="#panel-536752" href="#panel-element-944703">Zeitwünsche</a>
+								</div>
+								<div id="panel-element-944703" class="panel-collapse collapse in">
+									<div class="panel-body">
+										blubla									</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<a class="panel-title" data-toggle="collapse" data-parent="#panel-536752" href="#panel-element-206376">Andere Extrawürste</a>
+									</div>
+									<div id="panel-element-206376" class="panel-collapse collapse">
+										<div class="panel-body">
+											blubla
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-
-
-
-
-
-
-		</div>
-	</body>
-</html>
+		</section>
+		<footer></footer>
+			</html>

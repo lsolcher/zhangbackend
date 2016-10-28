@@ -1,16 +1,20 @@
 <!doctype html>
 
-<html>
+<html ng-app="zhang-app">
 
 	<head>
 		<meta charset="utf-8">
-		<title>Lehreinsatzplanung Frau Zahn</title>
+		<title>Lehreinsatzplanung Dozenten</title>
 		<!--link rel="stylesheet" href="style_reset.css" /-->
-		<link rel="stylesheet" href="assets/css/prototypLehreinsatzplanung.css"/>
-		<link rel="stylesheet" href="assets/css/bootstrap.css"/>
-		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="assets/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="prototypLehreinsatzplanung.css"/>
 
+		<!-- libs -->
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+	  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+		<script src="priorities.js"></script>
+		<!-- libs end -->
 
 	</head>
 	<body>
@@ -18,8 +22,8 @@
 			<div class="wrapper group">
 				<nav class="menu group">
 					<ul class="menu-list">
-						<li><a href="prototypLehreinsatzplanung-dozentenauswahl.html">Dozentenauswahl</a></li>
-						<li>Tool für Frau Zahn</li>
+						<li>Dozentenauswahl</li>
+						<li><a href="prototypLehreinsatzplanung-frauZahn.html">Tool für Frau Zahn</a></li>
 						<li><a href="">Semesterplan-Ergebnis</a></li>
 					</ul>
 				</nav>
@@ -29,6 +33,7 @@
 			<div class="kalender group">
 				<h2>Bevorzugte Belegungszeiten</h2>
 				<div class="kopfzeile">
+					<a href="" class="btn-kalender gerade-woche"></a>
 					<span class="wochentag">Mo</span>
 					<span class="wochentag">Di</span>
 					<span class="wochentag">Mi</span>
@@ -36,6 +41,7 @@
 					<span class="wochentag">Fr</span>
 					<span class="wochentag">Sa</span>
 					<span class="wochentag">So</span>
+					<a href="" class="btn-kalender ungerade-woche"></a>
 				</div>
 				<div class="kalenderzeile">
 					<span class="vorlesungszeit">08:00-09:30</span>
@@ -224,7 +230,34 @@
 					</form>
 				</div>
 			</div>
+			<div class="raumsonderwuensche group" ng-controller="prioController">
 
+				<div class="cool-class">
+					<ul id="priority-list">
+						<h2>Sonderwünsche</h2>
+						<li class="priority-entry" ng-repeat="entry in priorities">{{entry}}</li>
+					</ul>
+					<input type="text" ng-model="currentPriority" ng-keyup="addPriority($event)" placeholder="Neuen Wunsch hier eintragen" title="Enter drücken, zum hinzufügen">
+			</div>
+
+
+				<!-- <h2>Sonderwünsche</h2>
+				<form class="sonderwuensche">
+					<input type="checkbox">keine Schlauchräume</input>
+					<input type="checkbox">Labor benötigt</input>
+					<input type="checkbox">keine Computer benötigt</input>
+					<input type="checkbox">Blockunterricht unabdingbar</input>
+					<input type="checkbox">Wenn abends Unterricht, dann nicht morgens am darauffolgenden Tag</input>
+					<input type="checkbox">...</input>
+				</form> -->
+				<select class="raumwuensche" size="20" multiple>
+	  				<option value="WHC 376">WHC 376</option>
+	  				<option value="WHC 576">WHC 576</option>
+	  				<option value="WHC 249">WHC 249</option>
+	  				<option value="WHC ...">PBH 5009</option>
+	  				<option value="WHC ...">WHC ...</option>
+				</select>
+			</div>
 
 
 
