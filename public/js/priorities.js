@@ -16,7 +16,8 @@
       new ExamplePrio(2, 'Beispiel 1 (ausklappbar sobald das ausklappen funzt)'),
       new Example2Prio(3, 'Beispiel Prio mit Button'),
       new DayTimePrio(4, 'Frühstmögliche Zeit'),
-      new DayTimePrio(5, 'Spätestmögliche Zeit')
+      new DayTimePrio(5, 'Spätestmögliche Zeit'),
+      new ExcludeDayCombinationPrio(6, 'Tagkombinationen ausschließen')
     ];
 
     $scope.addPriorityToDom = function(prioElement) {
@@ -200,6 +201,27 @@
 
 
 
+
+     return out
+  }
+
+  var ExcludeDayCombinationPrio = function(id, label) {
+   this.id = id
+   this.label = label
+   this.content = this.getContent()
+  }
+  // do this for right
+  ExcludeDayCombinationPrio.prototype = new AbstractPrio()
+  ExcludeDayCombinationPrio.prototype.constructor = ExcludeDayCombinationPrio
+
+  ExcludeDayCombinationPrio.prototype.getLabel = function() {
+    return this.label
+  }
+
+  ExcludeDayCombinationPrio.prototype.getContent = function() {
+     var out = $('<div></div>').addClass('somecontent')
+
+     out.append($('#template1').clone())
 
      return out
   }
