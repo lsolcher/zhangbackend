@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="zhang-app">
+  <head>
+    <meta charset="utf-8">
+    <title>Sonderwünsche</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title">
+    <!-- end of Styles -->
+
+    <!-- JS -->
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+	  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/priorities.js"></script>
+    <!-- end of JS -->
+
+  </head>
+  <body>
+
+    <div class="raumsonderwuensche group" ng-controller="prioController">
+
+      <div class="cool-class">
+        <ul id="priority-list">
+          <h2>Sonderwünsche</h2>
+          <!--li class="priority-entry" ng-repeat="entry in priorities" priority-directive>
+            <div class="priority-label">
+              {{entry.label}}
+            </div>
+            <div class="priority-content">
+              {{entry.content}}
+            </div>
+          </li -->
+        </ul>
+        <!-- input type="text" ng-model="currentPriority" ng-keyup="addPriority($event)" placeholder="Neuen Wunsch hier eintragen" title="Enter drücken, zum hinzufügen"-->
+        <select id="priority-select" ng-model="selectedPrio" ng-options="option.label for option in possiblePriorities track by option.id">
+        </select>
+    </div>
+    </div>
+
+
+  </body>
+</html>
