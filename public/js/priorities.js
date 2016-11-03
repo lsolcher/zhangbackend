@@ -14,12 +14,15 @@
       new SimplePrio(0, 'keine Schlauchräume'),
       new SimplePrio(1, 'Blabla'),
       new ExamplePrio(2, 'Beispiel 1 (ausklappbar sobald das ausklappen funzt)'),
-      new Example2Prio(3, 'Beispiel Prio mit Button')
+      new Example2Prio(3, 'Beispiel Prio mit Button'),
+      new DayTimePrio(4, 'Frühstmögliche Zeit'),
+      new DayTimePrio(5, 'Spätestmögliche Zeit')
     ];
 
     $scope.addPriorityToDom = function(prioElement) {
       var li = $('<li></li>').addClass('priority-entry').attr('data-id', prioElement.id)
       li.append($('<div></div>').addClass('priority-label').html(prioElement.getLabel()))
+      li.append($('<div></div>').addClass('priority-delete').html('x'))
       li.append($('<div></div>').addClass('priority-conent').append(prioElement.getContent()))
       $('#priority-list').append(li)
     }
@@ -139,6 +142,66 @@
     $('.priority-entry[data-id='+this.id+'] span').html(this.value)
   }
 
+
+
   // real implementations go here ...
+
+  var DayTimePrio = function(id, label) {
+   this.id = id
+   this.label = label
+   this.content = this.getContent()
+  }
+  // do this for right
+  DayTimePrio.prototype = new AbstractPrio()
+  DayTimePrio.prototype.constructor = DayTimePrio
+
+  DayTimePrio.prototype.getLabel = function() {
+    return this.label
+  }
+
+  DayTimePrio.prototype.getContent = function() {
+     var out = $('<div></div>').addClass('somecontent')
+
+     var days = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag']
+     var times = [
+       '9:45',
+       '10:30',
+       '11:30',
+       '12:30',
+       '13:30',
+       '14:30',
+       '15:30'
+     ]
+
+    //  var daySelect = $('<select></select>').addClass('someselectclass')
+    //  for(var i in days) {
+    //    daySelect.append($('<option></option>').val(i).html(days[i]))
+    //  }
+    //  out.append(daySelect)
+     //
+
+
+    var c = $('<div></div>').addClass('weekchooser')
+
+    for(var i in days) {
+      var d = $('<div></div>').addClass('day selected').html(days[i]).attr('data-id', i)
+      c.append(d)
+      d.click(function(event) {
+        $(event.target).toggleClass('selected')
+      })
+    }
+    out.append(c)
+
+    var timeSelect = $('<select></select>').addClass('someselectclass')
+    for(var i in times) {
+      timeSelect.append($('<option></option>').val(i).html(times[i]))
+    }
+    out.append(timeSelect)
+
+
+
+
+     return out
+  }
 
 })();

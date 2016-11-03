@@ -205,3 +205,20 @@ h2 {
 .group {
     *zoom: 1;
 }
+
+
+
+.day{
+  display: inline-block;
+  padding: 6px 10px;
+  margin: 6px 10px;
+  border: 1px solid brown;
+}
+
+.day.selected {
+  background-color: rgb(215, 215, 215);
+}
+
+.day:hover{
+  color: red;
+}
