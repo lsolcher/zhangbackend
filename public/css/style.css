@@ -222,7 +222,6 @@ h2 {
    ============================================ */
 
 .raumsonderwuensche {
-	/*display: none;*/
 	margin: 30px auto;
   width: 64%;
 }
@@ -233,31 +232,45 @@ h2 {
    ============================================ */
 
 .cool-class {
-  padding: 10px 20px;
-  border: 1px solid grey;
+  background-color: #e6ecff;
   margin: 10px 0px;
+  padding: 10px 20px;
 }
 
 .cool-class input {
-  width: calc(100% - 24px);
-  padding: 10px 10px;
   margin: 10px 0px;
+  padding: 10px 10px;
+  width: calc(100% - 24px);
 
 }
 
 #priority-list li {
-    padding: 10px 5px;
-    margin: 1px 0px;
-    cursor: pointer;
+    background-color: white;
     border: 1px solid rgb(217, 217, 217);
     border-radius: 5px;
-    background-color: white;
+    cursor: pointer;
+    margin: 1px 0px;
+    padding: 10px 5px;
 }
 
 #priority-list h2 {
   text-align: center;
 }
 
+button {
+    background: #99b3ff;
+    border: 1px solid #4d79ff;
+}
+
+.priority-entry {
+    position: relative;
+}
+
+.priority-delete {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
 
 
 
@@ -287,13 +300,13 @@ h2 {
   display: inline-block;
   padding: 6px 10px;
   margin: 6px 10px;
-  border: 1px solid brown;
+  border: 1px solid #4d79ff;
 }
 
 .day.selected {
-  background-color: rgb(215, 215, 215);
+  background-color: #99b3ff;
 }
 
 .day:hover{
-  color: red;
+  color: #4d79ff;
 }
