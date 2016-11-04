@@ -107,13 +107,14 @@ a:hover {
    ============================================ */
 .optionsauswahl-menue {
   float:left;
-  padding-top: 66px;
+  padding-top: 94px;
   width: 27%;
 }
 
 .optionsauswahl-menue h3 {
   display: block;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: bold;
   margin: 20px 0;
 }
 
@@ -125,40 +126,47 @@ a:hover {
 .optionsbeschreibung {
   font-size: 12px;
   margin-left: 8px;
-  vertical-align: calc(90%);
+  vertical-align: 15%;
+}
+
+.bevorzugt, .wenn-notwendig, .niemals, .ungewaehlt {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+}
+
+.bevorzugt-btn, .wenn-notwendig-btn, .niemals-btn, .ungewaehlt-btn {
+  display: block;
+  float: left;
+  height: 35px;
+  width: 25px;
 }
 
 .bevorzugt {
   background: #002db3;
-  display: inline-block;
-  height: 38px;
-  width: 20px;
 }
 
 .wenn-notwendig {
   background: #4d79ff;
-  display: inline-block;
-  height: 38px;
-  width: 20px;
 }
 
 .niemals {
   background: #e6ecff;
-  display: inline-block;
-  height: 38px;
-  width: 20px;
 }
 
 .ungewaehlt {
   background: #99b3ff;
-  display: inline-block;
-  height: 38px;
-  width: 20px;
 }
 
 .optionsauswahl {
   display: block;
   margin: 20px 0 30px;
+}
+
+.optionsauswahl a:hover {
+  box-sizing: border-box;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
 }
 
 
