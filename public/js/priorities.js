@@ -17,7 +17,8 @@
       new Example2Prio(3, 'Beispiel Prio mit Button'),
       new DayTimePrio(4, 'Frühstmögliche Zeit'),
       new DayTimePrio(5, 'Spätestmögliche Zeit'),
-      new ExcludeDayCombinationPrio(6, 'Tagkombinationen ausschließen')
+      new ExcludeDayCombinationPrio(6, 'Tagkombinationen ausschließen'),
+      new EarlyDayPrio(7, 'Je früher desto besser'),
     ];
 
     $scope.addPriorityToDom = function(prioElement) {
@@ -199,11 +200,43 @@
     }
     out.append(timeSelect)
 
-
-
-
      return out
   }
+
+  
+
+  var EarlyDayPrio = function(id, label) {
+   this.id = id
+   this.label = label
+   this.content = this.getContent()
+  }
+  // do this for right
+  EarlyDayPrio.prototype = new AbstractPrio()
+  EarlyDayPrio.prototype.constructor = EarlyDayPrio
+
+  EarlyDayPrio.prototype.getLabel = function() {
+    return this.label
+  }
+
+  EarlyDayPrio.prototype.getContent = function() {
+    var out = $('<div></div>').addClass('somecontent')
+
+    var days = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag']
+   
+    var c = $('<div></div>').addClass('weekchooser')
+
+    for(var i in days) {
+      var d = $('<div></div>').addClass('day selected').html(days[i]).attr('data-id', i)
+      c.append(d)
+      d.click(function(event) {
+        $(event.target).toggleClass('selected')
+      })
+    }
+    out.append(c)
+    return out
+  }
+
+
 
   var ExcludeDayCombinationPrio = function(id, label) {
    this.id = id
