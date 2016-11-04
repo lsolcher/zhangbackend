@@ -260,6 +260,8 @@ h2 {
 button {
     background: #99b3ff;
     border: 1px solid #4d79ff;
+    cursor: pointer;
+    margin: 10px 5px 0 0;
 }
 
 .priority-entry {
@@ -270,6 +272,11 @@ button {
     position: absolute;
     right: 8px;
     top: 8px;
+}
+
+select {
+  font: 14px/16px "Droid Sans", Arial;
+  margin-top: 20px;
 }
 
 
