@@ -61,7 +61,7 @@ body {
    ============================================ */
 
 header {
-    background: rgba(0, 160, 0, 0.7);
+    background: #002db3;
     height: 40px;
     padding: 20px 0 0;
 }
@@ -81,6 +81,7 @@ header {
 }
 
 .menu-list li {
+  color: #4d79ff;
     float: left;
     font-weight: bold;
     padding: 0 20px;
@@ -92,8 +93,74 @@ a {
 }
 
 a:hover {
-    color: #5f5;
+    color: #4d79ff;
 }
+
+.main {
+  margin: 0 auto;
+  padding: 60px 0px;
+  width: 70%;
+}
+
+/* ============================================
+   Kalender - Auswahloptionen
+   ============================================ */
+.optionsauswahl-menue {
+  float:left;
+  padding-top: 66px;
+  width: 27%;
+}
+
+.optionsauswahl-menue h3 {
+  display: block;
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+.kalenderoptionen {
+  display: block;
+  margin: 8px 0;
+}
+
+.optionsbeschreibung {
+  font-size: 12px;
+  margin-left: 8px;
+  vertical-align: calc(90%);
+}
+
+.bevorzugt {
+  background: #002db3;
+  display: inline-block;
+  height: 38px;
+  width: 20px;
+}
+
+.wenn-notwendig {
+  background: #4d79ff;
+  display: inline-block;
+  height: 38px;
+  width: 20px;
+}
+
+.niemals {
+  background: #e6ecff;
+  display: inline-block;
+  height: 38px;
+  width: 20px;
+}
+
+.ungewaehlt {
+  background: #99b3ff;
+  display: inline-block;
+  height: 38px;
+  width: 20px;
+}
+
+.optionsauswahl {
+  display: block;
+  margin: 20px 0 30px;
+}
+
 
 /* ============================================
    Kalender
@@ -101,8 +168,8 @@ a:hover {
 
 .kalender {
 	display: block;
-  margin: 20px auto;
-  width: 47.8%;
+  float: right;
+  width: 69%;
 }
 
 .kopfzeile {
@@ -130,7 +197,7 @@ a:hover {
 }
 
 .kalender-input {
-	background: #080;
+	background: #99b3ff;
   height: 25px;
 	margin: 0 3px;
   width: 120px;
