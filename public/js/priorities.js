@@ -19,6 +19,10 @@
       new DayTimePrio(5, 'Spätestmögliche Zeit'),
       new ExcludeDayCombinationPrio(6, 'Tagkombinationen ausschließen'),
       new EarlyDayPrio(7, 'Je früher desto besser'),
+	  new SingleChoicePrio(8, 'Maximale Anzahl aufeinanderfolgender Tage wählen', ['1','2','3','4','5']),
+	  new SingleChoicePrio(9, 'Pause bei Anzahl aufeinanderfolgender Stunden', ['1','2','3','4','5']),
+	  new SingleChoicePrio(10, 'Blockunterricht (4SWS) soll in Einzelblöcke aufgeteilt werden', ['ja','nein']),
+
     ];
 
     $scope.addPriorityToDom = function(prioElement) {
@@ -257,6 +261,34 @@
      out.append($('#template1').clone())
 
      return out
+  }
+  
+  
+   var SingleChoicePrio = function(id, label, input) {
+   this.id = id
+   this.label = label
+   this.input =input
+   this.content = this.getContent()
+  }
+  // do this for right
+  SingleChoicePrio.prototype = new AbstractPrio()
+  SingleChoicePrio.prototype.constructor = SingleChoicePrio
+
+  SingleChoicePrio.prototype.getLabel = function() {
+    return this.label
+  }
+
+  SingleChoicePrio.prototype.getContent = function() {
+    var out = $('<div></div>').addClass('somecontent')
+
+    //var days = ['1', '2', '3', '4', '5']
+   
+	var daySelect = $('<select></select>').addClass('someselectclass')
+    for(var i in this.input) {
+       daySelect.append($('<option></option>').val(i).html(this.input[i]))
+    }
+    out.append(daySelect)
+    return out
   }
 
 })();
