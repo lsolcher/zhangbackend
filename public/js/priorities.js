@@ -19,10 +19,9 @@
       new DayTimePrio(5, 'Spätestmögliche Zeit'),
       new ExcludeDayCombinationPrio(6, 'Tagkombinationen ausschließen'),
       new EarlyDayPrio(7, 'Je früher desto besser'),
-	  new SingleChoicePrio(8, 'Maximale Anzahl aufeinanderfolgender Tage wählen', ['1','2','3','4','5']),
-	  new SingleChoicePrio(9, 'Pause bei Anzahl aufeinanderfolgender Stunden', ['1','2','3','4','5']),
-	  new SingleChoicePrio(10, 'Blockunterricht (4SWS) soll in Einzelblöcke aufgeteilt werden', ['ja','nein']),
-
+  	  new SingleChoicePrio(8, 'Maximale Anzahl aufeinanderfolgender Tage wählen', ['1','2','3','4','5']),
+  	  new SingleChoicePrio(9, 'Pause bei Anzahl aufeinanderfolgender Stunden', ['1','2','3','4','5']),
+  	  new SingleChoicePrio(10, 'Blockunterricht (4SWS) soll in Einzelblöcke aufgeteilt werden', ['ja','nein'])
     ];
 
     $scope.addPriorityToDom = function(prioElement) {
@@ -207,7 +206,7 @@
      return out
   }
 
-  
+
 
   var EarlyDayPrio = function(id, label) {
    this.id = id
@@ -226,7 +225,7 @@
     var out = $('<div></div>').addClass('somecontent')
 
     var days = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag']
-   
+
     var c = $('<div></div>').addClass('weekchooser')
 
     for(var i in days) {
@@ -262,8 +261,8 @@
 
      return out
   }
-  
-  
+
+
    var SingleChoicePrio = function(id, label, input) {
    this.id = id
    this.label = label
@@ -282,7 +281,7 @@
     var out = $('<div></div>').addClass('somecontent')
 
     //var days = ['1', '2', '3', '4', '5']
-   
+
 	var daySelect = $('<select></select>').addClass('someselectclass')
     for(var i in this.input) {
        daySelect.append($('<option></option>').val(i).html(this.input[i]))

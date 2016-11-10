@@ -1,99 +1,42 @@
-/* ==========================================================================
-   http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-   ========================================================================== */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+html, body{
+  padding: 0;
+  margin: 0;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
-body {
-    line-height: 1;
-}
-ol, ul {
-    list-style: none;
-}
-blockquote, q {
-    quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
 
 body {
-  font: 15px/16px  "Droid Sans", Arial;
+  font-family: 'Source Sans Pro', sans-serif;
 }
-
-/* ============================================
-   Menü
-   ============================================ */
 
 header {
-    background: #002db3;
-    height: 40px;
-    padding: 20px 0 0;
+  background: #002db3;
+  height: 40px;
+  padding: 20px 0 0;
 }
 
 .wrapper {
-    display: block;
-    margin: 0 auto;
+  display: block;
+  margin: 0 auto;
 }
 
-.menu {
-
-}
+.menu {}
 
 .menu-list {
-    float: right;
-    list-style: none;
+  float: right;
+  list-style: none;
 }
 
 .menu-list li {
   color: #4d79ff;
-    float: left;
-    font-weight: bold;
-    padding: 0 20px;
+  float: left;
+  font-weight: bold;
+  padding: 0 20px;
 }
 
 a {
-    color: #fff;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #4d79ff;
+  color: #fff;
+  text-decoration: none;
 }
 
 .main {
@@ -129,33 +72,36 @@ a:hover {
   vertical-align: 15%;
 }
 
-.bevorzugt, .wenn-notwendig, .niemals, .ungewaehlt {
+.bevorzugt, .wenn-notwendig, .niemals, .ungewaehlt, .ungewaehlt {
   display: inline-block;
   height: 15px;
   width: 15px;
 }
 
-.bevorzugt-btn, .wenn-notwendig-btn, .niemals-btn, .ungewaehlt-btn {
+.bevorzugt-btn, .wenn-notwendig-btn, .niemals-btn, .ungewaehlt-btn, .ungewaehlt {
   display: block;
-  float: left;
-  height: 35px;
-  width: 25px;
+  height: auto;
+  width: auto;
+  padding: 9px;
+  margin: 6px 0;
+  border-radius: 5px;
+  border: 2px solid;
 }
 
 .bevorzugt {
-  background: #002db3;
+  background: #43a047;
 }
 
 .wenn-notwendig {
-  background: #4d79ff;
+  background: #2196f3;
 }
 
 .niemals {
-  background: #e6ecff;
+  background: #ef5350;
 }
 
 .ungewaehlt {
-  background: #99b3ff;
+  background: #b0bec5;
 }
 
 .optionsauswahl {
@@ -163,11 +109,14 @@ a:hover {
   margin: 20px 0 30px;
 }
 
-.optionsauswahl a:hover {
-  box-sizing: border-box;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  cursor: pointer;
+.optionsauswahl a:hover{
+  border: 2px solid #000;
 }
+
+.active{
+  border: 2px solid #000;
+}
+
 
 
 /* ============================================
@@ -200,6 +149,19 @@ a:hover {
 	padding: 5px 0;
 }
 
+.kalender-input[prio="1"]{
+  background: #b0bec5;
+}
+.kalender-input[prio="0"]{
+  background: #ef5350;
+}
+.kalender-input[prio="2"]{
+  background: #2196f3;
+}
+.kalender-input[prio="3"]{
+  background: #43a047;
+}
+
 .vorlesungszeit {
 	margin: 6px 10px 0 0;
 }
@@ -209,6 +171,7 @@ a:hover {
   height: 25px;
 	margin: 0 3px;
   width: 120px;
+  cursor: pointer;
 }
 
 h2 {
@@ -286,21 +249,6 @@ select {
 /* ==========================================================================
    Helper classes
    ========================================================================== */
-
-.group:before,
-.group:after {
-    content: " ";
-    display: table;
-}
-
-.group:after {
-    clear: both;
-}
-
-.group {
-    *zoom: 1;
-}
-
 
 
 .day{
