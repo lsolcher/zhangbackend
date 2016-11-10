@@ -19,12 +19,35 @@
   </head>
   <body>
     <div class="raumsonderwuensche group" ng-controller="prioController">
+
+      <div class="aslkfj">
+        <div class="clickfick" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)">
+          <div class="title">
+            {{option.label}}
+          </div>
+        </div>
+      </div>
+
       <div class="cool-class">
+
+
         <ul id="priority-list">
           <h2>Sonderwünsche</h2>
+          <!-- ng-repeat doesnt work, because dom objects are returned -->
+          <!-- li ng-repeat="prio in priorities" class="priority-entry" data-id="{{prio.id}}">
+            <div class="priority-label">
+              {{prio.getLabel()}}
+            </div>
+            <div class="priority-delete">
+              x
+            </div>
+            <div class="priority-conent">
+              {{prio.getContent()}}
+            </div>
+          </li -->
         </ul>
-        <select id="priority-select" ng-model="selectedPrio" ng-options="option.label for option in possiblePriorities track by option.id">
-        </select>
+        <!-- select id="priority-select" ng-model="selectedPrio" ng-options="option.label for option in possiblePriorities track by option.id">
+        </select -->
       </div>
     </div>
 

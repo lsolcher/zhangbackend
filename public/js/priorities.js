@@ -6,7 +6,7 @@
     $scope.priorities = [];
 
     $scope.getNewPrioId = function() {
-      return $scope.possiblePriorities.length += $scope.priorities.length
+      return $scope.possiblePriorities.length + $scope.priorities.length
     }
 
     // options for select box (replace this with actual options)
@@ -27,7 +27,16 @@
     $scope.addPriorityToDom = function(prioElement) {
       var li = $('<li></li>').addClass('priority-entry').attr('data-id', prioElement.id)
       li.append($('<div></div>').addClass('priority-label').html(prioElement.getLabel()))
-      li.append($('<div></div>').addClass('priority-delete').html('x'))
+      li.append($('<div></div>').addClass('priority-delete').html('x')).click(function(event) {
+        var el = $(event.target).parents('.priority-entry')
+        var id = parseInt(el.attr('data-id'))
+        for(var i in $scope.priorities) {
+          if(id != $scope.priorities[i].id) continue
+          delete $scope.priorities[i]
+          break
+        }
+        el.remove()
+      })
       li.append($('<div></div>').addClass('priority-conent').append(prioElement.getContent()))
       $('#priority-list').append(li)
     }
@@ -47,6 +56,19 @@
 
     $scope.addPriority = function(event) {
       console.log(event)
+    }
+
+    $scope.selectPriority = function(event) {
+      console.log(event)
+      var el = $(event.target)
+      if(!el.hasClass('clickfick')) el = el.parents('.clickfick')
+      var id = parseInt(el.attr('data-id'))
+
+      for(var i in $scope.possiblePriorities) {
+        if($scope.possiblePriorities[i].id != id) continue
+        $scope.selectedPrio = $scope.possiblePriorities[i]
+        break
+      }
     }
 
   });
