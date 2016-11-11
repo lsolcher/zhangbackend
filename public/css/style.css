@@ -10,7 +10,7 @@ body {
 }
 
 header {
-  background: #002db3;
+  background: #004D40;
   height: 40px;
   padding: 20px 0 0;
 }
@@ -28,7 +28,7 @@ header {
 }
 
 .menu-list li {
-  color: #4d79ff;
+  color: #80cbc4;
   float: left;
   font-weight: bold;
   padding: 0 20px;
@@ -89,15 +89,15 @@ a {
 }
 
 .bevorzugt {
-  background: #43a047;
+  background: #00897B;
 }
 
 .wenn-notwendig {
-  background: #2196f3;
+  background: #80cbc4;
 }
 
 .niemals {
-  background: #ef5350;
+  background: #E0F2F1;
 }
 
 .ungewaehlt {
@@ -153,13 +153,13 @@ a {
   background: #b0bec5;
 }
 .kalender-input[prio="0"]{
-  background: #ef5350;
+  background: #E0F2F1;
 }
 .kalender-input[prio="2"]{
-  background: #2196f3;
+  background: #80cbc4;
 }
 .kalender-input[prio="3"]{
-  background: #43a047;
+  background: #00897B;
 }
 
 .vorlesungszeit {
