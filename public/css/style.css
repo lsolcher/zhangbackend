@@ -167,15 +167,26 @@ h2 {
    ============================================ */
 
 .wishes-section {
+    color: #004D40;
     float: right;
   	margin: 30px auto;
     width: 41%;
 }
 
 .wishes-section span {
-    font-style: cursive;
+    color: #004D40;
+    display: block;
+    font-style: italic;
+    margin: 0 0 20px;
 }
 
+.title {
+    border: solid 2px #004D40;
+    display: block;
+    font-weight: bold;
+    margin: 5px 10px 5px 0;
+    padding: 5px 3px;
+}
 
 /* ============================================
    Priority List
@@ -191,6 +202,10 @@ h2 {
     width: calc(100% - 24px);
 }
 
+.priority-entry {
+    position: relative;
+}
+
 #priority-list {
     padding: 0;
 }
@@ -199,12 +214,18 @@ h2 {
     border: 1px solid rgb(217, 217, 217);
     cursor: pointer;
     list-style: none;
-    margin: 1px 0px;
+    margin: 8px 0px;
     padding: 10px 5px;
 }
 
 #priority-list h2 {
     text-align: center;
+}
+
+.priority-delete {
+    position: absolute;
+    right: 8px;
+    top: 8px;
 }
 
 button {
@@ -215,16 +236,6 @@ button {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 12px;
     margin: 10px 5px 0 0;
-}
-
-.priority-entry {
-    position: relative;
-}
-
-.priority-delete {
-    position: absolute;
-    right: 8px;
-    top: 8px;
 }
 
 select {
