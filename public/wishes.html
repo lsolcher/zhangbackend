@@ -32,6 +32,7 @@
     </header>
     <div class="raumsonderwuensche group" ng-controller="prioController">
       <h2>Sonderwünsche</h2>
+      <span>Bitte wählen Sie einen oder mehrere Sonderwünsche aus.</span>
       <div class="aslkfj">
         <div class="clickfick" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)">
           <div class="title">
