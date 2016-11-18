@@ -1,12 +1,12 @@
 $(document).ready(function() {
 
-  $('.optionsauswahl a').click(function(){
+  $('.option-choice a').click(function() {
 
     $(this).toggleClass('active').siblings().removeClass('active');
 
   })
 
-  $('.kalender-input').click(function(event){
+  $('.calendar-input').click(function(event) {
 
     var _prio = $(event.target).attr('prio')
 

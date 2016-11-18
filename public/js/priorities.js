@@ -12,9 +12,8 @@
     // options for select box (replace this with actual options)
     $scope.possiblePriorities = [
       new SimplePrio(0, 'keine Schlauchräume'),
-      new SimplePrio(1, 'Blabla'),
-      new ExamplePrio(2, 'Beispiel 1 (ausklappbar sobald das ausklappen funzt)'),
-      new Example2Prio(3, 'Beispiel Prio mit Button'),
+      new ExamplePrio(2, 'Beispiel 1 (ausklappbar - sobald das ausklappen funzt)'),
+      new Example2Prio(3, 'Beispiel-Prio mit Button'),
       new DayTimePrio(4, 'Frühstmögliche Zeit'),
       new DayTimePrio(5, 'Spätestmögliche Zeit'),
       new ExcludeDayCombinationPrio(6, 'Tagkombinationen ausschließen'),
@@ -149,7 +148,7 @@
      var button = $('<button>Klick mich!</button>')
      button.click(function(event) {
        // access the scope
-       var scope = angular.element($('.raumsonderwuensche').get(0)).scope()
+       var scope = angular.element($('.wishes-section').get(0)).scope()
        for(var i in scope.priorities) {
          // find the right entity by id
          if(scope.priorities[i].id != $(event.target).parents('.priority-entry').attr('data-id')) continue
