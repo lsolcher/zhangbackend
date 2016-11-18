@@ -18,8 +18,20 @@
 
   </head>
   <body>
+    <header class="group">
+      <div class="wrapper group">
+        <span class="welcome-message">Guten Tag, Prof. Dr. Käsekuchen!</span>
+        <nav class="menu group">
+          <ul class="menu-list">
+            <li><a href="calendar.html">Kalender</a></li>
+            <li>Wünsche</li>
+            <li><a href="#">Abmelden</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <div class="raumsonderwuensche group" ng-controller="prioController">
-
+      <h2>Sonderwünsche</h2>
       <div class="aslkfj">
         <div class="clickfick" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)">
           <div class="title">
@@ -32,7 +44,7 @@
 
 
         <ul id="priority-list">
-          <h2>Sonderwünsche</h2>
+          
           <!-- ng-repeat doesnt work, because dom objects are returned -->
           <!-- li ng-repeat="prio in priorities" class="priority-entry" data-id="{{prio.id}}">
             <div class="priority-label">

@@ -20,96 +20,85 @@
   </script>
   </head>
   <body>
-    <header>
+    <header class="group">
 		<div class="wrapper group">
+			<span class="welcome-message">Guten Tag, Prof. Dr. Käsekuchen!</span>
 			<nav class="menu group">
 				<ul class="menu-list">
-					<li>Dozentenauswahl</li>
-					<li><a href="prototypLehreinsatzplanung-frauZahn.html">Tool für Frau Zahn</a></li>
-					<li><a href="">Semesterplan-Ergebnis</a></li>
+					<li>Kalender</li>
+					<li><a href="wishes.html">Wünsche</a></li>
+					<li><a href="#">Abmelden</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
 	<div class="main group">
-		<div class="optionsauswahl-menue group">
-			<h3>Bitte wählen Sie hier die Art der Belegung.</h3>
-			<div class="optionsauswahl group">
-				<a href="#" class="bevorzugt bevorzugt-btn">bevorzugte Wahl</a>
-				<a href="#" class="wenn-notwendig wenn-notwendig-btn">Alternativwahl - wenn notwendig</a>
-				<a href="#" class="niemals niemals-btn">auf keinen Fall</a>
-        <a href="#" class="ungewaehlt">nicht gewählt</a>
-			</div>
-			<!-- <div class="kalenderoptionen">
-				<span class="bevorzugt"></span><span class="optionsbeschreibung">bevorzugte Wahl</span>
-			</div>
-			<div class="kalenderoptionen">
-				<span class="wenn-notwendig"></span><span class="optionsbeschreibung">Alternativwahl - wenn notwendig</span>
-			</div>
-			<div class="kalenderoptionen">
-				<span class="niemals"></span><span class="optionsbeschreibung">auf keinen Fall</span>
-			</div>
-			<div class="kalenderoptionen">
-				<span class="ungewaehlt"></span><span class="optionsbeschreibung">nicht gewählt</span>
-			</div> -->
-		</div>
 		<div class="kalender group">
 			<h2>Bevorzugte Belegungszeiten</h2>
-			<div class="kopfzeile">
-				<span class="wochentag">Mo</span>
-				<span class="wochentag">Di</span>
-				<span class="wochentag">Mi</span>
-				<span class="wochentag">Do</span>
-				<span class="wochentag">Fr</span>
+			<div class="optionsauswahl group">
+				<a href="#" class="bevorzugt">Bevorzugte Wahl</a>
+				<a href="#" class="wenn-notwendig">Alternative Wahl</a>
+				<a href="#" class="niemals">nicht möglich</a>
 			</div>
-			<div class="kalenderzeile">
-				<span class="vorlesungszeit">08:00-09:30</span>
-				<div class="kalender-input" prio="1"></div>
-				<div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-			</div>
-			<div class="kalenderzeile">
-				<span class="vorlesungszeit">09:45-11:15</span>
-				<div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-			</div>
-			<div class="kalenderzeile">
-				<span class="vorlesungszeit">12:15-13:45</span>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-			</div>
-			<div class="kalenderzeile">
-				<span class="vorlesungszeit">14:00-15:30</span>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-			</div>
-			<div class="kalenderzeile">
-				<span class="vorlesungszeit">15:45-17:15</span>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-			</div>
-			<div class="kalenderzeile">
-				<span class="vorlesungszeit">17:30-19:00</span>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-        <div class="kalender-input" prio="1"></div>
-			</div>
+			<div class="kalender-body group">
+				<div class="kopfzeile">
+					<span class="wochentag">MO</span>
+					<span class="wochentag">DI</span>
+					<span class="wochentag">MI</span>
+					<span class="wochentag">DO</span>
+					<span class="wochentag">FR</span>
+				</div>
+				<div class="kalenderzeile">
+					<span class="vorlesungszeit">08:00-09:30</span>
+					<div class="kalender-input" prio="1"></div>
+					<div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+				</div>
+				<div class="kalenderzeile">
+					<span class="vorlesungszeit">09:45-11:15</span>
+					<div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+				</div>
+				<div class="kalenderzeile">
+					<span class="vorlesungszeit">12:15-13:45</span>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+				</div>
+				<div class="kalenderzeile">
+					<span class="vorlesungszeit">14:00-15:30</span>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+				</div>
+				<div class="kalenderzeile">
+					<span class="vorlesungszeit">15:45-17:15</span>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+				</div>
+				<div class="kalenderzeile">
+					<span class="vorlesungszeit">17:30-19:00</span>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+			        <div class="kalender-input" prio="1"></div>
+				</div>
+			</div>	
 		</div>
+		<div class="raumsonderwuensche group">
+		</div>	
 	</body>
 </html>

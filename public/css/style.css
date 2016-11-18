@@ -1,211 +1,186 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 html, body{
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
 }
 
 header {
-  background: #004D40;
-  height: 40px;
-  padding: 20px 0 0;
+    background: #004D40;
+    height: 25px;
+    padding: 10px 25px 10px;
 }
 
 .wrapper {
-  display: block;
-  margin: 0 auto;
+    display: block;
+    margin: 0 auto;
 }
 
-.menu {}
+.welcome-message {
+    color: white;
+    float: left;
+
+}
+
+.menu {
+    float: right;
+}
 
 .menu-list {
-  float: right;
-  list-style: none;
+    list-style: none;
+    margin: 0;
 }
 
 .menu-list li {
-  color: #80cbc4;
-  float: left;
-  font-weight: bold;
-  padding: 0 20px;
+    color: #80cbc4;
+    float: left;
+    padding: 0 20px;
 }
 
 a {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 .main {
-  margin: 0 auto;
-  padding: 60px 0px;
-  width: 70%;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 50px 0px;
+    width: 80%;
 }
 
 /* ============================================
-   Kalender - Auswahloptionen
-   ============================================ */
-.optionsauswahl-menue {
-  float:left;
-  padding-top: 94px;
-  width: 27%;
-}
-
-.optionsauswahl-menue h3 {
-  display: block;
-  font-size: 12px;
-  font-weight: bold;
-  margin: 20px 0;
-}
-
-.kalenderoptionen {
-  display: block;
-  margin: 8px 0;
-}
-
-.optionsbeschreibung {
-  font-size: 12px;
-  margin-left: 8px;
-  vertical-align: 15%;
-}
-
-.bevorzugt, .wenn-notwendig, .niemals, .ungewaehlt, .ungewaehlt {
-  display: inline-block;
-  height: 15px;
-  width: 15px;
-}
-
-.bevorzugt-btn, .wenn-notwendig-btn, .niemals-btn, .ungewaehlt-btn, .ungewaehlt {
-  display: block;
-  height: auto;
-  width: auto;
-  padding: 9px;
-  margin: 6px 0;
-  border-radius: 5px;
-  border: 2px solid;
-}
-
-.bevorzugt {
-  background: #00897B;
-}
-
-.wenn-notwendig {
-  background: #80cbc4;
-}
-
-.niemals {
-  background: #E0F2F1;
-}
-
-.ungewaehlt {
-  background: #b0bec5;
-}
-
-.optionsauswahl {
-  display: block;
-  margin: 20px 0 30px;
-}
-
-.optionsauswahl a:hover{
-  border: 2px solid #000;
-}
-
-.active{
-  border: 2px solid #000;
-}
-
-
-
-/* ============================================
-   Kalender
+   Calendar 
    ============================================ */
 
 .kalender {
-	display: block;
-  float: right;
-  width: 69%;
+    display: block;
+    float: left;
+    width: 59%;
 }
 
-.kopfzeile {
-	padding: 10px 0 10px 90px;
+.optionsauswahl {
+    margin: 20px 0 30px;
+}
+
+.optionsauswahl a {
+    color: #000;
+    display: block;
+    float: left;
+    padding-left: 5px;
+    margin: 0 10px;
+}
+
+.optionsauswahl a:hover {
+    border: solid 1px #333;
+    box-shadow: 5px 6px 25px -5px rgba(0,0,0,0.75);
+}
+
+.bevorzugt:before {
+    background: #1de9b6; /* #00897B; */
+    border-radius: 5px;
+    display: block;
+    height:10px;
+    width: 10px;
+}
+
+.wenn-notwendig {
+    background: #a7ffeb; /* #80cbc4; */
+}
+
+.niemals {
+    background: #E0F2F1;
+}
+
+.active{
+    border: 2px solid #000;
+}
+
+.kopfzeile {    
+    float: left;
+    padding: 10px 0 10px 76px;
 }
 
 .wochentag {
-	padding: 0 52px;
+	 padding: 0 26px;
 }
 
 .btn-kalender {
-	background: blue;
-	display: inline-block;
-	height: 10px;
-	width: 10px;
+  	background: blue;
+  	display: inline-block;
+  	height: 10px;
+  	width: 10px;
 }
 
 .kalenderzeile, .kalender-input, .kalenderzeile span {
-	float: left;
-	padding: 5px 0;
-}
-
-.kalender-input[prio="1"]{
-  background: #b0bec5;
-}
-.kalender-input[prio="0"]{
-  background: #E0F2F1;
-}
-.kalender-input[prio="2"]{
-  background: #80cbc4;
-}
-.kalender-input[prio="3"]{
-  background: #00897B;
+  	float: left;
+  	padding: 5px 0;
 }
 
 .vorlesungszeit {
-	margin: 6px 10px 0 0;
+	 margin: 6px 10px 0 0;
 }
 
 .kalender-input {
-	background: #99b3ff;
-  height: 25px;
-	margin: 0 3px;
-  width: 120px;
-  cursor: pointer;
+  	background: #cfd8dc;
+    border-radius: 40px;
+    height: 40px;
+  	margin: 0 10px;
+    width: 50px;
+    cursor: pointer;
 }
 
+.kalender-input[prio="1"]{
+    background: #cfd8dc;
+}
+.kalender-input[prio="0"]{
+    background: #E0F2F1;
+}
+.kalender-input[prio="2"]{
+    background: #a7ffeb; /* #80cbc4; */
+}
+.kalender-input[prio="3"]{
+    background: #1de9b6; /* #00897B; */
+}
+
+
 h2 {
-	font-weight: bold;
-	margin: 30px 0;
-  text-align: center;
+  	font-weight: bold;
+  	margin: 30px 0;
 }
 
 /* ============================================
-   Sonderwünsche
+   Wishes
    ============================================ */
 
 .raumsonderwuensche {
-	margin: 30px auto;
-  width: 64%;
+    float: right;
+  	margin: 30px auto;
+    width: 41%;
 }
 
 
 /* ============================================
    Priority List
    ============================================ */
-
+/*
 .cool-class {
-  background-color: #e6ecff;
-  margin: 10px 0px;
-  padding: 10px 20px;
+    background-color: #e6ecff;
+    margin: 10px 0px;
+    padding: 10px 20px;
 }
 
 .cool-class input {
-  margin: 10px 0px;
-  padding: 10px 10px;
-  width: calc(100% - 24px);
-
+    margin: 10px 0px;
+    padding: 10px 10px;
+    width: calc(100% - 24px);
 }
+*/
 
 #priority-list li {
     background-color: white;
@@ -217,7 +192,7 @@ h2 {
 }
 
 #priority-list h2 {
-  text-align: center;
+    text-align: center;
 }
 
 button {
@@ -238,8 +213,8 @@ button {
 }
 
 select {
-  font: 14px/16px "Droid Sans", Arial;
-  margin-top: 20px;
+    font: 14px/16px "Droid Sans", Arial;
+    margin-top: 20px;
 }
 
 
@@ -250,18 +225,17 @@ select {
    Helper classes
    ========================================================================== */
 
-
-.day{
-  display: inline-block;
-  padding: 6px 10px;
-  margin: 6px 10px;
-  border: 1px solid #4d79ff;
+.day {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 6px 10px;
+    border: 1px solid #4d79ff;
 }
 
 .day.selected {
-  background-color: #99b3ff;
+    background-color: #99b3ff;
 }
 
-.day:hover{
-  color: #4d79ff;
+.day:hover {
+    color: #4d79ff;
 }
