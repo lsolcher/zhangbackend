@@ -169,15 +169,19 @@ h2 {
 .wishes-section {
     color: #004D40;
     float: right;
-  	margin: 30px auto;
+  	margin: 30px 0;
     width: 41%;
+}
+
+.wishes-section h2 {
+    margin: 0;
 }
 
 .wishes-section span {
     color: #004D40;
     display: block;
     font-style: italic;
-    margin: 0 0 20px;
+    margin: 10px 0 20px;
 }
 
 .title {
@@ -218,10 +222,6 @@ h2 {
     padding: 10px 5px;
 }
 
-#priority-list h2 {
-    text-align: center;
-}
-
 .priority-delete {
     position: absolute;
     right: 8px;
@@ -243,14 +243,6 @@ select {
     margin-top: 20px;
 }
 
-
-
-
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
 .day {
     color: #fff;
     display: inline-block;
@@ -267,3 +259,9 @@ select {
 .day:hover {
     color: #cfd8dc;
 }
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
