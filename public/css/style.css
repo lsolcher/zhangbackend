@@ -112,11 +112,11 @@ a {
 
 .first-calendar-row {    
     float: left;
-    padding: 10px 0 10px 76px;
+    padding: 10px 0 10px 88px;
 }
 
 .week-day {
-	 padding: 0 26px;
+	 padding: 0 25px;
 }
 
 .btn-calendar {
@@ -144,11 +144,11 @@ a {
     width: 50px;
 }
 
-.calendar-input[prio="1"]{
-    background: #cfd8dc;
-}
 .calendar-input[prio="0"]{
     background: #E0F2F1;
+}
+.calendar-input[prio="1"]{
+    background: #cfd8dc;
 }
 .calendar-input[prio="2"]{
     background: #a7ffeb; /* #80cbc4; */
@@ -183,13 +183,16 @@ h2 {
 
 .cool-class {
     margin: 10px 0px;
-    padding: 10px 20px;
 }
 
 .cool-class input {
     margin: 10px 0px;
     padding: 10px 10px;
     width: calc(100% - 24px);
+}
+
+#priority-list {
+    padding: 0;
 }
 
 #priority-list li {
@@ -205,9 +208,12 @@ h2 {
 }
 
 button {
-    background: #99b3ff;
-    border: 1px solid #4d79ff;
+    background: #004D40;
+    border: 1px solid #004D40;
+    color: #fff;
     cursor: pointer;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 12px;
     margin: 10px 5px 0 0;
 }
 
@@ -222,7 +228,7 @@ button {
 }
 
 select {
-    font: 14px/16px "Droid Sans", Arial;
+    font: 12px/16px "Droid Sans", Arial;
     margin-top: 20px;
 }
 
@@ -235,16 +241,18 @@ select {
    ========================================================================== */
 
 .day {
+    color: #fff;
     display: inline-block;
+    font-size: 12px;
     padding: 6px 10px;
-    margin: 6px 10px;
-    border: 1px solid #4d79ff;
+    margin: 6px 6px;
+    border: 1px solid #004D40;
 }
 
 .day.selected {
-    background-color: #99b3ff;
+    background: #004D40;
 }
 
 .day:hover {
-    color: #4d79ff;
+    color: #cfd8dc;
 }
