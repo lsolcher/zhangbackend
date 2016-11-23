@@ -12,8 +12,7 @@ body {
 
 header {
     background: #004D40;
-    height: 25px;
-    padding: 10px 0 10px;
+    height: 40px;
 }
 
 .wrapper {
@@ -25,11 +24,11 @@ header {
     color: white;
     float: left;
     margin-left: 25px;
+    padding: 10px 0;
 }
 
 .menu {
     float: right;
-    margin-right: 25px;
 }
 
 .menu-list {
@@ -40,13 +39,28 @@ header {
 .menu-list li {
     color: #a7ffeb;
     float: left;
-    padding: 0 20px;
+    padding: 10px 20px;
 }
 
 a {
     color: #fff;
     text-decoration: none;
 }
+
+.menu-list .profil {
+    margin-top: -10px;
+    padding-right: 0;
+}
+
+.profil:after {
+    content: " ";
+    display: inline-block;
+    background: #E0F2F1 url(../img/user.png) no-repeat center center;
+    height: 40px;
+    margin-left: 5px;
+    vertical-align: middle;
+    width: 35px;
+ }
 
 .main {
     font-weight: bold;
@@ -373,17 +387,17 @@ select {
     }
 
     .menu-trigger {
-        background: url(../img/menu-trigger.png) no-repeat center center ;
+        background: url(../img/menu-trigger.png) no-repeat center center;
     }
 
     .menu-close-btn {
-        background: url(../img/cross.png) no-repeat center center ;
+        background: url(../img/cross.png) no-repeat center center;
     }
 
     .menu {
         background: #004D40;
         display: none; 
-        margin: 15px auto;
+        margin: 0 auto;
         width: 100%;
     }
 
@@ -398,7 +412,7 @@ select {
     }
 
     .calendar, .wishes-section {
-        width: 230px; /*44%;*/
+        width: 235px; /*44%;*/
     }
 
     h2 {
