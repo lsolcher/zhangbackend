@@ -247,7 +247,7 @@ select {
     cursor: pointer;
     list-style: none;
     margin: 8px 10px 8px 0;
-    padding: 10px 5px;
+    padding: 10px 22px 10px 10px;
 }
 
 .priority-delete {
@@ -275,12 +275,12 @@ select {
 }
 
 .day {
+    border: 1px solid #004D40;
     color: #fff;
     display: inline-block;
     font-size: 12px;
     padding: 6px 10px;
-    margin: 6px 6px;
-    border: 1px solid #004D40;
+    margin: 6px 6px 6px 0;
 }
 
 .day.selected {
@@ -306,9 +306,6 @@ select {
    ======================================================================================================================= */
 
 @media only screen and (max-width: 1024px) {
-
-
-
     /*
     .day.selected {
         width: 80%;
@@ -317,7 +314,6 @@ select {
 }
 
 @media only screen and (max-width: 930px) {
-
 
     .calendar-body {
         margin-top: 40px;
@@ -347,12 +343,6 @@ select {
         margin: 0 6px;
         width: 43px;
     }
-
-    /*
-    .day.selected {
-        width: 80%;
-    }
-    */
 }
 
 @media only screen and (max-width: 760px) {
@@ -370,14 +360,6 @@ select {
     .calendar {
        width: 73%;
     }
-
-
-
-    /*
-    .day.selected {
-        width: 80%;
-    }
-    */
 }
 
 @media only screen and (max-width: 700px) {
