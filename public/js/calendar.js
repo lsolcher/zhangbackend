@@ -24,4 +24,12 @@ $(document).ready(function() {
 
   })
 
+  $('.menu-trigger').click(function() {
+    $(".menu").fadeToggle();    
+  });
+  
+  $(window).resize(function() {
+    $(".menu").removeAttr('style');
+  });
+
 });
