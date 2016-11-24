@@ -237,6 +237,7 @@ select {
    ============================================ */
 
 .cool-class {
+    float: left;
     margin: 10px 0px;
 }
 
