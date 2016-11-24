@@ -70,7 +70,7 @@ a {
 }
 
 /* ============================================
-   Calendar 
+   Calendar
    ============================================ */
 
 .calendar {
@@ -93,8 +93,7 @@ a {
 }
 
 .option-choice a:hover {
-    border-radius: 20px;
-    box-shadow: 5px 6px 25px -5px rgba(0,0,0,0.75);
+    border-bottom: 3px solid #cfd8dc;
 }
 
 .option-choice a:before {
@@ -112,11 +111,11 @@ a {
 }
 
 .alternative:before {
-    background: #a7ffeb; /* #80cbc4; */   
+    background: #a7ffeb; /* #80cbc4; */
 }
 
 .impossible:before {
-    background: #E0F2F1;   
+    background: #E0F2F1;
 }
 
 .calendar-body {
@@ -124,11 +123,10 @@ a {
 }
 
 .active{
-    border-radius: 20px;
-    border: 2px solid #000;
+    border-bottom: 3px solid #cfd8dc;
 }
 
-.first-calendar-row {    
+.first-calendar-row {
     float: left;
     padding: 10px 0 10px 88px;
 }
@@ -155,7 +153,7 @@ a {
 
 .calendar-row .calendar-input:last-child {
     margin-right: 0;
-}  
+}
 
 .lecture-time {
 	 margin: 6px 10px 0 0;
@@ -196,7 +194,7 @@ h2 {
     color: #004D40;
     float: right;
   	margin: 30px 0;
-    width: 41%;
+    width: 70%;
 }
 
 .wishes-section h2 {
@@ -210,7 +208,7 @@ h2 {
     margin: 10px 0 20px;
 }
 .clickfick {
-    margin-right: 10px; 
+    margin-right: 10px;
 }
 
 .clickfick:hover {
@@ -303,6 +301,21 @@ select {
 
 .day:hover {
     color: #cfd8dc;
+}
+
+.aslkfj {
+  display: inline-block;
+  float: left;
+}
+
+#maxim-button {
+  background: #004D40;
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  padding: 6px 10px;
+  margin: 6px 6px 6px 0;
+  border: 0;
 }
 
 /* ==========================================================================
@@ -408,7 +421,7 @@ select {
 
     .menu {
         background: #004D40;
-        display: none; 
+        display: none;
         margin: 0 auto;
         width: 100%;
     }
@@ -417,7 +430,7 @@ select {
         padding: 0;
     }
 
-    .menu-list li {    
+    .menu-list li {
         float: none;
         margin: 20px 0;
         text-align: center;
@@ -457,5 +470,5 @@ select {
         margin: 0 3px;
         width: 26px;
     }
-    
+
 }
