@@ -26,7 +26,7 @@
     $scope.addPriorityToDom = function(prioElement) {
       var li = $('<li></li>').addClass('priority-entry').attr('data-id', prioElement.id)
       li.append($('<div></div>').addClass('priority-label').html(prioElement.getLabel()))
-      li.append($('<div></div>').addClass('priority-delete').html('x')).click(function(event) {
+      li.append($('<div></div>').addClass('priority-delete').html('x').click(function(event) {
         var el = $(event.target).parents('.priority-entry')
         var id = parseInt(el.attr('data-id'))
         for(var i in $scope.priorities) {
@@ -35,7 +35,7 @@
           break
         }
         el.remove()
-      })
+      }))
       li.append($('<div></div>').addClass('priority-conent').append(prioElement.getContent()))
       $('#priority-list').append(li)
     }
@@ -316,9 +316,9 @@
 $(document).ready(function() {
 
     $('.menu-trigger').click(function() {
-      $(".menu").fadeToggle();    
+      $(".menu").fadeToggle();
     });
-    
+
     $(window).resize(function() {
       $(".menu").removeAttr('style');
     });
