@@ -60,7 +60,7 @@
     $scope.selectPriority = function(event) {
       console.log(event)
       var el = $(event.target)
-      if(!el.hasClass('clickfick')) el = el.parents('.clickfick')
+      if(!el.hasClass('priority-select-list-entry')) el = el.parents('.priority-select-list-entry')
       var id = parseInt(el.attr('data-id'))
 
       for(var i in $scope.possiblePriorities) {

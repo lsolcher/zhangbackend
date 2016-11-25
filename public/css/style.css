@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
-html, body{
+html, body {
     padding: 0;
     margin: 0;
 }
@@ -74,13 +74,8 @@ a {
    ============================================ */
 
 .calendar {
-    display: block;
     float: left;
     width: 59%;
-}
-
-.option-choice {
-
 }
 
 .option-choice a {
@@ -107,11 +102,11 @@ a {
 }
 
 .preferred:before {
-    background: #1de9b6; /* #00897B; */
+    background: #1de9b6;
 }
 
 .alternative:before {
-    background: #a7ffeb; /* #80cbc4; */
+    background: #a7ffeb; 
 }
 
 .impossible:before {
@@ -168,21 +163,20 @@ a {
     width: 50px;
 }
 
-.calendar-input[prio="0"]{
+.calendar-input[prio="0"] {
     background: #E0F2F1;
 }
-.calendar-input[prio="1"]{
+.calendar-input[prio="1"] {
     background: #cfd8dc;
 }
-.calendar-input[prio="2"]{
-    background: #a7ffeb; /* #80cbc4; */
+.calendar-input[prio="2"] {
+    background: #a7ffeb; 
 }
-.calendar-input[prio="3"]{
-    background: #1de9b6; /* #00897B; */
+.calendar-input[prio="3"] {
+    background: #1de9b6; 
 }
 
 h2 {
-  	font-weight: bold;
   	margin: 30px 0;
 }
 
@@ -193,7 +187,7 @@ h2 {
 .wishes-section {
     color: #004D40;
     float: right;
-  	margin: 30px 0;
+  	margin: 30px 0 0;
     width: 70%;
 }
 
@@ -207,18 +201,17 @@ h2 {
     font-style: italic;
     margin: 10px 0 20px;
 }
-.clickfick {
+.priority-select-list-entry {
     margin-right: 10px;
 }
 
-.clickfick:hover {
+.priority-select-list-entry:hover {
     background: #a7ffeb;
     cursor: pointer;
 }
 
 .title {
     border: solid 2px #004D40;
-    display: block;
     font-weight: bold;
     margin: 5px 0;
     padding: 5px 3px;
@@ -230,18 +223,24 @@ select {
     color: #fff;
 }
 
+/* style for hovered options in select fiels
+select option:hover {
+    background: #fff;
+    color: #004D40;
+}
+*/
 
 
 /* ============================================
    Priority List
    ============================================ */
 
-.cool-class {
+.selected-priorities {
     float: left;
     margin: 10px 0px;
 }
 
-.cool-class input {
+.selected-priorities input {
     margin: 10px 0px;
     padding: 10px 10px;
     width: calc(100% - 24px);
@@ -260,7 +259,7 @@ select {
     cursor: pointer;
     list-style: none;
     margin: 8px 10px 8px 0;
-    padding: 10px 22px 10px 10px;
+    padding: 10px 30px 10px 10px;
 }
 
 .priority-delete {
@@ -289,7 +288,7 @@ select {
 
 .day {
     border: 1px solid #004D40;
-    color: #fff;
+    color: #004D40;;
     display: inline-block;
     font-size: 12px;
     padding: 6px 10px;
@@ -298,18 +297,19 @@ select {
 
 .day.selected {
     background: #004D40;
+    color:#fff;
 }
 
 .day:hover {
-    color: #cfd8dc;
+    color: #a7ffeb;
 }
 
-.aslkfj {
+.priority-select-list {
   display: inline-block;
   float: left;
 }
 
-#maxim-button {
+#priorities-submit-button {
   background: #004D40;
   color: #fff;
   display: inline-block;
@@ -346,11 +346,7 @@ select {
    ======================================================================================================================= */
 
 @media only screen and (max-width: 1024px) {
-    /*
-    .day.selected {
-        width: 80%;
-    }
-    */
+   
 }
 
 @media only screen and (max-width: 930px) {
@@ -371,7 +367,7 @@ select {
     }
 
     .first-calendar-row {
-        padding: 10px 0 10px 85px;
+        padding-left: 85px;
     }
 
     .week-day {

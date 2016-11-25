@@ -36,35 +36,19 @@
     <div class="wishes-section group" ng-controller="prioController">
       <h2>Sonderwünsche</h2>
       <span>Bitte wählen Sie einen oder mehrere Sonderwünsche aus.</span>
-      <div class="aslkfj">
-        <div class="clickfick" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)">
+      <div class="priority-select-list">
+        <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)">
           <div class="title">
             {{option.label}}
           </div>
         </div>
-        <input id="maxim-button" type="button" name="name" value="maxim's button">
+        <input id="priorities-submit-button" type="button" name="name" value="maxim's submit button">
       </div>
 
-      <div class="cool-class">
-
-
+      <div class="selected-priorities">
         <ul id="priority-list">
 
-          <!-- ng-repeat doesnt work, because dom objects are returned -->
-          <!-- li ng-repeat="prio in priorities" class="priority-entry" data-id="{{prio.id}}">
-            <div class="priority-label">
-              {{prio.getLabel()}}
-            </div>
-            <div class="priority-delete">
-              x
-            </div>
-            <div class="priority-conent">
-              {{prio.getContent()}}
-            </div>
-          </li -->
         </ul>
-        <!-- select id="priority-select" ng-model="selectedPrio" ng-options="option.label for option in possiblePriorities track by option.id">
-        </select -->
       </div>
     </div>
 
