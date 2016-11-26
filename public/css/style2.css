@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-
+/*general*/
 html, body {
     padding: 0;
     margin: 0;
@@ -9,10 +8,14 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
 }
+/*fonts*/
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+/*colors */
 
 header {
     background: #004D40;
-    height: 40px;
+    height: 50px;
 }
 
 .wrapper {
@@ -74,17 +77,16 @@ a {
    ============================================ */
 
 .calendar {
-    float: left;
-    width: 59%;
+    /*float: left;*/
 }
 
 .option-choice a {
     color: #000;
     display: block;
     font-size: 12px;
-    float: left;
     margin: 0 5px 0 0;
     padding: 5px;
+    display: inline-block;
 }
 
 .option-choice a:hover {
@@ -119,7 +121,7 @@ a {
 }
 
 .calendar-body {
-    margin-top: 80px;
+    /*margin-top: 80px;*/
 }
 
 .active{
@@ -127,12 +129,11 @@ a {
 }
 
 .first-calendar-row {
-    float: left;
     padding: 10px 0 10px 88px;
 }
 
 .week-day {
-	 padding: 0 25px;
+	 padding: 0 27px;
 }
 
 .week-day:last-child {
@@ -147,7 +148,7 @@ a {
 }
 
 .calendar-row, .calendar-input, .calendar-row span {
-  	float: left;
+    display: inline-block;
   	padding: 5px 0;
 }
 
@@ -194,7 +195,6 @@ h2 {
     color: #004D40;
     float: right;
   	margin: 30px 0 0;
-    width: 70%;
 }
 
 .wishes-section h2 {
@@ -209,6 +209,7 @@ h2 {
 }
 .priority-select-list-entry {
     margin-right: 10px;
+    display: inline-block;
 }
 
 .priority-select-list-entry:hover {
@@ -351,7 +352,7 @@ select {
             Media Queries
    ======================================================================================================================= */
 
-@media only screen and (max-width: 1024px) {
+/*@media only screen and (max-width: 1024px) {
 
 }
 
@@ -402,11 +403,35 @@ select {
     .calendar {
        width: 73%;
     }
-}
+}*/
 
 @media only screen and (max-width: 700px) {
+  .first-calendar-row {
+    padding: 0;
+      margin-left: 17%;
+  }
+  .week-day{
+    padding: 0;
+    width: 18%;
+    display: inline-block;
+    text-align: center;
+  }
+  .lecture-time{
+    width: 12%;
+  }
+  .calendar-row {
+    width: 100%;
+  }
+  .calendar-input{
+    border-radius: 0px;
+    cursor: pointer;
+    height: 40px;
+    margin: 0;
+    width: 15%;
+    display: inline-block;
+  }
 
-    .menu-trigger, .menu-close-btn {
+    /*.menu-trigger, .menu-close-btn {
         height: 22px;
         position: absolute;
         right: 15px;
@@ -440,7 +465,7 @@ select {
     }
 
     .calendar, .wishes-section {
-        width: 235px; /*44%;*/
+        width: 235px;
     }
 
     h2 {
@@ -472,6 +497,6 @@ select {
         height: 16px;
         margin: 0 3px;
         width: 26px;
-    }
+    }*/
 
 }

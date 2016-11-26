@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="zhang-app">
   <head>
     <meta charset="utf-8">
     <title>Kalender</title>
 
     <!-- styles -->
     <link rel="stylesheet" href="css/bootstrap.css"/>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style2.css">
     <!-- end of styles -->
 
 
@@ -19,6 +19,8 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 	<script type="text/javascript" src="js/calendar.js"></script>
   <script src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/priorities.js"></script>
+
 	<!-- libs end -->
 
   </script>
@@ -33,27 +35,28 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand">StundenplanBaukasten</a>
+					<a href="/" class="navbar-brand">StundenplanBaustelle</a>
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
 						<li>
-							<a href="#sec">Wunschkonzert</a>
+							<a href="#sec">Auswahl</a>
 						</li>
 						<li>
-							<a href="#sec">Puzzle Bar</a>
+							<a href="#sec">FAQ</a>
 						</li>
 						<li>
-							<a href="#sec">Kleinster Gemeinsamer Nenner</a>
+							<a href="#sec">Stundenplan</a>
 						</li>
 					</ul>
 				</nav>
 			</div>
 	</header>
+  <div class="row">
 	<div class="main group">
-		<div class="calendar group">
+		<div class="calendar group col-md-6">
 			<h2>Bevorzugte Belegungszeiten</h2>
-			<div class="option-choice group">
+			<div class="option-choice group row">
 				<a href="#" class="preferred" prio="3">Bevorzugte Wahl</a>
 				<a href="#" class="alternative" prio="2">Alternative Wahl</a>
         <a href="#" class="impossible" prio="1">wenns sein muss</a>
@@ -117,7 +120,47 @@
 				</div>
 			</div>
 		</div>
-		<div class="wishes-section group"></div>
+    <div class="wishes-section group col-md-6" ng-controller="prioController">
+      <h2>Sonderwünsche</h2>
+      <span>Bitte wählen Sie einen oder mehrere Sonderwünsche aus.</span>
+      <div class="priority-select-list">
+        <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)">
+          <div class="title">
+            {{option.label}}
+          </div>
+        </div>
+        <input id="priorities-submit-button" type="button" name="name" value="maxim's submit button">
+      </div>
+
+      <div class="selected-priorities">
+        <ul id="priority-list">
+
+        </ul>
+      </div>
+    </div>
+
+
+    <div id="templates" style="display: none;">
+      <div id="template1">
+        <select name="day">
+            <option>Ersten Tag wählen</option>
+            <option value="montag">Montag</option>
+            <option value="dienstag">Dienstag</option>
+            <option value="mittwoch">Mittwoch</option>
+            <option value="donnerstag">Donnerstag</option>
+            <option value="freitag">Freitag</option>
+        </select>
+        <select name="time">
+            <option>Zweiten Tag wählen</option>
+            <option value="montag">Montag</option>
+            <option value="dienstag">Dienstag</option>
+            <option value="mittwoch">Mittwoch</option>
+            <option value="donnerstag">Donnerstag</option>
+            <option value="freitag">Freitag</option>
+        </select>
+      </div>
+    </div>
   </div>
+</div>
 	</body>
 </html>
