@@ -18,36 +18,16 @@ header {
     height: 50px;
 }
 
-.wrapper {
-    display: block;
-    margin: 0 auto;
+/*helpers*/
+.no-pad{
+  padding: 0px;
 }
 
-.welcome-message {
-    color: white;
-    float: left;
-    margin-left: 25px;
-    padding: 10px 0;
-}
+/*header*/
 
-.menu {
-    float: right;
-}
-
-.menu-list {
-    list-style: none;
-    margin: 0;
-}
-
-.menu-list li {
+.navbar-nav > li > a,
+.navbar-brand {
     color: #a7ffeb;
-    float: left;
-    padding: 10px 20px;
-}
-
-a {
-    color: #fff;
-    text-decoration: none;
 }
 
 .menu-list .profil {
@@ -82,7 +62,6 @@ a {
 
 .option-choice a {
     color: #000;
-    display: block;
     font-size: 12px;
     margin: 0 5px 0 0;
     padding: 5px;
