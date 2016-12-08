@@ -27,6 +27,7 @@
       var li = $('<li></li>').addClass('priority-entry').attr('data-id', prioElement.id)
       li.append($('<div></div>').addClass('priority-label').html(prioElement.getLabel()))
       li.append($('<div></div>').addClass('priority-delete').html('x').click(function(event) {
+
         var el = $(event.target).parents('.priority-entry')
         var id = parseInt(el.attr('data-id'))
         for(var i in $scope.priorities) {
@@ -35,6 +36,24 @@
           break
         }
         el.remove()
+
+        // remove selected label if neccessary
+        var removeSelectedClass = true
+        for( var i in $scope.priorities) {
+          if(prioElement.label == $scope.priorities[i].label) {
+            removeSelectedClass = false
+            break
+          }
+        }
+        if(removeSelectedClass) {
+          for(var i in $scope.possiblePriorities) {
+            if($scope.possiblePriorities[i].label == prioElement.label) {
+              $scope.possiblePriorities[i].jo_class = ""
+              $scope.$digest()
+              break;
+            }
+          }
+        }
       }))
       li.append($('<div></div>').addClass('priority-conent').append(prioElement.getContent()))
       $('#priority-list').append(li)
