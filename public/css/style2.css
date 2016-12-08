@@ -59,6 +59,10 @@ header {
     /*float: left;*/
 }
 
+.option-choice{
+  margin-left: 14%;
+}
+
 .option-choice a {
     color: #000;
     font-size: 12px;

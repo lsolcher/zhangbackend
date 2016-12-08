@@ -35,7 +35,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand">StundenplanBaukasten</a>
+					<a href="/" class="navbar-brand">HTW FB4 Lehreinsatzplanung</a>
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
@@ -56,13 +56,14 @@
 	<div class="main group">
 		<div class="calendar group col-md-6">
 			<h2>Bevorzugte Belegungszeiten</h2>
+      <p>Bitte geben Sie hier ihre bevorzugten Belegungszeiten an. Sie können durch wiederholtes anklicken der Kreise deren Farbe ändern, und so ihre Belebungswünsche abbilden.</p>
 			<div class="option-choice group">
         <div>
 				<a href="#" class="preferred" prio="3">Bevorzugte Wahl</a>
 				<a href="#" class="alternative" prio="2">Alternative Wahl</a>
         </div>
         <div>
-        <a href="#" class="impossible" prio="1">wenns sein muss</a>&nbsp;<a href="#" class="no-pref-choice" prio="0">nicht möglich</a>
+        <a href="#" class="impossible" prio="1">Grundsätzlich möglich</a>&nbsp;<a href="#" class="no-pref-choice" prio="0">Nicht möglich</a>
         </div>
 			</div>
 			<div class="calendar-body group">
@@ -125,7 +126,7 @@
 		</div>
     <div class="wishes-section group col-md-6" ng-controller="prioController">
       <h2>Sonderwünsche</h2>
-      <span>Bitte wählen Sie einen oder mehrere Sonderwünsche aus.</span>
+      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwünsche hinsichtlich Ihrer Verfügbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder Sonderwunsch wieder zu entfernen, können Sie diese über den x-Button löschen. Als Grundlage zum erstellen des Stundenplanes wird der Belebungsplan, sowie ggf. die hier definierten Einschränkungen und Sonderwünsche herangezogen.</p>
       <div class="priority-select-list">
         <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)">
           <div class="title">
