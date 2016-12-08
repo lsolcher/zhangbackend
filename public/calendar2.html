@@ -127,7 +127,7 @@
       <h2>Sonderwünsche</h2>
       <span>Bitte wählen Sie einen oder mehrere Sonderwünsche aus.</span>
       <div class="priority-select-list">
-        <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)">
+        <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)" ng-class="option.jo_class">
           <div class="title">
             {{option.label}}
           </div>

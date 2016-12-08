@@ -65,6 +65,7 @@
 
       for(var i in $scope.possiblePriorities) {
         if($scope.possiblePriorities[i].id != id) continue
+        $scope.possiblePriorities[i].jo_class = 'zhang-selected'
         $scope.selectedPrio = $scope.possiblePriorities[i]
         break
       }
