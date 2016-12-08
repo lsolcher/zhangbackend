@@ -11,16 +11,15 @@
 
     // options for select box (replace this with actual options)
     $scope.possiblePriorities = [
-      new SimplePrio(0, 'Raumbeschaffenheit'),
-      new ExamplePrio(2, 'Unterrichtsbeginn'),
-      new Example2Prio(3, 'Anzahl Veranstaltungen pro Tag'),
-      new DayTimePrio(4, 'Kombination von Tagen'),
-      new DayTimePrio(5, 'Maximale Tage an der Hochschule'),
-      new ExcludeDayCombinationPrio(6, ''),
-      new EarlyDayPrio(7, 'Je früher desto besser'),
-  	  new SingleChoicePrio(8, 'Maximale Anzahl aufeinanderfolgender Tage', ['1','2','3','4','5']),
-  	  new SingleChoicePrio(9, 'Pausen', ['1','2','3','4','5']),
-  	  new SingleChoicePrio(10, 'Blockunterricht aufteilen', ['ja','nein'])
+      new SingleChoicePrio(10, 'Raumbeschaffenheit', ['breite','lange'], 'Ich bevorzuge ||| Räume'),
+      new SingleChoicePrio(0, 'Unterrichtsbeginn', ['früher','später'], 'Innerhalb der von mir angegebenen Belegzeiten bevorzuge ich den Unterrichtsbeginn je ||| desto besser.'),
+      new SingleChoicePrio(1, 'Anzahl Veranstaltungen pro Tag', ['mehr Veranstaltungen pro Tag, weniger Tage die Woche','weniger Veranstaltungen pro Tag, mehr Tage die Woche'], 'Ich bevorzuge |||.'),
+      new SimplePrio(2, 'Blockunterricht aufteilen', 'Ich möchte meinen Blockunterricht (4SWS) nach Möglichkeit in zwei Einzelveranstaltungen aufteilen.'),
+      new ExcludeDayCombinationPrio(6, 'Tage ausschließen', 'Wenn ich am ||| unterrichte, möchte ich <b>nicht</b> am ||| unterrichten.'),
+      new ExcludeDayCombinationPrio(11, 'Tage kombinieren', 'Wenn ich am ||| unterrichte, möchte ich <b>auch</b> am ||| unterrichten.'),
+  	  new SingleChoicePrio(9, 'Pausen', ['1','2','3','4','5'], 'Ich möchte nach spätestens ||| aufeinanderfolgenden Vorlesungen eine längere Pause. Die Mittagspause zwischen 11:15 und 12:15 wird als längere Pause gezählt.'),
+  	  new SingleChoicePrio(8, 'Maximale Lehrtage pro Woche', ['1','2','3','4','5'], 'Ich möchte nicht mehr als ||| Tage pro Woche an der Hochschule unterrichten.'),
+  	  new SingleChoicePrio(12, 'Maximale Anzahl aufeinanderfolgender Lehrtage', ['1','2','3','4','5'], 'Ich möchte pro Woche nicht mehr als ||| Tage am Stück unterrichten.')
     ];
 
     $scope.addPriorityToDom = function(prioElement) {
@@ -281,10 +280,11 @@
 
 
 
-  var ExcludeDayCombinationPrio = function(id, label) {
+  var ExcludeDayCombinationPrio = function(id, label, text) {
    this.id = id
    this.label = label
    this.content = this.getContent()
+   this.text = text
   }
   // do this for right
   ExcludeDayCombinationPrio.prototype = new AbstractPrio()
@@ -299,15 +299,25 @@
 
      out.append($('#template1').clone())
 
+     if(typeof this.text == 'string') {
+       var pList = out.find('.priotext')
+       var textArray = this.text.split('|||')
+       for(var i in textArray) {
+         $(pList.get(i)).html(textArray[i])
+       }
+     }
+
+
      return out
   }
 
 
-   var SingleChoicePrio = function(id, label, input) {
+   var SingleChoicePrio = function(id, label, input, text) {
    this.id = id
    this.label = label
    this.input =input
    this.content = this.getContent()
+   this.text = text
   }
   // do this for right
   SingleChoicePrio.prototype = new AbstractPrio()
@@ -321,12 +331,21 @@
     var out = $('<div></div>').addClass('somecontent')
 
     //var days = ['1', '2', '3', '4', '5']
+    var textArray = new Array();
+    if(typeof this.text == 'string') {
+      textArray = this.text.split('|||')
+      out.append($('<p></p>').addClass('priotext').html(textArray[0]))
+    }
 
-	var daySelect = $('<select></select>').addClass('someselectclass')
-    for(var i in this.input) {
+
+	   var daySelect = $('<select></select>').addClass('someselectclass')
+     for(var i in this.input) {
        daySelect.append($('<option></option>').val(i).html(this.input[i]))
     }
     out.append(daySelect)
+    if(textArray.length >= 2) {
+      out.append($('<p></p>').addClass('priotext').html(textArray[1]))
+    }
     return out
   }
 
