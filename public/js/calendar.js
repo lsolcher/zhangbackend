@@ -9,6 +9,10 @@ $(document).ready(function() {
     }
   })
 
+  $('.selected-priorities').on('click', '.priority-label', function(event) {
+    $(event.target).find('.priority-conent').slideToggle( "slow" )
+  })
+
   setPrioByClick()
 
   $('.menu-trigger').click(function() {

@@ -237,6 +237,10 @@ select option:hover {
     position: relative;
 }
 
+/*.priority-conent{
+  display: none;
+}*/
+
 #priority-list {
     padding: 0;
 }
