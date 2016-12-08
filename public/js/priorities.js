@@ -11,16 +11,16 @@
 
     // options for select box (replace this with actual options)
     $scope.possiblePriorities = [
-      new SimplePrio(0, 'keine Schlauchräume'),
-      new ExamplePrio(2, 'Beispiel 1 (ausklappbar - sobald das ausklappen funzt)'),
-      new Example2Prio(3, 'Beispiel-Prio mit Button'),
-      new DayTimePrio(4, 'Frühstmögliche Zeit'),
-      new DayTimePrio(5, 'Spätestmögliche Zeit'),
-      new ExcludeDayCombinationPrio(6, 'Tagkombinationen ausschließen'),
+      new SimplePrio(0, 'Raumbeschaffenheit'),
+      new ExamplePrio(2, 'Unterrichtsbeginn'),
+      new Example2Prio(3, 'Anzahl Veranstaltungen pro Tag'),
+      new DayTimePrio(4, 'Kombination von Tagen'),
+      new DayTimePrio(5, 'Maximale Tage an der Hochschule'),
+      new ExcludeDayCombinationPrio(6, ''),
       new EarlyDayPrio(7, 'Je früher desto besser'),
-  	  new SingleChoicePrio(8, 'Maximale Anzahl aufeinanderfolgender Tage wählen', ['1','2','3','4','5']),
-  	  new SingleChoicePrio(9, 'Pause bei Anzahl aufeinanderfolgender Stunden', ['1','2','3','4','5']),
-  	  new SingleChoicePrio(10, 'Blockunterricht (4SWS) soll in Einzelblöcke aufgeteilt werden', ['ja','nein'])
+  	  new SingleChoicePrio(8, 'Maximale Anzahl aufeinanderfolgender Tage', ['1','2','3','4','5']),
+  	  new SingleChoicePrio(9, 'Pausen', ['1','2','3','4','5']),
+  	  new SingleChoicePrio(10, 'Blockunterricht aufteilen', ['ja','nein'])
     ];
 
     $scope.addPriorityToDom = function(prioElement) {
@@ -65,7 +65,6 @@
 
       for(var i in $scope.possiblePriorities) {
         if($scope.possiblePriorities[i].id != id) continue
-        $scope.possiblePriorities[i].jo_class = 'zhang-selected'
         $scope.selectedPrio = $scope.possiblePriorities[i]
         break
       }
