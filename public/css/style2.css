@@ -1,4 +1,5 @@
-/*general*/
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
 html, body {
     padding: 0;
     margin: 0;
@@ -8,26 +9,26 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
 }
-/*fonts*/
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-
-/*colors */
 
 header {
-    background: #004D40;
+    background: #00bfa5;
     height: 50px;
 }
 
-/*helpers*/
 .no-pad{
   padding: 0px;
 }
+.row{
+  margin: 0;
+}
 
 /*header*/
-
 .navbar-nav > li > a,
 .navbar-brand {
-    color: #a7ffeb;
+    color: #fff;
+}
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+    background: none;
 }
 
 .menu-list .profil {
@@ -46,10 +47,8 @@ header {
  }
 
 .main {
-    font-weight: bold;
     margin: 0 auto;
-    padding: 50px 0px;
-    width: 80%;
+    padding: 50px 50px;
 }
 
 /* ============================================
@@ -69,7 +68,7 @@ header {
 }
 
 .option-choice a:hover {
-    border-bottom: 3px solid #cfd8dc;
+    font-weight: bolder;
 }
 
 .option-choice a:before {
@@ -104,7 +103,8 @@ header {
 }
 
 .active{
-    border-bottom: 3px solid #cfd8dc;
+    font-weight: bolder;
+    text-decoration: underline;
 }
 
 .first-calendar-row {
@@ -171,8 +171,6 @@ h2 {
    ============================================ */
 
 .wishes-section {
-    color: #004D40;
-    float: right;
   	margin: 30px 0 0;
 }
 
@@ -181,38 +179,37 @@ h2 {
 }
 
 .wishes-section span {
-    color: #004D40;
     display: block;
     font-style: italic;
-    margin: 10px 0 20px;
+    margin: 6px;
 }
 .priority-select-list-entry {
     margin-right: 10px;
     display: inline-block;
 }
 
-.priority-select-list-entry:hover {
-    background: #a7ffeb;
-    cursor: pointer;
-}
-
 .title {
-    border: solid 2px #004D40;
+    border: solid 2px #00bfa5;
     font-weight: bold;
     margin: 5px 0;
-    padding: 5px 3px;
+    padding: 6px;
+}
+.title:hover {
+  cursor: pointer;
+  background: #00bfa5;
+  color: #fff;
 }
 
 select {
-    background: #004D40;
-    border: 1px solid #004D40;
+    background: #00bfa5;
+    border: 1px solid #00bfa5;
     color: #fff;
 }
 
 /* style for hovered options in select fiels
 select option:hover {
     background: #fff;
-    color: #004D40;
+    color: #00bfa5;
 }
 */
 
@@ -232,6 +229,10 @@ select option:hover {
     width: calc(100% - 24px);
 }
 
+.priority-label{
+  margin: 0 30px 0 0;
+}
+
 .priority-entry {
     position: relative;
 }
@@ -241,15 +242,15 @@ select option:hover {
 }
 
 #priority-list li {
-    border-left: 2px solid #004D40;
+    border-left: 2px solid #00bfa5;
     cursor: pointer;
     list-style: none;
     margin: 8px 10px 8px 0;
-    padding: 10px 30px 10px 10px;
+    padding: 9px 0px 3px 9px;
 }
 
 .priority-delete {
-    background: #004D40;
+    background: #00bfa5;
     color: #fff;
     padding: 0px 5px 3px;
     position: absolute;
@@ -258,8 +259,8 @@ select option:hover {
 }
 
 button {
-    background: #004D40;
-    border: 1px solid #004D40;
+    background: #00bfa5;
+    border: 1px solid #00bfa5;
     color: #fff;
     cursor: pointer;
     font-family: 'Source Sans Pro', sans-serif;
@@ -273,8 +274,8 @@ select {
 }
 
 .day {
-    border: 1px solid #004D40;
-    color: #004D40;;
+    border: 1px solid #00bfa5;
+    color: #00bfa5;;
     display: inline-block;
     font-size: 12px;
     padding: 6px 10px;
@@ -282,7 +283,7 @@ select {
 }
 
 .day.selected {
-    background: #004D40;
+    background: #00bfa5;
     color:#fff;
 }
 
@@ -296,7 +297,7 @@ select {
 }
 
 #priorities-submit-button {
-  background: #004D40;
+  background: #00bfa5;
   color: #fff;
   display: inline-block;
   font-size: 12px;
@@ -331,13 +332,13 @@ select {
             Media Queries
    ======================================================================================================================= */
 
-/*@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
 
 }
 
 @media only screen and (max-width: 930px) {
 
-    .calendar-body {
+    /*.calendar-body {
         margin-top: 40px;
     }
 
@@ -364,25 +365,13 @@ select {
         height: 33px;
         margin: 0 6px;
         width: 43px;
-    }
+    }*/
 }
 
 @media only screen and (max-width: 760px) {
 
-    .calendar, .wishes-section {
-        float: none;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
 
-    .wishes-section {
-        width: 93%;
-    }
-
-    .calendar {
-       width: 73%;
-    }
-}*/
+}
 
 @media only screen and (max-width: 700px) {
   .first-calendar-row {
@@ -427,7 +416,7 @@ select {
     }
 
     .menu {
-        background: #004D40;
+        background: #00bfa5;
         display: none;
         margin: 0 auto;
         width: 100%;
