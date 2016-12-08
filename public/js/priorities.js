@@ -11,22 +11,22 @@
 
     // options for select box (replace this with actual options)
     $scope.possiblePriorities = [
-      new SimplePrio(0, 'keine Schlauchräume'),
-      new ExamplePrio(2, 'Beispiel 1 (ausklappbar - sobald das ausklappen funzt)'),
-      new Example2Prio(3, 'Beispiel-Prio mit Button'),
-      new DayTimePrio(4, 'Frühstmögliche Zeit'),
-      new DayTimePrio(5, 'Spätestmögliche Zeit'),
-      new ExcludeDayCombinationPrio(6, 'Tagkombinationen ausschließen'),
-      new EarlyDayPrio(7, 'Je früher desto besser'),
-  	  new SingleChoicePrio(8, 'Maximale Anzahl aufeinanderfolgender Tage wählen', ['1','2','3','4','5']),
-  	  new SingleChoicePrio(9, 'Pause bei Anzahl aufeinanderfolgender Stunden', ['1','2','3','4','5']),
-  	  new SingleChoicePrio(10, 'Blockunterricht (4SWS) soll in Einzelblöcke aufgeteilt werden', ['ja','nein'])
+      new SingleChoicePrio(10, 'Raumbeschaffenheit', ['breite','lange'], 'Ich bevorzuge ||| Räume'),
+      new SingleChoicePrio(0, 'Unterrichtsbeginn', ['früher','später'], 'Innerhalb der von mir angegebenen Belegzeiten bevorzuge ich den Unterrichtsbeginn je ||| desto besser.'),
+      new SingleChoicePrio(1, 'Anzahl Veranstaltungen pro Tag', ['mehr Veranstaltungen pro Tag, weniger Tage die Woche','weniger Veranstaltungen pro Tag, mehr Tage die Woche'], 'Ich bevorzuge |||.'),
+      new SimplePrio(2, 'Blockunterricht aufteilen', 'Ich möchte meinen Blockunterricht (4SWS) nach Möglichkeit in zwei Einzelveranstaltungen aufteilen.'),
+      new ExcludeDayCombinationPrio(6, 'Tage ausschließen', 'Wenn ich am ||| unterrichte, möchte ich <b>nicht</b> am ||| unterrichten.'),
+      new ExcludeDayCombinationPrio(11, 'Tage kombinieren', 'Wenn ich am ||| unterrichte, möchte ich <b>auch</b> am ||| unterrichten.'),
+  	  new SingleChoicePrio(9, 'Pausen', ['1','2','3','4','5'], 'Ich möchte nach spätestens ||| aufeinanderfolgenden Vorlesungen eine längere Pause. Die Mittagspause zwischen 11:15 und 12:15 wird als längere Pause gezählt.'),
+  	  new SingleChoicePrio(8, 'Maximale Lehrtage pro Woche', ['1','2','3','4','5'], 'Ich möchte nicht mehr als ||| Tage pro Woche an der Hochschule unterrichten.'),
+  	  new SingleChoicePrio(12, 'Maximale Anzahl aufeinanderfolgender Lehrtage', ['1','2','3','4','5'], 'Ich möchte pro Woche nicht mehr als ||| Tage am Stück unterrichten.')
     ];
 
     $scope.addPriorityToDom = function(prioElement) {
       var li = $('<li></li>').addClass('priority-entry').attr('data-id', prioElement.id)
       li.append($('<div></div>').addClass('priority-label').html(prioElement.getLabel()))
       li.append($('<div></div>').addClass('priority-delete').html('x').click(function(event) {
+
         var el = $(event.target).parents('.priority-entry')
         var id = parseInt(el.attr('data-id'))
         for(var i in $scope.priorities) {
@@ -35,6 +35,24 @@
           break
         }
         el.remove()
+
+        // remove selected label if neccessary
+        var removeSelectedClass = true
+        for( var i in $scope.priorities) {
+          if(prioElement.label == $scope.priorities[i].label) {
+            removeSelectedClass = false
+            break
+          }
+        }
+        if(removeSelectedClass) {
+          for(var i in $scope.possiblePriorities) {
+            if($scope.possiblePriorities[i].label == prioElement.label) {
+              $scope.possiblePriorities[i].jo_class = ""
+              $scope.$digest()
+              break;
+            }
+          }
+        }
       }))
       li.append($('<div></div>').addClass('priority-conent').append(prioElement.getContent()))
       $('#priority-list').append(li)
@@ -65,7 +83,6 @@
 
       for(var i in $scope.possiblePriorities) {
         if($scope.possiblePriorities[i].id != id) continue
-        $scope.possiblePriorities[i].jo_class = 'zhang-selected'
         $scope.selectedPrio = $scope.possiblePriorities[i]
         break
       }
@@ -263,10 +280,11 @@
 
 
 
-  var ExcludeDayCombinationPrio = function(id, label) {
+  var ExcludeDayCombinationPrio = function(id, label, text) {
    this.id = id
    this.label = label
    this.content = this.getContent()
+   this.text = text
   }
   // do this for right
   ExcludeDayCombinationPrio.prototype = new AbstractPrio()
@@ -281,15 +299,25 @@
 
      out.append($('#template1').clone())
 
+     if(typeof this.text == 'string') {
+       var pList = out.find('.priotext')
+       var textArray = this.text.split('|||')
+       for(var i in textArray) {
+         $(pList.get(i)).html(textArray[i])
+       }
+     }
+
+
      return out
   }
 
 
-   var SingleChoicePrio = function(id, label, input) {
+   var SingleChoicePrio = function(id, label, input, text) {
    this.id = id
    this.label = label
    this.input =input
    this.content = this.getContent()
+   this.text = text
   }
   // do this for right
   SingleChoicePrio.prototype = new AbstractPrio()
@@ -303,12 +331,21 @@
     var out = $('<div></div>').addClass('somecontent')
 
     //var days = ['1', '2', '3', '4', '5']
+    var textArray = new Array();
+    if(typeof this.text == 'string') {
+      textArray = this.text.split('|||')
+      out.append($('<p></p>').addClass('priotext').html(textArray[0]))
+    }
 
-	var daySelect = $('<select></select>').addClass('someselectclass')
-    for(var i in this.input) {
+
+	   var daySelect = $('<select></select>').addClass('someselectclass')
+     for(var i in this.input) {
        daySelect.append($('<option></option>').val(i).html(this.input[i]))
     }
     out.append(daySelect)
+    if(textArray.length >= 2) {
+      out.append($('<p></p>').addClass('priotext').html(textArray[1]))
+    }
     return out
   }
 
