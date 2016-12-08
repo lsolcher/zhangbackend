@@ -59,6 +59,10 @@ header {
     /*float: left;*/
 }
 
+.option-choice{
+  margin-left: 14%;
+}
+
 .option-choice a {
     color: #000;
     font-size: 12px;
@@ -308,6 +312,10 @@ select {
   padding: 6px 10px;
   margin: 6px 6px 6px 0;
   border: 0;
+}
+
+.zhang-selected {
+  background-color: pink;
 }
 
 /* ==========================================================================
