@@ -1,4 +1,4 @@
-package model;
+package de.teamzhang.model;
 
 import java.util.Collection;
 import java.util.HashMap;

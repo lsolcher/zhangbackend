@@ -1,4 +1,4 @@
-package de.teamzhang.welcomecontroller;
+package de.teamzhang.controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import model.Prio;
-import model.PrioPersistence;
+import de.teamzhang.model.Prio;
+import de.teamzhang.model.PrioPersistence;
 
 @Controller
-@RequestMapping("/wishes")
+//@RequestMapping("/wishes")
 public class PrioController {
 
 	@Resource
 	private PrioPersistence persistence;
 
-	@RequestMapping("/index")
+	@RequestMapping("/wishes")
 	public ModelAndView wishes(@PathVariable Map<String, String> pathVars) {
 		ModelAndView model = new ModelAndView("wishes");
 		return model;

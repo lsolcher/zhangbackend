@@ -1,4 +1,4 @@
-package de.teamzhang.welcomecontroller;
+package de.teamzhang.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
