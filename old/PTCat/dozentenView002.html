@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html ng-app="zhang-app">
+    <head>
+        <meta charset="utf-8" />
+        <title>StundenplanBaustelle</title>
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/bootstrap.css" />
+        <link rel="stylesheet" href="assets/css/dozView002.css" />
+        <!-- libs -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+        <script src="assets/js/priorities.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script src="assets/js/prototypLehreinsatzplanung.js"></script>
+        <!-- libs end -->
+    </head>
+    <body>
+        <div class="container-fluid main-container">
+            <header class="navbar navbar-bright navbar-fixed-top" role="banner">
+                <div class="container">
+                    <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                    </button>
+                    <a href="/" class="navbar-brand">StundenplanBaukasten</a></div>
+                    <nav class="collapse navbar-collapse" role="navigation">
+                        <ul class="nav navbar-nav pull-right">
+                            <li>
+                                <a href="#sec">Wunschkonzert</a>
+                            </li>
+                            <li>
+                                <a href="#sec">Puzzle Bar</a>
+                            </li>
+                            <li>
+                                <a href="#sec">Kleinster Gemeinsamer Nenner</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <section>
+                <div class="row content">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h3>How To</h3>
+                                <p>Nun bitte erstmal generelle Verfügbarkeiten angeben trallala und evt noch paar Auswahloptionen
+                                mit schicken Slidern.</p>
+                                <p>Drunter noch ne Legende mit den Kalenderfarben.</p>
+                                <div class="legende">
+                                    <div class="item-legende">
+                                        <div class="slot-legende greyed"></div>
+                                        <p>No Way Jose</p>
+                                    </div>
+                                    <div class="item-legende">
+                                        <div class="slot-legende grau"></div>
+                                        <p>Unbefummelt</p>
+                                    </div>
+                                    <div class="item-legende">
+                                        <div class="slot-legende brightblue"></div>
+                                        <p>Gerne</p>
+                                    </div>
+                                    <div class="item-legende">
+                                        <div class="slot-legende blue"></div>
+                                        <p>Unbedingt</p>
+                                    </div>
+                                    <div class="overslot">
+                                        <div class="slot-hover">
+                                            <div class="slot-choice no-go greyed"></div>
+                                            <div class="slot-choice untouched grau"></div>
+                                            <div class="slot-choice wish brightblue"></div>
+                                            <div class="slot-choice need blue"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Kalender</h3>
+                                <div id="calendar">
+                                    <div class="day">
+                                        <div class="dayname">MO</div>
+                                        <div class="slot">08:00</div>
+                                        <div class="slot">09:45</div>
+                                        <div class="slot">10:30</div>
+                                        <div class="slot">12:15</div>
+                                        <div class="slot">14:00</div>
+                                        <div class="slot">15:45</div>
+                                        <div class="slot">17:30</div>
+                                        <div class="slot">19:15</div>
+                                    </div>
+                                    <div class="day">
+                                        <div class="dayname">DI</div>
+                                        <div class="slot">08:00</div>
+                                        <div class="slot">09:45</div>
+                                        <div class="slot">10:30</div>
+                                        <div class="slot">12:15</div>
+                                        <div class="slot">14:00</div>
+                                        <div class="slot">15:45</div>
+                                        <div class="slot">17:30</div>
+                                        <div class="slot">19:15</div>
+                                    </div>
+                                    <div class="day">
+                                        <div class="dayname">MI</div>
+                                        <div class="slot">08:00</div>
+                                        <div class="slot">09:45</div>
+                                        <div class="slot">10:30</div>
+                                        <div class="slot">12:15</div>
+                                        <div class="slot">14:00</div>
+                                        <div class="slot">15:45</div>
+                                        <div class="slot">17:30</div>
+                                        <div class="slot">19:15</div>
+                                    </div>
+                                    <div class="day">
+                                        <div class="dayname">DO</div>
+                                        <div class="slot">08:00</div>
+                                        <div class="slot">09:45</div>
+                                        <div class="slot">10:30</div>
+                                        <div class="slot">12:15</div>
+                                        <div class="slot">14:00</div>
+                                        <div class="slot">15:45</div>
+                                        <div class="slot">17:30</div>
+                                        <div class="slot">19:15</div>
+                                    </div>
+                                    <div class="day">
+                                        <div class="dayname">FR</div>
+                                        <div class="slot">08:00</div>
+                                        <div class="slot">09:45</div>
+                                        <div class="slot">10:30</div>
+                                        <div class="slot">12:15</div>
+                                        <div class="slot">14:00</div>
+                                        <div class="slot">15:45</div>
+                                        <div class="slot">17:30</div>
+                                        <div class="slot">19:15</div>
+                                    </div>
+                                    <div class="day">
+                                        <div class="dayname">SA</div>
+                                        <div class="slot">08:00</div>
+                                        <div class="slot">09:45</div>
+                                        <div class="slot">10:30</div>
+                                        <div class="slot">12:15</div>
+                                        <div class="slot">14:00</div>
+                                        <div class="slot">15:45</div>
+                                        <div class="slot">17:30</div>
+                                        <div class="slot">19:15</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h3>Und hier gehts weiter zu den Extrawürsten (ausklappbare Panels)...</h3>
+                                <div class="panel-group" id="extrawurst">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <a class="panel-title" data-toggle="collapse" data-parent="#extrawurst"
+                                            href="#zeitwunsch">Frühestmögliche Zeit pro Tag festlegen</a>
+                                        </div>
+                                        <div id="zeitwunsch" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div id="readrootFromTimePerDay" style="display: none">
+                                                <input type="button" value="Tag entfernen"
+                                                onclick="this.parentNode.parentNode.removeChild(this.parentNode);" />
+                                                <br />
+                                                <br />
+                                                <select name="day">
+                                                    <option>Tag</option>
+                                                    <option value="montag">Montag</option>
+                                                    <option value="dienstag">Dienstag</option>
+                                                    <option value="mittwoch">Mittwoch</option>
+                                                    <option value="donnerstag">Donnerstag</option>
+                                                    <option value="freitag">Freitag</option>
+                                                </select>
+                                                <select name="time">
+                                                    <option>Zeit</option>
+                                                    <option value="9">9:45</option>
+                                                    <option value="10">10:30</option>
+                                                    <option value="12">12:15</option>
+                                                    <option value="14">14:00</option>
+                                                    <option value="15">15:45</option>
+                                                    <option value="17">17:30</option>
+                                                    <option value="17">19:15</option>
+                                                </select>
+                                                <br />
+                                                <br /></div>
+                                                <form method="post">
+                                                <span id="writerootFromTimePerDay"></span>
+                                                <input type="button" id="moreFields2" value="Weiteren Tag hinzufügen"
+                                                onclick="moreFields()" />
+                                                <input type="submit" value="Wunsch hinzufügen" /></form>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <a class="panel-title" data-toggle="collapse" data-parent="#extrawurst"
+                                                href="#raumwunsch">Raumwünsche</a>
+                                            </div>
+                                            <div id="raumwunsch" class="panel-collapse collapse">
+                                                <div class="panel-body">blubla</div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <a class="panel-title" data-toggle="collapse" data-parent="#extrawurst"
+                                                href="#mehr-wurst">Gewünschte Zet für den Beginn der Lehre wählen</a>
+                                            </div>
+                                            <div id="mehr-wurst" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <div id="readrootFromTime" style="display: block">
+                                                        <select name="time">
+                                                            <option>Frühest mögliche Zeit</option>
+                                                            <option value="9">9:45</option>
+                                                            <option value="10">10:30</option>
+                                                            <option value="12">12:15</option>
+                                                            <option value="14">14:00</option>
+                                                            <option value="15">15:45</option>
+                                                            <option value="17">17:30</option>
+                                                            <option value="17">19:15</option>
+                                                        </select>
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                    <form method="post" action="/cgi-bin/show_params.cgi">
+                                                        <input type="submit" value="Wunsch hinzufügen" />
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <a class="panel-title" data-toggle="collapse" data-parent="#extrawurst"
+                                                href="#tagkombination">Tagkombinationen ausschließen</a>
+                                            </div>
+                                            <div id="tagkombination" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <div id="readrootDayCombination" style="display: none">
+                                                    <input type="button" value="Tag entfernen"
+                                                    onclick="this.parentNode.parentNode.removeChild(this.parentNode);" />
+                                                    <br />
+                                                    <br />
+                                                    <select name="day">
+                                                        <option>Ersten Tag wählen</option>
+                                                        <option value="montag">Montag</option>
+                                                        <option value="dienstag">Dienstag</option>
+                                                        <option value="mittwoch">Mittwoch</option>
+                                                        <option value="donnerstag">Donnerstag</option>
+                                                        <option value="freitag">Freitag</option>
+                                                    </select>
+                                                    <select name="time">
+                                                        <option>Zweiten Tag wählen</option>
+														<option value="montag">Montag</option>
+                                                        <option value="dienstag">Dienstag</option>
+                                                        <option value="mittwoch">Mittwoch</option>
+                                                        <option value="donnerstag">Donnerstag</option>
+                                                        <option value="freitag">Freitag</option>
+                                                    </select>
+                                                    <br />
+                                                    <br /></div>
+                                                    <form method="post" action="/cgi-bin/show_params.cgi">
+                                                    <span id="writerootDayCombination"></span>
+                                                    <input type="button" id="moreFields2" value="Weiteren Tag hinzufügen"
+                                                    onclick="moreFieldsDayCombination()" />
+                                                    <input type="submit" value="Wunsch hinzufügen" /></form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,117 @@
+/* general */
+body {
+	background-color: #333;
+}
+
+.main-container {
+	margin-top: 60px;
+}
+
+.content {
+	marging: 20px;
+}
+
+/* colors */
+.blue {
+	background-color: #2055A1 !important;
+}
+
+.brightblue {
+	background-color: #5D83BA !important;
+}
+
+.greyed {
+	background-color: #ddd !important;
+}
+
+.orange {
+	background-color: #D68E00 !important;
+}
+
+.brown {
+	background-color: #553E11 !important;
+}
+
+.grau {
+	background-color: #aaa !important;
+}
+
+
+
+@media screen and (min-width: 768px) {
+/* navbar */
+.navbar-bright {
+	background-color:#112D55;
+    color:#fff;
+}
+
+.navbar-bright a:hover {
+	background-color:#112D55;
+	color:#fff;
+}
+
+.navbar-bright a{
+  	color:#aaaacc;
+}
+
+/* sidebar */
+
+.legende {
+	display: flex;
+	flex-direction: column;
+}
+
+.item-legende {
+	display: flex;
+	flex-direction: row;
+	line-height: 20px;
+}
+
+.slot-legende {
+	display: flex;
+	flex-direction: column nowrap;
+
+	width: 20px;
+	height: 20px;
+	border-radius: 2px;
+
+	line-height: 20px;
+	text-align: center;
+	color: #eee;
+	margin: 0 3px;
+
+}
+
+
+/* calendar */
+#calendar {
+
+}
+
+.dayname {
+	width: 45px;
+	height: 70px;
+	text-align: left;
+	line-height: 70px;
+
+}
+
+.day {
+	display: flex;
+	flex-direction: row nowrap;
+}
+
+.slot {
+
+	width: 70px;
+	height: 70px;
+	background-color: #aaa;
+	margin: 3px;
+	border-radius: 1px;
+
+	color: #eee;
+	line-height: 70px;
+	text-align: center;
+	font-size: 1.1em;
+
+}

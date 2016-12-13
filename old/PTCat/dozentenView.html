@@ -1,0 +1,173 @@
+<!doctype html>
+
+<html ng-app="zhang-app">
+
+<head>
+	<meta charset="utf-8">
+	<title>StundenplanBaustelle</title>
+
+	<link rel="stylesheet" href="assets/css/style.css"/>
+	<link rel="stylesheet" href="assets/css/bootstrap.css"/>
+
+
+
+
+	<!-- libs -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+	<script src="assets/js/priorities.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+
+
+
+	<!-- libs end -->
+
+</head>
+<body>
+	<div class="container-fluid main-container">
+
+		<header class="navbar navbar-bright navbar-fixed-top" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/" class="navbar-brand">StundenplanBaukasten</a>
+				</div>
+				<nav class="collapse navbar-collapse" role="navigation">
+					<ul class="nav navbar-nav pull-right">
+						<li>
+							<a href="#sec">Wunschkonzert</a>
+						</li>
+						<li>
+							<a href="#sec">Puzzle Bar</a>
+						</li>
+						<li>
+							<a href="#sec">Kleinster Gemeinsamer Nenner</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+<section>		<div class="row content">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-2">
+						<h3>How To</h3>
+						<p>Nun bitte erstmal generelle Verfügbarkeiten angeben trallala und evt noch paar Auswahloptionen mit schicken Slidern.</p>
+						<p>Drunter noch ne Legende mit den Kalenderfarben.</p>
+						<div class="legende">
+							<div class="item-legende"><div class="slot-legende greyed"> </div><p> No Way Jose</p></div>
+							<div class="item-legende"><div class="slot-legende grau"> </div><p> Unbefummelt</p></div>
+ 							<div class="item-legende"><div class="slot-legende brightblue">  </div><p> Gerne</p></div>
+							<div class="item-legende"><div class="slot-legende blue"></div><p> Unbedingt</p></div>
+							</div>
+
+					</div>
+					<div class="col-md-6">
+						<h3>Kalender</h3>
+
+						<div id="calendar">
+							<div class="day">
+								<div class="dayname">MO</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+							<div class="day">
+								<div class="dayname">DI</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+							<div class="day">
+								<div class="dayname">MI</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+							<div class="day">
+								<div class="dayname">DO</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+							<div class="day">
+								<div class="dayname">FR</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+							<div class="day">
+								<div class="dayname">SA</div>
+								<div class="slot"> 08:00 </div>
+								<div class="slot"> 09:45 </div>
+								<div class="slot"> 10:30 </div>
+								<div class="slot"> 12:15 </div>
+								<div class="slot"> 14:00 </div>
+								<div class="slot"> 15:45 </div>
+								<div class="slot"> 17:30 </div>
+								<div class="slot"> 19:15 </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<h3>Und hier gehts weiter zu den Extrawürsten (ausklappbare Panels)...</h3>
+						<div class="panel-group" id="panel-536752">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<a class="panel-title" data-toggle="collapse" data-parent="#panel-536752" href="#panel-element-944703">Zeitwünsche</a>
+								</div>
+								<div id="panel-element-944703" class="panel-collapse collapse in">
+									<div class="panel-body">
+										blubla									</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<a class="panel-title" data-toggle="collapse" data-parent="#panel-536752" href="#panel-element-206376">Andere Extrawürste</a>
+									</div>
+									<div id="panel-element-206376" class="panel-collapse collapse">
+										<div class="panel-body">
+											blubla
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer></footer>
+			</html>
