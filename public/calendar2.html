@@ -56,7 +56,7 @@
 	<div class="main group">
 		<div class="calendar group col-md-6">
 			<h2>Bevorzugte Belegungszeiten</h2>
-      <p>Bitte geben Sie hier ihre bevorzugten Belegungszeiten an. Sie können durch wiederholtes anklicken der Kreise deren Farbe ändern, und so ihre Belebungswünsche abbilden.</p>
+      <p>Bitte geben Sie hier ihre bevorzugten Belegungszeiten an. Sie können durch wiederholtes anklicken der Kreise deren Farbe ändern, und so ihre Belegungswünsche abbilden.</p>
 			<div class="option-choice group">
         <div>
 				<a href="#" class="preferred" prio="3">Bevorzugte Wahl</a>
@@ -126,7 +126,8 @@
 		</div>
     <div class="wishes-section group col-md-6" ng-controller="prioController">
       <h2>Sonderwünsche</h2>
-      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwünsche hinsichtlich Ihrer Verfügbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder Sonderwunsch wieder zu entfernen, können Sie diese über den x-Button löschen. Als Grundlage zum erstellen des Stundenplanes wird der Belebungsplan, sowie ggf. die hier definierten Einschränkungen und Sonderwünsche herangezogen.</p>
+      <br>
+      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwünsche hinsichtlich Ihrer Verfügbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder Sonderwunsch wieder zu entfernen, können Sie diese über den x-Button löschen. Als Grundlage zum erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschränkungen und Sonderwünsche herangezogen.</p>
       <div class="priority-select-list">
         <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)" ng-class="option.jo_class">
           <div class="title">
