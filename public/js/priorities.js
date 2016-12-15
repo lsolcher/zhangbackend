@@ -16,6 +16,7 @@
       new SingleChoicePrio(1, 'Anzahl Veranstaltungen pro Tag', ['mehr Veranstaltungen pro Tag, weniger Tage die Woche','weniger Veranstaltungen pro Tag, mehr Tage die Woche'], 'Ich bevorzuge |||.'),
       new SimplePrio(2, 'Blockunterricht aufteilen', 'Ich möchte meinen Blockunterricht (4SWS) nach Möglichkeit in zwei Einzelveranstaltungen aufteilen.'),
       new ExcludeDayCombinationPrio(6, 'Tage ausschließen', 'Wenn ich am ||| unterrichte, möchte ich <b>nicht</b> am ||| unterrichten.'),
+      new ExcludeDayCombinationPrio(13, 'Uhrzeit ausschließen', 'Wenn ich am ||| um ||| unterrichte, möchte ich <b>nicht</b> am ||| um ||| unterrichten.'),
       new ExcludeDayCombinationPrio(11, 'Tage kombinieren', 'Wenn ich am ||| unterrichte, möchte ich <b>auch</b> am ||| unterrichten.'),
   	  new SingleChoicePrio(9, 'Pausen', ['1','2','3','4','5'], 'Ich möchte nach spätestens ||| aufeinanderfolgenden Vorlesungen eine längere Pause. Die Mittagspause zwischen 11:15 und 12:15 wird als längere Pause gezählt.'),
   	  new SingleChoicePrio(8, 'Maximale Lehrtage pro Woche', ['1','2','3','4','5'], 'Ich möchte nicht mehr als ||| Tage pro Woche an der Hochschule unterrichten.'),
