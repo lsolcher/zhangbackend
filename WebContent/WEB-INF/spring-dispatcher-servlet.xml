@@ -11,7 +11,7 @@
    	   http://www.springframework.org/schema/mvc
    	   http://www.springframework.org/schema/mvc/spring-mvc.xsd
    	   http://www.springframework.org/schema/data/mongo
-       http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
+       http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
 	<!-- <bean id="HandlerMappping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" 
 		/> <bean name="/welcome.html" class="de.teamzhang.welcomecontroller.WelcomeController" 
@@ -24,6 +24,7 @@
 	<mvc:annotation-driven />
 
 	<mongo:mongo host="127.0.0.1" port="27017" />
+	<mongo:mongo-client id="mongoClient" credentials="test:test@mongotest"></mongo:mongo-client>
 	<mongo:db-factory dbname="mongotest"  />
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
