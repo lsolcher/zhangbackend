@@ -24,8 +24,7 @@
 	<mvc:annotation-driven />
 
 	<mongo:mongo host="127.0.0.1" port="27017" />
-	<mongo:db-factory dbname="mongot" />
-
+	<mongo:db-factory dbname="mongotest"  />
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
