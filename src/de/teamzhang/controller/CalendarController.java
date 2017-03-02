@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.AbstractController;
 // @RequestMapping("/public")
 public class CalendarController extends AbstractController {
 
-	@RequestMapping("/")
+	@RequestMapping("/calendar")
 	protected ModelAndView handleRequestInternal(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 
 		ModelAndView modelandview = new ModelAndView("calendar");
