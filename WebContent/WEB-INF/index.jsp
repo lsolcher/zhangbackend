@@ -2,11 +2,13 @@
 <html ng-app="zhang-app">
   <head>
     <meta charset="utf-8">
-    <title>Lehrprofil</title>
+    <title>Test</title>
 
     <!-- styles -->
-    <link rel="stylesheet" href="css/bootstrap.css"/>
-    <link rel="stylesheet" href="css/style2.css">
+    <spring:url var ="bootstrapcss" value="/resources/css/bootstrap.css" />
+    <link rel="stylesheet" href="${bootstrapcss}"/>
+    <spring:url var ="style" value="/resources/css/style2.css" />
+    <link rel="stylesheet" href="${style}">
     <!-- end of styles -->
 
 
@@ -17,10 +19,15 @@
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
-  <script type="text/javascript" src="js/courses.js"></script>
-	<script type="text/javascript" src="js/calendar.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="js/priorities.js"></script>
+	<spring:url var ="priorities" value="/resources/js/priorities.js" />
+	<script type="text/javascript" src="${priorities}"></script>
+	<spring:url var ="courses" value="/resources/js/courses.js" />
+  <script type="text/javascript" src="${priorities}"></script>
+  <spring:url var ="calendar" value="/resources/js/calendar.js" />
+	<script type="text/javascript" src="${calendar}"></script>
+	<spring:url var ="bootstrap" value="/resources/js/bootstrap.js" />
+  	<script type="text/javascript" src="${bootstrap}"></script>
+
 
 	<!-- libs end -->
 
@@ -30,7 +37,7 @@
 
     <div class="course-selector-wrapper">
       <div class="course-selector" ng-controller="courseController">
-        <span>Bitte ihre Lehrveranstaltungen auswählen</span>
+        <span>Bitte ihre Lehrveranstaltungen auswï¿½hlen</span>
         <div class="course-list">
           <input type="search" id="course-list-search" ng-model="search" placeholder="Durchsuche Kurse">
           <div class="course-scroll">
@@ -66,7 +73,7 @@
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
             <li>
-							<a href="#sec" id="add-course">Kurse hinzufügen/entfernen</a>
+							<a href="#sec" id="add-course">Kurse hinzufï¿½gen/entfernen</a>
 						</li>
 					</ul>
 				</nav>
@@ -77,12 +84,12 @@
 
 		<div class="calendar group col-md-6">
 			<h2>Bevorzugte Belegungszeiten</h2>
-      <p>Bitte geben Sie hier ihre bevorzugten Belegungszeiten an. Sie können durch wiederholtes Anklicken der Kreise deren Farbe ändern, und so ihre Belegungswünsche abbilden.</p>
+      <p>Bitte geben Sie hier ihre bevorzugten Belegungszeiten an. Sie kï¿½nnen durch wiederholtes Anklicken der Kreise deren Farbe ï¿½ndern, und so ihre Belegungswï¿½nsche abbilden.</p>
 			<div class="option-choice group">
 				<a href="#" class="preferred" prio="3">Bevorzugte Wahl</a>
 				<a href="#" class="alternative" prio="2">Alternative Wahl</a><br>
-        <a href="#" class="impossible" prio="1">Grundsätzlich möglich</a>
-        <a href="#" class="no-pref-choice" prio="0">Nicht möglich</a>
+        <a href="#" class="impossible" prio="1">Grundsï¿½tzlich mï¿½glich</a>
+        <a href="#" class="no-pref-choice" prio="0">Nicht mï¿½glich</a>
 			</div>
 			<div class="calendar-body group">
 				<div class="first-calendar-row">
@@ -143,9 +150,9 @@
 			</div>
 		</div>
     <!-- div class="wishes-section group col-md-6" ng-controller="prioController">
-      <h2>Sonderwünsche</h2>
+      <h2>Sonderwï¿½nsche</h2>
       <br>
-      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwünsche hinsichtlich Ihrer Verfügbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder einen Sonderwunsch wieder zu entfernen, können Sie diese über den x-Button löschen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschränkungen und Sonderwünsche herangezogen.</p>
+      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschrï¿½nkungen oder Sonderwï¿½nsche hinsichtlich Ihrer Verfï¿½gbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschrï¿½nkung oder einen Sonderwunsch wieder zu entfernen, kï¿½nnen Sie diese ï¿½ber den x-Button lï¿½schen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschrï¿½nkungen und Sonderwï¿½nsche herangezogen.</p>
       <div class="priority-select-list">
         <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)" ng-class="option.jo_class">
           <div class="title">
@@ -163,9 +170,9 @@
     </div -->
 
     <div class="wishes-section group col-md-6" ng-controller="prioController">
-      <h2>Sonderwünsche</h2>
+      <h2>Sonderwï¿½nsche</h2>
       <br>
-      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwünsche hinsichtlich Ihrer Verfügbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder einen Sonderwunsch wieder zu entfernen, können Sie diese über den x-Button löschen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschränkungen und Sonderwünsche herangezogen.</p>
+      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschrï¿½nkungen oder Sonderwï¿½nsche hinsichtlich Ihrer Verfï¿½gbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschrï¿½nkung oder einen Sonderwunsch wieder zu entfernen, kï¿½nnen Sie diese ï¿½ber den x-Button lï¿½schen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschrï¿½nkungen und Sonderwï¿½nsche herangezogen.</p>
       <div class="priority-select-list">
         <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities" ng-click="selectPrio($index, option)">
           <div class="title">
@@ -196,7 +203,7 @@
                   {{prio.text[0]}}
                 </p>
                 <select name="day">
-                    <option>Ersten Tag wählen</option>
+                    <option>Ersten Tag wï¿½hlen</option>
                     <option value="montag">Montag</option>
                     <option value="dienstag">Dienstag</option>
                     <option value="mittwoch">Mittwoch</option>
@@ -207,7 +214,7 @@
                   {{prio.text[1]}}
                 </p>
                 <select name="time">
-                    <option>Zweiten Tag wählen</option>
+                    <option>Zweiten Tag wï¿½hlen</option>
                     <option value="montag">Montag</option>
                     <option value="dienstag">Dienstag</option>
                     <option value="mittwoch">Mittwoch</option>
@@ -223,7 +230,7 @@
                   {{prio.text[0]}}
                 </p>
                 <select>
-                    <option>Ersten Tag wählen</option>
+                    <option>Ersten Tag wï¿½hlen</option>
                     <option value="montag">Montag</option>
                     <option value="dienstag">Dienstag</option>
                     <option value="mittwoch">Mittwoch</option>
@@ -234,7 +241,7 @@
                   {{prio.text[1]}}
                 </p>
                 <select>
-                    <option>Uhrzeit wählen</option>
+                    <option>Uhrzeit wï¿½hlen</option>
                     <option value="0">08:00-09:30</option>
                     <option value="1">09:45-11:15</option>
                     <option value="2">12:15-13:45</option>
@@ -247,7 +254,7 @@
                   {{prio.text[2]}}
                 </p>
                 <select>
-                    <option>Zweiten Tag wählen</option>
+                    <option>Zweiten Tag wï¿½hlen</option>
                     <option value="montag">Montag</option>
                     <option value="dienstag">Dienstag</option>
                     <option value="mittwoch">Mittwoch</option>
@@ -258,7 +265,7 @@
                   {{prio.text[3]}}
                 </p>
                 <select>
-                    <option>Uhrzeit wählen</option>
+                    <option>Uhrzeit wï¿½hlen</option>
                     <option value="0">08:00-09:30</option>
                     <option value="1">09:45-11:15</option>
                     <option value="2">12:15-13:45</option>
@@ -296,7 +303,7 @@
         <p class="priotext">
         </p>
         <select name="day">
-            <option>Ersten Tag wählen</option>
+            <option>Ersten Tag wï¿½hlen</option>
             <option value="montag">Montag</option>
             <option value="dienstag">Dienstag</option>
             <option value="mittwoch">Mittwoch</option>
@@ -305,7 +312,7 @@
         </select>
         <p class="priotext"></p>
         <select name="time">
-            <option>Zweiten Tag wählen</option>
+            <option>Zweiten Tag wï¿½hlen</option>
             <option value="montag">Montag</option>
             <option value="dienstag">Dienstag</option>
             <option value="mittwoch">Mittwoch</option>

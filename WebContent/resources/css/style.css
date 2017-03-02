@@ -220,7 +220,7 @@ h2 {
     color: #004D40;
     display: block;
     font-style: italic;
-    margin: 10px 0 20px;
+    margin: 10px 0;
 }
 .priority-select-list-entry {
     margin-right: 10px;
@@ -269,6 +269,10 @@ select option:hover {
 
 .priority-entry {
     position: relative;
+}
+
+.priority-entry textarea {
+    display: block;
 }
 
 #priority-list {

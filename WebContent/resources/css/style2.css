@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
 
 html, body {
     padding: 0;
@@ -23,12 +23,16 @@ header {
 }
 
 /*header*/
-.navbar-nav > li > a,
 .navbar-brand {
+  color: #fff;
+}
+.navbar-nav > li > a {
     color: #fff;
+    background: #11a391;
 }
 .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
-    background: none;
+    background: #11a391;
+    text-decoration: underline;
 }
 
 .menu-list .profil {
@@ -48,7 +52,73 @@ header {
 
 .main {
     margin: 0 auto;
-    padding: 50px 50px;
+    padding: 0px 50px;
+}
+.course-selector-wrapper {
+  position: absolute;
+  z-index: 8888;
+  background: rgba(0,0,0,0.8);
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+.course-selector {
+  z-index: 9999;
+  background: #fff;
+  padding: 18px;
+  margin: 90px auto;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 9px;
+}
+.course-selector > span {
+  margin: 0px 0 9px;
+  display: block;
+  font-weight: bolder;
+  font-size: 16px;
+}
+#course-list-search {
+  width: 100%;
+  padding: 6px 9px;
+  border: 1px solid #00bfa5;
+  margin: 0 0 12px 0;
+}
+.course-scroll {
+  height: 300px;
+  overflow: scroll;
+}
+.selected-courses {
+  margin: 12px 0 0 0;
+  max-height: 200px;
+  overflow: scroll;
+}
+.selected-course {
+  color: #00bfa5;
+  padding: 6px;
+  border: 1px solid #00bfa5;
+  width: auto;
+  display: inline-block;
+  margin: 3px;
+  cursor: pointer;
+}
+.selected-course:hover {
+  color: #fff;
+  background: #00bfa5;
+  padding: 6px;
+  border: 1px solid #00bfa5;
+  width: auto;
+  display: inline-block;
+  margin: 3px;
+  cursor: pointer;
+}
+#course-list-next {
+  background: #00BFA6;
+  color: #fff;
+  padding: 6px 9px;
+  margin: 18px 0 9px 3px;
+  right: 0;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 /* ============================================
@@ -109,11 +179,11 @@ header {
 }
 
 .first-calendar-row {
-    padding: 10px 0 10px 88px;
+    padding: 10px 0 10px 84px;
 }
 
 .week-day {
-	 padding: 0 27px;
+	 padding: 0 23px;
 }
 
 .week-day:last-child {
@@ -145,7 +215,7 @@ header {
     border-radius: 40px;
     cursor: pointer;
     height: 50px;
-  	margin: 0 10px;
+  	margin: 0 6px;
     width: 50px;
 }
 
@@ -170,9 +240,9 @@ h2 {
 /* ============================================
    Wishes
    ============================================ */
-/*.priotext {
-  display: inline;
-}*/
+.priotext {
+  display: inline-block;
+}
 
 .wishes-section {
   	margin: 30px 0 0;
@@ -187,17 +257,19 @@ h2 {
     font-style: italic;
     margin: 6px;
 }
+
 .priority-select-list-entry {
     margin-right: 10px;
     display: inline-block;
 }
 
 .title {
-    border: solid 2px #00bfa5;
-    font-weight: bold;
+    border: solid 1px #00bfa5;
+    font-weight: 600;
     margin: 5px 0;
     padding: 6px;
 }
+
 .title:hover {
   cursor: pointer;
   background: #00bfa5;
@@ -225,6 +297,7 @@ select option:hover {
 .selected-priorities {
     float: left;
     margin: 10px 0px;
+    width: 100%;
 }
 
 .selected-priorities input {
@@ -234,12 +307,18 @@ select option:hover {
 }
 
 .priority-label{
+  font-weight: 700;
   margin: 0 30px 0 0;
 }
 
 .priority-entry {
     position: relative;
 }
+
+.priority-entry textarea {
+    display: block;
+}
+
 
 /*.priority-conent{
   display: none;
@@ -250,20 +329,24 @@ select option:hover {
 }
 
 #priority-list li {
-    border-left: 2px solid #00bfa5;
     cursor: pointer;
     list-style: none;
-    margin: 8px 10px 8px 0;
-    padding: 9px 0px 3px 9px;
+    padding: 9px;
+    background: #eef8f7;
+    border-radius: 3px;
 }
 
 .priority-delete {
-    background: #00bfa5;
-    color: #fff;
-    padding: 0px 5px 3px;
-    position: absolute;
-    right: 8px;
-    top: 8px;
+  background: #00bfa5;
+  color: #fff;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  text-align: center;
+  font-size: 14px;
 }
 
 button {
@@ -278,7 +361,7 @@ button {
 
 select {
     font: 12px/16px "Droid Sans", Arial;
-    margin-top: 20px;
+    margin: 12px 6px;
 }
 
 .day {
@@ -307,11 +390,14 @@ select {
 #priorities-submit-button {
   background: #00bfa5;
   color: #fff;
-  display: inline-block;
+  display: block;
   font-size: 12px;
   padding: 6px 10px;
   margin: 6px 6px 6px 0;
   border: 0;
+  width: 120px;
+  display: block;
+  text-align: center;
 }
 
 .zhang-selected {
@@ -344,7 +430,11 @@ select {
             Media Queries
    ======================================================================================================================= */
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 700px) {
+
+    .lecture-time {
+       vertical-align: 21px;
+    }
 
 }
 
@@ -479,4 +569,8 @@ select {
         width: 26px;
     }*/
 
+}
+
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
 }
