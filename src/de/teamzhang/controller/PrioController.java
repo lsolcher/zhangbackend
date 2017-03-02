@@ -23,7 +23,7 @@ import de.teamzhang.model.Prio;
 import de.teamzhang.model.PrioPersistence;
 
 @Controller
-//@RequestMapping("/wishes")
+// @RequestMapping("/wishes")
 public class PrioController {
 
 	ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringMongoConfig.class);

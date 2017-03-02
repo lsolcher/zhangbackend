@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
 @Controller
-//@RequestMapping("/public")
+// @RequestMapping("/public")
 public class CalendarController extends AbstractController {
 
 	@RequestMapping("/calendar")

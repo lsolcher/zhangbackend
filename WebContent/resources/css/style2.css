@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+}
+
+header {
+    background: #00bfa5;
+    height: 50px;
+}
+
+.no-pad{
+  padding: 0px;
+}
+.row{
+  margin: 0;
+}
+
+/*header*/
+.navbar-nav > li > a,
+.navbar-brand {
+    color: #fff;
+}
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+    background: none;
+}
+
+.menu-list .profil {
+    margin-top: -10px;
+    padding-right: 0;
+}
+
+.profil:after {
+    content: " ";
+    display: inline-block;
+    background: #E0F2F1 url(../img/user.png) no-repeat center center;
+    height: 40px;
+    margin-left: 5px;
+    vertical-align: middle;
+    width: 35px;
+ }
+
+.main {
+    margin: 0 auto;
+    padding: 50px 50px;
+}
+
+/* ============================================
+   Calendar
+   ============================================ */
+
+.calendar {
+    /*float: left;*/
+}
+
+.option-choice a {
+    color: #000;
+    font-size: 12px;
+    margin: 0 5px 0 0;
+    padding: 5px;
+    display: inline-block;
+    min-width: 170px;
+}
+
+.option-choice a:hover {
+    font-weight: bolder;
+}
+
+.option-choice a:before {
+    border-radius: 40px;
+    content: " ";
+    display: inline-block;
+    height: 30px;
+    margin-right: 7px;
+    vertical-align: middle;
+    width: 30px;
+}
+
+.no-pref-choice:before{
+  background: #fff;
+  border: 1px dotted grey;
+}
+
+.preferred:before {
+    background: #1de9b6;
+}
+
+.alternative:before {
+    background: #a7ffeb;
+}
+
+.impossible:before {
+    background: #cfd8dc;
+}
+
+.calendar-body {
+    max-width: 600px;
+}
+
+.active{
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.first-calendar-row {
+    padding: 10px 0 10px 88px;
+}
+
+.week-day {
+	 padding: 0 27px;
+}
+
+.week-day:last-child {
+    padding-right: 0;
+}
+
+.btn-calendar {
+  	background: blue;
+  	display: inline-block;
+  	height: 10px;
+  	width: 10px;
+}
+
+.calendar-row, .calendar-input, .calendar-row span {
+    display: inline-block;
+  	padding: 5px 0;
+}
+
+.calendar-row .calendar-input:last-child {
+    margin-right: 0;
+}
+
+.lecture-time {
+	 margin: 6px 10px 0 0;
+}
+
+.calendar-input {
+  	background: #cfd8dc;
+    border-radius: 40px;
+    cursor: pointer;
+    height: 50px;
+  	margin: 0 10px;
+    width: 50px;
+}
+
+.calendar-input[prio="0"] {
+    background: #fff;
+    border: 1px dotted grey;
+}
+.calendar-input[prio="1"] {
+    background: #cfd8dc;
+}
+.calendar-input[prio="2"] {
+    background: #a7ffeb;
+}
+.calendar-input[prio="3"] {
+    background: #1de9b6;
+}
+
+h2 {
+  	margin: 30px 0;
+}
+
+/* ============================================
+   Wishes
+   ============================================ */
+/*.priotext {
+  display: inline;
+}*/
+
+.wishes-section {
+  	margin: 30px 0 0;
+}
+
+.wishes-section h2 {
+    margin: 0;
+}
+
+.wishes-section span {
+    display: block;
+    font-style: italic;
+    margin: 6px;
+}
+.priority-select-list-entry {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.title {
+    border: solid 2px #00bfa5;
+    font-weight: bold;
+    margin: 5px 0;
+    padding: 6px;
+}
+.title:hover {
+  cursor: pointer;
+  background: #00bfa5;
+  color: #fff;
+}
+
+select {
+    background: #00bfa5;
+    border: 1px solid #00bfa5;
+    color: #fff;
+}
+
+/* style for hovered options in select fiels
+select option:hover {
+    background: #fff;
+    color: #00bfa5;
+}
+*/
+
+
+/* ============================================
+   Priority List
+   ============================================ */
+
+.selected-priorities {
+    float: left;
+    margin: 10px 0px;
+}
+
+.selected-priorities input {
+    margin: 10px 0px;
+    padding: 10px 10px;
+    width: calc(100% - 24px);
+}
+
+.priority-label{
+  margin: 0 30px 0 0;
+}
+
+.priority-entry {
+    position: relative;
+}
+
+/*.priority-conent{
+  display: none;
+}*/
+
+#priority-list {
+    padding: 0;
+}
+
+#priority-list li {
+    border-left: 2px solid #00bfa5;
+    cursor: pointer;
+    list-style: none;
+    margin: 8px 10px 8px 0;
+    padding: 9px 0px 3px 9px;
+}
+
+.priority-delete {
+    background: #00bfa5;
+    color: #fff;
+    padding: 0px 5px 3px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
+
+button {
+    background: #00bfa5;
+    border: 1px solid #00bfa5;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 12px;
+    margin: 10px 5px 0 0;
+}
+
+select {
+    font: 12px/16px "Droid Sans", Arial;
+    margin-top: 20px;
+}
+
+.day {
+    border: 1px solid #00bfa5;
+    color: #00bfa5;;
+    display: inline-block;
+    font-size: 12px;
+    padding: 6px 10px;
+    margin: 6px 6px 6px 0;
+}
+
+.day.selected {
+    background: #00bfa5;
+    color:#fff;
+}
+
+.day:hover {
+    color: #a7ffeb;
+}
+
+.priority-select-list {
+  display: inline-block;
+  float: left;
+}
+
+#priorities-submit-button {
+  background: #00bfa5;
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  padding: 6px 10px;
+  margin: 6px 6px 6px 0;
+  border: 0;
+}
+
+.zhang-selected {
+  background-color: pink;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/*
+.group:before,
+.group:after {
+    content: " ";
+    display: table;
+}
+
+.group:after {
+    clear: both;
+}
+
+.group {
+    *zoom: 1;
+}
+
+*/
+
+
+
+/* =======================================================================================================================
+            Media Queries
+   ======================================================================================================================= */
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 930px) {
+
+    /*.calendar-body {
+        margin-top: 40px;
+    }
+
+    .option-choice a {
+        margin-right: 4px;
+        padding: 4px;
+    }
+
+    .option-choice a:before {
+       height: 25px;
+       margin-right: 5px;
+       width: 24px;
+    }
+
+    .first-calendar-row {
+        padding-left: 85px;
+    }
+
+    .week-day {
+        padding: 0 18px 0 19px;
+    }
+
+    .calendar-input {
+        height: 33px;
+        margin: 0 6px;
+        width: 43px;
+    }*/
+}
+
+@media only screen and (max-width: 760px) {
+
+
+}
+
+@media only screen and (max-width: 700px) {
+  .first-calendar-row {
+    padding: 0;
+      margin-left: 17%;
+  }
+  .week-day{
+    padding: 0;
+    width: 18%;
+    display: inline-block;
+    text-align: center;
+  }
+  .lecture-time{
+    width: 12%;
+  }
+  .calendar-row {
+    width: 100%;
+  }
+  .calendar-input{
+    border-radius: 0px;
+    cursor: pointer;
+    height: 40px;
+    margin: 0;
+    width: 15%;
+    display: inline-block;
+  }
+
+    .menu-trigger, .menu-close-btn {
+        height: 22px;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        width: 25px;
+    }
+
+    .menu-trigger {
+        background: url(../img/menu-trigger.png) no-repeat center center;
+    }
+
+    .menu-close-btn {
+        background: url(../img/cross.png) no-repeat center center;
+    }
+
+    .menu {
+        background: #00bfa5;
+        display: none;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .menu-list {
+        padding: 0;
+    }
+
+    .menu-list li {
+        float: none;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    /*.calendar, .wishes-section {
+        width: 235px;
+    }
+
+    h2 {
+        font-size: 16px;
+        margin: 0 0 15px;
+    }
+
+    .option-choice a {
+        float: none;
+    }
+
+    .first-calendar-row {
+        padding-left: 72px;
+    }
+
+    .calendar-body {
+        font-size: 12px;
+    }
+
+    .week-day {
+        padding: 0 8px;
+    }
+
+    .lecture-time {
+        margin-top: 0;
+    }
+
+    .calendar-input {
+        height: 16px;
+        margin: 0 3px;
+        width: 26px;
+    }*/
+
+}
