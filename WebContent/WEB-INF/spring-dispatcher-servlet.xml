@@ -19,12 +19,12 @@
 		/> <bean name="/welcome.html" class="de.teamzhang.welcomecontroller.WelcomeController" 
 		/> <bean name="/calendar.html" class="de.teamzhang.welcomecontroller.CalendarController" 
 		/> -->
-			<mvc:annotation-driven />
 		
 	<context:component-scan base-package="de.teamzhang.controller" />
 	<context:component-scan base-package="de.teamzhang.model" />
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:annotation-driven />
 
 	<mongo:mongo host="127.0.0.1" port="27017" />
 	<mongo:mongo-client id="mongoClient" credentials="test:test@mongotest"></mongo:mongo-client>

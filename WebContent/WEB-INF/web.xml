@@ -11,7 +11,8 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>spring-dispatcher</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>*.html</url-pattern>
+    <url-pattern>*.json</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>encodingFilter</filter-name>
@@ -30,7 +31,7 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   
-  	<listener>
+  	<listener>	
 		<listener-class>org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
