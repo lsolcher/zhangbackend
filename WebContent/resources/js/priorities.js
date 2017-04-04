@@ -2,24 +2,29 @@
   var app = angular.module("zhang-app").controller('prioController', function($scope, $rootScope) {
 
     $scope.selectPrio = function(index, prio) {
-      for(var i in $scope.selectedPriorities) {
-        $scope.selectedPriorities[i].hideContent = true;
+      for(var i in $rootScope.selectedPriorities) {
+        $rootScope.selectedPriorities[i].hideContent = true;
       }
       var newPrio = jQuery.extend(true, {}, prio);
       newPrio.origin = index;
-      $scope.selectedPriorities.unshift(newPrio);
+      $rootScope.selectedPriorities.unshift(newPrio);
     }
 
     $scope.removeEntry = function(index, prio) {
       var newPrios = [];
-      for(var i in $scope.selectedPriorities) {
+      for(var i in $rootScope.selectedPriorities) {
         if(i == index) continue;
-        newPrios.push($scope.selectedPriorities[i]);
+        newPrios.push($rootScope.selectedPriorities[i]);
       }
-      $scope.selectedPriorities = newPrios;
+      $rootScope.selectedPriorities = newPrios;
     }
 
-    $scope.selectedPriorities = [];
+    $rootScope.selectedPriorities = [];
+
+    $scope.save = function() {
+
+      console.log()
+    }
 
     $scope.possiblePriorities = [
       {
@@ -95,9 +100,29 @@
         showCourses: true
       }
     ];
+  });
 
-    $scope.getData = function() {
-      console.log('yeah')
+  angular.module("zhang-app").directive('priority', function($rootScope) {
+    return function(scope, element, attrs) {
+      console.log(element, attrs.priority, scope.prio);
+
+      scope.prio.ExcludeDayCombinationPrio = {
+        dayOne: {
+          day: "Ersten Tag wählen",
+          time: "Uhrzeit wählen"
+        },
+        dayTwo: {
+          day: "Zweiten Tag wählen",
+          time: "Uhrzeit wählen"
+        }
+      };
+
+      scope.prio.course = "Alle Kurse";
+      // scope.prio
+
+      scope.change = function(event) {
+        console.log(scope.prio)
+      }
     }
   });
 })();
