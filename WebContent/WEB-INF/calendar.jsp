@@ -47,7 +47,8 @@
         	try {
         		initCourses = JSON.parse(initCourses);
         	} catch(e) {
-        		console.log('NOOO', initCourses);
+        		//console.log('NOOO', initCourses);
+        		console.log(e.stack);
         	}
         </script>
         <div class="course-list">
