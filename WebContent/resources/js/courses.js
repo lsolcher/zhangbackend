@@ -25,7 +25,7 @@
     $rootScope.courseList = []
 
     $.ajax({
-      url: 'veranstaltungen.json',
+      url: '/resources/json/veranstaltungen.json',
       type: 'GET',
       success: function(res) {
         // read selected prios from localstorage and apply
