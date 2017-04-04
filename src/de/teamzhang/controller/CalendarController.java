@@ -17,8 +17,14 @@ public class CalendarController extends AbstractController {
 
 		ModelAndView modelandview = new ModelAndView("calendar");
 		// modelandview.addObject("welcomeMessage", "Hi User");
+		modelandview.addObject("veranstaltungen", getVeranstaltungen());
 
 		return modelandview;
+
 	}
 
+	protected String getVeranstaltungen() {
+		// TODO read from veranstaltungen.json
+		return "[{\"stg_name\": \"Angewandte Informatik (B)\",\"veranstaltungsart\": \"Übung\",\"parallelgruppe\": \"\",\"semester\": \"20162\",\"rhythmus\": \"Einzeltermin\",\"kurzname\": \"DeO1Ws\",\"sws\": \"4\"}]";
+	}
 }

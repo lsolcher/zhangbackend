@@ -39,6 +39,17 @@
     <div class="course-selector-wrapper">
       <div class="course-selector" ng-controller="courseController">
         <span>Bitte ihre Lehrveranstaltungen ausw�hlen</span>
+        <script>
+        	var initCourses = '<% 
+        	String veranstaltungen = (String) request.getAttribute("veranstaltungen");
+        	out.print(veranstaltungen); 
+        	%>';
+        	try {
+        		initCourses = JSON.parse(initCourses);
+        	} catch(e) {
+        		console.log('NOOO', initCourses);
+        	}
+        </script>
         <div class="course-list">
           <input type="search" id="course-list-search" ng-model="search" placeholder="Durchsuche Kurse">
           <div class="course-scroll">
