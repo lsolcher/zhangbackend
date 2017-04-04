@@ -22,8 +22,18 @@
     $rootScope.selectedPriorities = [];
 
     $scope.save = function() {
-
-      console.log()
+      console.log('Save Me', $rootScope.selectedPriorities);
+      $.ajax({
+        url: '/post',
+        type: 'POST',
+        data: $rootScope.selectedPriorities,
+        success: function(response) {
+          console.log('Response', response);
+        },
+        error: function(response) {
+          console.error('Response', response);
+        }
+      });
     }
 
     $scope.possiblePriorities = [

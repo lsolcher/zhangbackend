@@ -180,7 +180,7 @@
             {{option.title}}
           </div>
         </div>
-        <a id="priorities-submit-button">Speichern</a>
+        <a id="priorities-submit-button" ng-click="save()">Speichern</a>
       </div>
 
       <div class="selected-priorities">
