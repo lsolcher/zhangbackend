@@ -13,6 +13,8 @@
     <servlet-name>spring-dispatcher</servlet-name>
     <url-pattern>*.html</url-pattern>
     <url-pattern>*.json</url-pattern>
+    <url-pattern>*.css</url-pattern>
+    <url-pattern>*.js</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>encodingFilter</filter-name>
