@@ -15,8 +15,8 @@ public class CalendarController extends AbstractController {
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
 	protected ModelAndView handleRequestInternal(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 
-		ModelAndView modelandview = new ModelAndView("index");
-		//modelandview.addObject("welcomeMessage", "Hi User");
+		ModelAndView modelandview = new ModelAndView("calendar");
+		// modelandview.addObject("welcomeMessage", "Hi User");
 
 		return modelandview;
 	}
