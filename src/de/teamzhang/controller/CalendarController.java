@@ -40,7 +40,11 @@ public class CalendarController extends AbstractController {
 			Object obj = parser.parse(reader);
 			JSONArray array = new JSONArray();
 			array.add(obj);
+<<<<<<< HEAD
 			return array.toString().replace("[[", "[").replace("]]", "]");
+=======
+			return array.toString();
+>>>>>>> branch 'master' of https://github.com/s0539248/zhangbackend.git
 
 		} catch (Exception e) {
 			e.printStackTrace();
