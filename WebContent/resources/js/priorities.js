@@ -24,7 +24,7 @@
     $scope.save = function() {
       console.log('Save Me', $rootScope.selectedPriorities);
       $.ajax({
-        url: '/post',
+        url: '/ZhangProjectBackend/post.json',
         type: 'POST',
         data: $rootScope.selectedPriorities,
         success: function(response) {

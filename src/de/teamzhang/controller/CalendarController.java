@@ -32,7 +32,6 @@ public class CalendarController extends AbstractController {
 	}
 
 	protected String getVeranstaltungen(HttpServletRequest request) {
-		// TODO read from veranstaltungen.json
 		JSONParser parser = new JSONParser();
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(request.getSession().getServletContext()
@@ -49,7 +48,7 @@ public class CalendarController extends AbstractController {
 		//return "[{\"stg_name\": \"Angewandte Informatik (B)\",\"veranstaltungsart\": \"Übung\",\"parallelgruppe\": \"\",\"semester\": \"20162\",\"rhythmus\": \"Einzeltermin\",\"kurzname\": \"DeO1Ws\",\"sws\": \"4\"}]";
 	}
 
-	@RequestMapping(value = "/post", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/post", method = RequestMethod.POST)
 	public @ResponseBody void updateData(@RequestBody String jsonString) {
 
 		System.out.println(jsonString);

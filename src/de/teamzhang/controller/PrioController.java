@@ -79,11 +79,10 @@ public class PrioController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/prios", method = RequestMethod.GET)
+	@RequestMapping(value = "/prios", method = RequestMethod.POST)
 	public ArrayList<Prio> getPrioList() {
 		Prio prio = new Prio();
 		prio.setName("Prio1");
-
 		ArrayList<Prio> prioList = new ArrayList<Prio>();
 		prioList.add(prio);
 
