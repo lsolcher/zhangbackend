@@ -48,16 +48,16 @@
         <fieldset>
           <legend>Your basic info</legend>
           <label for="name">Vorname:</label>
-          <input type="text" th:field="*{firstName}" id="name" name="user_name">
+          <input type="text" th:field="*{firstName}" id="name" name="firstName">
           
           <label for="name">Nachname:</label>
-          <input type="text" th:field="*{lastName}" id="name" name="user_lastname">
+          <input type="text" th:field="*{lastName}" id="name" name="lastName">
           
           <label for="mail">Email:</label>
-          <input type="email" th:field="*{mail}" id="mail" name="user_email">
+          <input type="email" th:field="*{mail}" id="mail" name="mail">
           
           <label for="password">Password:</label>
-          <input type="password" th:field="*{password}" id="password" name="user_password">
+          <input type="password" th:field="*{password}" id="password" name="password">
       
         <label for="job">Job Role:</label>
         <select id="job" name="user_job">
