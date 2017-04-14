@@ -2,31 +2,27 @@ package de.teamzhang.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 
 @Configuration
-public class SpringMongoConfig extends AbstractMongoConfiguration {
+@EnableMongoRepositories(basePackages = "de.teamzhang.repository")
+public class SpringMongoConfig {
 
-	@Override
-	public String getDatabaseName() {
-		return "mongotest";
-	}
-
-	@Override
 	@Bean
 	public Mongo mongo() throws Exception {
-		/*
-		 * 		List<ServerAddress> seeds = new ArrayList<ServerAddress>();
-				seeds.add(new ServerAddress("127.0.0.1"));
-				List<MongoCredential> credentials = new ArrayList<MongoCredential>();
-				credentials.add(MongoCredential.createMongoCRCredential("test", "mongotest", "test".toCharArray()));
-				MongoClient mongo = new MongoClient(seeds, credentials);
-		
-				return mongo;
-		 */
-		return new MongoClient("127.0.0.1");
+		MongoClientURI mcu = new MongoClientURI("mongodb://test:test@localhost/test");
+		return new MongoClient(mcu);
+	}
+
+	@Bean
+	public MongoTemplate mongoTemplate() throws Exception {
+		MongoTemplate mt = new MongoTemplate(mongo(), "test");
+		mongo().getUsedDatabases();
+		return mt;
 	}
 }
