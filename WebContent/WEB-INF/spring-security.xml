@@ -12,9 +12,9 @@
 
 	<authentication-manager>
 		<authentication-provider>
-			<user-service>
+		 	<user-service>
 				<user name="test" password="test" authorities="ROLE_USER" />
-			</user-service>
+			</user-service>  
 		</authentication-provider>
 	</authentication-manager>
 

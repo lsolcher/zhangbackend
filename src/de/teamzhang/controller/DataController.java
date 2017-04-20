@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,8 @@ public class DataController {
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
+
+	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 	/*
 	 * @InitBinder void allowFields(WebDataBinder webDataBinder) {
@@ -47,7 +51,7 @@ public class DataController {
 		 * mongoTemplate.createCollection(User.class); } } catch (Exception e) {
 		 * e.printStackTrace(); } mongoTemplate.insert(user, "user");
 		 */
-		// user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		Map<String, Object> commandArguments = new BasicDBObject();
 		commandArguments.put("createUser", user.getLastName());
 		commandArguments.put("pwd", user.getPassword());
@@ -58,4 +62,21 @@ public class DataController {
 		return "signupSuccess";
 	}
 
+	@GetMapping(value = "/login")
+	protected ModelAndView loginPage(HttpServletRequest request, HttpServletResponse arg1) {
+		ModelAndView modelandview = new ModelAndView("login");
+		return modelandview;
+	}
+
+	@PostMapping(value = "/login")
+	public ModelAndView loginVerification(Model model, @ModelAttribute("user") User user) {
+		user.getPassword();
+		user.getFirstName();
+		// (success)
+		// return new ModelAndView("loginSuccess");
+		// else
+		// return new ModelAndView("loginFail");
+		return null;
+
+	}
 }
