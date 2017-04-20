@@ -72,10 +72,10 @@ public class DataController {
 	public ModelAndView loginVerification(Model model, @ModelAttribute("user") User user) {
 		user.getPassword();
 		user.getLastName();
-		// (success)
-		// return new ModelAndView("loginSuccess");
+		// if (success)
+			// return new ModelAndView("loginSuccess");
 		// else
-		// return new ModelAndView("loginFail");
+			// return new ModelAndView("loginFail");
 		return null;
 
 	}
