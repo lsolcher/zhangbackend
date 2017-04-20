@@ -47,6 +47,7 @@ public class DataController {
 		 * mongoTemplate.createCollection(User.class); } } catch (Exception e) {
 		 * e.printStackTrace(); } mongoTemplate.insert(user, "user");
 		 */
+		// user.setPassword(passwordEncoder.encode(user.getPassword()));
 		Map<String, Object> commandArguments = new BasicDBObject();
 		commandArguments.put("createUser", user.getLastName());
 		commandArguments.put("pwd", user.getPassword());
