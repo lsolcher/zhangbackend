@@ -71,7 +71,7 @@ public class DataController {
 	@PostMapping(value = "/login")
 	public ModelAndView loginVerification(Model model, @ModelAttribute("user") User user) {
 		user.getPassword();
-		user.getFirstName();
+		user.getLastName();
 		// (success)
 		// return new ModelAndView("loginSuccess");
 		// else
