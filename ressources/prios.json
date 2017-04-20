@@ -1,0 +1,32 @@
+({
+    "profId": "001",
+    "break": "3"
+    "days" {
+      "max": "3",
+      "row": "3"
+    },
+    "slots": [{
+        "slotId": "001",
+        "prio": "-100",
+        "dayLinking": [2,2,2,0,1]
+    }
+    { "slot-id": "002",
+      "prio": "13",
+      "dayLinking": [2,2,2,2,2]
+    }
+    ],
+    "courses":[{
+      "courseId": "001",
+      "room": "long",
+      "duration": "4",
+      "biweekly": "no"
+    }
+    {
+      "courseId": "003",
+      "room": "noPref",
+      "duration": "2",
+      "biweekly": "no"
+    }
+
+    ]
+})
