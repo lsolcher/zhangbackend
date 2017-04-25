@@ -38,9 +38,11 @@
 
       console.log('Save Me', savePriorities);
       $.ajax({
-        url: '/ZhangProject2/post.json',
         type: 'POST',
-        data: savePriorities,
+        contentType : 'application/json; charset=utf-8',
+        dataType : 'json',
+        url: '/ZhangProject2/post.json',
+        data: JSON.stringify(savePriorities),
         success: function(response) {
           console.log('Response', response);
         },
