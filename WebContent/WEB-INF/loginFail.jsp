@@ -37,9 +37,9 @@
 
     <div>
       
-        <h1>Successful Log in</h1>
+        <h1>Log in fail</h1>
         
-        <p>Congratulations, you logged in successfully!</p>
+        <p>Sorry, we couldn't log you in! Please be sure to enter the correct log in data.</p>
         
       </div>
       

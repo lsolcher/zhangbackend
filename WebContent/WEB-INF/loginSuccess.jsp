@@ -7,7 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Logged in as:</h1>
+	<h1>Successful Log in</h1>
+        
+    <p>Congratulations, you logged in successfully!</p>
+    
+	<span>You logged in as:</span>
     <p th:inline='text'>Name: ${user.lastName} </p>
     <p th:inline='text'>Passwort: ${user.password} </p>
 </body>
