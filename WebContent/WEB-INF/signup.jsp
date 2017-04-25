@@ -12,12 +12,13 @@
 	    <link rel="stylesheet" href="${bootstrapcss}"/>
 	    <spring:url var ="style" value="/resources/css/style2.css" />
 	    <link rel="stylesheet" href="${style}">
+	    <link rel="stylesheet" href="css/normalize.css">
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <spring:url var ="style" value="/resources/css/signup.css" />
+    	<link rel="stylesheet" href="${style}">
 	    <!-- end of styles -->
 	
-	
-	
-	
-	    <!-- libs -->
+	    	<!-- libs -->
 	 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
@@ -30,14 +31,7 @@
 		<script type="text/javascript" src="${calendar}"></script>
 		<spring:url var ="bootstrap" value="/resources/js/bootstrap.js" />
 	  	<script type="text/javascript" src="${bootstrap}"></script>
-	
-	
 		<!-- libs end -->
-        
-        <link rel="stylesheet" href="css/normalize.css">
-        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-        <spring:url var ="style" value="/resources/css/signup.css" />
-    	<link rel="stylesheet" href="${style}">
     </head>
     <body>
 

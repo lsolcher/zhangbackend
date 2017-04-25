@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Result</h1>
+	<h1>Registered as:</h1>
     <p th:inline='text'>Name: ${user.lastName} </p>
     <p th:inline='text'>Passwort: ${user.password} </p>
 </body>
