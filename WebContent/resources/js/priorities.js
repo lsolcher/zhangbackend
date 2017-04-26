@@ -1,12 +1,22 @@
 (function() {
   var app = angular.module("zhang-app").controller('prioController', function($scope, $rootScope) {
 
+    var saveData = {
+      "profId": "",
+      "break": "",
+      "days": {
+        "max": "",
+        "row": ""
+      }
+    }
+
     $scope.selectPrio = function(index, prio) {
       for(var i in $rootScope.selectedPriorities) {
         $rootScope.selectedPriorities[i].hideContent = true;
       }
       var newPrio = jQuery.extend(true, {}, prio);
       newPrio.origin = index;
+      console.log(newPrio.origin);
       $rootScope.selectedPriorities.unshift(newPrio);
     }
 
@@ -20,13 +30,19 @@
     }
 
     $rootScope.selectedPriorities = [];
+    let savePriorities = [saveData];
+
+    saveData.profId = "001";
 
     $scope.save = function() {
-      console.log('Save Me', $rootScope.selectedPriorities);
+
+      console.log('Save Me', savePriorities);
       $.ajax({
-        url: '/ZhangProjectBackend/post.json',
         type: 'POST',
-        data: $rootScope.selectedPriorities,
+        contentType : 'application/json; charset=utf-8',
+        dataType : 'json',
+        url: '/ZhangProject2/post.json',
+        data: JSON.stringify(savePriorities),
         success: function(response) {
           console.log('Response', response);
         },

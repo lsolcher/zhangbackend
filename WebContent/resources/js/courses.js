@@ -12,7 +12,7 @@
 					$scope.search = this.course.kurzname
 				}
 
-				$scope.clickfick = function(event) {
+				$scope.selectCourse = function(event) {
 					// update the courselist in rootScope
 					$rootScope.courseList = []
 					for ( var i in $scope.list) {

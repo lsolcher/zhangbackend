@@ -55,7 +55,7 @@
           <input type="search" id="course-list-search" ng-model="search" placeholder="Durchsuche Kurse">
           <div class="course-scroll">
             <div class="course" ng-repeat="course in list | filter:search">
-              <input type="checkbox" ng-model="course.selected" ng-change="clickfick($event)">
+              <input type="checkbox" ng-model="course.selected" ng-change="selectCourse($event)">
               <span>{{course.id}}</span> - {{course.kurzname}}
             </div>
           </div>
