@@ -41,7 +41,7 @@
         type: 'POST',
         contentType : 'application/json; charset=utf-8',
         dataType : 'json',
-        url: '/ZhangProject2/post.json',
+        url: '/ZhangProjectBackend/post.json',
         data: JSON.stringify(savePriorities),
         success: function(response) {
           console.log('Response', response);
