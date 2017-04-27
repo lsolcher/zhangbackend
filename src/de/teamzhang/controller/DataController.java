@@ -18,11 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
-<<<<<<< HEAD
-=======
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
->>>>>>> branch 'master' of https://github.com/s0539248/zhangbackend
 
 import de.teamzhang.model.User;
 
@@ -76,7 +71,6 @@ public class DataController {
 
 	@PostMapping(value = "/login")
 	public ModelAndView loginVerification(Model model, @ModelAttribute("user") User user) {
-<<<<<<< HEAD
 		user.getPassword();
 		user.getLastName();
 
@@ -97,26 +91,5 @@ public class DataController {
 		// return new ModelAndView("loginFail");
 		return null;
 		// }
-=======
-		String userPassword = user.getPassword();
-		String userName = user.getLastName();
-		
-//		Mongo mongo = new Mongo("localhost", 8080);
-//		DB db = mongo.getDB("user");
-//
-//		boolean authenticated = db.authenticate("userPassword", "userName");
-//		
-////		char[] password = new char[] {'s', 'e', 'c', 'r', 'e', 't'};
-////		boolean authenticated = db.authenticate("root", password);
-//		 
-//		
-//		// if (success)
-//		if (authenticated) {
-//			 return new ModelAndView("loginSuccess");
-//		} else {
-			 return new ModelAndView("loginFail");
-////			return null;
-//		}
->>>>>>> branch 'master' of https://github.com/s0539248/zhangbackend
 	}
 }
