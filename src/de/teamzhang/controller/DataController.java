@@ -76,21 +76,6 @@ public class DataController {
 		String userPassword = user.getPassword();
 		String userName = user.getLastName();
 		
-//		Mongo mongo = new Mongo("localhost", 8080);
-//		DB db = mongo.getDB("user");
-//
-//		boolean authenticated = db.authenticate("userPassword", "userName");
-//		
-////		char[] password = new char[] {'s', 'e', 'c', 'r', 'e', 't'};
-////		boolean authenticated = db.authenticate("root", password);
-//		 
-//		
-//		// if (success)
-//		if (authenticated) {
-//			 return new ModelAndView("loginSuccess");
-//		} else {
-			 return new ModelAndView("loginFail");
-////			return null;
-//		}
+		return null;
 	}
 }
