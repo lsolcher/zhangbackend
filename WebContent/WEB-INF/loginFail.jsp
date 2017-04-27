@@ -37,8 +37,8 @@
     	<form action="#" th:action="@{/login}" th:object="${user}" method="post">
       		<h1>Log in fail</h1>
 	        
-	        <p>Sorry, we couldn't log you in! </p>
-	        <p>Please make sure to enter your correct log in data.</p>
+	        <p>Sorry, we couldn't log you in. </p>
+	        <p>Please try again and make sure you enter the correct log in data.</p>
 	        
 	        <fieldset>
 	          <legend></legend>

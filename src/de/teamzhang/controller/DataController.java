@@ -81,16 +81,15 @@ public class DataController {
 //
 //		boolean authenticated = db.authenticate("userPassword", "userName");
 //		
-////		 
 ////		char[] password = new char[] {'s', 'e', 'c', 'r', 'e', 't'};
 ////		boolean authenticated = db.authenticate("root", password);
 //		 
 //		
 //		// if (success)
 //		if (authenticated) {
-			 return new ModelAndView("loginSuccess");
+//			 return new ModelAndView("loginSuccess");
 //		} else {
-//			 return new ModelAndView("loginFail");
+			 return new ModelAndView("loginFail");
 ////			return null;
 //		}
 	}
