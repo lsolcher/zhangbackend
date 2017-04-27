@@ -61,8 +61,8 @@ public class CalendarController extends AbstractController {
 	@RequestMapping(value = "/post", method = RequestMethod.POST)
 	public @ResponseBody void updateData(@RequestBody Prio[] prios) {
 
-		for (Prio p : prios)
-			mongoTemplate.getCollection("prios").insert(p);
+		// for (Prio p : prios)
+		// mongoTemplate.getCollection("prios").insert(p);
 	}
 
 }
