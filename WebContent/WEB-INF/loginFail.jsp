@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Sign Up Form</title>
+        <title>Log In Fail</title>
         
 	    	<!-- styles -->
 	    <spring:url var ="bootstrapcss" value="/resources/css/bootstrap.css" />
@@ -35,13 +35,24 @@
     </head>
     <body>
 
-    <div>
+    <form action="#" th:action="@{/login}" th:object="${user}" method="post">
       
         <h1>Log in fail</h1>
         
-        <p>Sorry, we couldn't log you in! Please be sure to enter the correct log in data.</p>
+        <p>Sorry, we couldn't log you in! Please make sure to enter your correct log in data.</p>
         
-      </div>
+        <fieldset>
+          <legend>Your basic info</legend>
+          
+          <label for="name">Nachname:</label>
+          <input type="text" th:field="*{lastName}" id="name" name="lastName">
+          
+          <label for="password">Password:</label>
+          <input type="password" th:field="*{password}" id="password" name="password">
+              
+        </fieldset>
+        <button type="submit" value="Submit">Log in</button>
+      </form>
       
     </body>
 </html>
