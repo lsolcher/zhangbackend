@@ -34,8 +34,7 @@
 		<!-- libs end -->
     </head>
     <body>
-
-    <form action="#" th:action="@{/login}" th:object="${user}" method="post">
+    	<form action="#" th:action="@{/login}" th:object="${user}" method="post">
       
         <h1>You logged out successfully.</h1>
     	<p>Thank you for letting us know your wishes. We will try to combine all given wishes, but please be aware that there are a lot of constrains combining all students and teachers when developing the perfect plan.</p>
@@ -44,7 +43,7 @@
     	<h2>Log in</h2>
         
         <fieldset>
-          <legend>Your basic info</legend>
+          <legend></legend>
           
           <label for="name">Nachname:</label>
           <input type="text" th:field="*{lastName}" id="name" name="lastName">
@@ -55,6 +54,5 @@
         </fieldset>
         <button type="submit" value="Submit">Log in</button>
       </form>
-      
     </body>
 </html>

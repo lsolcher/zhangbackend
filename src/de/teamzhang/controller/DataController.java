@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
 
 import de.teamzhang.model.User;
 
@@ -72,20 +73,25 @@ public class DataController {
 
 	@PostMapping(value = "/login")
 	public ModelAndView loginVerification(Model model, @ModelAttribute("user") User user) {
-		user.getPassword();
-		user.getLastName();
-//		
+		String userPassword = user.getPassword();
+		String userName = user.getLastName();
+		
 //		Mongo mongo = new Mongo("localhost", 8080);
-//		DB db = mongo.getDB("admin");
+//		DB db = mongo.getDB("user");
 //
-//		boolean auth = db.authenticate("user", "password".toCharArray());
+//		boolean authenticated = db.authenticate("userPassword", "userName");
 //		
-		// if (success)
-//		if (auth) {
-//			 return new ModelAndView("loginSuccess");
+////		 
+////		char[] password = new char[] {'s', 'e', 'c', 'r', 'e', 't'};
+////		boolean authenticated = db.authenticate("root", password);
+//		 
+//		
+//		// if (success)
+//		if (authenticated) {
+			 return new ModelAndView("loginSuccess");
 //		} else {
 //			 return new ModelAndView("loginFail");
-			return null;
+////			return null;
 //		}
 	}
 }

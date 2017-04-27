@@ -34,23 +34,20 @@
 		<!-- libs end -->
     </head>
     <body>
-
-    <form action="#" th:action="@{/login}" th:object="${user}" method="post">
-      
-        <h1>Log in</h1>
-        
-        <fieldset>
-          <legend>Your basic info</legend>
-          
-          <label for="name">Nachname:</label>
-          <input type="text" th:field="*{lastName}" id="name" name="lastName">
-          
-          <label for="password">Password:</label>
-          <input type="password" th:field="*{password}" id="password" name="password">
-              
-        </fieldset>
-        <button type="submit" value="Submit">Log in</button>
+		<form action="#" th:action="@{/login}" th:object="${user}" method="post">
+      		<h1>Log in</h1>
+	        
+	        <fieldset>
+	          <legend></legend>
+	          
+	          <label for="name">Nachname:</label>
+	          <input type="text" th:field="*{lastName}" id="name" name="lastName">
+	          
+	          <label for="password">Password:</label>
+	          <input type="password" th:field="*{password}" id="password" name="password">
+	              
+	        </fieldset>
+	        <button type="submit" value="Submit">Log in</button>
       </form>
-      
     </body>
 </html>
