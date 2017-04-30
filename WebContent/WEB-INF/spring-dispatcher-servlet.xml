@@ -16,10 +16,6 @@
        http://www.springframework.org/schema/data/repository
       http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd">
 
-	<!-- <bean id="HandlerMappping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" 
-		/> <bean name="/welcome.html" class="de.teamzhang.welcomecontroller.WelcomeController" 
-		/> <bean name="/calendar.html" class="de.teamzhang.welcomecontroller.CalendarController" 
-		/> -->
 		
 	<context:component-scan base-package="de.teamzhang.controller" />
 	<context:component-scan base-package="de.teamzhang.model" />

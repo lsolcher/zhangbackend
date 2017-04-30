@@ -5,17 +5,41 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<http auto-config="true">
-		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
-		<csrf disabled="true"/>		
+
+	<http use-expressions="true">
+		<intercept-url pattern="/anonymous*" access="isAnonymous()" />
+		<intercept-url pattern="/login*" access="permitAll" />
+		<intercept-url pattern="/**" access="isAuthenticated()" />
+
+		<csrf disabled="true" />
+
+		<form-login login-page='/login.html'
+			authentication-success-handler-ref="theAuthenticationSuccessHandler"
+			authentication-failure-url="/login.html?error=true" />
+
+		<logout delete-cookies="JSESSIONID" />
+
+		<remember-me key="uniqueAndSecret" token-validity-seconds="86400" />
+
 	</http>
 
+
+	<beans:bean id="theAuthenticationSuccessHandler"
+		class="de.teamzhang.security.TheAuthenticationSuccessHandler" />
+
+
+	<beans:bean id="theUserDetailsService" class="de.teamzhang.security.TheUserDetailsService" />
+
 	<authentication-manager>
-		<authentication-provider>
-		 	<user-service>
-				<user name="test" password="test" authorities="ROLE_USER" />
-			</user-service>  
+		<authentication-provider user-service-ref="theUserDetailsService">
+			<password-encoder ref="passwordEncoder">
+			</password-encoder>
 		</authentication-provider>
 	</authentication-manager>
+
+	<beans:bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<beans:constructor-arg value="11" />
+	</beans:bean>
 
 </beans:beans>
