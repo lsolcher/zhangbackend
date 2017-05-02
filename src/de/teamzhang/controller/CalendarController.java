@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+import de.teamzhang.model.Prio;
+
 @Controller
 public class CalendarController extends AbstractController {
+
+	@Autowired
+	private MongoTemplate mongoTemplate;
 
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
 	protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse arg1)
@@ -45,13 +52,17 @@ public class CalendarController extends AbstractController {
 			e.printStackTrace();
 		}
 		return null;
-		//return "[{\"stg_name\": \"Angewandte Informatik (B)\",\"veranstaltungsart\": \"Übung\",\"parallelgruppe\": \"\",\"semester\": \"20162\",\"rhythmus\": \"Einzeltermin\",\"kurzname\": \"DeO1Ws\",\"sws\": \"4\"}]";
+		// return "[{\"stg_name\": \"Angewandte Informatik
+		// (B)\",\"veranstaltungsart\": \"Übung\",\"parallelgruppe\":
+		// \"\",\"semester\": \"20162\",\"rhythmus\":
+		// \"Einzeltermin\",\"kurzname\": \"DeO1Ws\",\"sws\": \"4\"}]";
 	}
 
 	@RequestMapping(value = "/post", method = RequestMethod.POST)
-	public @ResponseBody void updateData(@RequestBody String jsonString) {
+	public @ResponseBody void updateData(@RequestBody Prio[] prios) {
 
-		System.out.println(jsonString);
-
+		// for (Prio p : prios)
+		// mongoTemplate.getCollection("prios").insert(p);
 	}
+
 }
