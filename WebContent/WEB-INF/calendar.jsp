@@ -55,7 +55,7 @@
           <input type="search" id="course-list-search" ng-model="search" placeholder="Durchsuche Kurse">
           <div class="course-scroll">
             <div class="course" ng-repeat="course in list | filter:search">
-              <input type="checkbox" ng-model="course.selected" ng-change="selectCourse($event)">
+              <input type="checkbox" ng-model="course.selected" ng-change="clickfick($event)">
               <span>{{course.id}}</span> - {{course.kurzname}}
             </div>
           </div>
@@ -203,8 +203,8 @@
             <div class="priority-conent" ng-hide="prio.hideContent">
               <div ng-if="prio.type == 'SingleChoicePrio'" class="somecontent">
                 <p class="priotext">{{prio.text[0]}}</p>
-                <select class="someselectclass" ng-model="prio.singlechoice" ng-change="change($event)">
-                  <option ng-repeat="option in prio.options" value="$index">{{option}}</option>
+                <select class="someselectclass" ng-model="prio.singlechoice" ng-change="change(prio.singlechoice)">
+                  <option ng-repeat="option in prio.options" value="{{$index}}">{{option}}</option>
                 </select>
                 <p class="priotext">{{prio.text[1]}}</p>
               </div>

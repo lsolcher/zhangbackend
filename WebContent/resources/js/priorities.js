@@ -1,14 +1,14 @@
 (function() {
   var app = angular.module("zhang-app").controller('prioController', function($scope, $rootScope) {
 
-    var saveData = {
-      "profId": "",
-      "break": "",
-      "days": {
-        "max": "",
-        "row": ""
-      }
-    }
+    // var saveData = {
+    //   "profId": "",
+    //   "break": "",
+    //   "days": {
+    //     "max": "",
+    //     "row": ""
+    //   }
+    // }
 
     $scope.selectPrio = function(index, prio) {
       for(var i in $rootScope.selectedPriorities) {
@@ -16,7 +16,6 @@
       }
       var newPrio = jQuery.extend(true, {}, prio);
       newPrio.origin = index;
-      console.log(newPrio.origin);
       $rootScope.selectedPriorities.unshift(newPrio);
     }
 
@@ -30,18 +29,18 @@
     }
 
     $rootScope.selectedPriorities = [];
-    let savePriorities = [saveData];
+    let savePriorities = [];
 
-    saveData.profId = "001";
+    // saveData.profId = "001";
 
     $scope.save = function() {
 
-      console.log('Save Me', savePriorities);
+      console.log('Save Me', $rootScope.selectedPriorities);
       $.ajax({
         type: 'POST',
         contentType : 'application/json; charset=utf-8',
         dataType : 'json',
-        url: '/ZhangProject2/post.json',
+        url: '/ZhangProjectBackend/post.json',
         data: JSON.stringify(savePriorities),
         success: function(response) {
           console.log('Response', response);
@@ -146,8 +145,14 @@
       scope.prio.course = "Alle Kurse";
       // scope.prio
 
-      scope.change = function(event) {
+      scope.change = function(selected) {
+        console.log(selected);
         console.log(scope.prio)
+        scope.prio.selected = selected;
+        // scope.blaaaaa = [];
+        // scope.blaaaaa.push(lala);
+        // scope.prio.selectedValue =
+        // $scope.itemList.push(item.name);
       }
     }
   });
