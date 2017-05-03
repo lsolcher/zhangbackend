@@ -2,8 +2,7 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
    	   http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -16,37 +15,44 @@
        http://www.springframework.org/schema/data/repository
       http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd">
 
-		
+
 	<context:component-scan base-package="de.teamzhang.controller" />
 	<context:component-scan base-package="de.teamzhang.model" />
+	<context:component-scan base-package="de.teamzhang.security" />
+	<context:component-scan base-package="de.teamzhang.service" />
+	<context:component-scan base-package="de.teamzhang.repository" />
+
+
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:annotation-driven />
 
-  	<mongo:mongo id="mongo" />
+	<mongo:mongo id="mongo" />
 	<mongo:mongo host="127.0.0.1" port="27017" />
-	<mongo:mongo-client id="mongoClient" credentials="test:test@mongotest"></mongo:mongo-client>
-	<mongo:db-factory dbname="mongotest"  />
+	<mongo:mongo-client id="mongoClient" credentials="test:test@test"></mongo:mongo-client>
+	<mongo:db-factory dbname="mongotest" />
 	<beans>
 		<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-		    <constructor-arg name="mongo" ref="mongo" />
-		    <constructor-arg name="databaseName" value="test" />
-	    </bean>
-	    
-	    <bean class=
-	  "org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
-	   
-  	<mongo:repositories base-package="de.teamzhang.repository"  mongo-template-ref="mongoTemplate" />
-  
-  	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix">
-			<value>/WEB-INF/</value>
-		</property>
-		<property name="suffix">
-			<value>.jsp</value>
-		</property>
-	</bean>
+			<constructor-arg name="mongo" ref="mongo" />
+			<constructor-arg name="databaseName" value="test" />
+		</bean>
+
+		<bean
+			class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+		<mongo:repositories base-package="de.teamzhang.repository"
+			mongo-template-ref="mongoTemplate" />
+
+
+		<bean id="viewResolver"
+			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="prefix">
+				<value>/WEB-INF/</value>
+			</property>
+			<property name="suffix">
+				<value>.jsp</value>
+			</property>
+		</bean>
 	</beans>
 
 

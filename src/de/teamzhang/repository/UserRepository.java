@@ -4,13 +4,18 @@ import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 import de.teamzhang.model.User;
 
-@RepositoryRestResource(collectionResourceRel = "people", path = "people")
+//@RepositoryRestResource(collectionResourceRel = "people", path = "people")
+@Repository
 public interface UserRepository extends MongoRepository<User, String> {
 
-	List<User> findByLastName(@Param("name") String name);
+	List<User> findByFirstName(@Param("name") String name);
+
+	User findByLastName(String name);
+
+	User findByUsername(String username);
 
 }

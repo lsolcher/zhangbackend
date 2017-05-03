@@ -16,6 +16,8 @@ public class User {
 	private String lastName;
 	private String mail;
 	private String password;
+	private String username;
+	private int role;
 
 	public String getFirstName() {
 		return firstName;
@@ -47,6 +49,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public Integer getRole() {
+		return role;
 	}
 
 }
