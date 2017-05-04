@@ -15,7 +15,7 @@ public class SpringMongoConfig {
 
 	@Bean
 	public Mongo mongo() throws Exception {
-		MongoClientURI mcu = new MongoClientURI("mongodb://test:test@localhost/mongotest");
+		MongoClientURI mcu = new MongoClientURI("mongodb://test:test@localhost/test");
 		return new MongoClient(mcu);
 	}
 

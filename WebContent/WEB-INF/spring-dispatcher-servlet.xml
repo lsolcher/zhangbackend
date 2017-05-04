@@ -30,7 +30,7 @@
 	<mongo:mongo id="mongo" />
 	<mongo:mongo host="127.0.0.1" port="27017" />
 	<mongo:mongo-client id="mongoClient" credentials="test:test@test"></mongo:mongo-client>
-	<mongo:db-factory dbname="mongotest" />
+	<mongo:db-factory dbname="test" />
 	<beans>
 		<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 			<constructor-arg name="mongo" ref="mongo" />
