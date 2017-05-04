@@ -72,17 +72,27 @@ public class DataController {
 	@PostMapping(value = "/login")
 	public ModelAndView loginVerification(Model model, @ModelAttribute("user") User user) {
 
-		user.getPassword();
-		user.getLastName();
+		String userPassword = user.getPassword();
+		String userName = user.getLastName();
 
 		DB db = mongoTemplate.getDb();
-		// db.get
+		
+		// authenticate user
+		boolean auth = false;
+		
+		String dbName = db.getName();
+		
+		if (userName == dbName) auth = true;
+		
+		
+		
+		
 		// db.command()
 
 		// mongoTemplate.getDb().
 		
 		
-		// boolean auth = db.authenticate("user", "password".toCharArray());
+//		auth = db.auth("user", "password".toCharArray());
 		//
 		// if (success)
 		// if (auth) {
