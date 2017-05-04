@@ -1,5 +1,7 @@
 package de.teamzhang.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 
 import de.teamzhang.model.User;
@@ -54,6 +57,7 @@ public class DataController {
 		}
 		mongoTemplate.insert(user, "user");
 
+		
 		//this is for using mongos "user" db
 		/*user.setPassword(passwordEncoder.encode(user.getPassword()));
 		Map<String, Object> commandArguments = new BasicDBObject();
