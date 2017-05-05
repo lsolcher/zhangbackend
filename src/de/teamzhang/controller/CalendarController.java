@@ -58,9 +58,9 @@ public class CalendarController extends AbstractController {
 		// \"Einzeltermin\",\"kurzname\": \"DeO1Ws\",\"sws\": \"4\"}]";
 	}
 
-	@RequestMapping(value = "/post", method = RequestMethod.POST)
-	public @ResponseBody void updateData(@RequestBody Prio[] prios) {
-
+	@RequestMapping(value = "/post.json", method = RequestMethod.POST)
+	public @ResponseBody void updateData(@RequestBody String jsonString) {
+		System.out.println(jsonString);
 		// for (Prio p : prios)
 		// mongoTemplate.getCollection("prios").insert(p);
 	}

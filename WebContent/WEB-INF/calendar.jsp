@@ -38,7 +38,7 @@
 
     <div class="course-selector-wrapper">
       <div class="course-selector" ng-controller="courseController">
-        <span>Bitte ihre Lehrveranstaltungen auswählen</span>
+        <span>Bitte ihre Lehrveranstaltungen auswï¿½hlen</span>
         <script>
         	var initCourses = '<%
           	String veranstaltungen = (String) request.getAttribute("veranstaltungen");
@@ -86,7 +86,7 @@
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
             			<li>
-							<a href="#sec" id="add-course">Kurse hinzufügen/entfernen</a>
+							<a href="#sec" id="add-course">Kurse hinzufï¿½gen/entfernen</a>
 						</li>
 					</ul>
 				</nav>
@@ -97,12 +97,12 @@
 
 		<div class="calendar group col-md-6">
 			<h2>Bevorzugte Belegungszeiten</h2>
-      <p>Bitte geben Sie hier ihre bevorzugten Belegungszeiten an. Sie können durch wiederholtes Anklicken der Kreise deren Farbe ändern, und so ihre Belegungswünsche abbilden.</p>
+      <p>Bitte geben Sie hier ihre bevorzugten Belegungszeiten an. Sie kï¿½nnen durch wiederholtes Anklicken der Kreise deren Farbe ï¿½ndern, und so ihre Belegungswï¿½nsche abbilden.</p>
 			<div class="option-choice group">
 				<a href="#" class="preferred" prio="3">Bevorzugte Wahl</a>
 				<a href="#" class="alternative" prio="2">Alternative Wahl</a><br>
-        <a href="#" class="impossible" prio="1">Grundsätzlich möglich</a>
-        <a href="#" class="no-pref-choice" prio="0">Nicht möglich</a>
+        <a href="#" class="impossible" prio="1">Grundsï¿½tzlich mï¿½glich</a>
+        <a href="#" class="no-pref-choice" prio="0">Nicht mï¿½glich</a>
 			</div>
 			<div class="calendar-body group">
 				<div class="first-calendar-row">
@@ -163,9 +163,9 @@
 			</div>
 		</div>
     <!-- div class="wishes-section group col-md-6" ng-controller="prioController">
-      <h2>Sonderwünsche</h2>
+      <h2>Sonderwï¿½nsche</h2>
       <br>
-      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwünsche hinsichtlich Ihrer Verfügbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder einen Sonderwunsch wieder zu entfernen, können Sie diese über den x-Button löschen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschränkungen und Sonderwünsche herangezogen.</p>
+      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschrï¿½nkungen oder Sonderwï¿½nsche hinsichtlich Ihrer Verfï¿½gbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschrï¿½nkung oder einen Sonderwunsch wieder zu entfernen, kï¿½nnen Sie diese ï¿½ber den x-Button lï¿½schen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschrï¿½nkungen und Sonderwï¿½nsche herangezogen.</p>
       <div class="priority-select-list">
         <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)" ng-class="option.jo_class">
           <div class="title">
@@ -183,9 +183,9 @@
     </div -->
 
     <div class="wishes-section group col-md-6" ng-controller="prioController">
-      <h2>Sonderwünsche</h2>
+      <h2>Sonderwï¿½nsche</h2>
       <br>
-      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwünsche hinsichtlich Ihrer Verfügbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder einen Sonderwunsch wieder zu entfernen, können Sie diese über den x-Button löschen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschränkungen und Sonderwünsche herangezogen.</p>
+      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschrï¿½nkungen oder Sonderwï¿½nsche hinsichtlich Ihrer Verfï¿½gbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschrï¿½nkung oder einen Sonderwunsch wieder zu entfernen, kï¿½nnen Sie diese ï¿½ber den x-Button lï¿½schen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschrï¿½nkungen und Sonderwï¿½nsche herangezogen.</p>
       <div class="priority-select-list">
         <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities" ng-click="selectPrio($index, option)">
           <div class="title">
@@ -215,24 +215,24 @@
                 <p class="priotext">
                   {{prio.text[0]}}
                 </p>
-                <select name="day" ng-change="change($event)" ng-model="prio.ExcludeDayCombinationPrio.dayOne.day">
-                    <option value="Ersten Tag wählen">Ersten Tag wählen</option>
-                    <option value="Montag">Montag</option>
-                    <option value="Dienstag">Dienstag</option>
-                    <option value="Mittwoch">Mittwoch</option>
-                    <option value="Donnerstag">Donnerstag</option>
-                    <option value="Freitag">Freitag</option>
+                <select name="day" ng-change="change(prio.ExcludeDayCombinationPrio.dayOne.day)" ng-model="prio.ExcludeDayCombinationPrio.dayOne.day">
+                    <option value="Ersten Tag wï¿½hlen">Ersten Tag wï¿½hlen</option>
+                    <option value="0">Montag</option>
+                    <option value="1">Dienstag</option>
+                    <option value="2">Mittwoch</option>
+                    <option value="3">Donnerstag</option>
+                    <option value="4">Freitag</option>
                 </select>
                 <p class="priotext">
                   {{prio.text[1]}}
                 </p>
                 <select name="time" ng-change="change($event)" ng-model="prio.ExcludeDayCombinationPrio.dayTwo.day">
-                    <option value="Zweiten Tag wählen">Zweiten Tag wählen</option>
-                    <option value="Montag">Montag</option>
-                    <option value="Dienstag">Dienstag</option>
-                    <option value="Mittwoch">Mittwoch</option>
-                    <option value="Donnerstag">Donnerstag</option>
-                    <option value="Freitag">Freitag</option>
+                    <option value="Zweiten Tag wï¿½hlen">Zweiten Tag wï¿½hlen</option>
+                    <option value="0">Montag</option>
+                    <option value="1">Dienstag</option>
+                    <option value="2">Mittwoch</option>
+                    <option value="3">Donnerstag</option>
+                    <option value="4">Freitag</option>
                 </select>
                 <p class="priotext">
                   {{prio.text[2]}}
@@ -242,50 +242,50 @@
                 <p class="priotext">
                   {{prio.text[0]}}
                 </p>
-                <select ng-change="change($event)" ng-model="prio.ExcludeDayCombinationPrio.dayOne.day">
-                    <option value="Ersten Tag wählen">Ersten Tag wählen</option>
-                    <option value="Montag">Montag</option>
-                    <option value="Dienstag">Dienstag</option>
-                    <option value="Mittwoch">Mittwoch</option>
-                    <option value="Donnerstag">Donnerstag</option>
-                    <option value="Freitag">Freitag</option>
+                <select ng-change="change(prio.ExcludeDayCombinationPrio.dayOne.day)" ng-model="prio.ExcludeDayCombinationPrio.dayOne.day">
+                    <option value="Ersten Tag wï¿½hlen">Ersten Tag wï¿½hlen</option>
+                    <option value="0">Montag</option>
+                    <option value="1">Dienstag</option>
+                    <option value="2">Mittwoch</option>
+                    <option value="3">Donnerstag</option>
+                    <option value="4">Freitag</option>
                 </select>
                 <p class="priotext">
                   {{prio.text[1]}}
                 </p>
-                <select ng-change="change($event)" ng-model="prio.ExcludeDayCombinationPrio.dayOne.time">
-                    <option value="Uhrzeit wählen">Uhrzeit wählen</option>
-                    <option value="08:00-09:30">08:00-09:30</option>
-                    <option value="09:45-11:15">09:45-11:15</option>
-                    <option value="12:15-13:45">12:15-13:45</option>
-                    <option value="14:00-15:30">14:00-15:30</option>
-                    <option value="15:45-17:15">15:45-17:15</option>
-                    <option value="17:30-19:00">17:30-19:00</option>
-                    <option value="19:15-20:45">19:15-20:45</option>
+                <select ng-change="change(prio.ExcludeDayCombinationPrio.dayOne.time)" ng-model="prio.ExcludeDayCombinationPrio.dayOne.time">
+                    <option value="Uhrzeit wï¿½hlen">Uhrzeit wï¿½hlen</option>
+                    <option value="0">08:00-09:30</option>
+                    <option value="1">09:45-11:15</option>
+                    <option value="2">12:15-13:45</option>
+                    <option value="3">14:00-15:30</option>
+                    <option value="4">15:45-17:15</option>
+                    <option value="5">17:30-19:00</option>
+                    <option value="6">19:15-20:45</option>
                 </select>
                 <p class="priotext">
                   {{prio.text[2]}}
                 </p>
-                <select ng-change="change($event)" ng-model="prio.ExcludeDayCombinationPrio.dayTwo.day">
-                    <option value="Zweiten Tag wählen">Zweiten Tag wählen</option>
-                    <option value="Montag">Montag</option>
-                    <option value="Dienstag">Dienstag</option>
-                    <option value="Mittwoch">Mittwoch</option>
-                    <option value="Donnerstag">Donnerstag</option>
-                    <option value="Freitag">Freitag</option>
+                <select ng-change="change(prio.ExcludeDayCombinationPrio.dayTwo.day)" ng-model="prio.ExcludeDayCombinationPrio.dayTwo.day">
+                    <option value="Zweiten Tag wï¿½hlen">Zweiten Tag wï¿½hlen</option>
+                    <option value="0">Montag</option>
+                    <option value="1">Dienstag</option>
+                    <option value="2">Mittwoch</option>
+                    <option value="3">Donnerstag</option>
+                    <option value="4">Freitag</option>
                 </select>
                 <p class="priotext">
                   {{prio.text[3]}}
                 </p>
-                <select ng-change="change($event)" class="time second-time" ng-model="prio.ExcludeDayCombinationPrio.dayTwo.time">
-                    <option value="Uhrzeit wählen">Uhrzeit wählen</option>
-                    <option value="08:00-09:30">08:00-09:30</option>
-                    <option value="09:45-11:15">09:45-11:15</option>
-                    <option value="12:15-13:45">12:15-13:45</option>
-                    <option value="14:00-15:30">14:00-15:30</option>
-                    <option value="15:45-17:15">15:45-17:15</option>
-                    <option value="17:30-19:00">17:30-19:00</option>
-                    <option value="19:15-20:45">19:15-20:45</option>
+                <select ng-change="change(prio.ExcludeDayCombinationPrio.dayTwo.time)" class="time second-time" ng-model="prio.ExcludeDayCombinationPrio.dayTwo.time">
+                    <option value="Uhrzeit wï¿½hlen">Uhrzeit wï¿½hlen</option>
+                    <option value="0">08:00-09:30</option>
+                    <option value="1">09:45-11:15</option>
+                    <option value="2">12:15-13:45</option>
+                    <option value="3">14:00-15:30</option>
+                    <option value="4">15:45-17:15</option>
+                    <option value="5">17:30-19:00</option>
+                    <option value="6">19:15-20:45</option>
                 </select>
                 <p class="priotext">
                   {{prio.text[4]}}
@@ -298,7 +298,7 @@
                 <textarea id="freeTextWish" name="freeTextWish" cols="35" rows="4" ng-change="change($event)" ng-model="prio.freetext"></textarea>
               </div>
               <div class="prio-course-select" ng-show="prio.showCourses">
-                <select ng-change="change($event)" class="select-course" ng-model="prio.course">
+                <select ng-change="change(prio.course)" class="select-course" ng-model="prio.course">
                   <option value="Alle Kurse">Alle Kurse</option>
                   <option ng-repeat="course in $root.courseList" value="{{course.id}}">{{course.kurzname}}</option>
                 </select>
@@ -316,7 +316,7 @@
         <p class="priotext">
         </p>
         <select name="day">
-            <option>Ersten Tag wählen</option>
+            <option>Ersten Tag wï¿½hlen</option>
             <option value="montag">Montag</option>
             <option value="dienstag">Dienstag</option>
             <option value="mittwoch">Mittwoch</option>
@@ -325,7 +325,7 @@
         </select>
         <p class="priotext"></p>
         <select name="time">
-            <option>Zweiten Tag wählen</option>
+            <option>Zweiten Tag wï¿½hlen</option>
             <option value="montag">Montag</option>
             <option value="dienstag">Dienstag</option>
             <option value="mittwoch">Mittwoch</option>

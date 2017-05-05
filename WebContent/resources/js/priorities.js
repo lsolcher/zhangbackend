@@ -1,15 +1,6 @@
 (function() {
   var app = angular.module("zhang-app").controller('prioController', function($scope, $rootScope) {
 
-    // var saveData = {
-    //   "profId": "",
-    //   "break": "",
-    //   "days": {
-    //     "max": "",
-    //     "row": ""
-    //   }
-    // }
-
     $scope.selectPrio = function(index, prio) {
       for(var i in $rootScope.selectedPriorities) {
         $rootScope.selectedPriorities[i].hideContent = true;
@@ -29,19 +20,15 @@
     }
 
     $rootScope.selectedPriorities = [];
-    let savePriorities = [];
-
-    // saveData.profId = "001";
 
     $scope.save = function() {
 
-      console.log('Save Me', $rootScope.selectedPriorities);
+      console.log('Save:', $rootScope.selectedPriorities);
       $.ajax({
         type: 'POST',
         contentType : 'application/json; charset=utf-8',
-        dataType : 'json',
         url: '/ZhangProjectBackend/post.json',
-        data: JSON.stringify(savePriorities),
+        data: JSON.stringify($rootScope.selectedPriorities),
         success: function(response) {
           console.log('Response', response);
         },
@@ -129,7 +116,7 @@
 
   angular.module("zhang-app").directive('priority', function($rootScope) {
     return function(scope, element, attrs) {
-      console.log(element, attrs.priority, scope.prio);
+      // console.log(element, attrs.priority, scope.prio);
 
       scope.prio.ExcludeDayCombinationPrio = {
         dayOne: {
@@ -146,13 +133,7 @@
       // scope.prio
 
       scope.change = function(selected) {
-        console.log(selected);
-        console.log(scope.prio)
-        scope.prio.selected = selected;
-        // scope.blaaaaa = [];
-        // scope.blaaaaa.push(lala);
-        // scope.prio.selectedValue =
-        // $scope.itemList.push(item.name);
+        scope.prio.option = selected;
       }
     }
   });
