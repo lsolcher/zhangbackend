@@ -46,20 +46,27 @@ public class DataController {
 
 	@PostMapping(value = "/signup")
 	public String registerUser(Model model, @ModelAttribute("user") User user) {
-		/*
-		 * This is for saving collections, i.e. prios try { if
-		 * (!mongoTemplate.collectionExists(User.class)) {
-		 * mongoTemplate.createCollection(User.class); } } catch (Exception e) {
-		 * e.printStackTrace(); } mongoTemplate.insert(user, "user");
-		 */
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+		// This is for saving collections, i.e. prios 
+		try {
+			if (!mongoTemplate.collectionExists(User.class)) {
+				mongoTemplate.createCollection(User.class);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		mongoTemplate.insert(user, "user");
+
+		
+		//this is for using mongos "user" db
+		/*user.setPassword(passwordEncoder.encode(user.getPassword()));
 		Map<String, Object> commandArguments = new BasicDBObject();
 		commandArguments.put("createUser", user.getLastName());
 		commandArguments.put("pwd", user.getPassword());
 		String[] roles = { "readWrite" };
 		commandArguments.put("roles", roles);
 		BasicDBObject command = new BasicDBObject(commandArguments);
-		mongoTemplate.executeCommand(command);
+		mongoTemplate.executeCommand(command);*/
 		return "signupSuccess";
 	}
 
@@ -80,8 +87,7 @@ public class DataController {
 		// db.command()
 
 		// mongoTemplate.getDb().
-		
-		
+
 		// boolean auth = db.authenticate("user", "password".toCharArray());
 		//
 		// if (success)

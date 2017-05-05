@@ -25,4 +25,5 @@ public class SpringMongoConfig {
 		mongo().getUsedDatabases();
 		return mt;
 	}
+
 }

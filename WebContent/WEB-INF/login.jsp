@@ -41,7 +41,7 @@
 	          <legend></legend>
 	          
 	          <label for="name">Nachname:</label>
-	          <input type="text" th:field="*{lastName}" id="name" name="lastName">
+	          <input type="text" th:field="*{username}" id="name" name="username">
 	          
 	          <label for="password">Password:</label>
 	          <input type="password" th:field="*{password}" id="password" name="password">
