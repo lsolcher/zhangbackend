@@ -12,10 +12,10 @@ public class Prio {
 	@Id
 	private int id;
 
-	private BigInteger profID;
-	private BigInteger[] courses;
+	protected BigInteger profID;
+	protected BigInteger[] courses;
 
-	public Prio(String string) {
+	public Prio(String string, BigInteger profID, BigInteger[] courses) {
 		this.name = string;
 	}
 

@@ -1,5 +1,7 @@
 package de.teamzhang.model;
 
+import java.math.BigInteger;
+
 public class SingleChoicePrio extends Prio {
 
 	// 0 = Raumbeschaffenheit, 1 =...
@@ -11,8 +13,9 @@ public class SingleChoicePrio extends Prio {
 		super();
 	}
 
-	public SingleChoicePrio(String string, int[] options, String text, boolean showCourses) {
-		super(string);
+	public SingleChoicePrio(String string, BigInteger profID, BigInteger[] courses, int[] options, String text,
+			boolean showCourses) {
+		super(string, profID, courses);
 		if (name.equals("Raumbeschaffenheit")) {
 			type = 0;
 		}

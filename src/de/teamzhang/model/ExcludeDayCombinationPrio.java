@@ -1,5 +1,7 @@
 package de.teamzhang.model;
 
+import java.math.BigInteger;
+
 public class ExcludeDayCombinationPrio extends Prio {
 
 	//
@@ -18,8 +20,16 @@ public class ExcludeDayCombinationPrio extends Prio {
 	// true if is excluding, false if is combining
 	private boolean isExcluding;
 
-	public ExcludeDayCombinationPrio() {
-		super();
+	public ExcludeDayCombinationPrio(String string, BigInteger profID, BigInteger[] courses, String text, int dayOne,
+			int dayTwo, int timeOne, int timeTwo, boolean hasTime, boolean isExcluding) {
+		super(string, profID, courses);
+		this.text = text;
+		this.dayOne = dayOne;
+		this.dayTwo = dayTwo;
+		this.timeOne = timeOne;
+		this.timeTwo = timeTwo;
+		this.hasTime = hasTime;
+		this.isExcluding = isExcluding;
 	}
 
 }
