@@ -83,7 +83,9 @@ public class CalendarController extends AbstractController {
 		//List<?> list = null;
 		try {
 			List<?> list = mapper.readValue(prios, List.class);
-			System.out.println(list.toString());
+			for (Object o : list)
+				System.out.println(o.toString());
+			//System.out.println(list.toString());
 
 			//List<Prio> prioList = mapper.readValue(prios, new TypeReference<List<Prio>>(){});
 			//Map<String, String> myMap = new HashMap<String, String>();
