@@ -3,12 +3,14 @@ package de.teamzhang.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
@@ -23,7 +25,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.teamzhang.model.Prio;
+import de.teamzhang.model.SingleChoicePrio;
 
 @Controller
 public class CalendarController extends AbstractController {
@@ -65,15 +67,39 @@ public class CalendarController extends AbstractController {
 
 	@RequestMapping(value = "/post.json", method = RequestMethod.POST)
 	public @ResponseBody void updateData(@RequestBody String prios) {
-		
-		ObjectMapper mapper = new ObjectMapper();
-
+		JSONParser parser = new JSONParser();
+		JSONArray priosJSON;
 		try {
+			priosJSON = (JSONArray) parser.parse(prios);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		/*Prio exludeDayCombinationPrio = new ExcludeDayCombinationPrio(string, profID, courses, text, dayOne, dayTwo, timeOne, timeTwo, hasTime, isExcluding);
+		Prio freeTextInputPrio = new FreeTextInputPrio(string, profID, courses, textFieldInput);
+		Prio simplePrio = new SimplePrio(string, profID, courses, acceptsFourHourCourses);
+		Prio singleChoicePrio = new SingleChoicePrio(string, profID, courses, options, text, showCourses);*/
+
+		ObjectMapper mapper = new ObjectMapper();
+		//List<?> list = null;
+		try {
+			List<?> list = mapper.readValue(prios, List.class);
+			System.out.println(list.toString());
+
+			//List<Prio> prioList = mapper.readValue(prios, new TypeReference<List<Prio>>(){});
+			//Map<String, String> myMap = new HashMap<String, String>();
+			//myMap = mapper.readValue(prios, HashMap.class);
+			//System.out.println("Map is: " + myMap);
+
+			List<SingleChoicePrio> prioList = (List<SingleChoicePrio>) mapper.readValue(prios, SingleChoicePrio.class);
+			//mapper.readValue(prios,
+			//TypeFactory.defaultInstance().constructCollectionType(List.class,  
+			//Prio.class));
 			// Example - convert JSON string to Object
-			String jsonInString = "{\"name\":\"mkyong\",\"salary\":7500,\"skills\":[\"java\",\"python\"]}";
-			Staff staff1 = mapper.readValue(jsonInString, Staff.class);
-			System.out.println(staff1.getName());
+			//String jsonInString = "{\"name\":\"mkyong\",\"salary\":7500,\"skills\":[\"java\",\"python\"]}";
+			//Staff staff1 = mapper.readValue(jsonInString, Staff.class);
+			//System.out.println(staff1.getName());
 
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();
@@ -82,7 +108,10 @@ public class CalendarController extends AbstractController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
+		//ObjectMapper mapper = new ObjectMapper();
+		//List<Employe> list = mapper.readValue(jsonString, TypeFactory.collectionType(List.class, Employe.class));
+
 		//System.out.println(prios);
 		// for (Prio p : prios)
 		// mongoTemplate.getCollection("prios").insert(p);
