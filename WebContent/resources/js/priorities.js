@@ -119,13 +119,11 @@
       // console.log(element, attrs.priority, scope.prio);
 
       scope.prio.ExcludeDayCombinationPrio = [ {
-        "dayOne": [
-          { day: "Ersten Tag wählen" },
-          { time: "Uhrzeit wählen" }
+        dayOne: [
+          "day", "time"
         ],
         dayTwo: [
-          { day: "Zweiten Tag wählen" },
-          { time: "Uhrzeit wählen" }
+          "day", "time"
         ] }
       ];
 
