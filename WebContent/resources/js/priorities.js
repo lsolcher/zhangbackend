@@ -22,7 +22,7 @@
     $rootScope.selectedPriorities = [];
 
     $scope.save = function() {
-
+      
       console.log('Save:', $rootScope.selectedPriorities);
       $.ajax({
         type: 'POST',
@@ -118,14 +118,17 @@
     return function(scope, element, attrs) {
       // console.log(element, attrs.priority, scope.prio);
 
-      scope.prio.ExcludeDayCombinationPrio = [ {
-        dayOne: [
-          "day", "time"
-        ],
-        dayTwo: [
-          "day", "time"
-        ] }
-      ];
+      scope.prio.dayOne = [ "day1", "time1" ];
+      scope.prio.dayTwo = [ "day2", "time2" ];
+
+      // scope.prio.ExcludeDayCombinationPrio = [ {
+      //   dayOne: [
+      //     "day", "time"
+      //   ],
+      //   dayTwo: [
+      //     "day", "time"
+      //   ] }
+      // ];
 
       scope.prio.course = "Alle Kurse";
       // scope.prio

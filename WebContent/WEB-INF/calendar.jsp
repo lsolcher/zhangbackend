@@ -216,7 +216,7 @@
                 <p class="priotext">
                   {{prio.text[0]}}
                 </p>
-                <select name="day" ng-change="change(prio.ExcludeDayCombinationPrio.dayOne.day)" ng-model="prio.ExcludeDayCombinationPrio.dayOne.day">
+                <select name="day" ng-change="change(prio.dayOne[0])" ng-model="prio.dayOne[0]">
                     <option value="Ersten Tag w�hlen">Ersten Tag w�hlen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
@@ -227,7 +227,7 @@
                 <p class="priotext">
                   {{prio.text[1]}}
                 </p>
-                <select name="time" ng-change="change($event)" ng-model="prio.ExcludeDayCombinationPrio.dayTwo.day">
+                <select name="time" ng-change="change(prio.dayTwo[0])" ng-model="prio.dayTwo[0]">
                     <option value="Zweiten Tag w�hlen">Zweiten Tag w�hlen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
@@ -243,7 +243,7 @@
                 <p class="priotext">
                   {{prio.text[0]}}
                 </p>
-                <select ng-change="change(prio.ExcludeDayCombinationPrio.dayOne.day)" ng-model="prio.ExcludeDayCombinationPrio.dayOne.day">
+                <select ng-change="change(prio.dayOne[0])" ng-model="prio.dayOne[0]">
                     <option value="Ersten Tag w�hlen">Ersten Tag w�hlen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
@@ -254,7 +254,7 @@
                 <p class="priotext">
                   {{prio.text[1]}}
                 </p>
-                <select ng-change="change(prio.ExcludeDayCombinationPrio.dayOne.time)" ng-model="prio.ExcludeDayCombinationPrio.dayOne.time">
+                <select ng-change="change(prio.dayOne[1])" ng-model="prio.dayOne[1]">
                     <option value="Uhrzeit w�hlen">Uhrzeit w�hlen</option>
                     <option value="0">08:00-09:30</option>
                     <option value="1">09:45-11:15</option>
@@ -267,7 +267,7 @@
                 <p class="priotext">
                   {{prio.text[2]}}
                 </p>
-                <select ng-change="change(prio.ExcludeDayCombinationPrio.dayTwo.day)" ng-model="prio.ExcludeDayCombinationPrio.dayTwo.day">
+                <select ng-change="change(prio.dayTwo[0])" ng-model="prio.dayTwo[0]">
                     <option value="Zweiten Tag w�hlen">Zweiten Tag w�hlen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
@@ -278,7 +278,7 @@
                 <p class="priotext">
                   {{prio.text[3]}}
                 </p>
-                <select ng-change="change(prio.ExcludeDayCombinationPrio.dayTwo.time)" class="time second-time" ng-model="prio.ExcludeDayCombinationPrio.dayTwo.time">
+                <select ng-change="change(prio.dayTwo[1])" class="time second-time" ng-model="prio.dayTwo[1]">
                     <option value="Uhrzeit w�hlen">Uhrzeit w�hlen</option>
                     <option value="0">08:00-09:30</option>
                     <option value="1">09:45-11:15</option>
