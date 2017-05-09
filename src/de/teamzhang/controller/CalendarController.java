@@ -25,8 +25,6 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.teamzhang.model.SingleChoicePrio;
-
 @Controller
 public class CalendarController extends AbstractController {
 
@@ -92,7 +90,7 @@ public class CalendarController extends AbstractController {
 			//myMap = mapper.readValue(prios, HashMap.class);
 			//System.out.println("Map is: " + myMap);
 
-			List<SingleChoicePrio> prioList = (List<SingleChoicePrio>) mapper.readValue(prios, SingleChoicePrio.class);
+			//List<SingleChoicePrio> prioList = (List<SingleChoicePrio>) mapper.readValue(prios, SingleChoicePrio.class);
 			//mapper.readValue(prios,
 			//TypeFactory.defaultInstance().constructCollectionType(List.class,  
 			//Prio.class));
