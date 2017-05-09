@@ -118,16 +118,16 @@
     return function(scope, element, attrs) {
       // console.log(element, attrs.priority, scope.prio);
 
-      scope.prio.ExcludeDayCombinationPrio = {
-        dayOne: {
-          day: "Ersten Tag wählen",
-          time: "Uhrzeit wählen"
-        },
-        dayTwo: {
-          day: "Zweiten Tag wählen",
-          time: "Uhrzeit wählen"
-        }
-      };
+      scope.prio.ExcludeDayCombinationPrio = [ {
+        "dayOne": [
+          { day: "Ersten Tag wählen" },
+          { time: "Uhrzeit wählen" }
+        ],
+        dayTwo: [
+          { day: "Zweiten Tag wählen" },
+          { time: "Uhrzeit wählen" }
+        ] }
+      ];
 
       scope.prio.course = "Alle Kurse";
       // scope.prio
