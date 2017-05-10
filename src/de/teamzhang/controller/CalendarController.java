@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.teamzhang.model.Prio;
+import de.teamzhang.model.SimplePrio;
 import de.teamzhang.model.SingleChoicePrio;
 
 @Controller
@@ -80,7 +81,11 @@ public class CalendarController extends AbstractController {
 					System.out.println(m.get("option"));
 					prio.setOption(Integer.parseInt((String) m.get("option")));
 					System.out.println();
+				} else if (m.get("type").equals("SimplePrio")) {
+					Prio prio = new SimplePrio();
+					//prio.set..
 				}
+				//...
 			}
 			System.out.println();
 
