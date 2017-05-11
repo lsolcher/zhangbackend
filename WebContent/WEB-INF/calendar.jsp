@@ -82,12 +82,14 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a href="/" class="navbar-brand">HTW FB4 Lehreinsatzplanung</a>
-					<a class="btn" href="#">Log out</a>
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
             			<li>
 							<a href="#sec" id="add-course">Kurse hinzuf�gen/entfernen</a>
+						</li>
+						<li>
+							<a href="#">Log out</a>
 						</li>
 					</ul>
 				</nav>
