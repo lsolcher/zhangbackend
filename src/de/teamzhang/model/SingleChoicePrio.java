@@ -8,8 +8,9 @@ public class SingleChoicePrio extends Prio {
 	private short type;
 	String text;
 	boolean showCourses;
+	int option;
 
-	SingleChoicePrio() {
+	public SingleChoicePrio() {
 		super();
 	}
 
@@ -21,6 +22,10 @@ public class SingleChoicePrio extends Prio {
 		}
 		this.text = text;
 		this.showCourses = showCourses;
+	}
+	
+	public void setOption(int theOption) {
+		option = theOption;		
 	}
 
 }

@@ -79,7 +79,7 @@ public class CalendarController extends AbstractController {
 				if (m.get("type").equals("SingleChoicePrio")) {
 					Prio prio = new SingleChoicePrio();
 					System.out.println(m.get("option"));
-					prio.setOption(Integer.parseInt((String) m.get("option")));
+					((SingleChoicePrio) prio).setOption(Integer.parseInt((String) m.get("option")));
 					System.out.println();
 				} else if (m.get("type").equals("SimplePrio")) {
 					Prio prio = new SimplePrio();
