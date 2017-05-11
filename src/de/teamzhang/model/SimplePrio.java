@@ -6,7 +6,7 @@ public class SimplePrio extends Prio {
 
 	boolean acceptsFourHourCourses;
 	int option;
-	
+
 	public SimplePrio() {
 
 		// TODO Auto-generated constructor stub
@@ -16,9 +16,9 @@ public class SimplePrio extends Prio {
 		super(string, profID, courses);
 		this.acceptsFourHourCourses = acceptsFourHourCourses;
 	}
-	
+
 	public void setOption(int option) {
-		this.option =option;
+		this.option = option;
 	}
 
 }
