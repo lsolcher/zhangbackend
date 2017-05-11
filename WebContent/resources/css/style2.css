@@ -29,6 +29,7 @@ header {
 .navbar-nav > li > a {
     color: #fff;
     background: #11a391;
+    margin-left: 20px;
 }
 .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
     background: #11a391;
