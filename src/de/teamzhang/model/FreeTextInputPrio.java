@@ -11,4 +11,8 @@ public class FreeTextInputPrio extends Prio {
 		this.textFieldInput = textFieldInput;
 	}
 
+	public FreeTextInputPrio() {
+		// TODO Auto-generated constructor stub
+	}
+
 }

@@ -26,6 +26,8 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import de.teamzhang.model.ExcludeDayCombinationPrio;
+import de.teamzhang.model.FreeTextInputPrio;
 import de.teamzhang.model.Prio;
 import de.teamzhang.model.SimplePrio;
 import de.teamzhang.model.SingleChoicePrio;
@@ -71,21 +73,42 @@ public class CalendarController extends AbstractController {
 	@RequestMapping(value = "/post.json", method = RequestMethod.POST)
 	public @ResponseBody void updateData(@RequestBody String prios) {
 		ObjectMapper mapper = new ObjectMapper();
-		//List<?> list = null;
 		try {
-
 			List<HashMap> list = mapper.readValue(prios, List.class);
 			for (Map m : list) {
-				if (m.get("type").equals("SingleChoicePrio")) {
-					Prio prio = new SingleChoicePrio();
-					System.out.println(m.get("option"));
-					((SingleChoicePrio) prio).setOption(Integer.parseInt((String) m.get("option")));
-					System.out.println();
-				} else if (m.get("type").equals("SimplePrio")) {
-					Prio prio = new SimplePrio();
-					//prio.set..
+				Prio prio = new Prio();
+				if (m.get("course").equals("Alle Kurse")) {
+					prio.setValidForAllCourses(true);
+				} else
+					prio.setCourse(Integer.parseInt((String) m.get("course")));
+				prio.setName((String) m.get("title"));
+				List<String> text = (List<String>) m.get("text");
+				StringBuilder sb = new StringBuilder();
+				for (String s : text) {
+					sb.append(s);
+					sb.append("\t");
 				}
-				//...
+				prio.setText((sb.toString()));
+
+				if (m.get("type").equals("SingleChoicePrio")) {
+					prio = new SingleChoicePrio();
+					((SingleChoicePrio) prio).setOption(Integer.parseInt((String) m.get("option")));
+				} else if (m.get("type").equals("SimplePrio")) {
+					prio = new SimplePrio();
+				} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
+					prio = new ExcludeDayCombinationPrio();
+					if (!m.get("title").equals("Tage ausschlieﬂen")) {
+						String[] dayAndTimeOne = (String[]) m.get("dayOne");
+						String[] dayAndTimeTwo = (String[]) m.get("dayTwo");
+						((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt(dayAndTimeOne[0]));
+						((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt(dayAndTimeTwo[0]));
+						((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt(dayAndTimeOne[1]));
+						((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt(dayAndTimeTwo[1]));
+					}
+				} else if (m.get("type").equals("FreeTextInputPrio")) {
+					prio = new FreeTextInputPrio();
+				}
+
 			}
 			System.out.println();
 
@@ -97,10 +120,11 @@ public class CalendarController extends AbstractController {
 			e.printStackTrace();
 		}
 
-		//ObjectMapper mapper = new ObjectMapper();
-		//List<Employe> list = mapper.readValue(jsonString, TypeFactory.collectionType(List.class, Employe.class));
+		// ObjectMapper mapper = new ObjectMapper();
+		// List<Employe> list = mapper.readValue(jsonString,
+		// TypeFactory.collectionType(List.class, Employe.class));
 
-		//System.out.println(prios);
+		// System.out.println(prios);
 		// for (Prio p : prios)
 		// mongoTemplate.getCollection("prios").insert(p);
 	}

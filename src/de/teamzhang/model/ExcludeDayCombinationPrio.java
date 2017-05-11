@@ -1,11 +1,8 @@
 package de.teamzhang.model;
 
-import java.math.BigInteger;
-
 public class ExcludeDayCombinationPrio extends Prio {
 
 	//
-	private String text;
 	// Monday = 0; Sunday = 6
 	private int dayOne;
 	private int dayTwo;
@@ -20,15 +17,55 @@ public class ExcludeDayCombinationPrio extends Prio {
 	// true if is excluding, false if is combining
 	private boolean isExcluding;
 
-	public ExcludeDayCombinationPrio(String string, BigInteger profID, BigInteger[] courses, String text, int dayOne,
-			int dayTwo, int timeOne, int timeTwo, boolean hasTime, boolean isExcluding) {
-		super(string, profID, courses);
-		this.text = text;
+	public ExcludeDayCombinationPrio() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getDayOne() {
+		return dayOne;
+	}
+
+	public void setDayOne(int dayOne) {
 		this.dayOne = dayOne;
+	}
+
+	public int getDayTwo() {
+		return dayTwo;
+	}
+
+	public void setDayTwo(int dayTwo) {
 		this.dayTwo = dayTwo;
+	}
+
+	public int getTimeOne() {
+		return timeOne;
+	}
+
+	public void setTimeOne(int timeOne) {
 		this.timeOne = timeOne;
+	}
+
+	public int getTimeTwo() {
+		return timeTwo;
+	}
+
+	public void setTimeTwo(int timeTwo) {
 		this.timeTwo = timeTwo;
+	}
+
+	public boolean isHasTime() {
+		return hasTime;
+	}
+
+	public void setHasTime(boolean hasTime) {
 		this.hasTime = hasTime;
+	}
+
+	public boolean isExcluding() {
+		return isExcluding;
+	}
+
+	public void setExcluding(boolean isExcluding) {
 		this.isExcluding = isExcluding;
 	}
 

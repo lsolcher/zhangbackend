@@ -9,6 +9,8 @@ public class SingleChoicePrio extends Prio {
 	String text;
 	boolean showCourses;
 	int option;
+	private int course;
+	private boolean isValidForAllCourses;
 
 	public SingleChoicePrio() {
 		super();
@@ -23,9 +25,33 @@ public class SingleChoicePrio extends Prio {
 		this.text = text;
 		this.showCourses = showCourses;
 	}
-	
+
 	public void setOption(int theOption) {
-		option = theOption;		
+		option = theOption;
+	}
+
+	public short getType() {
+		return type;
+	}
+
+	public void setType(short type) {
+		this.type = type;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public boolean isShowCourses() {
+		return showCourses;
+	}
+
+	public void setShowCourses(boolean showCourses) {
+		this.showCourses = showCourses;
 	}
 
 }
