@@ -3,6 +3,7 @@ package de.teamzhang.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,7 @@ public class CalendarController extends AbstractController {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	protected String getVeranstaltungen(HttpServletRequest request) {
 		JSONParser parser = new JSONParser();
 		try {
@@ -74,22 +76,32 @@ public class CalendarController extends AbstractController {
 	public @ResponseBody void updateData(@RequestBody String prios) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
+			@SuppressWarnings({ "unchecked", "rawtypes" })
 			List<HashMap> list = mapper.readValue(prios, List.class);
 			for (Map m : list) {
 				Prio prio = new Prio();
-				if (m.get("course").equals("Alle Kurse")) {
+				try {
+					if (m.get("course").equals("Alle Kurse")) {
+						prio.setValidForAllCourses(true);
+					} else
+						prio.setCourse(Integer.parseInt((String) m.get("course")));
+				} catch (NullPointerException ne) { // no courses chosen, we
+													// assume all
 					prio.setValidForAllCourses(true);
-				} else
-					prio.setCourse(Integer.parseInt((String) m.get("course")));
-				prio.setName((String) m.get("title"));
-				List<String> text = (List<String>) m.get("text");
-				StringBuilder sb = new StringBuilder();
-				for (String s : text) {
-					sb.append(s);
-					sb.append("\t");
 				}
-				prio.setText((sb.toString()));
-
+				prio.setName((String) m.get("title"));
+				try {
+					@SuppressWarnings("unchecked")
+					List<String> text = (List<String>) m.get("text");
+					StringBuilder sb = new StringBuilder();
+					for (String s : text) {
+						sb.append(s);
+						sb.append("\t");
+					}
+					prio.setText((sb.toString()));
+				} catch (ClassCastException e) {
+					prio.setText((String) m.get("text"));
+				}
 				if (m.get("type").equals("SingleChoicePrio")) {
 					prio = new SingleChoicePrio();
 					((SingleChoicePrio) prio).setOption(Integer.parseInt((String) m.get("option")));
@@ -98,20 +110,27 @@ public class CalendarController extends AbstractController {
 				} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
 					prio = new ExcludeDayCombinationPrio();
 					if (!m.get("title").equals("Tage ausschlieﬂen")) {
-						String[] dayAndTimeOne = (String[]) m.get("dayOne");
-						String[] dayAndTimeTwo = (String[]) m.get("dayTwo");
-						((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt(dayAndTimeOne[0]));
-						((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt(dayAndTimeTwo[0]));
-						((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt(dayAndTimeOne[1]));
-						((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt(dayAndTimeTwo[1]));
+						@SuppressWarnings("unchecked")
+						List<String> dayAndTimeOne = (ArrayList<String>) m.get("dayOne");
+						@SuppressWarnings("unchecked")
+						List<String> dayAndTimeTwo = (ArrayList<String>) m.get("dayTwo");
+						((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt(dayAndTimeOne.get(0)));
+						((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt(dayAndTimeTwo.get(0)));
+						((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt(dayAndTimeOne.get(1)));
+						((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt(dayAndTimeTwo.get(1)));
 					}
 				} else if (m.get("type").equals("FreeTextInputPrio")) {
 					prio = new FreeTextInputPrio();
 				}
-
+				try {
+					if (!mongoTemplate.collectionExists("prios")) {
+						mongoTemplate.createCollection("prios");
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				mongoTemplate.insert(prio, "prios");
 			}
-			System.out.println();
-
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
@@ -119,14 +138,6 @@ public class CalendarController extends AbstractController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		// ObjectMapper mapper = new ObjectMapper();
-		// List<Employe> list = mapper.readValue(jsonString,
-		// TypeFactory.collectionType(List.class, Employe.class));
-
-		// System.out.println(prios);
-		// for (Prio p : prios)
-		// mongoTemplate.getCollection("prios").insert(p);
 	}
 
 }
