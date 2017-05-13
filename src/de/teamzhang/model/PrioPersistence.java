@@ -1,5 +1,6 @@
 package de.teamzhang.model;
 
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,13 +9,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PrioPersistence {
-	private final Map<Integer, Prio> prios = new HashMap<Integer, Prio>();
-	private Integer id = 0;
+	private final Map<BigInteger, Prio> prios = new HashMap<BigInteger, Prio>();
+	private BigInteger id = new BigInteger("0");
 
 	public void create(final Prio prio) {
 		((Prio) prios).setId(id);
 		prios.put(id, prio);
-		id++;
+		id.add(new BigInteger("1"));
 	}
 
 	public Collection<Prio> list() {

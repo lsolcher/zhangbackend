@@ -1,5 +1,6 @@
 package de.teamzhang.model;
 
+import java.math.BigInteger;
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -53,5 +54,10 @@ public class SecUserDetails implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	public BigInteger getId() {
+		// TODO Auto-generated method stub
+		return user.getId();
 	}
 }

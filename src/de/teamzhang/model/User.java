@@ -59,4 +59,20 @@ public class User {
 		return role;
 	}
 
+	public BigInteger getId() {
+		return id;
+	}
+
+	public void setId(BigInteger id) {
+		this.id = id;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
+	}
+
 }

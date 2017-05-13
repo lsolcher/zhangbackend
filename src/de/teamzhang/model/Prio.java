@@ -10,10 +10,9 @@ public class Prio {
 
 	protected String name;
 	@Id
-	private int id;
+	private BigInteger id;
 
-	protected BigInteger profID;
-	protected BigInteger[] courses;
+	protected BigInteger userId;
 
 	protected int course;
 	protected boolean isValidForAllCourses;
@@ -27,11 +26,11 @@ public class Prio {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
+	public BigInteger getId() {
 		return id;
 	}
 
-	public void setId(final Integer id) {
+	public void setId(final BigInteger id) {
 		this.id = id;
 	}
 
@@ -47,20 +46,8 @@ public class Prio {
 		return id + ": " + name;
 	}
 
-	public BigInteger getProfID() {
-		return profID;
-	}
-
-	public void setProfID(BigInteger profID) {
-		this.profID = profID;
-	}
-
-	public BigInteger[] getCourses() {
-		return courses;
-	}
-
-	public void setCourses(BigInteger[] courses) {
-		this.courses = courses;
+	public BigInteger getUserId() {
+		return userId;
 	}
 
 	public int getCourse() {
@@ -79,16 +66,16 @@ public class Prio {
 		this.isValidForAllCourses = isValidForAllCourses;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getText() {
 		return text;
 	}
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public void setUserId(BigInteger userId) {
+		this.userId = userId;
 	}
 
 }

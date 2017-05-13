@@ -3,6 +3,7 @@ package de.teamzhang.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +33,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.teamzhang.model.ExcludeDayCombinationPrio;
 import de.teamzhang.model.FreeTextInputPrio;
 import de.teamzhang.model.Prio;
+import de.teamzhang.model.SecUserDetails;
 import de.teamzhang.model.SimplePrio;
 import de.teamzhang.model.SingleChoicePrio;
 
@@ -74,6 +78,10 @@ public class CalendarController extends AbstractController {
 
 	@RequestMapping(value = "/post.json", method = RequestMethod.POST)
 	public @ResponseBody void updateData(@RequestBody String prios) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		SecUserDetails userDetails = (SecUserDetails) authentication.getPrincipal();
+		BigInteger userId = userDetails.getId();
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -86,16 +94,18 @@ public class CalendarController extends AbstractController {
 					} else
 						prio.setCourse(Integer.parseInt((String) m.get("course")));
 				} catch (NullPointerException ne) { // no courses chosen, we
-													// assume all
+														// assume all
 					prio.setValidForAllCourses(true);
 				}
 				prio.setName((String) m.get("title"));
+				prio.setUserId(userId);
 				try {
 					@SuppressWarnings("unchecked")
 					List<String> text = (List<String>) m.get("text");
 					StringBuilder sb = new StringBuilder();
 					for (String s : text) {
 						sb.append(s);
+
 						sb.append("\t");
 					}
 					prio.setText((sb.toString()));
