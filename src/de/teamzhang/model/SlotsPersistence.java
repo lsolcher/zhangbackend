@@ -20,6 +20,7 @@ public class SlotsPersistence {
 				Slot slot = new Slot();
 				slot.setId(id);
 				slot.setRoom(room);
+				slot.setDay(i/7); //assigns weekdays
 				((Slot) slots).setId(id);
 				slots.put(id, slot);
 				id.add(new BigInteger("1"));

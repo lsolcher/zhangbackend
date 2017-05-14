@@ -9,8 +9,9 @@ public class SingleChoicePrio extends Prio {
 		super();
 	}
 
-	public void setOption(Room.Type theOption) {
-		option = theOption;
+	public void setOption(int option) {
+		// TODO Room.Type from int
+		// option = theOption;
 	}
 
 }
