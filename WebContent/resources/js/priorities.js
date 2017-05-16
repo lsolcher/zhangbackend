@@ -1,9 +1,9 @@
 (function() {
   var app = angular.module("zhang-app").controller('prioController', function($scope, $rootScope) {
 
-	var numberOfPriosSelected = 0; 
+	var numberOfPriosSelected = 0;
 	var maxNumberOfPriosSelected = 6;
-	
+
     $scope.selectPrio = function(index, prio) {
     	if (numberOfPriosSelected < maxNumberOfPriosSelected) {
     		for(var i in $rootScope.selectedPriorities) {
@@ -11,12 +11,16 @@
     	    }
     	    var newPrio = jQuery.extend(true, {}, prio);
     	    newPrio.origin = index;
-    	    $rootScope.selectedPriorities.unshift(newPrio);  
+    	    $rootScope.selectedPriorities.unshift(newPrio);
     	    numberOfPriosSelected++;
-    	} 
+    	}
     	else {
     		// TODO: print error massage on screen
     	}
+    }
+
+    $scope.getCalendar = function(index, time) {
+      // TODO: Get Object from prio
     }
 
     $scope.removeEntry = function(index, prio) {
@@ -26,7 +30,7 @@
         newPrios.push($rootScope.selectedPriorities[i]);
       }
       $rootScope.selectedPriorities = newPrios;
-      
+
       numberOfPriosSelected--;
     }
 
@@ -123,6 +127,8 @@
         showCourses: true
       }
     ];
+
+    $scope.calendar = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 ];
   });
 
   angular.module("zhang-app").directive('priority', function($rootScope) {
