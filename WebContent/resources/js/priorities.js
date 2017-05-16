@@ -33,7 +33,7 @@
     $rootScope.selectedPriorities = [];
 
     $scope.save = function() {
-      
+      console.log(JSON.stringify($rootScope.selectedPriorities));
       console.log('Save:', $rootScope.selectedPriorities);
       $.ajax({
         type: 'POST',
@@ -129,8 +129,12 @@
     return function(scope, element, attrs) {
       // console.log(element, attrs.priority, scope.prio);
 
-      scope.prio.dayOne = [ "day1", "time1" ];
-      scope.prio.dayTwo = [ "day2", "time2" ];
+      scope.prio.dayOne = "0";
+      scope.prio.dayTwo = "0";
+      scope.prio.timeOne = "0";
+      scope.prio.timeTwo = "0";
+
+      console.log(scope.prio.dayOne + " " + scope.prio.dayTwo);
 
       // scope.prio.ExcludeDayCombinationPrio = [ {
       //   dayOne: [
