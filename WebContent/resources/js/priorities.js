@@ -35,10 +35,19 @@
     $scope.save = function() {
       
     	// validating selected prios
-    	
+//    	for(var i in $rootScope.selectedPriorities) {
+//	        if ($rootScope.selectedPriorities[i].type == "FreeTextInput") 
+//	        	freeTextWish.value =="";
+//	        else if () {
+//	        	
+//	        }
+//	        else if () {
+//	        	
+//	        }
+//	    }
     	
     	// TODO: check if prio inputs are empty
-    	
+//    	$rootScope.priority-conent ;
     	
     	
     	
