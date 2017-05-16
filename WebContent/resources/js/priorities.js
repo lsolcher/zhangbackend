@@ -26,6 +26,7 @@
         newPrios.push($rootScope.selectedPriorities[i]);
       }
       $rootScope.selectedPriorities = newPrios;
+      
       numberOfPriosSelected--;
     }
 
