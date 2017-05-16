@@ -16,7 +16,7 @@
 
 
     <!-- libs -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
@@ -49,14 +49,10 @@
 				</nav>
 			</div>
 	</header>
-  <div class="row">
-	<div class="main group">
+  	<div class="row">
+		<div class="main group">
 
-	</div>
-    
-
-
-
-  </div>
-	</body>
+		</div>
+    </div>
+  </body>
 </html>
