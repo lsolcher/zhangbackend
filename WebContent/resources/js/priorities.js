@@ -1,17 +1,18 @@
 (function() {
   var app = angular.module("zhang-app").controller('prioController', function($scope, $rootScope) {
 
-	var numberOfPriosSelected = $rootScope.selectedPriorities.length; 
-	var maxNumberOfPriosSelected = 5;
+	var numberOfPriosSelected = 0; 
+	var maxNumberOfPriosSelected = 6;
 	
     $scope.selectPrio = function(index, prio) {
-    	if (numberOfPriosSelected <= maxNumberOfPriosSelected) {
+    	if (numberOfPriosSelected < maxNumberOfPriosSelected) {
     		for(var i in $rootScope.selectedPriorities) {
     	        $rootScope.selectedPriorities[i].hideContent = true;
     	    }
     	    var newPrio = jQuery.extend(true, {}, prio);
     	    newPrio.origin = index;
     	    $rootScope.selectedPriorities.unshift(newPrio);  
+    	    numberOfPriosSelected++;
     	} 
     	else {
     		// TODO: print error massage on screen
@@ -25,6 +26,7 @@
         newPrios.push($rootScope.selectedPriorities[i]);
       }
       $rootScope.selectedPriorities = newPrios;
+      numberOfPriosSelected--;
     }
 
     $rootScope.selectedPriorities = [];
