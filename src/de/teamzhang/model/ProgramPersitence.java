@@ -40,5 +40,16 @@ public class ProgramPersitence {
 		}
 		return success;
 	}
+	
+	// create usefull Program Testdata
+	public void generateMockData() {
+		Program p1 = new Program();
+		p1.setName("Imibach");
+		create(p1);
+		
+		Program p2 = new Program();
+		p2.setName("Imimaster");
+		create(p2);
+	}
 
 }

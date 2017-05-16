@@ -4,7 +4,15 @@ import java.math.BigInteger;
 
 import org.springframework.data.annotation.Id;
 
-public class Room {
+public class Room {	
+	protected int type;
+	protected String name;
+	@Id
+	private BigInteger id;
+	public static int WideRoom = 1;
+	public static int LongRoom=2;
+	public static int MacLab=3;
+	public static int PcLab=4;
 	
 	public Room() {
 		// TODO Auto-generated constructor stub
@@ -26,23 +34,12 @@ public class Room {
 		this.id = id;
 	}
 
-	public Type getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(Type type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 
-	public enum Type {
-		WideRoom,
-		LongRoom,
-		MacLab,
-		PcLab
-	}
-	
-	protected Type type;
-	protected String name;
-	@Id
-	private BigInteger id;
 }

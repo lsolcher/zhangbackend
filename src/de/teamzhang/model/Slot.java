@@ -8,6 +8,9 @@ public class Slot {
 	public static int WEDNESDAY=2;
 	public static int THURSDAY=3;
 	public static int FRIDAY=4;
+	protected BigInteger id;
+	protected Room room;
+	protected int day;
 	
 	public Slot() {
 		// TODO Auto-generated constructor stub
@@ -31,7 +34,5 @@ public class Slot {
 	public void setDay(int day) {
 		this.day = day;
 	}
-	protected BigInteger id;
-	protected Room room;
-	protected int day;
+
 }

@@ -43,4 +43,14 @@ public class PrioPersistence {
 		}
 		return success;
 	}
+	
+	// create (maybe) useful prios for testing
+	public void generateMockData(Collection<Teacher> teachers){
+		for (Teacher teacher : teachers) {			
+				for (int i = 0; i < 2; i++) {
+					Prio prio = new Prio("prio_"+teacher.getName(), teacher, teacher.getCourses());
+					create(prio);
+				}
+		}
+	}
 }

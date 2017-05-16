@@ -6,9 +6,14 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 
 public class Program {
-	
 	static int MAX_DAYS=4;
 	static int MAX_SLOTS_PER_DAY=4;
+	@Id
+	private BigInteger id;
+	private String name;
+	int noOfDays;
+	List<Slot> assignedSlots;
+
 	
 	void Program() {
 		
@@ -51,9 +56,12 @@ public class Program {
 	public void setId(BigInteger id) {
 		this.id = id;
 	}
-	
-	int noOfDays;
-	List<Slot> assignedSlots;
-	@Id
-	private BigInteger id;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

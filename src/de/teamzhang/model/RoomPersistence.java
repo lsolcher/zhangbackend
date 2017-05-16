@@ -41,4 +41,14 @@ public class RoomPersistence {
 		return success;
 	}
 	
+	// create useful rooms for testing
+	public void generateMockData() {
+		for (int i = 0; i < 10; i++) {
+			Room r1 = new Room();
+			r1.setName("C54"+i);
+			r1.setType(i%4);
+			create(r1);	
+		}
+	}
+	
 }

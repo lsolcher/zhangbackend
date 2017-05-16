@@ -1,6 +1,8 @@
 package de.teamzhang.model;
 
+import java.awt.List;
 import java.math.BigInteger;
+import java.util.Collection;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,9 +19,13 @@ public class Prio {
 	protected int course;
 	protected boolean isValidForAllCourses;
 	private String text;
+	protected Teacher teacher;
+	protected Collection<Course> courses = (Collection<Course>) new List(1);
 
-	public Prio(String string, BigInteger profID, BigInteger[] courses) {
+	public Prio(String string, Teacher teacher, Collection<Course> courses) {
 		this.name = string;
+		this.teacher = teacher;
+		this.courses=courses;
 	}
 
 	public Prio() {
