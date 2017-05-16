@@ -48,9 +48,16 @@
     	
     	// TODO: check if prio inputs are empty
 //    	$rootScope.priority-conent ;
+//    	scope.prio.option 
+//    	scope.prio.dayOne
+//      scope.prio.dayTwo
+//      scope.prio.course
     	
     	
     	
+    	
+    	
+        
     	// TODO: check if some of the inputs are impossible to combine
     		
     	
