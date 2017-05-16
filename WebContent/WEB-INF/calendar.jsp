@@ -86,7 +86,7 @@
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
             			<li>
-							<a href="#sec" id="add-course">Kurse hinzufï¿½gen/entfernen</a>
+							<a href="#sec" id="add-course">Kurse hinzufügen/entfernen</a>
 						</li>
 						<li>
 							<a href="#">Log out</a>
@@ -100,12 +100,12 @@
 
 		<div class="calendar group col-md-6">
 			<h2>Bevorzugte Belegungszeiten</h2>
-      <p>Bitte geben Sie hier ihre bevorzugten Belegungszeiten an. Sie kï¿½nnen durch wiederholtes Anklicken der Kreise deren Farbe ändern, und so ihre Belegungswänsche abbilden.</p>
+      <p>Bitte geben Sie hier ihre bevorzugten Belegungszeiten an. Sie können durch wiederholtes Anklicken der Kreise deren Farbe ändern, und so ihre Belegungswänsche abbilden.</p>
 			<div class="option-choice group">
 				<a href="#" class="preferred" prio="3">Bevorzugte Wahl</a>
 				<a href="#" class="alternative" prio="2">Alternative Wahl</a><br>
-        <a href="#" class="impossible" prio="1">Grundsätzlich mï¿½glich</a>
-        <a href="#" class="no-pref-choice" prio="0">Nicht mï¿½glich</a>
+        <a href="#" class="impossible" prio="1">Grundsätzlich möglich</a>
+        <a href="#" class="no-pref-choice" prio="0">Nicht möglich</a>
 			</div>
 			<div class="calendar-body group" ng-model="calendar" ng-change="setCal(calendar)">
 				<div class="first-calendar-row">
@@ -166,9 +166,9 @@
 			</div>
 		</div>
     <!-- div class="wishes-section group col-md-6" ng-controller="prioController">
-      <h2>Sonderwï¿½nsche</h2>
+      <h2>Sonderwünsche</h2>
       <br>
-      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschrï¿½nkungen oder Sonderwï¿½nsche hinsichtlich Ihrer Verfï¿½gbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschrï¿½nkung oder einen Sonderwunsch wieder zu entfernen, kï¿½nnen Sie diese ï¿½ber den x-Button lï¿½schen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschrï¿½nkungen und Sonderwï¿½nsche herangezogen.</p>
+      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwünsche hinsichtlich Ihrer Verfügbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder einen Sonderwunsch wieder zu entfernen, können Sie diese über den x-Button löschen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschränkungen und Sonderwünsche herangezogen.</p>
       <div class="priority-select-list">
         <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities track by option.id" data-id="{{option.id}}" ng-click="selectPriority($event)" ng-class="option.jo_class">
           <div class="title">
@@ -186,9 +186,9 @@
     </div -->
 
     <div class="wishes-section group col-md-6" ng-controller="prioController">
-      <h2>Sonderwï¿½nsche</h2>
+      <h2>Sonderwünsche</h2>
       <br>
-      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwï¿½nsche hinsichtlich Ihrer Verfï¿½gbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder einen Sonderwunsch wieder zu entfernen, kï¿½nnen Sie diese ï¿½ber den x-Button lï¿½schen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschränkungen und Sonderwï¿½nsche herangezogen.</p>
+      <p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwünsche hinsichtlich Ihrer Verfügbarkeiten an. Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder einen Sonderwunsch wieder zu entfernen, können Sie diese über den x-Button löschen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten Einschränkungen und Sonderwünsche herangezogen.</p>
       <div class="priority-select-list">
         <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities" ng-click="selectPrio($index, option)">
           <div class="title">
@@ -246,7 +246,7 @@
                   {{prio.text[0]}}
                 </p>
                 <select ng-change="change(prio.dayOne)" ng-model="prio.dayOne">
-                    <option value="Ersten Tag wï¿½hlen">Ersten Tagä¿½hlen</option>
+                    <option value="Ersten Tag wählen">Ersten Tagä¿½hlen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
                     <option value="2">Mittwoch</option>
