@@ -34,19 +34,43 @@
 
     $scope.save = function() {
       
-      console.log('Save:', $rootScope.selectedPriorities);
-      $.ajax({
-        type: 'POST',
-        contentType : 'application/json; charset=utf-8',
-        url: '/ZhangProjectBackend/post.json',
-        data: JSON.stringify($rootScope.selectedPriorities),
-        success: function(response) {
-          console.log('Response', response);
-        },
-        error: function(response) {
-          console.error('Response', response);
-        }
-      });
+    	// validating selected prios
+    	
+    	
+    	// TODO: check if prio inputs are empty
+    	
+    	
+    	
+    	
+    	// TODO: check if some of the inputs are impossible to combine
+    		
+    	
+    	
+    	
+    	
+    	// TODO: check for dublication
+    	
+    	
+    	
+//    	if () {
+	      console.log('Save:', $rootScope.selectedPriorities);
+	      $.ajax({
+	        type: 'POST',
+	        contentType : 'application/json; charset=utf-8',
+	        url: '/ZhangProjectBackend/post.json',
+	        data: JSON.stringify($rootScope.selectedPriorities),
+	        success: function(response) {
+	          console.log('Response', response);
+	        },
+	        error: function(response) {
+	          console.error('Response', response);
+	        }
+	      });
+//    	} else {
+    		// TODO: print error message to screen
+    		
+//    	}	// try {} catch {} // besser???
+    	
     }
 
     $scope.possiblePriorities = [
