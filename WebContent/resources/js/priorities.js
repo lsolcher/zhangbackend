@@ -15,7 +15,7 @@
     	    numberOfPriosSelected++;
     	} 
     	else {
-    		// TODO: print error massage on screen
+    		// TODO: print error massage on screen "You can only select 6 wishes"
     	}
     }
 
@@ -32,78 +32,97 @@
 
     $rootScope.selectedPriorities = [];
 
-    $scope.save = function() {
-      
-    	// validating selected prios
-//    	for(var i in $rootScope.selectedPriorities) {
-//	        if ($rootScope.selectedPriorities[i].type == "FreeTextInput") 
-//	        	freeTextWish.value =="";
-//	        else if () {
-//	        	
+//    $scope.save = function() {
+//	      console.log('Save:', $rootScope.selectedPriorities);
+//	      $.ajax({
+//	        type: 'POST',
+//	        contentType : 'application/json; charset=utf-8',
+//	        url: '/ZhangProjectBackend/post.json',
+//	        data: JSON.stringify($rootScope.selectedPriorities),
+//	        success: function(response) {
+//	          console.log('Response', response);
+//	        },
+//	        error: function(response) {
+//	          console.error('Response', response);
 //	        }
-//	        else if () {
-//	        	
-//	        }
-//	    }
-    	
-    	// TODO: check if prio inputs are empty
-    	// options are selected? textarea is empty?
-//    	$rootScope.priority-conent ;
-    	
-//    	if ((!scope.prio.option.isSelected()) || (scope.prio.dayOne.value == [0, 0]) || (scope.prio.dayTwo.value == [0, 0]) || (!scope.prio.course.isSelected())) {
-//    		
-//    	}
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-//    	scope.prio.option
-//      scope.prio.dayTwo
-//      scope.prio.course
-//    	scope.prio.ExcludeDayCombinationPrio
-    	
-    	
-    	
-    	
+//	      });
+//    }
+    
+    
+    // validating selected prios TODO: -> only save prios when validated and okay
+	  
+    angular.module("zhang-app").directive('priority', function($rootScope) {
+        return function(scope, element, attrs) {
+          
+        	// TODO: check if prio inputs are empty
+          	// options are selected? textarea is empty? calendar is Selected (at least min, at most max)
         
+        	var isSelected = scope.prio.option.isSelected();
+        	console.log("option selected: " + isSelected);
+          
+        
+        	
+        	
+          	         
+//          try {	
+//		    	for (var i in $rootScope.selectedPriorities) {
+//			        if ($rootScope.selectedPriorities[i].type == "FreeTextInput") {
+//			        	freeTextWish.value =="";
+//			        }
+//			        else if ($rootScope.selectedPriorities[i].type == "") {
+//			        	
+//			        }
+//			        else {
+//			        }
+//		    	}
+//          } catch {
+//        	  
+//          }
+		
+		  var conent = $rootScope.priority-conent ;
+          
+//		   !scope.prio.option.isSelected()
+//         scope.prio.dayOne.value == [0, 0]
+//         scope.prio.dayTwo.value == [0, 0] 
+//         !scope.prio.course.isSelected()
+		
+//		   scope.prio.ExcludeDayCombinationPrio
+		    	
+		    	
+		    	
+		    	
+		        
     	// TODO: check if some of the inputs are impossible to combine
     		
     	
     	
     	
-    	// TODO: check for dublication
-    	
-    	
-    	
-    	
-    	
-    	
-//    	if () {
-	      console.log('Save:', $rootScope.selectedPriorities);
-	      $.ajax({
-	        type: 'POST',
-	        contentType : 'application/json; charset=utf-8',
-	        url: '/ZhangProjectBackend/post.json',
-	        data: JSON.stringify($rootScope.selectedPriorities),
-	        success: function(response) {
-	          console.log('Response', response);
-	        },
-	        error: function(response) {
-	          console.error('Response', response);
-	        }
-	      });
-//    	} else {
-    		// TODO: print error message to screen
-    		
-//    	}	// try {} catch {} // besser???
-    	
-    }
-
+    	// TODO: check for duplication
+		    	
+		    	
+		    	
+		    	
+		    	
+		    	
+		// if ( all fine ) { save() } else {print error message to screen}	  
+          scope.save = function() {
+              console.log('Save:', $rootScope.selectedPriorities);
+		      $.ajax({
+		        type: 'POST',
+		        contentType : 'application/json; charset=utf-8',
+		        url: '/ZhangProjectBackend/post.json',
+		        data: JSON.stringify($rootScope.selectedPriorities),
+		        success: function(response) {
+		          console.log('Response', response);
+		        },
+		        error: function(response) {
+		          console.error('Response', response);
+		        }
+		      });            
+          }
+        }
+      });
+   
     $scope.possiblePriorities = [
       {
         type: 'SingleChoicePrio',				
