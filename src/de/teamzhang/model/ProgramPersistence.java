@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProgramPersitence {
+public class ProgramPersistence {
 	private final Map<BigInteger, Program> programs = new HashMap<BigInteger, Program>();
 	private BigInteger id = new BigInteger("0");
 
