@@ -47,6 +47,7 @@
 //	    }
     	
     	// TODO: check if prio inputs are empty
+    	// options are selected? textarea is empty?
 //    	$rootScope.priority-conent ;
     	
 //    	if ((!scope.prio.option.isSelected()) || (scope.prio.dayOne.value == [0, 0]) || (scope.prio.dayTwo.value == [0, 0]) || (!scope.prio.course.isSelected())) {
@@ -54,10 +55,17 @@
 //    	}
     	
     	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
 //    	scope.prio.option
 //      scope.prio.dayTwo
 //      scope.prio.course
-    	
+//    	scope.prio.ExcludeDayCombinationPrio
     	
     	
     	
@@ -65,18 +73,13 @@
         
     	// TODO: check if some of the inputs are impossible to combine
     		
-    	// scope.prio.ExcludeDayCombinationPrio = [ {
-        //   dayOne: [
-        //     "day", "time"
-        //   ],
-        //   dayTwo: [
-        //     "day", "time"
-        //   ] }
-        // ];
     	
     	
     	
     	// TODO: check for dublication
+    	
+    	
+    	
     	
     	
     	
