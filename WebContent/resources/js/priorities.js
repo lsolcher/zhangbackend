@@ -37,12 +37,12 @@
 	      
 	      // validating selected prios TODO: -> only save prios when validated and okay
 
-	      console.log($rootScope.selectedPriorities.option);
+	      console.log($rootScope.selectedPriorities.option.state());
 	      
 	      
-//      	// TODO: check if prio inputs are empty
-//    	// options are selected? textarea is empty? calendar is Selected (at least min, at most max)
-//  
+      	// TODO: check if prio inputs are empty
+    	// options are selected? textarea is empty? calendar is Selected (at least min, at most max)
+  
 //  	var isSelected = scope.prio.option.isSelected();
 //  	console.log("option selected: " + isSelected);
 //    
@@ -50,49 +50,49 @@
 //  	
 //  	
 //    	         
-////    try {	
-////	    	for (var i in $rootScope.selectedPriorities) {
-////		        if ($rootScope.selectedPriorities[i].type == "FreeTextInput") {
-////		        	freeTextWish.value =="";
-////		        }
-////		        else if ($rootScope.selectedPriorities[i].type == "") {
-////		        	
-////		        }
-////		        else {
-////		        }
-////	    	}
-////    } catch {
-////  	  
-////    }
+//    try {	
+//	    	for (var i in $rootScope.selectedPriorities) {
+//		        if ($rootScope.selectedPriorities[i].type == "FreeTextInput") {
+//		        	freeTextWish.value =="";
+//		        }
+//		        else if ($rootScope.selectedPriorities[i].type == "") {
+//		        	
+//		        }
+//		        else {
+//		        }
+//	    	}
+//    } catch {
+//  	  
+//    }
 //	
 //	  var conent = $rootScope.priority-conent ;
 //    
-////	   !$rootScope.selectedPriorities.option.isSelected()
-////   $rootScope.selectedPriorities.dayOne.value == [0, 0]
-////   $rootScope.selectedPriorities.dayTwo.value == [0, 0] 
-////   !$rootScope.selectedPriorities.course.isSelected()
-//	
-////	   $rootScope.selectedPriorities.ExcludeDayCombinationPrio
-//	    	
-//	    	
-//	    	
-//	    	
-//	        
-//	// TODO: check if some of the inputs are impossible to combine
-//		
-//	
-//	
-//	
-//	// TODO: check for duplication on raumbeschaffenheit & 
-//	    	
-//	    	
-//	    	
-//	    	
-//	    	
-//	    	
-//	// if ( all fine ) { save() } else {print error message to screen}	  
-// 
-	      console.log('Save:', $rootScope.selectedPriorities);
+//	   !$rootScope.selectedPriorities.option.isSelected()
+//   $rootScope.selectedPriorities.dayOne.value == [0, 0]
+//   $rootScope.selectedPriorities.dayTwo.value == [0, 0] 
+//   !$rootScope.selectedPriorities.course.isSelected()
+	
+//	   $rootScope.selectedPriorities.ExcludeDayCombinationPrio
+	    	
+	    	
+	    	
+	    	
+	        
+	// TODO: check if some of the inputs are impossible to combine
+		
+	
+	
+	
+	// TODO: check for duplication on raumbeschaffenheit & 
+
+	      
+	      
+	      
+	      
+
+	      // if ( all fine ) { save() } else {print error message to screen}	  
+
+//	      console.log('Save:', $rootScope.selectedPriorities);
 	      
 	      $.ajax({
 	        type: 'POST',
