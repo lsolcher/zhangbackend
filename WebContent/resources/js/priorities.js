@@ -2,7 +2,7 @@
   var app = angular.module("zhang-app").controller('prioController', function($scope, $rootScope) {
 
 	var numberOfPriosSelected = 0; 
-	var maxNumberOfPriosSelected = 6;
+	var maxNumberOfPriosSelected = 10;
 	
     $scope.selectPrio = function(index, prio) {
     	if (numberOfPriosSelected < maxNumberOfPriosSelected) {
@@ -32,169 +32,154 @@
 
     $rootScope.selectedPriorities = [];
 
-//    $scope.save = function() {
-//	      console.log('Save:', $rootScope.selectedPriorities);
-//	      $.ajax({
-//	        type: 'POST',
-//	        contentType : 'application/json; charset=utf-8',
-//	        url: '/ZhangProjectBackend/post.json',
-//	        data: JSON.stringify($rootScope.selectedPriorities),
-//	        success: function(response) {
-//	          console.log('Response', response);
-//	        },
-//	        error: function(response) {
-//	          console.error('Response', response);
-//	        }
-//	      });
-//    }
-    
-    
-    // validating selected prios TODO: -> only save prios when validated and okay
-	  
-    angular.module("zhang-app").directive('priority', function($rootScope) {
-        return function(scope, element, attrs) {
-          
-        	// TODO: check if prio inputs are empty
-          	// options are selected? textarea is empty? calendar is Selected (at least min, at most max)
-        
-        	var isSelected = scope.prio.option.isSelected();
-        	console.log("option selected: " + isSelected);
-          
-        
-        	
-        	
-          	         
-//          try {	
-//		    	for (var i in $rootScope.selectedPriorities) {
-//			        if ($rootScope.selectedPriorities[i].type == "FreeTextInput") {
-//			        	freeTextWish.value =="";
-//			        }
-//			        else if ($rootScope.selectedPriorities[i].type == "") {
-//			        	
-//			        }
-//			        else {
-//			        }
-//		    	}
-//          } catch {
-//        	  
-//          }
-		
-		  var conent = $rootScope.priority-conent ;
-          
-//		   !scope.prio.option.isSelected()
-//         scope.prio.dayOne.value == [0, 0]
-//         scope.prio.dayTwo.value == [0, 0] 
-//         !scope.prio.course.isSelected()
-		
-//		   scope.prio.ExcludeDayCombinationPrio
-		    	
-		    	
-		    	
-		    	
-		        
-    	// TODO: check if some of the inputs are impossible to combine
-    		
-    	
-    	
-    	
-    	// TODO: check for duplication
-		    	
-		    	
-		    	
-		    	
-		    	
-		    	
-		// if ( all fine ) { save() } else {print error message to screen}	  
-          scope.save = function() {
-              console.log('Save:', $rootScope.selectedPriorities);
-		      $.ajax({
-		        type: 'POST',
-		        contentType : 'application/json; charset=utf-8',
-		        url: '/ZhangProjectBackend/post.json',
-		        data: JSON.stringify($rootScope.selectedPriorities),
-		        success: function(response) {
-		          console.log('Response', response);
-		        },
-		        error: function(response) {
-		          console.error('Response', response);
-		        }
-		      });            
-          }
-        }
-      });
+    $scope.save = function() {
+	      
+	      
+	      // validating selected prios TODO: -> only save prios when validated and okay
+
+	      console.log($rootScope.selectedPriorities.option);
+	      
+	      
+//      	// TODO: check if prio inputs are empty
+//    	// options are selected? textarea is empty? calendar is Selected (at least min, at most max)
+//  
+//  	var isSelected = scope.prio.option.isSelected();
+//  	console.log("option selected: " + isSelected);
+//    
+//  
+//  	
+//  	
+//    	         
+////    try {	
+////	    	for (var i in $rootScope.selectedPriorities) {
+////		        if ($rootScope.selectedPriorities[i].type == "FreeTextInput") {
+////		        	freeTextWish.value =="";
+////		        }
+////		        else if ($rootScope.selectedPriorities[i].type == "") {
+////		        	
+////		        }
+////		        else {
+////		        }
+////	    	}
+////    } catch {
+////  	  
+////    }
+//	
+//	  var conent = $rootScope.priority-conent ;
+//    
+////	   !$rootScope.selectedPriorities.option.isSelected()
+////   $rootScope.selectedPriorities.dayOne.value == [0, 0]
+////   $rootScope.selectedPriorities.dayTwo.value == [0, 0] 
+////   !$rootScope.selectedPriorities.course.isSelected()
+//	
+////	   $rootScope.selectedPriorities.ExcludeDayCombinationPrio
+//	    	
+//	    	
+//	    	
+//	    	
+//	        
+//	// TODO: check if some of the inputs are impossible to combine
+//		
+//	
+//	
+//	
+//	// TODO: check for duplication on raumbeschaffenheit & 
+//	    	
+//	    	
+//	    	
+//	    	
+//	    	
+//	    	
+//	// if ( all fine ) { save() } else {print error message to screen}	  
+// 
+	      console.log('Save:', $rootScope.selectedPriorities);
+	      
+	      $.ajax({
+	        type: 'POST',
+	        contentType : 'application/json; charset=utf-8',
+	        url: '/ZhangProjectBackend/post.json',
+	        data: JSON.stringify($rootScope.selectedPriorities),
+	        success: function(response) {
+	          console.log('Response', response);
+	        },
+	        error: function(response) {
+	          console.error('Response', response);
+	        }    
+	      });
+    }
    
     $scope.possiblePriorities = [
       {
         type: 'SingleChoicePrio',				
         title: 'Raumbeschaffenheit',
         options: ['breite','lange'],
-        text: ['Ich bevorzuge ', ' Räume'],
+        text: ['Ich bevorzuge ', ' Räume'],		// TODO: kursabhängig: mehrfachauswahl <-> kursunabhängige: nur einfachauswahl erlauben // TODO: wenn showSourses == false -> nur 1x auswählbar
         showCourses: true						
       },
       {
-        type: 'SingleChoicePrio',				// TODO: einfach oder mehrfachauswahl?
+        type: 'SingleChoicePrio',				// mehrfachauswahl
         title: 'Unterrichtsbeginn',
         options: ['früher','später'],
         text: ['Innerhalb der von mir angegebenen Belegzeiten bevorzuge ich den Unterrichtsbeginn je', 'desto besser.'],
-        showCourses: true						// TODO: false setzen? - wieso kursabhängig?
+        showCourses: false						
       },
       {
-        type: 'SingleChoicePrio',				// TODO: einfachauswahl
+        type: 'SingleChoicePrio',				// einfachauswahl
         title: 'Anzahl Veranstaltungen pro Tag',
         options: ['mehr Veranstaltungen pro Tag, weniger Tage die Woche','weniger Veranstaltungen pro Tag, mehr Tage die Woche'],
         text: ['Ich bevorzuge ', '.'],
         showCourses: false
       },
       {
-        type: 'SimplePrio',
+        type: 'SimplePrio',						// mehrfachauswahl
         title: 'Wöchentliche Veranstaltungen',
         text: 'Ich ziehe es vor die vierzehntägigen 4SWS meines Unterrichts in zwei wöchentliche Einzelveranstaltungen mit je 2SWS aufzuteilen.',
         showCourses: true
       },
       {
-        type: 'ExcludeDayCombinationPrio',		// TODO: begrenzte auswahl?
+        type: 'ExcludeDayCombinationPrio',		// einfachauswahl
         title: 'Tage ausschließen',
         text: ['Wenn ich am ',' unterrichte, möchte ich nicht am ',' unterrichten.'],
         showCourses: false
       },
       {
-        type: 'ExcludeDayCombinationPrio',		// TODO: begrenzte auswahl?
+        type: 'ExcludeDayCombinationPrio',		// einfachauswahl
         title: 'Uhrzeit ausschließen',
         text: ['Wenn ich am ',' um ',' unterrichte, möchte ich nicht am ',' um ',' unterrichten.'],
-        showCourses: true						// TODO: false setzen? - wieso kursabhängig?
+        showCourses: false					
       },
       {
-        type: 'ExcludeDayCombinationPrio',		// TODO: begrenzte auswahl?
+        type: 'ExcludeDayCombinationPrio',		// einfachauswahl
         title: 'Tage kombinieren',
         text: ['Wenn ich am ',' unterrichte, möchte ich auch am ',' unterrichten.'],
-        showCourses: true						// TODO: false setzen? - wieso kursabhängig?
+        showCourses: false						
       },
       {
-        type: 'SingleChoicePrio',				// TODO: einfachauswahl
+        type: 'SingleChoicePrio',				// einfachauswahl
         title: 'Pausen',
         options: ['1','2','3','4','5'],
         text: ['Ich möchte nach spätestens ',' aufeinanderfolgenden Vorlesungen eine längere Pause. Die Mittagspause zwischen 11:15 und 12:15 wird als längere Pause gezählt.'],
         showCourses: false
       },
       {
-        type: 'SingleChoicePrio',				// TODO: einfachauswahl
+        type: 'SingleChoicePrio',				// einfachauswahl
         title: 'Maximale Lehrtage pro Woche',
         options: ['1','2','3','4','5'],
         text: ['Ich möchte nicht mehr als ', ' Tage pro Woche an der Hochschule unterrichten.'],
         showCourses: false
       },
       {
-        type: 'SingleChoicePrio',				// TODO: einfachauswahl
+        type: 'SingleChoicePrio',				// einfachauswahl
         title: 'Maximale Anzahl aufeinanderfolgender Lehrtage',
         options: ['1','2','3','4','5'],
         text: ['Ich möchte pro Woche nicht mehr als ', ' Tage am Stück unterrichten.'],
         showCourses: false
       },
       {
-        type: 'FreeTextInput',					// TODO: einfachauswahl
+        type: 'FreeTextInput',					// einfachauswahl
         title: 'Weitere Sonderwünsche - wenn dringend notwendig',
         text: 'Ich hätte gerne noch: ',
-        showCourses: true
+        showCourses: false
       }
     ];
   });
