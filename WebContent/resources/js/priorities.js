@@ -6,16 +6,19 @@
 	
     $scope.selectPrio = function(index, prio) {
     	if (numberOfPriosSelected < maxNumberOfPriosSelected) {
-    		for(var i in $rootScope.selectedPriorities) {
-    	        $rootScope.selectedPriorities[i].hideContent = true;
-    	    }
-    	    var newPrio = jQuery.extend(true, {}, prio);
-    	    newPrio.origin = index;
-    	    $rootScope.selectedPriorities.unshift(newPrio);  
-    	    numberOfPriosSelected++;
+    		// TODO:  if prios.showCourses == false -> nur einmal auswählbar machen (herausbekommen. ob schonmal hinzugefügt)
+//    		if ($rootScope.selectedPriorities.FreeTextInput == ) {
+	    		for(var i in $rootScope.selectedPriorities) {
+	    	        $rootScope.selectedPriorities[i].hideContent = true;
+	    	    }
+	    	    var newPrio = jQuery.extend(true, {}, prio);
+	    	    newPrio.origin = index;
+	    	    $rootScope.selectedPriorities.unshift(newPrio);  
+	    	    numberOfPriosSelected++;
+//    		}    
     	} 
     	else {
-    		// TODO: print error massage on screen "You can only select 6 wishes"
+    		// TODO: print error massage on screen "You can only select 10 wishes"
     	}
     }
 
@@ -35,46 +38,37 @@
     $scope.save = function() {
 	      
 	      
-	      // validating selected prios TODO: -> only save prios when validated and okay
-
-	      console.log($rootScope.selectedPriorities.option.state());
-	      
-	      
+	    // validating selected prios TODO: -> only save prios when validated and okay
+ 
       	// TODO: check if prio inputs are empty
-    	// options are selected? textarea is empty? calendar is Selected (at least min, at most max)
+    	// TODO: options are not selected? 
   
-//  	var isSelected = scope.prio.option.isSelected();
-//  	console.log("option selected: " + isSelected);
-//    
-//  
-//  	
-//  	
-//    	         
-//    try {	
-//	    	for (var i in $rootScope.selectedPriorities) {
-//		        if ($rootScope.selectedPriorities[i].type == "FreeTextInput") {
-//		        	freeTextWish.value =="";
-//		        }
-//		        else if ($rootScope.selectedPriorities[i].type == "") {
-//		        	
-//		        }
-//		        else {
-//		        }
-//	    	}
-//    } catch {
-//  	  
-//    }
+
+//		var selectElementsValue = ($rootScope.selectedPriorities.select.options[0].value);
+//      console.log(selectElementsValue);
+    	
+    	// TODO: textarea is empty? 
+//      console.log($rootScope.selectedPriorities.FreeTextInput.value);
+     
+    
+//      scope.prio.select;
+  
+  	
+  	
+    	         
+//    try {	} catch { }
 //	
 //	  var conent = $rootScope.priority-conent ;
 //    
-//	   !$rootScope.selectedPriorities.option.isSelected()
+//	   !$rootScope.selectedPriorities.option //.value // .select - not working
+    	
 //   $rootScope.selectedPriorities.dayOne.value == [0, 0]
 //   $rootScope.selectedPriorities.dayTwo.value == [0, 0] 
 //   !$rootScope.selectedPriorities.course.isSelected()
 	
 //	   $rootScope.selectedPriorities.ExcludeDayCombinationPrio
 	    	
-	    	
+    // TODO: calendar is Selected (at least min, at most max) ?
 	    	
 	    	
 	        
@@ -83,7 +77,7 @@
 	
 	
 	
-	// TODO: check for duplication on raumbeschaffenheit & 
+	// TODO: check for duplication on raumbeschaffenheit & 2sws wöchentlich
 
 	      
 	      
