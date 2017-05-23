@@ -62,7 +62,19 @@
 	    			noEmptyInputElements = false; //console.log("text area is empty");
 	    	}
 	   	    // TODO: check if options are not selected
-	    	console.log("option: " + $rootScope.selectedPriorities[i].option.value); //options[0].value
+//	    	console.log("option: " + $rootScope.selectedPriorities[i].option.value); 
+	    	
+//	   	 	$("select")				// get all selects
+//	   	    if($("select").val()){	// any option selected?
+	    	var selects = document.getElementsByTagName('select');
+
+			for(var i = 0; i < selects.length; i++) {
+				if (selects[i].value == "? undefined:undefined ?") {
+					noEmptyInputElements = false;
+			    }
+			}
+	    	
+	    	
 	    		// else noEmptyInputElements = false;
 	    	
 //  	  	var conent = $rootScope.priority-conent ;
