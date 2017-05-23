@@ -3,11 +3,21 @@
 
 	var numberOfPriosSelected = 0; 
 	var maxNumberOfPriosSelected = 10;
+	var alreadySeletedPrio = false;
+//	var alreadySeletedPrioTextfield = false;
 	
     $scope.selectPrio = function(index, prio) {
-    	if (numberOfPriosSelected < maxNumberOfPriosSelected) {
-    		// TODO:  if prios.showCourses == false -> nur einmal auswählbar machen (herausbekommen. ob schonmal hinzugefügt)
-//    		if ($rootScope.selectedPriorities.FreeTextInput == ) {
+    	// TODO: check all the priorities for validating issues
+//    	for(var i in $rootScope.selectedPriorities) {
+	    
+    	// TODO: herausbekommen ob schonmal hinzugefügt
+    	// TODO: when showSourses == false -> nur 1x auswählbar
+//   	    if (($rootScope.selectedPriorities[i].showCourses == true) || ((showCourses == false) && (not selected before)))
+//   	    	
+//   	    }
+//	    }
+    	if ((numberOfPriosSelected < maxNumberOfPriosSelected) && (!alreadySeletedPrio)) {
+    		
 	    		for(var i in $rootScope.selectedPriorities) {
 	    	        $rootScope.selectedPriorities[i].hideContent = true;
 	    	    }
@@ -37,55 +47,59 @@
 
     $scope.save = function() {
 	      
-	      
-	    // validating selected prios TODO: -> only save prios when validated and okay
+	    // validating selected prios -> TODO: only save prios when validated and okay
  
-      	// TODO: check if prio inputs are empty
-    	// TODO: options are not selected? 
-  
-
-//		var selectElementsValue = ($rootScope.selectedPriorities.select.options[0].value);
-//      console.log(selectElementsValue);
+    	var noEmptyInputElements = true;
+    	var noImpossibleCombinations = true;
+    	var noDublication = true;
+    	var calendarIsNotEmpty = true;
     	
-    	// TODO: textarea is empty? 
-//      console.log($rootScope.selectedPriorities.FreeTextInput.value);
-     
+    	for(var i in $rootScope.selectedPriorities) {
+    		
+	    	// check if prio inputs are empty
+	   	    if ($rootScope.selectedPriorities[i].type == "FreeTextInput") {
+	    		if (document.getElementById("freeTextWish").value == "") 
+	    			noEmptyInputElements = false; //console.log("text area is empty");
+	    	}
+	   	    // TODO: check if options are not selected
+	    	console.log("option: " + $rootScope.selectedPriorities[i].option.value); //options[0].value
+	    		// else noEmptyInputElements = false;
+	    	
+//  	  	var conent = $rootScope.priority-conent ;
+//	  	   !$rootScope.selectedPriorities.option //.value // .select - not working
+//	   		$rootScope.selectedPriorities.dayOne.value == [0, 0]
+//	   		$rootScope.selectedPriorities.dayTwo.value == [0, 0] 
+//	     	!$rootScope.selectedPriorities.course.isSelected()
+	    	
+	    	
+	    	
+	    	
+	    	// TODO: check if some of the inputs are impossible to combine
+	    		// else noImpossibleCombinations = false
+	    	
+	    	
+	    	
+	    	// TODO: check for duplication on raumbeschaffenheit & 2sws wöchentlich
+	   	    	// else noDublication = false;
+	    	    
+    	}
+
+    	// TODO: check if calendar is Selected (at least min, at most max) ?
+    			// else calendarIsNotEmpty = false;
+    	
+        	
     
-//      scope.prio.select;
-  
-  	
-  	
-    	         
-//    try {	} catch { }
-//	
-//	  var conent = $rootScope.priority-conent ;
-//    
-//	   !$rootScope.selectedPriorities.option //.value // .select - not working
-    	
-//   $rootScope.selectedPriorities.dayOne.value == [0, 0]
-//   $rootScope.selectedPriorities.dayTwo.value == [0, 0] 
-//   !$rootScope.selectedPriorities.course.isSelected()
-	
-//	   $rootScope.selectedPriorities.ExcludeDayCombinationPrio
-	    	
-    // TODO: calendar is Selected (at least min, at most max) ?
-	    	
-	    	
-	        
-	// TODO: check if some of the inputs are impossible to combine
-		
-	
-	
-	
-	// TODO: check for duplication on raumbeschaffenheit & 2sws wöchentlich
 
 	      
-	      
+        
+//      try {	} catch { }
+//  	$rootScope.selectedPriorities.ExcludeDayCombinationPrio
 	      
 	      
 
-	      // if ( all fine ) { save() } else {print error message to screen}	  
-
+	    // if all fine -> save	  
+    	if (noEmptyInputElements && noImpossibleCombinations && noDublication && calendarIsNotEmpty) {
+    		
 //	      console.log('Save:', $rootScope.selectedPriorities);
 	      
 	      $.ajax({
@@ -100,6 +114,10 @@
 	          console.error('Response', response);
 	        }    
 	      });
+    	}
+    	else {
+    		// TODO: error message telling the user what needs to be changed - like "please check that  you choose any of the options..."
+    	}
     }
    
     $scope.possiblePriorities = [
@@ -107,11 +125,11 @@
         type: 'SingleChoicePrio',				
         title: 'Raumbeschaffenheit',
         options: ['breite','lange'],
-        text: ['Ich bevorzuge ', ' Räume'],		// TODO: kursabhängig: mehrfachauswahl <-> kursunabhängige: nur einfachauswahl erlauben // TODO: wenn showSourses == false -> nur 1x auswählbar
+        text: ['Ich bevorzuge ', ' Räume'],		// mehrfachauswahl - kursabhängig <-> kursunabhängige: nur einfachauswahl erlauben 
         showCourses: true						
       },
       {
-        type: 'SingleChoicePrio',				// mehrfachauswahl
+        type: 'SingleChoicePrio',				// einfachauswahl
         title: 'Unterrichtsbeginn',
         options: ['früher','später'],
         text: ['Innerhalb der von mir angegebenen Belegzeiten bevorzuge ich den Unterrichtsbeginn je', 'desto besser.'],
