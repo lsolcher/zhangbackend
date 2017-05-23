@@ -3,33 +3,35 @@
 
 	var numberOfPriosSelected = 0; 
 	var maxNumberOfPriosSelected = 10;
-	var alreadySeletedPrio = false;
-	var notSelectedBefore = true
+	
+	var notSelectedBefore = true;
 	
     $scope.selectPrio = function(index, prio) {
     	// TODO: check all the priorities for validating issues
-//    	for(var i in $rootScope.selectedPriorities) {
-	    
-    	// TODO: herausbekommen ob schonmal hinzugefügt
-    	// TODO: when showSourses == false -> nur 1x auswählbar
-//   	    if (($rootScope.selectedPriorities[i].showCourses == true) || ((showCourses == false) && (notSelectedBefore)))
-//   	    	
-//   	    }
-//	    }
-    	if ((numberOfPriosSelected < maxNumberOfPriosSelected) && (notSelectedBefore)) {
-    		
-	    		for(var i in $rootScope.selectedPriorities) {
-	    	        $rootScope.selectedPriorities[i].hideContent = true;
-	    	        
-//	    	        TODO: selectedPriorities[i].title -> notSelectedBefore[prio] = false
-	    	    }
-	    	    var newPrio = jQuery.extend(true, {}, prio);
-	    	    newPrio.origin = index;
-	    	    $rootScope.selectedPriorities.unshift(newPrio);  
-	    	    numberOfPriosSelected++;
-	    	    
-	    	    
-    	} 
+    	
+    	notSelectedBefore = true;
+    	
+    	// check if priority was added already
+		for (var i in $rootScope.selectedPriorities) {
+			if (prio.title == $rootScope.selectedPriorities[i].title) {
+				notSelectedBefore = false;
+			}
+		}
+		// TODO: if showSourses == false -> nur 1x auswählbar
+	  
+//		if ((numberOfPriosSelected < maxNumberOfPriosSelected) && (notSelectedBefore)) {
+		
+    	for(var i in $rootScope.selectedPriorities) {
+    		$rootScope.selectedPriorities[i].hideContent = true;
+//	    	TODO: selectedPriorities[i].title -> notSelectedBefore[prio] = false
+	    }
+
+    	var newPrio = jQuery.extend(true, {}, prio);
+	    newPrio.origin = index;
+	    if ((numberOfPriosSelected < maxNumberOfPriosSelected) && ((newPrio.showCourses == true) || ((newPrio.showCourses == false) && (notSelectedBefore)))) {
+			$rootScope.selectedPriorities.unshift(newPrio);  
+	    	numberOfPriosSelected++;
+	    } 
     	else {
     		// TODO: print error massage on screen "You can only select 10 wishes"
     	}
@@ -47,6 +49,8 @@
     }
 
     $rootScope.selectedPriorities = [];
+//    $rootScope.alreadySelectedPriorities = [];	//TODO
+//    $rootScope.acceptedPriorities = [];			//TODO
 
     $scope.save = function() {
 	      
@@ -83,14 +87,19 @@
 //	   		$rootScope.selectedPriorities[i].dayTwo.value == [0, 0] 
 //	     	!$rootScope.selectedPriorities[i].course.isSelected()
 			
-			// TODO: check for duplication on raumbeschaffenheit & 2sws wöchentlich
+			// TODO: check for duplication on 'Raumbeschaffenheit' & 'Wöchentliche Veranstaltung'
 			if ($rootScope.selectedPriorities[i].title == "Raumbeschaffenheit") {
-				document.querySelectorAll('select')
-				// TODO: check if same option was selected
+				// TODO check all selected options in ($rootScope.selectedPriorities[i].title == "Raumbeschaffenheit") and make sure there not the same
+//				document.querySelectorAll('select')... 
+				// TODO: check if same option was selected (for all courses)
+				// 0 - 0 in same course
+				// 1 - 1 in same course
 			}
 			
 			if ($rootScope.selectedPriorities[i].title == "Wöchentliche Veranstaltungen") {
-				
+				// 0 - 0 -> same course
+				// 1 - 1 
+				// ... (number of courses)
 			}
 				// else noDublication = false;
 			
@@ -110,7 +119,7 @@
 //    	var calendarInput = document.getElementsByClass('calendar-input'); //$('.option-choice a')
 //
 //		for(var i = 0; i < calendarInput.length; i++) { 
-//			if (calendarInput[i].value ) {	// TODO: if all calendarInput[i] has the prio 1 -> no (other) prio selected
+//			if (calendarInput[i].value ) {	// TODO: if all calendarInput[i]:prio has the prio=="1" -> no (other) prio selected
 //				calendarIsNotEmpty = false;
 //		    }
 //		}
@@ -124,13 +133,13 @@
 	    // if all fine -> save	  
     	if (noEmptyInputElements && noImpossibleCombinations && noDublication && calendarIsNotEmpty) {
     		
-//	      console.log('Save:', $rootScope.selectedPriorities);
+//	      console.log('Save:', $rootScope.selectedPriorities);	// TODO: change to acceptedPriorities
 	      
 	      $.ajax({
 	        type: 'POST',
 	        contentType : 'application/json; charset=utf-8',
 	        url: '/ZhangProjectBackend/post.json',
-	        data: JSON.stringify($rootScope.selectedPriorities),
+	        data: JSON.stringify($rootScope.selectedPriorities),	// TODO: change to acceptedPriorities
 	        success: function(response) {
 	          console.log('Response', response);
 	        },
