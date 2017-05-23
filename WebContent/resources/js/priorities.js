@@ -110,7 +110,7 @@
 //    	var calendarInput = document.getElementsByClass('calendar-input'); //$('.option-choice a')
 //
 //		for(var i = 0; i < calendarInput.length; i++) { 
-//			if (calendarInput[i].value ) {	//if ($('.option-choice a')) has the class active
+//			if (calendarInput[i].value ) {	// TODO: if all calendarInput[i] has the prio 1 -> no (other) prio selected
 //				calendarIsNotEmpty = false;
 //		    }
 //		}
