@@ -4,7 +4,7 @@
 	var numberOfPriosSelected = 0; 
 	var maxNumberOfPriosSelected = 10;
 	var alreadySeletedPrio = false;
-//	var alreadySeletedPrioTextfield = false;
+	var notSelectedBefore = true
 	
     $scope.selectPrio = function(index, prio) {
     	// TODO: check all the priorities for validating issues
@@ -12,20 +12,23 @@
 	    
     	// TODO: herausbekommen ob schonmal hinzugefügt
     	// TODO: when showSourses == false -> nur 1x auswählbar
-//   	    if (($rootScope.selectedPriorities[i].showCourses == true) || ((showCourses == false) && (not selected before)))
+//   	    if (($rootScope.selectedPriorities[i].showCourses == true) || ((showCourses == false) && (notSelectedBefore)))
 //   	    	
 //   	    }
 //	    }
-    	if ((numberOfPriosSelected < maxNumberOfPriosSelected) && (!alreadySeletedPrio)) {
+    	if ((numberOfPriosSelected < maxNumberOfPriosSelected) && (notSelectedBefore)) {
     		
 	    		for(var i in $rootScope.selectedPriorities) {
 	    	        $rootScope.selectedPriorities[i].hideContent = true;
+	    	        
+//	    	        TODO: selectedPriorities[i].title -> notSelectedBefore[prio] = false
 	    	    }
 	    	    var newPrio = jQuery.extend(true, {}, prio);
 	    	    newPrio.origin = index;
 	    	    $rootScope.selectedPriorities.unshift(newPrio);  
 	    	    numberOfPriosSelected++;
-//    		}    
+	    	    
+	    	    
     	} 
     	else {
     		// TODO: print error massage on screen "You can only select 10 wishes"
@@ -54,54 +57,63 @@
     	var noDublication = true;
     	var calendarIsNotEmpty = true;
     	
-    	for(var i in $rootScope.selectedPriorities) {
+    	for (var i in $rootScope.selectedPriorities) {
     		
 	    	// check if prio inputs are empty
 	   	    if ($rootScope.selectedPriorities[i].type == "FreeTextInput") {
 	    		if (document.getElementById("freeTextWish").value == "") 
 	    			noEmptyInputElements = false; //console.log("text area is empty");
 	    	}
-	   	    // TODO: check if options are not selected
-//	    	console.log("option: " + $rootScope.selectedPriorities[i].option.value); 
+	   	    // check if any selects are not selected	
+	   	    // TODO: improve -> make it more specific
+//	    	console.log("option: " + $rootScope.selectedPriorities[i].option.value); // -> undefined
 	    	
 //	   	 	$("select")				// get all selects
+//	   	 	document.querySelectorAll('select')
 //	   	    if($("select").val()){	// any option selected?
 	    	var selects = document.getElementsByTagName('select');
 
-			for(var i = 0; i < selects.length; i++) {
+			for (var i = 0; i < selects.length; i++) {
 				if (selects[i].value == "? undefined:undefined ?") {
 					noEmptyInputElements = false;
 			    }
 			}
-	    	
-	    	
-	    		// else noEmptyInputElements = false;
-	    	
-//  	  	var conent = $rootScope.priority-conent ;
-//	  	   !$rootScope.selectedPriorities.option //.value // .select - not working
-//	   		$rootScope.selectedPriorities.dayOne.value == [0, 0]
-//	   		$rootScope.selectedPriorities.dayTwo.value == [0, 0] 
-//	     	!$rootScope.selectedPriorities.course.isSelected()
-	    	
-	    	
+//		  	!$rootScope.selectedPriorities[i].option //.value // .select - not working
+//	   		$rootScope.selectedPriorities[i].dayOne.value == [0, 0]
+//	   		$rootScope.selectedPriorities[i].dayTwo.value == [0, 0] 
+//	     	!$rootScope.selectedPriorities[i].course.isSelected()
+			
+			// TODO: check for duplication on raumbeschaffenheit & 2sws wöchentlich
+			if ($rootScope.selectedPriorities[i].title == "Raumbeschaffenheit") {
+				document.querySelectorAll('select')
+				// TODO: check if same option was selected
+			}
+			
+			if ($rootScope.selectedPriorities[i].title == "Wöchentliche Veranstaltungen") {
+				
+			}
+				// else noDublication = false;
+			
 	    	
 	    	
 	    	// TODO: check if some of the inputs are impossible to combine
-	    		// else noImpossibleCombinations = false
+//			console.log("option: " + $rootScope.selectedPriorities[i].option.value); 
+				// else noImpossibleCombinations = false
 	    	
 	    	
 	    	
-	    	// TODO: check for duplication on raumbeschaffenheit & 2sws wöchentlich
-	   	    	// else noDublication = false;
+	    	
 	    	    
     	}
 
-    	// TODO: check if calendar is Selected (at least min, at most max) ?
-    			// else calendarIsNotEmpty = false;
-    	
-        	
-    
-
+    	// TODO: check if calendar is Selected (any, at least min, at most max) ?
+//    	var calendarInput = document.getElementsByClass('calendar-input'); //$('.option-choice a')
+//
+//		for(var i = 0; i < calendarInput.length; i++) { 
+//			if (calendarInput[i].value ) {	//if ($('.option-choice a')) has the class active
+//				calendarIsNotEmpty = false;
+//		    }
+//		}
 	      
         
 //      try {	} catch { }
