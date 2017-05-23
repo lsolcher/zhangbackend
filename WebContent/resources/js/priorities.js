@@ -4,12 +4,21 @@
 	var numberOfPriosSelected = 0; 
 	var maxNumberOfPriosSelected = 10;
 	
+	var numberOfSelectedRooms = 0;
+	var numberOfSelectedWeeklyLections = 0;
+	
 	var notSelectedBefore = true;
 	
+	var courseNumber = 0;
+		
     $scope.selectPrio = function(index, prio) {
     	// TODO: check all the priorities for validating issues
     	
     	notSelectedBefore = true;
+    	
+    	courseNumber = localStorage.getItem("courselist");
+    	console.log("kurse: " + courseNumber);	// $scope.selectedList , $rootScope.courseList.length
+    	
     	
     	// check if priority was added already
 		for (var i in $rootScope.selectedPriorities) {
@@ -17,20 +26,25 @@
 				notSelectedBefore = false;
 			}
 		}
-		// TODO: if showSourses == false -> nur 1x auswählbar
-	  
-//		if ((numberOfPriosSelected < maxNumberOfPriosSelected) && (notSelectedBefore)) {
 		
     	for(var i in $rootScope.selectedPriorities) {
     		$rootScope.selectedPriorities[i].hideContent = true;
 //	    	TODO: selectedPriorities[i].title -> notSelectedBefore[prio] = false
 	    }
 
+    	
     	var newPrio = jQuery.extend(true, {}, prio);
 	    newPrio.origin = index;
-	    if ((numberOfPriosSelected < maxNumberOfPriosSelected) && ((newPrio.showCourses == true) || ((newPrio.showCourses == false) && (notSelectedBefore)))) {
+	    if ((numberOfPriosSelected < maxNumberOfPriosSelected) 
+	    	&& (((newPrio.showCourses == true) && (numberOfSelectedRooms < 3) && (numberOfSelectedWeeklyLections < 3))	// TODO: replace 3 with courseNumber	// if showCourses == true -> nur (courseNumber)x auswählbar
+//	    	&& (((newPrio.showCourses == true) && (numberOfSelectedRooms < courseNumber) && (numberOfSelectedWeeklyLections < courseNumber))
+	    	|| ((newPrio.showCourses == false) && (notSelectedBefore)))) {	// if showCourses == false -> nur 1x auswählbar
+	  	  
+	    	
 			$rootScope.selectedPriorities.unshift(newPrio);  
 	    	numberOfPriosSelected++;
+	    	if (newPrio.title == "Raumbeschaffenheit") numberOfSelectedRooms++;
+	    	else if (newPrio.title == "Wöchentliche Veranstaltungen") numberOfSelectedWeeklyLections++;
 	    } 
     	else {
     		// TODO: print error massage on screen "You can only select 10 wishes"
