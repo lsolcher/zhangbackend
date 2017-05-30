@@ -13,9 +13,9 @@ public class PrioPersistence {
 	private BigInteger id = new BigInteger("0");
 
 	public void create(final Prio prio) {
-		((Prio) prios).setId(id);
+		//((Prio) prios).setId(id);
 		prios.put(id, prio);
-		id.add(new BigInteger("1"));
+		id = id.add(new BigInteger("1"));
 	}
 
 	public Collection<Prio> list() {
@@ -43,14 +43,14 @@ public class PrioPersistence {
 		}
 		return success;
 	}
-	
+
 	// create (maybe) useful prios for testing
-	public void generateMockData(Collection<Teacher> teachers){
-		for (Teacher teacher : teachers) {			
-				for (int i = 0; i < 2; i++) {
-					Prio prio = new Prio("prio_"+teacher.getName(), teacher, teacher.getCourses());
-					create(prio);
-				}
+	public void generateMockData(Collection<Teacher> teachers) {
+		for (Teacher teacher : teachers) {
+			for (int i = 0; i < 2; i++) {
+				Prio prio = new Prio("prio_" + teacher.getName(), teacher, teacher.getCourses());
+				create(prio);
+			}
 		}
 	}
 }

@@ -10,7 +10,8 @@ public class ProgramPersistence {
 	private BigInteger id = new BigInteger("0");
 
 	public void create(final Program room) {
-		((Prio) programs).setId(id);
+		//programs.
+		//((Program) programs).setId(id);
 		programs.put(id, room);
 		id.add(new BigInteger("1"));
 	}
@@ -40,13 +41,13 @@ public class ProgramPersistence {
 		}
 		return success;
 	}
-	
+
 	// create usefull Program Testdata
 	public void generateMockData() {
 		Program p1 = new Program();
 		p1.setName("Imibach");
 		create(p1);
-		
+
 		Program p2 = new Program();
 		p2.setName("Imimaster");
 		create(p2);

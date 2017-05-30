@@ -16,14 +16,14 @@ public class SlotsPersistence {
 
 	public void generate(int noOfSlots, Collection<Room> rooms) {
 		for (Room room : rooms) {
-			for(int i=0; i<noOfSlots; i++){
+			for (int i = 0; i < noOfSlots; i++) {
 				Slot slot = new Slot();
 				slot.setId(id);
 				slot.setRoom(room);
-				slot.setDay(i/7); //assigns weekdays
-				((Slot) slots).setId(id);
+				slot.setDay(i / 7); //assigns weekdays
+				//((Slot) slots).setId(id);
 				slots.put(id, slot);
-				id.add(new BigInteger("1"));
+				id = id.add(new BigInteger("1"));
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 package de.teamzhang.model;
 
-import java.awt.List;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.data.annotation.Id;
@@ -20,12 +20,12 @@ public class Prio {
 	protected boolean isValidForAllCourses;
 	private String text;
 	protected Teacher teacher;
-	protected Collection<Course> courses = (Collection<Course>) new List(1);
+	protected Collection<Course> courses = (Collection<Course>) new ArrayList(1);
 
 	public Prio(String string, Teacher teacher, Collection<Course> courses) {
 		this.name = string;
 		this.teacher = teacher;
-		this.courses=courses;
+		this.courses = courses;
 	}
 
 	public Prio() {

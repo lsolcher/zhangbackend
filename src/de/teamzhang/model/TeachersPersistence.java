@@ -11,9 +11,9 @@ public class TeachersPersistence {
 	private BigInteger id = new BigInteger("0");
 
 	public void create(final Teacher teacher) {
-		((Prio) teachers).setId(id);
+		//((Prio) teachers).setId(id);
 		teachers.put(id, teacher);
-		id.add(new BigInteger("1"));
+		id = id.add(new BigInteger("1"));
 	}
 
 	public Collection<Teacher> list() {
@@ -41,13 +41,13 @@ public class TeachersPersistence {
 		}
 		return success;
 	}
-	
+
 	// create useful teacher for learning
 	public void generateMockData() {
 		for (int i = 0; i < 4; i++) {
 			Teacher t1 = new Teacher();
-			t1.setName("Teacher"+i);
-			create(t1);	
+			t1.setName("Teacher" + i);
+			create(t1);
 		}
 	}
 }

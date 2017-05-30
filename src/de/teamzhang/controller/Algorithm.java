@@ -8,18 +8,22 @@ import de.teamzhang.model.SlotsPersistence;
 import de.teamzhang.model.TeachersPersistence;
 
 public class Algorithm {
-	
+
 	// temporary holding the model
 	// TODO: replace with real models
-	private static CoursesPersistence 	courses = new CoursesPersistence();;
-	private static PrioPersistence 		prios = new PrioPersistence();
-	private static ProgramPersistence 	programs = new ProgramPersistence();
-	private static RoomPersistence 		rooms = new RoomPersistence();
-	private static SlotsPersistence 	slots = new SlotsPersistence();
-	private static TeachersPersistence 	teachers = new TeachersPersistence();
+	private static CoursesPersistence courses = new CoursesPersistence();;
+	private static PrioPersistence prios = new PrioPersistence();
+	private static ProgramPersistence programs = new ProgramPersistence();
+	private static RoomPersistence rooms = new RoomPersistence();
+	private static SlotsPersistence slots = new SlotsPersistence();
+	private static TeachersPersistence teachers = new TeachersPersistence();
 
-	private static int  optimalThreshold = 0;
-	
+	private static int optimalThreshold = 0;
+
+	public static void main(String[] args) {
+		generateMockData();
+	}
+
 	// 1. generate some testdata
 	private static void generateMockData() {
 		programs.generateMockData();
@@ -28,13 +32,12 @@ public class Algorithm {
 		slots.generate(35, rooms.list());
 		prios.generateMockData(teachers.list());
 		courses.generateMockData(programs.list(), teachers.list());
-		
+
 		// Calculate based on the above slots
 		// alle slots vergeben pro Tag x Tagen
 		optimalThreshold = 700;
 	}
-	
-	
+
 	// 2. function to generate a simple Ur-Plan
 	private static void generateUrPlan() {
 		// iterate slots
@@ -44,7 +47,7 @@ public class Algorithm {
 		//					find a matching combination
 		// should come up with VALID stupid plan
 	}
-	
+
 	// helper to get current for comparing and
 	// getting closer to the optimum
 	private static int calculateCurrentThresholdValue() {
@@ -53,7 +56,7 @@ public class Algorithm {
 		// multiply with days
 		return 7;
 	}
-	
+
 	// 3. iterate plan and try to optimize per Teacher
 	private static void climbHillWithTeachers() {
 		// random pick and change slots
@@ -63,15 +66,14 @@ public class Algorithm {
 		// do XXX Times
 		// break condition?
 	}
-	
+
 	// 4. iterate plan and try to optimize per Programs
 	private static void climbHillWithPrograms() {
 		// same as in climbHillWithTeachers
 	}
-	
-	
+
 	public static void generatePlan() {
 		// use and run above functions
 	}
-	
+
 }
