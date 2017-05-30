@@ -15,8 +15,16 @@ public class Teacher {
 	private ArrayList<Course> courses = new ArrayList<Course>(1);
 	private int[][] weightedDayTimeWishes = new int[5][35];
 	private boolean[][] fullSlots = new boolean[5][35];
+	private int teachingHours;
 
 	public Teacher() {
+	}
+
+	public boolean isBusy() {
+		if (teachingHours >= 6)
+			return true;
+		else
+			return false;
 	}
 
 	public boolean[][] getFullSlots() {
@@ -24,6 +32,7 @@ public class Teacher {
 	}
 
 	public void setFullSlot(int day, int time) {
+		teachingHours++;
 		fullSlots[day][time] = true;
 	}
 
@@ -73,5 +82,6 @@ public class Teacher {
 
 	public void resetSchedule() {
 		fullSlots = new boolean[5][35];
+		teachingHours = 0;
 	}
 }

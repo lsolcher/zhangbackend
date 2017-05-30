@@ -24,6 +24,8 @@ public class Algorithm {
 	private static SlotsPersistence slots = new SlotsPersistence();
 	private static TeachersPersistence teachers = new TeachersPersistence();
 
+	private static Random r = new Random();
+
 	private static int optimalThreshold = 0;
 
 	public static void main(String[] args) {
@@ -64,7 +66,6 @@ public class Algorithm {
 		}
 
 		//TODO: stundenten miteinberechnen?
-
 		//TODO: stundenpläne verbessern - bewerten und neu berechnen
 		//TODO: stundenpläne darstellen
 
@@ -96,9 +97,8 @@ public class Algorithm {
 
 	private static void weightSingleSchedule(Teacher t) {
 		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
-		//0 = auf keinen fall
-		//3 = top
-		Random r = new Random();
+		//3 = auf keinen fall
+		//0 = top
 		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
 				weightedDayTimeWishes[days][time] = r.nextInt(4);
@@ -120,13 +120,12 @@ public class Algorithm {
 	}
 
 	private static void calculateRandomSchedule() {
-		Random r = new Random();
 		//for (Program p : programs.getPrograms().values()) {
 		for (Slot s : slots.getSlots().values()) {
 			Object[] values = teachers.getTeachers().values().toArray();
 			Teacher randomTeacher = (Teacher) values[r.nextInt(values.length)];
 			//TODO: exit condition if all teachers are busy at that time
-			while (randomTeacher.getFullSlots()[s.getDay()][s.getTime()] == true) {
+			while (randomTeacher.getFullSlots()[s.getDay()][s.getTime()] == true && !randomTeacher.isBusy()) {
 				randomTeacher = (Teacher) values[r.nextInt(values.length)];
 			}
 			randomTeacher.setFullSlot(s.getDay(), s.getTime());

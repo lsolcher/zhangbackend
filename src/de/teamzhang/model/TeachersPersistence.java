@@ -11,6 +11,7 @@ public class TeachersPersistence {
 	private final Map<BigInteger, Teacher> teachers = new LinkedHashMap<BigInteger, Teacher>();
 	private BigInteger id = new BigInteger("0");
 	private Schedule schedule;
+	private Random r = new Random();
 
 	public Schedule getSchedule() {
 		return schedule;
@@ -66,7 +67,6 @@ public class TeachersPersistence {
 
 	// create useful teacher for learning
 	public void generateMockData() {
-		Random r = new Random();
 		for (int i = 0; i < 10; i++) {
 			Teacher t1 = new Teacher();
 			t1.setName("Teacher" + i);
