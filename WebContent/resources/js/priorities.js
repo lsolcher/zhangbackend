@@ -16,9 +16,7 @@
     	
     	notSelectedBefore = true;
     	
-    	courseNumber = localStorage.getItem("courselist");
-    	console.log("kurse: " + courseNumber);	// $scope.selectedList , $rootScope.courseList.length
-    	
+    	console.log("kurse: " + (localStorage.getItem("courselistlength")));
     	
     	// check if priority was added already
 		for (var i in $rootScope.selectedPriorities) {
