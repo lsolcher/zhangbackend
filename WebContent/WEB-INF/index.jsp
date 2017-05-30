@@ -43,7 +43,7 @@
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
             			<li>
-							<a href="#sec" id="add-course"> </a>
+							<a href="calendar.html">zur Eingabe der Lehrkraftwünsche</a>
 						</li>
 					</ul>
 				</nav>
@@ -51,7 +51,12 @@
 	</header>
   	<div class="row">
 		<div class="main group">
-
+			<h2>Willkommen beim Tool zur automatischen Lehreinsatzplanung!</h1>
+			
+			<p>Sie haben hier die Möglichkeit dieses und solches und jenes zu tun. ... Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			
+			<button>Administratorseite</button>
+			<button>Eingabe der Wünsche der Lehrkräfte</button>
 		</div>
     </div>
   </body>
