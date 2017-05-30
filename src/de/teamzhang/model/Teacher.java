@@ -14,8 +14,21 @@ public class Teacher {
 	private boolean isProf;
 	private ArrayList<Course> courses = new ArrayList<Course>(1);
 	private int[][] weightedDayTimeWishes = new int[5][35];
+	private boolean[][] fullSlots = new boolean[5][35];
 
-	public void Teacher() {
+	public Teacher() {
+	}
+
+	public boolean[][] getFullSlots() {
+		return fullSlots;
+	}
+
+	public void setFullSlot(int day, int time) {
+		fullSlots[day][time] = true;
+	}
+
+	public void setFreeSlot(int day, int time) {
+		fullSlots[day][time] = false;
 	}
 
 	public boolean isProf() {
@@ -56,5 +69,9 @@ public class Teacher {
 
 	public void setCourses(ArrayList<Course> courses) {
 		this.courses = courses;
+	}
+
+	public void resetSchedule() {
+		fullSlots = new boolean[5][35];
 	}
 }

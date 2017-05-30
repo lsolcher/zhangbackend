@@ -6,7 +6,6 @@ import java.util.Random;
 
 import de.teamzhang.model.CoursesPersistence;
 import de.teamzhang.model.PrioPersistence;
-import de.teamzhang.model.Program;
 import de.teamzhang.model.ProgramPersistence;
 import de.teamzhang.model.RoomPersistence;
 import de.teamzhang.model.Slot;
@@ -36,7 +35,7 @@ public class Algorithm {
 		programs.generateMockData();
 		teachers.generateMockData();
 		rooms.generateMockData();
-		slots.generate(35, rooms.list());
+		slots.generate(5, rooms.list());
 		prios.generateMockData(teachers.list());
 		courses.generateMockData(programs.list(), teachers.list());
 
@@ -50,10 +49,43 @@ public class Algorithm {
 		weightPrios();
 
 		calculateRandomSchedule();
+		int minusPoints = getMinusPoints();
+
+		while (minusPoints > 50) {
+
+			for (Teacher t : teachers.getTeachers().values()) {
+				t.resetSchedule();
+			}
+			calculateRandomSchedule();
+			//Liefert irgendwie immer den gleichen wert?
+
+			minusPoints = getMinusPoints();
+			System.out.println(minusPoints);
+		}
+
+		//TODO: stundenten miteinberechnen?
+
+		//TODO: stundenpläne verbessern - bewerten und neu berechnen
+		//TODO: stundenpläne darstellen
 
 		// Calculate based on the above slots
 		// alle slots vergeben pro Tag x Tagen
 		optimalThreshold = 700;
+	}
+
+	private static int getMinusPoints() {
+		int minusPoints = 0;
+		for (Teacher t : teachers.getTeachers().values()) {
+			int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
+			boolean[][] isTeaching = t.getFullSlots();
+			for (int days = 0; days < weightedDayTimeWishes.length; days++) {
+				for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
+					if (isTeaching[days][time])
+						minusPoints += weightedDayTimeWishes[days][time];
+				}
+			}
+		}
+		return minusPoints;
 	}
 
 	private static void weightPrios() {
@@ -70,7 +102,7 @@ public class Algorithm {
 		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
 				weightedDayTimeWishes[days][time] = r.nextInt(4);
-				System.out.print(weightedDayTimeWishes[days][time] + "\t");
+				//System.out.print(weightedDayTimeWishes[days][time] + "\t");
 			}
 		}
 
@@ -78,6 +110,7 @@ public class Algorithm {
 
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static void printMap(Map mp) {
 		Iterator it = mp.entrySet().iterator();
 		while (it.hasNext()) {
@@ -88,18 +121,18 @@ public class Algorithm {
 
 	private static void calculateRandomSchedule() {
 		Random r = new Random();
-		for (Program p : programs.getPrograms().values()) {
-			for (Slot s : slots.getSlots().values()) {
-				// generate a random schedule 
-				/*System.out.println(s.getDay());
-				System.out.println(s.getTime());
-				System.out.println(s.getRoom());
-				//teachers.getTeachers().get
-				Teacher t = teachers.getTeachers().get(r.nextInt(teachers.getTeachers().size()));
-				System.out.println();*/
-
+		//for (Program p : programs.getPrograms().values()) {
+		for (Slot s : slots.getSlots().values()) {
+			Object[] values = teachers.getTeachers().values().toArray();
+			Teacher randomTeacher = (Teacher) values[r.nextInt(values.length)];
+			//TODO: exit condition if all teachers are busy at that time
+			while (randomTeacher.getFullSlots()[s.getDay()][s.getTime()] == true) {
+				randomTeacher = (Teacher) values[r.nextInt(values.length)];
 			}
+			randomTeacher.setFullSlot(s.getDay(), s.getTime());
 		}
+
+		//}
 	}
 
 	// 2. function to generate a simple Ur-Plan

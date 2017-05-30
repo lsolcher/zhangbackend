@@ -67,7 +67,7 @@ public class TeachersPersistence {
 	// create useful teacher for learning
 	public void generateMockData() {
 		Random r = new Random();
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 10; i++) {
 			Teacher t1 = new Teacher();
 			t1.setName("Teacher" + i);
 			t1.setProf(r.nextBoolean());
