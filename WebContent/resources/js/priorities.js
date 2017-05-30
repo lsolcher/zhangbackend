@@ -73,55 +73,84 @@
     	
     	for (var i in $rootScope.selectedPriorities) {
     		
-	    	// check if prio inputs are empty
+	    	// check if any priority text areas or selects are empty
 	   	    if ($rootScope.selectedPriorities[i].type == "FreeTextInput") {
 	    		if (document.getElementById("freeTextWish").value == "") 
 	    			noEmptyInputElements = false; //console.log("text area is empty");
 	    	}
-	   	    // check if any selects are not selected	
-	   	    // TODO: improve -> make it more specific
-//	    	console.log("option: " + $rootScope.selectedPriorities[i].option.value); // -> undefined
-	    	
-//	   	 	$("select")				// get all selects
-//	   	 	document.querySelectorAll('select')
-//	   	    if($("select").val()){	// any option selected?
-	    	var selects = document.getElementsByTagName('select');
+	   	    else if (($rootScope.selectedPriorities[i].type == "ExcludeDayCombinationPrio") && ($rootScope.selectedPriorities[i].title == "Uhrzeit ausschließen")) {
+		   	    if (($rootScope.selectedPriorities[i].timeOne == undefined) || ($rootScope.selectedPriorities[i].timeTwo == undefined) 
+		   	    		|| ($rootScope.selectedPriorities[i].dayOne == undefined) || ($rootScope.selectedPriorities[i].dayTwo == undefined)) {
+		   	    	noEmptyInputElements = false;
+		   	    }
+	   	    }
+	   	    else if (($rootScope.selectedPriorities[i].type == "ExcludeDayCombinationPrio")) {
+		   	    if (($rootScope.selectedPriorities[i].dayOne == undefined) || ($rootScope.selectedPriorities[i].dayTwo == undefined)) {
+		   	    	noEmptyInputElements = false;
+		   	    }
+	   	    }
+	   	    else if (($rootScope.selectedPriorities[i].title == "Raumbeschaffenheit") && ($rootScope.selectedPriorities[i].title == "Wöchentliche Veranstaltungen")) {
+		   	    if (($rootScope.selectedPriorities[i].option == undefined) || ($rootScope.selectedPriorities[i].course == undefined)) {
+		   	    	noEmptyInputElements = false;
+		   	    }
+	   	    }
+	   	    else { // alle singleChoicePrios, deren titel nicht "Raumbeschaffenheit" ist ( = die keine kursauswahl haben) {
+		   	    if (($rootScope.selectedPriorities[i].option == undefined)) {
+		   	    	noEmptyInputElements = false;
+		   	    }
+	   	    }
+	   	    
 
-			for (var i = 0; i < selects.length; i++) {
-				if (selects[i].value == "? undefined:undefined ?") {
-					noEmptyInputElements = false;
-			    }
-			}
-//		  	!$rootScope.selectedPriorities[i].option //.value // .select - not working
-//	   		$rootScope.selectedPriorities[i].dayOne.value == [0, 0]
+	    	console.log("title: " + $rootScope.selectedPriorities[i].title);
+	    	console.log("option: " + $rootScope.selectedPriorities[i].option); 
+	    	console.log("course: " + $rootScope.selectedPriorities[i].course); 
+//	    	console.log("course: " + $rootScope.selectedPriorities[i].dayOne); 
+//	    	console.log("course: " + $rootScope.selectedPriorities[i].dayTwo); 
+//	    	$rootScope.selectedPriorities[i].timeOne
+//	    	$rootScope.selectedPriorities[i].timeTwo
+	    	
+	    	
+//	   		$rootScope.selectedPriorities[i].dayOne
 //	   		$rootScope.selectedPriorities[i].dayTwo.value == [0, 0] 
 //	     	!$rootScope.selectedPriorities[i].course.isSelected()
 			
-			// TODO: check for duplication on 'Raumbeschaffenheit' & 'Wöchentliche Veranstaltung'
-			if ($rootScope.selectedPriorities[i].title == "Raumbeschaffenheit") {
-				// TODO check all selected options in ($rootScope.selectedPriorities[i].title == "Raumbeschaffenheit") and make sure there not the same
-//				document.querySelectorAll('select')... 
-				// TODO: check if same option was selected (for all courses)
-				// 0 - 0 in same course
-				// 1 - 1 in same course
+			for (var j in $rootScope.selectedPriorities) {
+				// TODO: check for duplication on 'Raumbeschaffenheit' & 'Wöchentliche Veranstaltung'
+				if ($rootScope.selectedPriorities[i].title == "Raumbeschaffenheit") {
+					
+					
+					// TODO check all selected options and make sure they're not the same
+					for (var k = 0; k < 7; k++ ) {
+						for (var m = 0; m < 7; m++ ) {
+							
+							if ($rootScope.selectedPriorities[i].option == $rootScope.selectedPriorities[j].option)
+								noDublication = false;
+						}
+					}
+					
+					
+					// TODO: check if same option was selected (for all courses)
+					// 0 - 0 in same course
+					// 1 - 1 in same course
+						
+				}
+				
+	//			if ($rootScope.selectedPriorities[i].title == "Wöchentliche Veranstaltungen") {
+					// 0 - 0 -> same course
+					// 1 - 1 
+					// ... (number of courses)
+	//			}
+					// else noDublication = false;
+				
+		    	
+		    	
+		    	// TODO: check if some of the inputs are impossible to combine
+	//			console.log("option: " + $rootScope.selectedPriorities[i].option.value); 
+					// else noImpossibleCombinations = false
+		    	
+		    	
+		    	
 			}
-			
-			if ($rootScope.selectedPriorities[i].title == "Wöchentliche Veranstaltungen") {
-				// 0 - 0 -> same course
-				// 1 - 1 
-				// ... (number of courses)
-			}
-				// else noDublication = false;
-			
-	    	
-	    	
-	    	// TODO: check if some of the inputs are impossible to combine
-//			console.log("option: " + $rootScope.selectedPriorities[i].option.value); 
-				// else noImpossibleCombinations = false
-	    	
-	    	
-	    	
-	    	
 	    	    
     	}
 
