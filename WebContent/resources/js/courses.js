@@ -46,4 +46,5 @@
 				//$scope.list = initCourses
 				//$scope.$apply()
 			})
+			localStorage.setItem("courselistlength", $rootScope.courseList.length);	// give list length to be able to set number of prios to be selected in priorities.js
 })()
