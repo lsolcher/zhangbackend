@@ -28,14 +28,13 @@
 //	    	TODO: selectedPriorities[i].title -> notSelectedBefore[prio] = false
 	    }
 
-    	console.log(numberOfCourses);
+    	console.log(localStorage.getItem("courselistlength"));
     	
     	
     	var newPrio = jQuery.extend(true, {}, prio);
 	    newPrio.origin = index;
 	    if ((numberOfPriosSelected < maxNumberOfPriosSelected) 
-	    	&& (((newPrio.showCourses == true) && (numberOfSelectedRooms < 3) && (numberOfSelectedWeeklyLections < 3))	// TODO: replace 3 with numberOfCourses	// if showCourses == true -> nur (numberOfCourses)x auswählbar
-//	    	&& (((newPrio.showCourses == true) && (numberOfSelectedRooms < numberOfCourses) && (numberOfSelectedWeeklyLections < numberOfCourses))
+	    	&& (((newPrio.showCourses == true) && (numberOfSelectedRooms < (localStorage.getItem("courselistlength"))) && (numberOfSelectedWeeklyLections < (localStorage.getItem("courselistlength"))))// if showCourses == true -> nur (numberOfCourses)x auswählbar
 	    	|| ((newPrio.showCourses == false) && (notSelectedBefore)))) {	// if showCourses == false -> nur 1x auswählbar
 	  	  
 	    	
