@@ -55,7 +55,7 @@
           <input type="search" id="course-list-search" ng-model="search" placeholder="Durchsuche Kurse">
           <div class="course-scroll">
             <div class="course" ng-repeat="course in list | filter:search">
-              <input type="checkbox" ng-model="course.selected" ng-change="clickfick($event)">
+              <input type="checkbox" ng-model="course.selected" ng-change="selectCourse($event)">
               <span>{{course.id}}</span> - {{course.kurzname}}
             </div>
           </div>
@@ -107,61 +107,61 @@
         <a href="#" class="impossible" prio="1">Grundsätzlich möglich</a>
         <a href="#" class="no-pref-choice" prio="0">Nicht möglich</a>
 			</div>
-			<div class="calendar-body group">
+			<div class="calendar-body group" ng-model="calendar" ng-change="setCal(calendar)">
 				<div class="first-calendar-row">
-					<span class="week-day">MO</span>
-					<span class="week-day">DI</span>
-					<span class="week-day">MI</span>
-					<span class="week-day">DO</span>
-					<span class="week-day">FR</span>
+					<span class="week-day" value="0">MO</span>
+					<span class="week-day" value="1">DI</span>
+					<span class="week-day" value="2">MI</span>
+					<span class="week-day" value="3">DO</span>
+					<span class="week-day" value="4">FR</span>
 				</div>
 				<div class="calendar-row">
 					<span class="lecture-time">08:00 - 09:30</span>
-					<div class="calendar-input" prio="1"></div>
-					<div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
+					<div class="calendar-input" value="5" prio="1"></div>
+					<div class="calendar-input" value="6" prio="1"></div>
+	        		<div class="calendar-input" value="7" prio="1"></div>
+	        		<div class="calendar-input" value="8" prio="1"></div>
+	        		<div class="calendar-input" value="9" prio="1"></div>
 				</div>
 				<div class="calendar-row">
 					<span class="lecture-time">09:45 - 11:15</span>
-					<div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
+					<div class="calendar-input" value="10" prio="1"></div>
+		        <div class="calendar-input" value="11" prio="1"></div>
+		        <div class="calendar-input" value="12" prio="1"></div>
+		        <div class="calendar-input" value="13" prio="1"></div>
+		        <div class="calendar-input" value="14" prio="1"></div>
 				</div>
 				<div class="calendar-row">
 					<span class="lecture-time">12:15 - 13:45</span>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
+			        <div class="calendar-input" value="15" prio="1"></div>
+			        <div class="calendar-input" value="16" prio="1"></div>
+			        <div class="calendar-input" value="17" prio="1"></div>
+			        <div class="calendar-input" value="18" prio="1"></div>
+			        <div class="calendar-input" value="19" prio="1"></div>
 				</div>
 				<div class="calendar-row">
 					<span class="lecture-time">14:00 - 15:30</span>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
+			        <div class="calendar-input" value="20" prio="1"></div>
+			        <div class="calendar-input" value="21" prio="1"></div>
+			        <div class="calendar-input" value="22" prio="1"></div>
+			        <div class="calendar-input" value="23" prio="1"></div>
+			        <div class="calendar-input" value="24" prio="1"></div>
 				</div>
 				<div class="calendar-row">
 					<span class="lecture-time">15:45 - 17:15</span>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
+					<div class="calendar-input" value="25" prio="1"></div>
+			        <div class="calendar-input" value="26" prio="1"></div>
+			        <div class="calendar-input" value="27" prio="1"></div>
+			        <div class="calendar-input" value="28" prio="1"></div>
+			        <div class="calendar-input" value="29" prio="1"></div>
 				</div>
 				<div class="calendar-row">
 					<span class="lecture-time">17:30 - 19:00</span>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
-			        <div class="calendar-input" prio="1"></div>
+			        <div class="calendar-input" value="30" prio="1"></div>
+			        <div class="calendar-input" value="31" prio="1"></div>
+			        <div class="calendar-input" value="32" prio="1"></div>
+			        <div class="calendar-input" value="33" prio="1"></div>
+			        <div class="calendar-input" value="34" prio="1"></div>
 				</div>
 			</div>
 		</div>
@@ -229,7 +229,7 @@
                 <p class="priotext">
                   {{prio.text[1]}}
                 </p>
-                <select name="time" ng-change="change(prio.dayTwo[0])" ng-model="prio.dayTwo[0]">
+                <select name="day" ng-change="change(prio.dayTwo)" ng-model="prio.dayTwo">
                     <option value="Zweiten Tag wählen">Zweiten Tag wählen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
@@ -245,7 +245,7 @@
                 <p class="priotext">
                   {{prio.text[0]}}
                 </p>
-                <select ng-change="change(prio.dayOne[0])" ng-model="prio.dayOne[0]">
+                <select ng-change="change(prio.dayOne)" ng-model="prio.dayOne">
                     <option value="Ersten Tag wählen">Ersten Tag wählen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
@@ -269,7 +269,7 @@
                 <p class="priotext">
                   {{prio.text[2]}}
                 </p>
-                <select ng-change="change(prio.dayTwo[0])" ng-model="prio.dayTwo[0]">
+                <select ng-change="change(prio.dayTwo)" ng-model="prio.dayTwo">
                     <option value="Zweiten Tag wählen">Zweiten Tag wählen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
@@ -280,7 +280,7 @@
                 <p class="priotext">
                   {{prio.text[3]}}
                 </p>
-                <select ng-change="change(prio.dayTwo[1])" class="time second-time" ng-model="prio.dayTwo[1]">
+                <select ng-change="change(prio.timeTwo)" class="time second-time" ng-model="prio.timeTwo">
                     <option value="Uhrzeit wählen">Uhrzeit wählen</option>
                     <option value="0">08:00-09:30</option>
                     <option value="1">09:45-11:15</option>
