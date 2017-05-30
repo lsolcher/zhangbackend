@@ -64,9 +64,9 @@
 //    $rootScope.acceptedPriorities = [];			//TODO
 
     $scope.save = function() {
+    	
 	    // validating selected prios -> TODO: only save prios when validated and okay
- 
-    	var noEmptyInputElements = true;
+     	var noEmptyInputElements = true;
     	var noImpossibleCombinations = true;
     	var noDublication = true;
     	var calendarIsNotEmpty = true;
@@ -74,84 +74,124 @@
     	for (var i in $rootScope.selectedPriorities) {
     		
 	    	// check if any priority text areas or selects are empty
+    		// check if any priority text area is empty
 	   	    if ($rootScope.selectedPriorities[i].type == "FreeTextInput") {
 	    		if (document.getElementById("freeTextWish").value == "") 
 	    			noEmptyInputElements = false; //console.log("text area is empty");
 	    	}
 	   	    else if (($rootScope.selectedPriorities[i].type == "ExcludeDayCombinationPrio") && ($rootScope.selectedPriorities[i].title == "Uhrzeit ausschließen")) {
-		   	    if (($rootScope.selectedPriorities[i].timeOne == undefined) || ($rootScope.selectedPriorities[i].timeTwo == undefined) 
+	   	    	// check if any priority selects are empty
+	   	    	if (($rootScope.selectedPriorities[i].timeOne == undefined) || ($rootScope.selectedPriorities[i].timeTwo == undefined) 
 		   	    		|| ($rootScope.selectedPriorities[i].dayOne == undefined) || ($rootScope.selectedPriorities[i].dayTwo == undefined)) {
 		   	    	noEmptyInputElements = false;
 		   	    }
 	   	    }
-	   	    else if (($rootScope.selectedPriorities[i].type == "ExcludeDayCombinationPrio")) {
-		   	    if (($rootScope.selectedPriorities[i].dayOne == undefined) || ($rootScope.selectedPriorities[i].dayTwo == undefined)) {
+	   	    else if ($rootScope.selectedPriorities[i].type == "ExcludeDayCombinationPrio") {
+	   	    	// check if any priority selects are empty
+	   	    	if (($rootScope.selectedPriorities[i].dayOne == undefined) || ($rootScope.selectedPriorities[i].dayTwo == undefined)) {
 		   	    	noEmptyInputElements = false;
 		   	    }
 	   	    }
-	   	    else if (($rootScope.selectedPriorities[i].title == "Raumbeschaffenheit") && ($rootScope.selectedPriorities[i].title == "Wöchentliche Veranstaltungen")) {
-		   	    if (($rootScope.selectedPriorities[i].option == undefined) || ($rootScope.selectedPriorities[i].course == undefined)) {
+	   	    // check for empty selects, duplications and impossible combination in "raumbeschaffenheit" and "wöchentliche veranstaltungen" 
+	   	    else if (($rootScope.selectedPriorities[i].title == "Raumbeschaffenheit") || ($rootScope.selectedPriorities[i].title == "Wöchentliche Veranstaltungen")) {
+	   	    	// check if any priority selects are empty
+	   	    	if (($rootScope.selectedPriorities[i].option == undefined) || ($rootScope.selectedPriorities[i].course == undefined)) {
 		   	    	noEmptyInputElements = false;
 		   	    }
+		   	    // check for duplication 
+				for (var j in $rootScope.selectedPriorities) {
+					
+					// check if same options were selected (for all courses)
+					if (($rootScope.selectedPriorities[i].option == $rootScope.selectedPriorities[j].option) && ($rootScope.selectedPriorities[i].course == $rootScope.selectedPriorities[j].course)) {
+						noDublication = false;
+//						console.log("duplicate!");
+					}
+			    	
+			    	// check if some of the inputs are impossible to combine: check if a course was selected with different options
+					if ($rootScope.selectedPriorities[i].course == $rootScope.selectedPriorities[j].course) {
+						if ($rootScope.selectedPriorities[i].option != $rootScope.selectedPriorities[j].option)
+							noImpossibleCombinations = false
+					}
+				}  
 	   	    }
 	   	    else { // alle singleChoicePrios, deren titel nicht "Raumbeschaffenheit" ist ( = die keine kursauswahl haben) {
-		   	    if (($rootScope.selectedPriorities[i].option == undefined)) {
+	   	    	// check if any priority selects are empty
+	   	    	if (($rootScope.selectedPriorities[i].option == undefined)) {
 		   	    	noEmptyInputElements = false;
 		   	    }
 	   	    }
 	   	    
-
-	    	console.log("title: " + $rootScope.selectedPriorities[i].title);
-	    	console.log("option: " + $rootScope.selectedPriorities[i].option); 
-	    	console.log("course: " + $rootScope.selectedPriorities[i].course); 
-//	    	console.log("course: " + $rootScope.selectedPriorities[i].dayOne); 
-//	    	console.log("course: " + $rootScope.selectedPriorities[i].dayTwo); 
-//	    	$rootScope.selectedPriorities[i].timeOne
-//	    	$rootScope.selectedPriorities[i].timeTwo
+	   	    if (($rootScope.selectedPriorities[i].type == "ExcludeDayCombinationPrio")) {
+	   	    	
+	   	    	// check for duplication on "ExcludeDayCombinationPrio" 
+	   	    	// ExcludeDayCombinationPrio: wenn an tag X , <-> dann AUCH an tag X
+	   	    	if ($rootScope.selectedPriorities[i].title == "Tage kombinieren") {
+	   	    		if ($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[i].dayTwo) {
+	   	    			noDublication = false;
+//		   	    		console.log("duplicate!"); 
+	   	    		}
+	   	    	}
+	   	    	
+		   	    for (var j in $rootScope.selectedPriorities) {
+		   	    	
+		   	    	// check for duplication on "ExcludeDayCombinationPrio" 
+		   	    	// ExcludeDayCombinationPrio: wenn an tag X , dann NICHT an tag Y <-> wenn an tag X um ... , dann NICHT an tag Y um ...	   	    
+			   	    
+		   	    	if ((($rootScope.selectedPriorities[i].title == "Uhrzeit ausschließen") && ($rootScope.selectedPriorities[j].title == "Tage ausschließen")
+		   	    			|| (($rootScope.selectedPriorities[j].title == "Uhrzeit ausschließen") && ($rootScope.selectedPriorities[i].title == "Tage ausschließen")))) {
+		   	    		
+		   	    		if ((($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[j].dayOne) && ($rootScope.selectedPriorities[i].dayTwo == $rootScope.selectedPriorities[j].dayTwo))
+		   	    				|| (($rootScope.selectedPriorities[j].dayOne == $rootScope.selectedPriorities[i].dayOne) && ($rootScope.selectedPriorities[j].dayTwo == $rootScope.selectedPriorities[i].dayTwo))) {
+			   	    		noDublication = false;
+//			   	    		console.log("duplicate!");
+			   	    	}
+		   	    	}
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+		   	    				   	    
+			   	    // TODO: check if some of the inputs are impossible to combine that are "ExcludeDayCombinationPrio"
+		   	    	
+			   	    
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+		   	    	
+//		   	    			 noImpossibleCombinations = false
+		   	    	
+			   	    // TODO: ExcludeDayCombinationPrio: wenn an tag X , <-> dann NICHT an tag X
+		
+			   	    // TODO: ExcludeDayCombinationPrio: wenn an tag Y , dann AUCH an tag X <-> wenn an tag X , dann AUCH an tag Y
+		
+			   	    // TODO: ExcludeDayCombinationPrio: wenn an tag X , dann AUCH an tag Y <-> wenn an tag X , dann NICHT an tag Y
+			   	    
+			   	    // TODO: ExcludeDayCombinationPrio: wenn an tag X , dann NICHT an tag Y <-> wenn an tag X um ... , dann NICHT an tag Y um ...	   	    
+		   	    
+		   	    }
+		   	 }
+	   	    
+//	    	console.log("title: " + $rootScope.selectedPriorities[i].title);
+//	    	console.log("option: " + $rootScope.selectedPriorities[i].option); 
+//	    	console.log("course: " + $rootScope.selectedPriorities[i].course); 
+//	    	console.log("day one: " + $rootScope.selectedPriorities[i].dayOne); 
+//	    	console.log("day two: " + $rootScope.selectedPriorities[i].dayTwo); 
+//	    	console.log("time one: " + $rootScope.selectedPriorities[i].timeOne);
+//	    	console.log("time two: " + $rootScope.selectedPriorities[i].timeTwo);
 	    	
-	    	
-//	   		$rootScope.selectedPriorities[i].dayOne
 //	   		$rootScope.selectedPriorities[i].dayTwo.value == [0, 0] 
-//	     	!$rootScope.selectedPriorities[i].course.isSelected()
 			
-			for (var j in $rootScope.selectedPriorities) {
-				// TODO: check for duplication on 'Raumbeschaffenheit' & 'Wöchentliche Veranstaltung'
-				if ($rootScope.selectedPriorities[i].title == "Raumbeschaffenheit") {
-					
-					
-					// TODO check all selected options and make sure they're not the same
-					for (var k = 0; k < 7; k++ ) {
-						for (var m = 0; m < 7; m++ ) {
-							
-							if ($rootScope.selectedPriorities[i].option == $rootScope.selectedPriorities[j].option)
-								noDublication = false;
-						}
-					}
-					
-					
-					// TODO: check if same option was selected (for all courses)
-					// 0 - 0 in same course
-					// 1 - 1 in same course
-						
-				}
-				
-	//			if ($rootScope.selectedPriorities[i].title == "Wöchentliche Veranstaltungen") {
-					// 0 - 0 -> same course
-					// 1 - 1 
-					// ... (number of courses)
-	//			}
-					// else noDublication = false;
-				
-		    	
-		    	
-		    	// TODO: check if some of the inputs are impossible to combine
-	//			console.log("option: " + $rootScope.selectedPriorities[i].option.value); 
-					// else noImpossibleCombinations = false
-		    	
-		    	
-		    	
-			}
-	    	    
+	    	
     	}
 
     	// TODO: check if calendar is Selected (any, at least min, at most max) ?
@@ -188,7 +228,8 @@
 	      });
     	}
     	else {
-    		// TODO: error message telling the user what needs to be changed - like "please check that  you choose any of the options..."
+    		// TODO: error message telling the user what needs to be changed 
+    		console.log ("please make sure that you chose any of the options in all of your selected wishes, that you didn't enter duplicate information and that you didn't enter options that are impossible to combine! ")
     	}
     }
    
