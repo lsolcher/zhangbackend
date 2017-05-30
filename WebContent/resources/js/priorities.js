@@ -9,12 +9,12 @@
 	
 	var notSelectedBefore = true;
 	
+	var numberOfCourses = localStorage.getItem("courselistlength");
+	
     $scope.selectPrio = function(index, prio) {
     	// TODO: check all the priorities for validating issues
     	
     	notSelectedBefore = true;
-    	
-    	console.log("kurse: " + (localStorage.getItem("courselistlength")));
     	
     	// check if priority was added already
 		for (var i in $rootScope.selectedPriorities) {
@@ -28,12 +28,14 @@
 //	    	TODO: selectedPriorities[i].title -> notSelectedBefore[prio] = false
 	    }
 
+    	console.log(numberOfCourses);
+    	
     	
     	var newPrio = jQuery.extend(true, {}, prio);
 	    newPrio.origin = index;
 	    if ((numberOfPriosSelected < maxNumberOfPriosSelected) 
-	    	&& (((newPrio.showCourses == true) && (numberOfSelectedRooms < 3) && (numberOfSelectedWeeklyLections < 3))	// TODO: replace 3 with courseNumber	// if showCourses == true -> nur (courseNumber)x auswählbar
-//	    	&& (((newPrio.showCourses == true) && (numberOfSelectedRooms < courseNumber) && (numberOfSelectedWeeklyLections < courseNumber))
+	    	&& (((newPrio.showCourses == true) && (numberOfSelectedRooms < 3) && (numberOfSelectedWeeklyLections < 3))	// TODO: replace 3 with numberOfCourses	// if showCourses == true -> nur (numberOfCourses)x auswählbar
+//	    	&& (((newPrio.showCourses == true) && (numberOfSelectedRooms < numberOfCourses) && (numberOfSelectedWeeklyLections < numberOfCourses))
 	    	|| ((newPrio.showCourses == false) && (notSelectedBefore)))) {	// if showCourses == false -> nur 1x auswählbar
 	  	  
 	    	
