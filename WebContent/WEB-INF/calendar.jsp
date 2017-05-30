@@ -3,7 +3,7 @@
 <html ng-app="zhang-app">
   <head>
     <meta charset="utf-8">
-    <title>Test</title>
+    <title>LEP-Tool</title>
 
     <!-- styles -->
     <spring:url var ="bootstrapcss" value="/resources/css/bootstrap.css" />

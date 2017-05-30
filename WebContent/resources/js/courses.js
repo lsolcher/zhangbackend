@@ -22,7 +22,7 @@
 					}
 					// save in localstorage
 					localStorage.coursesjo = JSON
-							.stringify($rootScope.courseList)
+							.stringify($rootScope.courseList);
 				}
 
 				$rootScope.courseList = []
@@ -38,12 +38,14 @@
 					temp.id = i
 					// if selected apply
 					for ( var j in $rootScope.courseList) {
-						if ($rootScope.courseList[j].id == temp.id)
+						if ($rootScope.courseList[j].id == temp.id) 
 							temp.selected = true
 					}
 					$scope.list.push(temp)
 				}
 				//$scope.list = initCourses
 				//$scope.$apply()
+
+				localStorage.setItem("courselistlength", $rootScope.courseList.length);	// give list length to be able to set number of prios to be selected in priorities.js
 			})
 })()
