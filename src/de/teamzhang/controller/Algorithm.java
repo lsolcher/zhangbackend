@@ -90,12 +90,13 @@ public class Algorithm {
 		Random r = new Random();
 		for (Program p : programs.getPrograms().values()) {
 			for (Slot s : slots.getSlots().values()) {
-				System.out.println(s.getDay());
+				// generate a random schedule 
+				/*System.out.println(s.getDay());
 				System.out.println(s.getTime());
 				System.out.println(s.getRoom());
 				//teachers.getTeachers().get
 				Teacher t = teachers.getTeachers().get(r.nextInt(teachers.getTeachers().size()));
-				System.out.println();
+				System.out.println();*/
 
 			}
 		}
