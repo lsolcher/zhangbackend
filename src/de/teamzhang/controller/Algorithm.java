@@ -1,5 +1,8 @@
 package de.teamzhang.controller;
 
+import java.util.Iterator;
+import java.util.Map;
+
 import de.teamzhang.model.CoursesPersistence;
 import de.teamzhang.model.PrioPersistence;
 import de.teamzhang.model.ProgramPersistence;
@@ -33,9 +36,41 @@ public class Algorithm {
 		prios.generateMockData(teachers.list());
 		courses.generateMockData(programs.list(), teachers.list());
 
+		printMap(programs.getPrograms());
+		printMap(teachers.getTeachers());
+		printMap(rooms.getRooms());
+		printMap(slots.getSlots());
+		printMap(prios.getPrios());
+		printMap(courses.getCourses());
+
+		weightPrios();
+
+		calculateRandomSchedule();
+
 		// Calculate based on the above slots
 		// alle slots vergeben pro Tag x Tagen
 		optimalThreshold = 700;
+	}
+
+	private static void weightPrios() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public static void printMap(Map mp) {
+		Iterator it = mp.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry pair = (Map.Entry) it.next();
+			System.out.println(pair.getKey() + " = " + pair.getValue());
+			it.remove(); // avoids a ConcurrentModificationException
+		}
+	}
+
+	private static void calculateRandomSchedule() {
+		Iterator itPrograms = programs.getPrograms().entrySet().iterator();
+		while (itPrograms.hasNext()) {
+		}
+
 	}
 
 	// 2. function to generate a simple Ur-Plan

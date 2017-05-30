@@ -10,6 +10,18 @@ public class TeachersPersistence {
 	private final Map<BigInteger, Teacher> teachers = new HashMap<BigInteger, Teacher>();
 	private BigInteger id = new BigInteger("0");
 
+	public BigInteger getId() {
+		return id;
+	}
+
+	public void setId(BigInteger id) {
+		this.id = id;
+	}
+
+	public Map<BigInteger, Teacher> getTeachers() {
+		return teachers;
+	}
+
 	public void create(final Teacher teacher) {
 		//((Prio) teachers).setId(id);
 		teachers.put(id, teacher);
@@ -50,4 +62,5 @@ public class TeachersPersistence {
 			create(t1);
 		}
 	}
+
 }

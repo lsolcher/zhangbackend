@@ -1,5 +1,7 @@
 package de.teamzhang.model;
 
+import java.util.Collection;
+
 public class ExcludeDayCombinationPrio extends Prio {
 
 	//
@@ -19,6 +21,10 @@ public class ExcludeDayCombinationPrio extends Prio {
 
 	public ExcludeDayCombinationPrio() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public ExcludeDayCombinationPrio(String string, Teacher teacher, Collection<Course> courses) {
+		super(string, teacher, courses);
 	}
 
 	public int getDayOne() {

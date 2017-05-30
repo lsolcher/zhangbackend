@@ -1,5 +1,7 @@
 package de.teamzhang.model;
 
+import java.util.Collection;
+
 public class SimplePrio extends Prio {
 
 	/**
@@ -8,5 +10,9 @@ public class SimplePrio extends Prio {
 	 */
 	public SimplePrio() {
 
+	}
+
+	public SimplePrio(String string, Teacher teacher, Collection<Course> courses) {
+		super(string, teacher, courses);
 	}
 }

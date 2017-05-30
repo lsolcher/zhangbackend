@@ -53,4 +53,16 @@ public class ProgramPersistence {
 		create(p2);
 	}
 
+	public BigInteger getId() {
+		return id;
+	}
+
+	public void setId(BigInteger id) {
+		this.id = id;
+	}
+
+	public Map<BigInteger, Program> getPrograms() {
+		return programs;
+	}
+
 }

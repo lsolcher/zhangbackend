@@ -14,6 +14,18 @@ public class SlotsPersistence {
 	private final Map<BigInteger, Slot> slots = new HashMap<BigInteger, Slot>();
 	private BigInteger id = new BigInteger("0");
 
+	public BigInteger getId() {
+		return id;
+	}
+
+	public void setId(BigInteger id) {
+		this.id = id;
+	}
+
+	public Map<BigInteger, Slot> getSlots() {
+		return slots;
+	}
+
 	public void generate(int noOfSlots, Collection<Room> rooms) {
 		for (Room room : rooms) {
 			for (int i = 0; i < noOfSlots; i++) {

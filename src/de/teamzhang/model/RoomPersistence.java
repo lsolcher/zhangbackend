@@ -9,6 +9,18 @@ public class RoomPersistence {
 	private final Map<BigInteger, Room> rooms = new HashMap<BigInteger, Room>();
 	private BigInteger id = new BigInteger("0");
 
+	public BigInteger getId() {
+		return id;
+	}
+
+	public void setId(BigInteger id) {
+		this.id = id;
+	}
+
+	public Map<BigInteger, Room> getRooms() {
+		return rooms;
+	}
+
 	public void create(final Room room) {
 		//((Prio) rooms).setId(id);
 		rooms.put(id, room);

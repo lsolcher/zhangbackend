@@ -3,6 +3,7 @@ package de.teamzhang.model;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Random;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -26,6 +27,17 @@ public class Prio {
 		this.name = string;
 		this.teacher = teacher;
 		this.courses = courses;
+		createId();
+	}
+
+	private void createId() {
+		BigInteger n = new BigInteger("999999999999");
+		Random rand = new Random();
+		BigInteger result = new BigInteger(n.bitLength(), rand);
+		while (result.compareTo(n) >= 0) {
+			result = new BigInteger(n.bitLength(), rand);
+		}
+		id = result;
 	}
 
 	public Prio() {
@@ -82,6 +94,51 @@ public class Prio {
 
 	public void setUserId(BigInteger userId) {
 		this.userId = userId;
+	}
+
+	public void setExcluding(boolean nextBoolean) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public boolean isExcluding() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void setDayOne(int nextInt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void setHasTime(boolean nextBoolean) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void setDayTwo(int nextInt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public boolean isHasTime() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void setTimeOne(int nextInt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void setTimeTwo(int nextInt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void setOption(int nextInt) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

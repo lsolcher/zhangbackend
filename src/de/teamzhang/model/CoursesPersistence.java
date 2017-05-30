@@ -9,6 +9,18 @@ public class CoursesPersistence {
 	private final Map<BigInteger, Course> courses = new HashMap<BigInteger, Course>();
 	private BigInteger id = new BigInteger("0");
 
+	public BigInteger getId() {
+		return id;
+	}
+
+	public void setId(BigInteger id) {
+		this.id = id;
+	}
+
+	public Map<BigInteger, Course> getCourses() {
+		return courses;
+	}
+
 	public void create(final Course course) {
 		//((Prio) courses).setId(id);
 		courses.put(id, course);

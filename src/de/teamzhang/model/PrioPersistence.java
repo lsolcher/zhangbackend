@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.stereotype.Component;
 
@@ -12,10 +13,72 @@ public class PrioPersistence {
 	private final Map<BigInteger, Prio> prios = new HashMap<BigInteger, Prio>();
 	private BigInteger id = new BigInteger("0");
 
+	public BigInteger getId() {
+		return id;
+	}
+
+	public void setId(BigInteger id) {
+		this.id = id;
+	}
+
+	public Map<BigInteger, Prio> getPrios() {
+		return prios;
+	}
+
 	public void create(final Prio prio) {
 		//((Prio) prios).setId(id);
 		prios.put(id, prio);
 		id = id.add(new BigInteger("1"));
+	}
+
+	private Prio randomize(Teacher teacher) {
+		Prio prio = null;
+		int rn = 0 + (int) (Math.random() * 4);
+		System.out.println(rn);
+		switch (rn) {
+		case 0:
+			prio = randomizeExcludeDayCombinationPrio(teacher);
+			break;
+		case 1:
+			prio = new FreeTextInputPrio("prio_" + teacher.getName(), teacher, teacher.getCourses());
+			prio.setText("blalvsfas");
+			break;
+		case 2:
+			prio = randomizeSingleChoicePrio(teacher);
+			break;
+		case 3:
+			prio = new SimplePrio("prio_" + teacher.getName(), teacher, teacher.getCourses());
+			break;
+		}
+		return prio;
+
+	}
+
+	private Prio randomizeSingleChoicePrio(Teacher teacher) {
+		Random r = new Random();
+
+		Prio prio = new SingleChoicePrio("prio_" + teacher.getName(), teacher, teacher.getCourses());
+		prio.setOption(r.nextInt(4));
+
+		return prio;
+	}
+
+	private ExcludeDayCombinationPrio randomizeExcludeDayCombinationPrio(Teacher teacher) {
+		Random r = new Random();
+
+		Prio prio = new ExcludeDayCombinationPrio("prio_" + teacher.getName(), teacher, teacher.getCourses());
+		prio.setExcluding(r.nextBoolean());
+		if (!prio.isExcluding())
+			prio.setHasTime(r.nextBoolean());
+		prio.setDayOne(r.nextInt(4));
+		prio.setDayTwo(r.nextInt(4));
+		if (prio.isHasTime()) {
+			prio.setTimeOne(r.nextInt(7));
+			prio.setTimeTwo(r.nextInt(7));
+		}
+
+		return (ExcludeDayCombinationPrio) prio;
+
 	}
 
 	public Collection<Prio> list() {
@@ -48,9 +111,10 @@ public class PrioPersistence {
 	public void generateMockData(Collection<Teacher> teachers) {
 		for (Teacher teacher : teachers) {
 			for (int i = 0; i < 2; i++) {
-				Prio prio = new Prio("prio_" + teacher.getName(), teacher, teacher.getCourses());
+				Prio prio = randomize(teacher);
 				create(prio);
 			}
 		}
 	}
+
 }
