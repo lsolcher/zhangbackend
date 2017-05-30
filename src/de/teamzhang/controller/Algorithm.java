@@ -2,12 +2,16 @@ package de.teamzhang.controller;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
 
 import de.teamzhang.model.CoursesPersistence;
 import de.teamzhang.model.PrioPersistence;
+import de.teamzhang.model.Program;
 import de.teamzhang.model.ProgramPersistence;
 import de.teamzhang.model.RoomPersistence;
+import de.teamzhang.model.Slot;
 import de.teamzhang.model.SlotsPersistence;
+import de.teamzhang.model.Teacher;
 import de.teamzhang.model.TeachersPersistence;
 
 public class Algorithm {
@@ -53,7 +57,24 @@ public class Algorithm {
 	}
 
 	private static void weightPrios() {
-		// TODO Auto-generated method stub
+		for (Teacher t : teachers.getTeachers().values()) {
+			weightSingleSchedule(t);
+		}
+	}
+
+	private static void weightSingleSchedule(Teacher t) {
+		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
+		//0 = auf keinen fall
+		//3 = top
+		Random r = new Random();
+		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
+			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
+				weightedDayTimeWishes[days][time] = r.nextInt(4);
+				System.out.print(weightedDayTimeWishes[days][time] + "\t");
+			}
+		}
+
+		//TODO: add prios to prioritize schedule
 
 	}
 
@@ -62,15 +83,22 @@ public class Algorithm {
 		while (it.hasNext()) {
 			Map.Entry pair = (Map.Entry) it.next();
 			System.out.println(pair.getKey() + " = " + pair.getValue());
-			it.remove(); // avoids a ConcurrentModificationException
 		}
 	}
 
 	private static void calculateRandomSchedule() {
-		Iterator itPrograms = programs.getPrograms().entrySet().iterator();
-		while (itPrograms.hasNext()) {
-		}
+		Random r = new Random();
+		for (Program p : programs.getPrograms().values()) {
+			for (Slot s : slots.getSlots().values()) {
+				System.out.println(s.getDay());
+				System.out.println(s.getTime());
+				System.out.println(s.getRoom());
+				//teachers.getTeachers().get
+				Teacher t = teachers.getTeachers().get(r.nextInt(teachers.getTeachers().size()));
+				System.out.println();
 
+			}
+		}
 	}
 
 	// 2. function to generate a simple Ur-Plan

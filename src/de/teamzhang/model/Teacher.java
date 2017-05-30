@@ -11,11 +11,29 @@ public class Teacher {
 	protected String name;
 	@Id
 	private BigInteger id;
+	private boolean isProf;
 	private ArrayList<Course> courses = new ArrayList<Course>(1);
-	
+	private int[][] weightedDayTimeWishes = new int[5][35];
+
 	public void Teacher() {
 	}
-	
+
+	public boolean isProf() {
+		return isProf;
+	}
+
+	public void setProf(boolean isProf) {
+		this.isProf = isProf;
+	}
+
+	public int[][] getWeightedDayTimeWishes() {
+		return weightedDayTimeWishes;
+	}
+
+	public void setWeightedDayTimeWishes(int[][] weightedDayTimeWishes) {
+		this.weightedDayTimeWishes = weightedDayTimeWishes;
+	}
+
 	public BigInteger getId() {
 		return id;
 	}
@@ -31,7 +49,7 @@ public class Teacher {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public Collection<Course> getCourses() {
 		return courses;
 	}

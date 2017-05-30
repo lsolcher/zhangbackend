@@ -32,7 +32,8 @@ public class SlotsPersistence {
 				Slot slot = new Slot();
 				slot.setId(id);
 				slot.setRoom(room);
-				slot.setDay(i / 7); //assigns weekdays
+				slot.setDay(i % 5); //assigns weekdays
+				slot.setTime(i % 7);
 				//((Slot) slots).setId(id);
 				slots.put(id, slot);
 				id = id.add(new BigInteger("1"));

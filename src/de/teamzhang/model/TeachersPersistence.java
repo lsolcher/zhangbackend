@@ -2,13 +2,23 @@ package de.teamzhang.model;
 
 import java.math.BigInteger;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class TeachersPersistence {
 
-	private final Map<BigInteger, Teacher> teachers = new HashMap<BigInteger, Teacher>();
+	private final Map<BigInteger, Teacher> teachers = new LinkedHashMap<BigInteger, Teacher>();
 	private BigInteger id = new BigInteger("0");
+	private Schedule schedule;
+
+	public Schedule getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
+	}
 
 	public BigInteger getId() {
 		return id;
@@ -56,9 +66,11 @@ public class TeachersPersistence {
 
 	// create useful teacher for learning
 	public void generateMockData() {
+		Random r = new Random();
 		for (int i = 0; i < 4; i++) {
 			Teacher t1 = new Teacher();
 			t1.setName("Teacher" + i);
+			t1.setProf(r.nextBoolean());
 			create(t1);
 		}
 	}
