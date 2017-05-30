@@ -135,49 +135,42 @@
 		   	    for (var j in $rootScope.selectedPriorities) {
 		   	    	
 		   	    	// check for duplication on "ExcludeDayCombinationPrio" 
-		   	    	// ExcludeDayCombinationPrio: wenn an tag X , dann NICHT an tag Y <-> wenn an tag X um ... , dann NICHT an tag Y um ...	   	    
-			   	    
-		   	    	if ((($rootScope.selectedPriorities[i].title == "Uhrzeit ausschließen") && ($rootScope.selectedPriorities[j].title == "Tage ausschließen")
-		   	    			|| (($rootScope.selectedPriorities[j].title == "Uhrzeit ausschließen") && ($rootScope.selectedPriorities[i].title == "Tage ausschließen")))) {
+		   	    	// ExcludeDayCombinationPrio: wenn an tag X , dann NICHT an tag Y <-> wenn an tag X um ... , dann NICHT an tag Y um ...	
+		   	    	if ((($rootScope.selectedPriorities[i].title == "Uhrzeit ausschließen") && ($rootScope.selectedPriorities[j].title == "Tage ausschließen"))) {
 		   	    		
-		   	    		if ((($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[j].dayOne) && ($rootScope.selectedPriorities[i].dayTwo == $rootScope.selectedPriorities[j].dayTwo))
-		   	    				|| (($rootScope.selectedPriorities[j].dayOne == $rootScope.selectedPriorities[i].dayOne) && ($rootScope.selectedPriorities[j].dayTwo == $rootScope.selectedPriorities[i].dayTwo))) {
+		   	    		if ((($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[j].dayOne) && ($rootScope.selectedPriorities[i].dayTwo == $rootScope.selectedPriorities[j].dayTwo))) {
+//		   	    				|| (($rootScope.selectedPriorities[j].dayOne == $rootScope.selectedPriorities[i].dayOne) && ($rootScope.selectedPriorities[j].dayTwo == $rootScope.selectedPriorities[i].dayTwo))) {
 			   	    		noDublication = false;
 //			   	    		console.log("duplicate!");
 			   	    	}
 		   	    	}
-		   	    	
-		   	    	
-		   	    	
-		   	    	
-		   	    	
-		   	    	
-		   	    	
-		   	    	
+		   	    	// ExcludeDayCombinationPrio: wenn an tag Y , dann AUCH an tag X <-> wenn an tag X , dann AUCH an tag Y
+		   	    	else if (($rootScope.selectedPriorities[i].title == "Tage kombinieren") && ($rootScope.selectedPriorities[j].title == "Tage kombinieren")) {
+		   	    		if (($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[j].dayTwo) && ($rootScope.selectedPriorities[i].dayTwo == $rootScope.selectedPriorities[j].dayOne)) {
+			   	    		noDublication = false;
+//			   	    		console.log("duplicate!");
+			   	    	}
+		   	    	}
+		   	 	
 		   	    				   	    
 			   	    // TODO: check if some of the inputs are impossible to combine that are "ExcludeDayCombinationPrio"
 		   	    	
+		   	    	// ExcludeDayCombinationPrio: wenn an tag X , <-> dann NICHT an tag X
+		   	    	if ($rootScope.selectedPriorities[i].title == "Tage ausschließen") {
+		   	    		if ($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[i].dayTwo) {
+		   	    			noImpossibleCombinations = false;
+		   	    		}
+		   	    	}
+		
 			   	    
-		   	    	
-		   	    	
-		   	    	
-		   	    	
-		   	    	
-		   	    	
-		   	    	
-		   	    	
-		   	    	
-		   	    	
-//		   	    			 noImpossibleCombinations = false
-		   	    	
-			   	    // TODO: ExcludeDayCombinationPrio: wenn an tag X , <-> dann NICHT an tag X
-		
-			   	    // TODO: ExcludeDayCombinationPrio: wenn an tag Y , dann AUCH an tag X <-> wenn an tag X , dann AUCH an tag Y
-		
 			   	    // TODO: ExcludeDayCombinationPrio: wenn an tag X , dann AUCH an tag Y <-> wenn an tag X , dann NICHT an tag Y
-			   	    
-			   	    // TODO: ExcludeDayCombinationPrio: wenn an tag X , dann NICHT an tag Y <-> wenn an tag X um ... , dann NICHT an tag Y um ...	   	    
-		   	    
+		   	    	if ((($rootScope.selectedPriorities[i].title == "Tage kombinieren") && ($rootScope.selectedPriorities[j].title == "Tage ausschließen"))) {
+		   	    				
+		   	    		if ((($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[j].dayOne) && ($rootScope.selectedPriorities[i].dayTwo == $rootScope.selectedPriorities[j].dayTwo))) {
+//		   	    				|| (($rootScope.selectedPriorities[j].dayOne == $rootScope.selectedPriorities[i].dayOne) && ($rootScope.selectedPriorities[j].dayTwo == $rootScope.selectedPriorities[i].dayTwo))) {
+		   	    			noImpossibleCombinations = false;
+			   	    	}
+		   	    	}
 		   	    }
 		   	 }
 	   	    
