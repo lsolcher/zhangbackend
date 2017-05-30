@@ -20,9 +20,6 @@
 							$rootScope.courseList.push($scope.list[i])
 						}
 					}
-					
-					localStorage.setItem("courselistlength", $rootScope.courseList.length);	// give list length to be able to set number of prios to be selected in priorities.js
-					
 					// save in localstorage
 					localStorage.coursesjo = JSON
 							.stringify($rootScope.courseList);
@@ -48,6 +45,7 @@
 				}
 				//$scope.list = initCourses
 				//$scope.$apply()
-				
+
+				localStorage.setItem("courselistlength", $rootScope.courseList.length);	// give list length to be able to set number of prios to be selected in priorities.js
 			})
 })()

@@ -9,8 +9,6 @@
 	
 	var notSelectedBefore = true;
 	
-	var courseNumber = 0;
-		
     $scope.selectPrio = function(index, prio) {
     	// TODO: check all the priorities for validating issues
     	
