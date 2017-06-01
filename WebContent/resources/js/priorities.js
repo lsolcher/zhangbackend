@@ -175,14 +175,16 @@
 		   	 }	    	
     	}
 
-    	// TODO: check if calendar is Selected (any, at least min, at most max) ?
-//    	var calendarInput = document.getElementsByClass('calendar-input'); //$('.option-choice a')
-//
-//		for(var i = 0; i < calendarInput.length; i++) { 
-//			if (calendarInput[i].value ) {	// TODO: if all calendarInput[i] has prio=="1" -> no (other) prio selected
-//				calendarIsNotEmpty = false;
-//		    }
-//		}	      
+    	// check if calendar is Selected at all 		// TODO: check if calendar is Selected: at least = min, at most = max
+    	var calendarInput = $('.calendar-input');
+    	var numberOfValuesInCalendarOtherThan1 = 0;
+    	
+		for (var i = 0; i < calendarInput.length; i++) { 
+			if (!(calendarInput[i].value == 1)) {	// if all input has prio=="1" -> no (other) prio is selected
+				calendarIsNotEmpty = false;
+				numberOfValuesInCalendarOtherThan1++;
+		    }
+		}	      
 
 	    // if all fine -> save	  
     	if (noEmptyInputElements && noImpossibleCombinations && noDublication && calendarIsNotEmpty) {
