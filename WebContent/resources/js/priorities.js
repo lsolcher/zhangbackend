@@ -10,9 +10,8 @@
 	var notSelectedBefore = true;
 	
 	$scope.selectPrio = function(index, prio) {
-    	// TODO: check all the priorities for validating issues
     	
-    	notSelectedBefore = true;
+		notSelectedBefore = true;
     	
     	// check if priority was added already
 		for (var i in $rootScope.selectedPriorities) {
@@ -23,28 +22,34 @@
 		
     	for(var i in $rootScope.selectedPriorities) {
     		$rootScope.selectedPriorities[i].hideContent = true;
-//	    	TODO: selectedPriorities[i].title -> notSelectedBefore[prio] = false
 	    }
 
     	var numberOfCourses = localStorage.getItem("courselistlength");
-    	
     	console.log(numberOfCourses);
-    	
     	
     	var newPrio = jQuery.extend(true, {}, prio);
 	    newPrio.origin = index;
-	    if ((numberOfPriosSelected < maxNumberOfPriosSelected) 
-	    	&& (((newPrio.showCourses == true) && (numberOfSelectedRooms < numberOfCourses) && (numberOfSelectedWeeklyLections < numberOfCourses))// if showCourses == true -> nur (numberOfCourses)x auswählbar
-	    	|| ((newPrio.showCourses == false) && (notSelectedBefore)))) {	// if showCourses == false -> nur 1x auswählbar
-	  	  
-	    	
-			$rootScope.selectedPriorities.unshift(newPrio);  
+	    if ((numberOfPriosSelected < maxNumberOfPriosSelected) && (newPrio.showCourses == false) && (notSelectedBefore)) { // if showCourses == false -> nur 1x auswählbar
+		  	  
+    		$rootScope.selectedPriorities.unshift(newPrio);  
 	    	numberOfPriosSelected++;
-	    	if (newPrio.title == "Raumbeschaffenheit") numberOfSelectedRooms++;
-	    	else if (newPrio.title == "Wöchentliche Veranstaltungen") numberOfSelectedWeeklyLections++;
 	    } 
+	    else if ((numberOfPriosSelected < maxNumberOfPriosSelected) && (newPrio.showCourses == true)) { // if showCourses == true -> nur (numberOfCourses)x auswählbar
+		    	
+	    	if ((newPrio.title == "Raumbeschaffenheit") && (numberOfSelectedRooms < numberOfCourses)) {
+	    		$rootScope.selectedPriorities.unshift(newPrio); 
+	    		numberOfSelectedRooms++;
+	    		numberOfPriosSelected++; 
+	    	} 
+	    	else if ((newPrio.title == "Wöchentliche Veranstaltungen") && (numberOfSelectedWeeklyLections < numberOfCourses)) {
+    			$rootScope.selectedPriorities.unshift(newPrio); 
+    			numberOfSelectedWeeklyLections++;
+    			numberOfPriosSelected++; 
+    		}
+		} 
     	else {
-    		// TODO: print error massage on screen "You can only select 10 wishes"
+    		// TODO: show error massage on website 
+    		console.log("You can only select 10 contraints all in all - one of each category that is not course specific; the course specific constraints each per course")
     	}
     }
 
@@ -57,15 +62,17 @@
       $rootScope.selectedPriorities = newPrios;
       
       numberOfPriosSelected--;
+      if (newPrio.title == "Raumbeschaffenheit") numberOfSelectedRooms--;
+  	  else if (newPrio.title == "Wöchentliche Veranstaltungen") numberOfSelectedWeeklyLections--;
     }
 
     $rootScope.selectedPriorities = [];
-//    $rootScope.alreadySelectedPriorities = [];	//TODO
 //    $rootScope.acceptedPriorities = [];			//TODO
 
     $scope.save = function() {
     	
-	    // validating selected prios -> TODO: only save prios when validated and okay
+    	// check all the selected constraints (prios) for validating issues
+    	// validating selected constraints -> only save prios/constraints when validated and okay
      	var noEmptyInputElements = true;
     	var noImpossibleCombinations = true;
     	var noDublication = true;
@@ -182,25 +189,16 @@
 //	    	console.log("time one: " + $rootScope.selectedPriorities[i].timeOne);
 //	    	console.log("time two: " + $rootScope.selectedPriorities[i].timeTwo);
 	    	
-//	   		$rootScope.selectedPriorities[i].dayTwo.value == [0, 0] 
-			
-	    	
     	}
 
     	// TODO: check if calendar is Selected (any, at least min, at most max) ?
 //    	var calendarInput = document.getElementsByClass('calendar-input'); //$('.option-choice a')
 //
 //		for(var i = 0; i < calendarInput.length; i++) { 
-//			if (calendarInput[i].value ) {	// TODO: if all calendarInput[i]:prio has the prio=="1" -> no (other) prio selected
+//			if (calendarInput[i].value ) {	// TODO: if all calendarInput[i] has prio=="1" -> no (other) prio selected
 //				calendarIsNotEmpty = false;
 //		    }
-//		}
-	      
-        
-//      try {	} catch { }
-//  	$rootScope.selectedPriorities.ExcludeDayCombinationPrio
-	      
-	      
+//		}	      
 
 	    // if all fine -> save	  
     	if (noEmptyInputElements && noImpossibleCombinations && noDublication && calendarIsNotEmpty) {
@@ -220,10 +218,21 @@
 	        }    
 	      });
     	}
-    	else {
-    		// TODO: error message telling the user what needs to be changed 
-    		console.log ("please make sure that you chose any of the options in all of your selected wishes, that you didn't enter duplicate information and that you didn't enter options that are impossible to combine! ")
+    	else if (noEmptyInputElements == false) {
+    		// TODO: show error message telling the user what needs to be changed 
+    		console.log ("Please make sure that you chose any of the options in all of your selected constraints! ");
     	}
+    	else if (noImpossibleCombinations == false) {
+   		 	console.log ("Please make sure that you didn't enter options that are impossible to combine! ");
+    	}
+    	else if (noDublication == false) {
+    		// TODO: show error message
+      		console.log ("Please make sure that you didn't enter duplicate information! ");
+       	}
+    	else { //if (calendarIsNotEmpty == false) {
+    		// TODO: show error message
+      		console.log ("Please make sure that you chose at least ... of the preferred time slots in the calendar! ");
+      	}
     }
    
     $scope.possiblePriorities = [
