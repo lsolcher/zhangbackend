@@ -41,7 +41,7 @@ public class Algorithm {
 		programs.generateMockData();
 		teachers.generateMockData();
 		rooms.generateMockData();
-		slots.generate(5, rooms.list());
+		slots.generate(35, rooms.list());
 		prios.generateMockData(teachers.list());
 		courses.generateMockData(programs.list(), teachers.list());
 
@@ -74,6 +74,8 @@ public class Algorithm {
 		//TODO: stundenplaene verbessern - bewerten und neu berechnen
 		//TODO: stundenplaene darstellen
 
+		printMap(slots.getSlots());
+		
 		// Calculate based on the above slots
 		// alle slots vergeben pro Tag x Tagen
 		optimalThreshold = 700;

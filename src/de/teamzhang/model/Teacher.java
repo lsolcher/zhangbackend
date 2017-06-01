@@ -13,8 +13,8 @@ public class Teacher {
 	private BigInteger id;
 	private boolean isProf;
 	private ArrayList<Course> courses = new ArrayList<Course>(1);
-	private int[][] weightedDayTimeWishes = new int[5][35];
-	private boolean[][] fullSlots = new boolean[5][35];
+	private int[][] weightedDayTimeWishes = new int[5][7];
+	private boolean[][] fullSlots = new boolean[5][7];
 	private int teachingHours;
 
 	public Teacher() {
@@ -38,6 +38,7 @@ public class Teacher {
 
 	public void setFreeSlot(int day, int time) {
 		fullSlots[day][time] = false;
+		teachingHours--;
 	}
 
 	public boolean isProf() {

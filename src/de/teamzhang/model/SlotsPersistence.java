@@ -27,18 +27,18 @@ public class SlotsPersistence {
 	}
 
 	public void generate(int noOfSlots, Collection<Room> rooms) {
-		for (Room room : rooms) {
+		//for (Room room : rooms) {
 			for (int i = 0; i < noOfSlots; i++) {
 				Slot slot = new Slot();
 				slot.setId(id);
-				slot.setRoom(room);
+				//slot.setRoom(room);
 				slot.setDay(i % 5); //assigns weekdays
 				slot.setTime(i % 7);
 				//((Slot) slots).setId(id);
 				slots.put(id, slot);
 				id = id.add(new BigInteger("1"));
 			}
-		}
+		//}
 	}
 
 	public Collection<Slot> list() {

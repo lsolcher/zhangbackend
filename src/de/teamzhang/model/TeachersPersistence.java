@@ -35,6 +35,7 @@ public class TeachersPersistence {
 
 	public void create(final Teacher teacher) {
 		//((Prio) teachers).setId(id);
+		teacher.setId(id);
 		teachers.put(id, teacher);
 		id = id.add(new BigInteger("1"));
 	}
