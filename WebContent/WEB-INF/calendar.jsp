@@ -126,10 +126,10 @@
 				<div class="calendar-row">
 					<span class="lecture-time">09:45 - 11:15</span>
 					<div class="calendar-input" value="10" prio="1"></div>
-		        <div class="calendar-input" value="11" prio="1"></div>
-		        <div class="calendar-input" value="12" prio="1"></div>
-		        <div class="calendar-input" value="13" prio="1"></div>
-		        <div class="calendar-input" value="14" prio="1"></div>
+			        <div class="calendar-input" value="11" prio="1"></div>
+			        <div class="calendar-input" value="12" prio="1"></div>
+			        <div class="calendar-input" value="13" prio="1"></div>
+			        <div class="calendar-input" value="14" prio="1"></div>
 				</div>
 				<div class="calendar-row">
 					<span class="lecture-time">12:15 - 13:45</span>
