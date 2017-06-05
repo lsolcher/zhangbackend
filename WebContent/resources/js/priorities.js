@@ -4,6 +4,7 @@
 	var numberOfPriosSelected = 0;
 	var maxNumberOfPriosSelected = 6;
 
+
     $scope.selectPrio = function(index, prio) {
     	if (numberOfPriosSelected < maxNumberOfPriosSelected) {
     		for(var i in $rootScope.selectedPriorities) {
@@ -19,9 +20,12 @@
     	}
     }
 
-    $scope.getCalendar = function(index, time) {
-      // TODO: Get Object from prio
-    }
+    $scope.updateCalendar = function(calendar, index){
+      calendar[index] = (parseInt(calendar[index], 10) + 1);
+      if (calendar[index] === 4) {
+        calendar[index] = 0;
+      }
+    };
 
     $scope.removeEntry = function(index, prio) {
       var newPrios = [];
@@ -35,15 +39,17 @@
     }
 
     $rootScope.selectedPriorities = [];
+    $rootScope.calendar = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
 
     $scope.save = function() {
-      console.log(JSON.stringify($rootScope.selectedPriorities));
-      console.log('Save:', $rootScope.selectedPriorities);
+      console.log('calendar:', $scope.calendar);
+      console.log('Save:', $rootScope.selectedPriorities, $scope.calendar);
       $.ajax({
         type: 'POST',
         contentType : 'application/json; charset=utf-8',
         url: '/ZhangProjectBackend/post.json',
-        data: JSON.stringify($rootScope.selectedPriorities),
+        data: JSON.stringify($rootScope.selectedPriorities, $scope.calendar),
         success: function(response) {
           console.log('Response', response);
         },
@@ -128,7 +134,6 @@
       }
     ];
 
-    $scope.calendar = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 ];
   });
 
   angular.module("zhang-app").directive('priority', function($rootScope) {
@@ -140,25 +145,28 @@
       scope.prio.timeOne = "0";
       scope.prio.timeTwo = "0";
 
-      console.log(scope.prio.dayOne + " " + scope.prio.dayTwo);
-
-      // scope.prio.ExcludeDayCombinationPrio = [ {
-      //   dayOne: [
-      //     "day", "time"
-      //   ],
-      //   dayTwo: [
-      //     "day", "time"
-      //   ] }
-      // ];
-
       scope.prio.course = "Alle Kurse";
-      // scope.prio
 
       scope.change = function(selected) {
         scope.prio.option = selected;
       }
+
     }
   });
+
+  // angular.module("zhang-app").directive('calendar', function($rootScope) {
+  //   return function(scope, element, attrs) {
+  //
+  //     scope.updateCalendar = function($index, time){
+  //       console.log(time);
+  //       time += 1;
+  //       // var value = $($event.target).data('prio');
+  //       // console.log(value);
+  //       // $rootScope.calendar[$index] = value;
+  //     };
+  //
+  //   }
+  // });
 })();
 
 $(document).ready(function() {

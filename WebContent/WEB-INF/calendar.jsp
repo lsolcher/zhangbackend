@@ -108,8 +108,24 @@
         <a href="#" class="no-pref-choice" prio="0">Nicht m�glich</a>
 			</div>
 
-      <div class="calendar-body group" >
-        <div class="calendar-input" ng-repeat="time in calendar" ng-click="getCalendar($index, time)" value="{{$index}}" prio="1"></div>
+      <div class="week-days">
+					<span class="week-day">MO</span>
+					<span class="week-day">DI</span>
+					<span class="week-day">MI</span>
+					<span class="week-day">DO</span>
+					<span class="week-day">FR</span>
+      </div>
+      <div class="week-times">
+					<span class="week-time">08:00 - 09:30</span>
+					<span class="week-time">09:45 - 11:15</span>
+					<span class="week-time">12:15 - 13:45</span>
+					<span class="week-time">14:00 - 15:30</span>
+					<span class="week-time">15:45 - 17:15</span>
+          <span class="week-time">17:30 - 19:00</span>
+          <span class="week-time">19:15 - 20:45</span>
+      </div>
+      <div class="calendar-body group" ng-init="calendar">
+        <div class="calendar-input" ng-repeat="time in calendar track by $index" ng-click="updateCalendar(calendar, $index);" value="{{$index}}" data-prio="{{time}}"></div>
       </div>
 
 			<!-- <div class="calendar-body group" ng-model="calendar" ng-change="setCal(calendar)">
