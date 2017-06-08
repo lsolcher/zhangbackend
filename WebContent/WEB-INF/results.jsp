@@ -74,12 +74,14 @@
 				businessHours: true,
 				businessHours: {
 				    // days of week. an array of zero-based day of week integers (0=Sunday)
-				    dow: [ 1, 2, 3, 4,5 ], // Monday - Thursday
+				    dow: [ 1, 2, 3, 4,5 ], // Monday - Friday
 
 				    start: '07:30', // a start time (10am in this example)
-				    end: '20:00', // an end time (6pm in this example)
+				    end: '21:00', // an end time (6pm in this example)
 				},
 				
+				minTime: '07:30',
+				maxTime: '21:00',
 				
 				defaultView: 'agendaWeek',
 				editable: true,
