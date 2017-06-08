@@ -10,18 +10,12 @@
     <link rel="stylesheet" href="${bootstrapcss}"/>
     <spring:url var ="style" value="/resources/css/style2.css" />
     <link rel="stylesheet" href="${style}"/>
-    
-    <!-- spring:url var ="fullcalendar" value="/resources/css/fullcalendar.min.css" />
-    <link rel="stylesheet" href="${fullcalendar}"/>
-    <spring:url var ="fullcalendar-print" value="/resources/css/fullcalendar.print.min.css" />
-    <link rel="stylesheet" href="${fullcalendar-print}" media='print'/ -->
-    
-    <link rel="stylesheet" href="../resources/css/fullcalendar.min.css" / >
-    <link rel="stylesheet" href="../resources/css/fullcalendar.print.min.css" media='print'/ >
-    
-    <style>
+  
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.css' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css' />
+	<style>
 
-		body {
+		.main {
 			margin: 40px 10px;
 			padding: 0;
 			font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
@@ -56,9 +50,9 @@
 	<spring:url var ="fullcalendar-min" value="/resources/js/fullcalendar.min.js" />
   	<script type="text/javascript" src="${fullcalendar-min}"></script-->
 
-	<script src="../resources/js/jquery.min.js"></script>
-	<script src="../resources/js/moment.min.js"></script>
-	<script src="../resources/js/fullcalendar.min.js"></script>
+	<script src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.js'></script>
 
 	<script>
 	
