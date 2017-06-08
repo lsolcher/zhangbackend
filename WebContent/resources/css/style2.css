@@ -405,6 +405,19 @@ select {
   background-color: pink;
 }
 
+
+
+.result-table  {
+	margin: 50px auto;
+	max-width: 1200px;
+}
+
+.result-table td,
+.result-table th  {
+	display: inline-block;
+	margin: 10px 20px 10px 0;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
