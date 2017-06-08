@@ -25,7 +25,7 @@
 		}
 	
 		#calendar {
-			max-width: 900px;
+			max-width: 1200px;
 			margin: 0 auto;
 		}
 	
@@ -74,14 +74,20 @@
 				businessHours: true,
 				businessHours: {
 				    // days of week. an array of zero-based day of week integers (0=Sunday)
-				    dow: [ 1, 2, 3, 4,5 ], // Monday - Friday
+				    dow: [ 1, 2, 3, 4, 5 ], // Monday - Friday
 
 				    start: '07:30', // a start time (10am in this example)
 				    end: '21:00', // an end time (6pm in this example)
 				},
 				
+				hiddenDays: [ 6, 0 ] ,
 				minTime: '07:30',
 				maxTime: '21:00',
+				
+				slotLabelFormat:'H:mm', 
+				//slotDuration: '01:30:00',
+				//slotLabelInterval: '00:45:00', 
+				slotEventOverlap: false,
 				
 				defaultView: 'agendaWeek',
 				editable: true,
@@ -89,6 +95,12 @@
 				events: [
 					{
 						title: 'Bildanalyse',
+						start: '2017-05-01T09:45:00' ,
+						end: '2017-05-01T11:15:00' ,
+						allDay : false // will make the time show
+					},
+					{
+						title: 'Mathe 2',
 						start: '2017-05-01T09:45:00' ,
 						end: '2017-05-01T11:15:00' ,
 						allDay : false // will make the time show
