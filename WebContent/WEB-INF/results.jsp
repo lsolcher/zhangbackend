@@ -11,8 +11,10 @@
     <spring:url var ="style" value="/resources/css/style2.css" />
     <link rel="stylesheet" href="${style}"/>
   
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.css' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css' />
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css' />
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.min.css' media='print' />
+	
 	<style>
 
 		.main {
@@ -43,16 +45,11 @@
   	<script type="text/javascript" src="${bootstrap}"></script>
 
 
-	<!-- spring:url var ="jQuery" value="/resources/js/jquery.min.js" />
-  	<script type="text/javascript" src="${jQuery}"></script>
-	<spring:url var ="moment" value="/resources/js/moment.min.js" />
-  	<script type="text/javascript" src="${moment}"></script>
-	<spring:url var ="fullcalendar-min" value="/resources/js/fullcalendar.min.js" />
+	<!--spring:url var ="fullcalendar-min" value="/resources/js/fullcalendar.min.js" />
   	<script type="text/javascript" src="${fullcalendar-min}"></script-->
-
 	<script src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js'></script>
 
 	<script>
 	
@@ -62,32 +59,65 @@
 				header: {
 					left: 'prev,next today',
 					center: 'title',
-					right: 'month,basicWeek,basicDay'
+					right: 'month,agendaWeek,agendaDay,listWeek'	//basicWeek, basicDay, listDay
 				},
-				defaultDate: '2017-05-12',
+				defaultDate: '2017-05-01',
 				navLinks: true, // can click day/week names to navigate views
+				
+				//timeFormat: 'h:mm' ,
+				columnFormat: 'dddd',	// or 'ddd M/D' -> like 'Mon 9/7', for week views
+				
+				weekNumbers: true,
+				weekNumbersWithinDays: true,
+				weekNumberCalculation: 'ISO',
+
+				businessHours: true,
+				businessHours: {
+				    // days of week. an array of zero-based day of week integers (0=Sunday)
+				    dow: [ 1, 2, 3, 4,5 ], // Monday - Thursday
+
+				    start: '07:30', // a start time (10am in this example)
+				    end: '20:00', // an end time (6pm in this example)
+				},
+				
+				
+				defaultView: 'agendaWeek',
 				editable: true,
 				eventLimit: true, // allow "more" link when too many events
 				events: [
 					{
+						title: 'Bildanalyse',
+						start: '2017-05-01T09:45:00' ,
+						end: '2017-05-01T11:15:00' ,
+						allDay : false // will make the time show
+					},
+					{
+						title: 'Informatik 1',
+						start: '2017-05-03T12:15:00' ,
+						end: '2017-05-03T13:45:00' ,
+						allDay : false // will make the time show
+					},
+					{
+						title: 'Mathe 1',
+						start: '2017-05-05T14:00:00' ,
+						end: '2017-05-05T15:30:00' ,
+						allDay : false // will make the time show
+					},
+					{
 						title: 'All Day Event',
 						start: '2017-05-01'
 					},
-					{
+					/*{
 						id: 999,
 						title: 'Repeating Event',
 						start: '2017-05-09T16:00:00'
 					},
 					{
-						title: 'Meeting',
-						start: '2017-05-12T10:30:00',
-						end: '2017-05-12T12:30:00'
-					},
-					{
 						title: 'Lunch',
 						start: '2017-05-12T12:00:00'
-					}
-				]
+					}*/
+				],
+				timeFormat: 'H(:mm)' // uppercase H for 24-hour clock
 			});
 			
 		});
