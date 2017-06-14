@@ -112,6 +112,7 @@ public class PrioPersistence {
 		for (Teacher teacher : teachers) {
 			for (int i = 0; i < 2; i++) {
 				Prio prio = randomize(teacher);
+				teacher.addPrio(prio);
 				create(prio);
 			}
 		}

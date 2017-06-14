@@ -8,7 +8,7 @@ public class ExcludeDayCombinationPrio extends Prio {
 	// Monday = 0; Sunday = 6
 	private int dayOne;
 	private int dayTwo;
-	// time represented without :
+	// 0 = 8, 1 = 9:30...
 	private int timeOne = 0;
 	private int timeTwo = 0;
 

@@ -150,11 +150,9 @@ public class Algorithm {
 				if (random == 3)
 					random = 9999;
 				weightedDayTimeWishes[days][time] = random;
-				//System.out.print(weightedDayTimeWishes[days][time] + "\t");
 			}
 		}
 		t.setWeightedDayTimeWishes(weightedDayTimeWishes);
-		//TODO: add prios to prioritize schedule
 
 	}
 
@@ -173,7 +171,8 @@ public class Algorithm {
 			Object[] teacherObjs = teachers.getTeachers().values().toArray();
 			Teacher randomTeacher = (Teacher) teacherObjs[randomGen.nextInt(teacherObjs.length)];
 			//TODO: exit condition if all teachers are busy at that time
-			while (randomTeacher.getFullSlots()[slot.getDay()][slot.getTime()] == true || randomTeacher.isBusy()) {
+			while (randomTeacher.getFullSlots()[slot.getDay()][slot.getTime()] == true || randomTeacher.isBusy()
+					|| randomTeacher.priosDontFit(slot)) {
 				randomTeacher = (Teacher) teacherObjs[randomGen.nextInt(teacherObjs.length)];
 			}
 			randomTeacher.setFullSlot(slot.getDay(), slot.getTime());

@@ -30,6 +30,22 @@ public class Prio {
 		createId();
 	}
 
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+
+	public Collection<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(Collection<Course> courses) {
+		this.courses = courses;
+	}
+
 	private void createId() {
 		BigInteger n = new BigInteger("999999999999");
 		Random rand = new Random();
