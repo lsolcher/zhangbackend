@@ -181,17 +181,17 @@ a {
     width: 50px;
 }
 
-.calendar-input[prio="0"] {
+.calendar-input[data-prio="0"] {
     background: #fff;
     border: 1px dotted grey;
 }
-.calendar-input[prio="1"] {
+.calendar-input[data-prio="1"] {
     background: #cfd8dc;
 }
-.calendar-input[prio="2"] {
+.calendar-input[data-prio="2"] {
     background: #a7ffeb;
 }
-.calendar-input[prio="3"] {
+.calendar-input[data-prio="3"] {
     background: #1de9b6;
 }
 
@@ -488,8 +488,8 @@ select {
 
     .lecture-time {
         margin-top: 0;
-    }   
-    
+    }
+
     .calendar-input {
         height: 26px;
         margin: 0 3px;

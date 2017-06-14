@@ -3,9 +3,9 @@ $(document).ready(function() {
   $('.option-choice a').click(function() {
     $(this).toggleClass('active').siblings().removeClass('active');
     if ($(this).hasClass('active')) {
-      setPrioByOption()
+      // setPrioByOption()
     } else {
-      setPrioByClick()
+      // setPrioByClick()
     }
   })
 
@@ -13,11 +13,11 @@ $(document).ready(function() {
   //   $(event.target).find('.priority-conent').slideToggle( "slow" )
   // })
 
-  setPrioByClick()
+  // setPrioByClick()
 
   $('.menu-trigger').click(function() {
     $(".menu").fadeToggle();
-    
+
   });
 
   $(window).resize(function() {
@@ -26,34 +26,34 @@ $(document).ready(function() {
 
 });
 
-function setPrioByOption() {
-  $('.calendar-input').unbind('click')
-  $('.calendar-input').click(function(event) {
-
-    var _prio = $('.active').attr('prio');
-
-    $(event.target).attr('prio', _prio);
-
-  })
-}
-
-function setPrioByClick() {
-  $('.calendar-input').unbind('click')
-  $('.calendar-input').click(function(event) {
-
-    var _prio = $(event.target).attr('prio')
-
-    if(typeof _prio == 'undefined' || _prio == '') {
-      _prio = 1
-    }
-    _prio = parseInt(_prio)
-    _prio++
-
-    if (_prio > 3) {
-      _prio = 0;
-    }
-
-    $(event.target).attr('prio', _prio);
-
-  })
-}
+// function setPrioByOption() {
+//   // $('.calendar-input').unbind('click')
+//   $('.calendar-input').click(function(event) {
+//
+//     var _prio = $('.active').attr('data-prio');
+//
+//     $(event.target).attr('data-prio', _prio);
+//
+//   })
+// }
+//
+// function setPrioByClick() {
+//   // $('.calendar-input').unbind('click')
+//   $('.calendar-input').click(function(event) {
+//
+//     var _prio = $(event.target).attr('data-prio')
+//
+//     if(typeof _prio == 'undefined' || _prio == '') {
+//       _prio = 1
+//     }
+//     _prio = parseInt(_prio)
+//     _prio++
+//
+//     if (_prio > 3) {
+//       _prio = 0;
+//     }
+//
+//     $(event.target).attr('data-prio', _prio);
+//
+//   })
+// }
