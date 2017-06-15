@@ -183,7 +183,7 @@
 					<th>M 4.Sem.</th>
 				</thead>
 				<tbody>
-					<tr>
+					<tr class="new-day">
 						<td>Montag</td>
 					</tr>
 					<tr>
@@ -278,7 +278,7 @@
 						<td></td>
 					</tr>
 					
-					<tr>
+					<tr class="new-day">
 						<td>Dienstag</td>
 					</tr>
 					<tr>
@@ -373,7 +373,7 @@
 						<td></td>
 					</tr>
 					
-					<tr>
+					<tr class="new-day">
 						<td>Mittwoch</td>
 					</tr>
 					<tr>
@@ -468,7 +468,7 @@
 						<td></td>
 					</tr>
 					
-					<tr>
+					<tr class="new-day">
 						<td>Donnerstag</td>
 					</tr>
 					<tr>
@@ -563,7 +563,7 @@
 						<td></td>
 					</tr>
 					
-					<tr>
+					<tr class="new-day">
 						<td>Freitag</td>
 					</tr>
 					<tr>
