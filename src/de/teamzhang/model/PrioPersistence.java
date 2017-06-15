@@ -58,7 +58,29 @@ public class PrioPersistence {
 		Random r = new Random();
 
 		Prio prio = new SingleChoicePrio("prio_" + teacher.getName(), teacher, teacher.getCourses());
-		prio.setOption(r.nextInt(4));
+		int prioType = r.nextInt(4);
+		switch (prioType) {
+		case 0:
+			prio.setName("Unterrichtsbeginn");
+			prio.setOption(r.nextInt(1));
+			break;
+		case 1:
+			prio.setName("Anzahl Veranstaltungen pro Tag");
+			prio.setOption(r.nextInt(1));
+			break;
+		case 2:
+			prio.setName("Pausen");
+			prio.setOption(r.nextInt(5));
+			break;
+		case 3:
+			prio.setName("Maximale Lehrtage pro Woche");
+			prio.setOption(r.nextInt(5));
+			break;
+		case 4:
+			prio.setName("Maximale Anzahl aufeinanderfolgender Lehrtage");
+			prio.setOption(r.nextInt(5));
+			break;
+		}
 
 		return prio;
 	}

@@ -19,4 +19,8 @@ public class SingleChoicePrio extends Prio {
 		option = theOption;
 	}
 
+	public int getOption() {
+		return option;
+	}
+
 }
