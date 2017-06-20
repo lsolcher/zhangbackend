@@ -13,20 +13,31 @@ public class Teacher {
 	@Id
 	private BigInteger id;
 	private boolean isProf;
-	private ArrayList<Course> courses = new ArrayList<Course>(1);
+	private ArrayList<Course> courses = new ArrayList<Course>();
 	private int[][] weightedDayTimeWishes = new int[5][7];
 	private boolean[][] fullSlots = new boolean[5][7];
 	private int teachingHours;
+	private int freeHours;
 	private List<Prio> prios = new ArrayList<Prio>();
 
 	public Teacher() {
 	}
 
 	public boolean isBusy() {
-		if ((isProf && teachingHours >= 6) || (!isProf && teachingHours >= 2))
+		//if ((isProf && teachingHours >= 6) || (!isProf && teachingHours >= 2))
+		//return true;
+		if (freeHours == 0)
 			return true;
 		else
 			return false;
+	}
+
+	public int getFreeHours() {
+		return freeHours;
+	}
+
+	public void setFreeHours(int freeHours) {
+		this.freeHours = freeHours;
 	}
 
 	public List<Prio> getPrios() {

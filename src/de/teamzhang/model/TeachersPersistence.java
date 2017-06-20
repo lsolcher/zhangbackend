@@ -1,6 +1,7 @@
 package de.teamzhang.model;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -68,7 +69,137 @@ public class TeachersPersistence {
 
 	// create useful teacher for learning
 	public void generateMockData() {
-		for (int i = 0; i < 8; i++) {
+		Program ba = new Program();
+		ba.setName("Bachelor IMI");
+		Program ma = new Program();
+		ma.setName("Master IMI");
+
+		Teacher t = new Teacher();
+		t.setName("Lenz");
+		t.setProf(true);
+		t.setFreeHours(4);
+		ArrayList<Course> courses = new ArrayList<Course>();
+
+		Course c = new Course();
+		c.setName("GT 1 SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		Room room = new Room();
+		room.setName("GT 1 Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("GT 1 Ü");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("GT 1 Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("GT 1 M");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("GT 1 M Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Escher");
+		t.setProf(false);
+		t.setFreeHours(3);
+
+		c = new Course();
+		c.setName("MW SU");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("MW SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("MW Ü");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("MW Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Vigerske");
+		t.setProf(false);
+		t.setFreeHours(2);
+
+		c = new Course();
+		c.setName("MA SU");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("MA SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Barthel");
+		t.setProf(true);
+		t.setFreeHours(5);
+
+		c = new Course();
+		c.setName("GDM SU");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("GDM SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("VCAT 1 SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("VCAT 1 SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("VC 1");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("VC 1 Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+		/*for (int i = 0; i < 8; i++) {
 			Teacher t1 = new Teacher();
 			t1.setName("Prof " + i);
 			t1.setProf(true);
@@ -79,7 +210,7 @@ public class TeachersPersistence {
 			t1.setName("Teacher " + i);
 			t1.setProf(false);
 			create(t1);
-		}
+		}*/
 	}
 
 }
