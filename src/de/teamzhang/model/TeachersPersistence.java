@@ -103,7 +103,7 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("GT 1 M");
 		c.setSlotsNeeded(2);
-		c.setProgram(ba);
+		c.setProgram(ma);
 		room = new Room();
 		room.setName("GT 1 M Room");
 		c.setRoom(room);
@@ -190,7 +190,7 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("VC 1");
 		c.setSlotsNeeded(2);
-		c.setProgram(ba);
+		c.setProgram(ma);
 		room = new Room();
 		room.setName("VC 1 Room");
 		c.setRoom(room);
