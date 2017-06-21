@@ -418,10 +418,11 @@ select {
 
 /*results*/
 
-
+<
 .result-table  {
 	margin: 50px auto;
 	max-width: 1200px;
+	table-layout: fixed;
 }
 
 .result-table caption {
@@ -434,6 +435,7 @@ select {
 .result-table th  {
 	display: inline-block;
 	margin: 10px 20px;
+	width: 80px;
 }
 
 .result-table thead {
