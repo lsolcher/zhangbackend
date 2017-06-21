@@ -66,6 +66,7 @@ public class Course {
 
 	public void setProgram(Program program) {
 		this.program = program;
+		program.addCourse(this);
 	}
 
 	public String getName() {

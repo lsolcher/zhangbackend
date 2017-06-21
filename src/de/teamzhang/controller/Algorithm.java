@@ -205,29 +205,29 @@ public class Algorithm {
 		notOccupiedSlots.clear();
 
 		for (Program p : allPrograms) {
-			for (Course c : allCourses) {
+			for (Course c : p.getCourses()) {
 				Teacher teacher = c.getTeacher();
 				Slot slot = new Slot();
 				Random r = new Random();
-				slot.setDay(r.nextInt(5));
-				if (c.getSlotsNeeded() == 1)
-					slot.setTime(r.nextInt(7));
-				else if (c.getSlotsNeeded() == 1)
-					slot.setTime(r.nextInt(6));
-				else
-					slot.setTime(r.nextInt(5));
-				c.setDay(slot.getDay());
-				c.setTime(c.getTime());
-				teacher.setFullSlot(slot.getDay(), slot.getTime());
-				if (c.getSlotsNeeded() == 2)
-					teacher.setFullSlot(slot.getDay(), slot.getTime() + 1);
-				if (c.getSlotsNeeded() == 3) {
-					teacher.setFullSlot(slot.getDay(), slot.getTime() + 2);
-					teacher.setFullSlot(slot.getDay(), slot.getTime() + 1);
+				int randomTime = r.nextInt(7);
+				int randomDay = r.nextInt(5);
+				if (c.getSlotsNeeded() == 2 && randomTime == 6)
+					randomTime -= 1;
+				while (p.isTimeOccupied(randomTime, randomDay)) {
+					randomTime = r.nextInt(7);
+					randomDay = r.nextInt(5);
+					if (c.getSlotsNeeded() == 2 && randomTime == 6)
+						randomTime -= 1;
 				}
-
+				c.setDay(randomDay);
+				c.setTime(randomTime);
+				teacher.setFullSlot(randomDay, randomTime);
+				if (c.getSlotsNeeded() == 2)
+					teacher.setFullSlot(randomDay, randomTime + 1);
 			}
+
 		}
+
 		//for()
 		/*for (Slot slot : slots.getSlots().values()) {
 			Object[] teacherObjs = teachers.getTeachers().values().toArray();
@@ -251,6 +251,7 @@ public class Algorithm {
 		}*/
 		//return countNotOccupied;
 		return 0;
+
 	}
 
 	// 2. function to generate a simple Ur-Plan
