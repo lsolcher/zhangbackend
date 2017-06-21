@@ -13,10 +13,29 @@ public class Course {
 	protected Program program;
 	protected String name;
 	protected Teacher teacher;
-	
+	private int day;
+	private int time;
+
 	public Course() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+
 	public Room getRoom() {
 		return room;
 	}
@@ -48,19 +67,19 @@ public class Course {
 	public void setProgram(Program program) {
 		this.program = program;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public Teacher getTeacher() {
 		return teacher;
 	}
-	
+
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}

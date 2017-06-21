@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import de.teamzhang.model.Course;
 import de.teamzhang.model.CoursesPersistence;
 import de.teamzhang.model.Prio;
 import de.teamzhang.model.PrioPersistence;
 import de.teamzhang.model.ProgramPersistence;
-import de.teamzhang.model.Room;
 import de.teamzhang.model.RoomPersistence;
 import de.teamzhang.model.SingleChoicePrio;
 import de.teamzhang.model.Slot;
@@ -31,6 +31,7 @@ public class Algorithm {
 	private static RoomPersistence rooms = new RoomPersistence();
 	private static SlotsPersistence slots = new SlotsPersistence();
 	private static TeachersPersistence teachers = new TeachersPersistence();
+	static ArrayList<Course> allCourses = new ArrayList<Course>();
 
 	private static Random randomGen = new Random();
 
@@ -44,11 +45,11 @@ public class Algorithm {
 	// 1. generate some testdata
 	private static void generateMockData() {
 		programs.generateMockData();
-		teachers.generateMockData();
+		teachers.generateMockData(allCourses);
 		rooms.generateMockData();
-		slots.generate(58, rooms.list());
+		slots.generate(72, rooms.list());
 		prios.generateMockData(teachers.list());
-		courses.generateMockData(programs.list(), teachers.list());
+		//courses.generateMockData(programs.list(), teachers.list());
 
 		printMap(programs.getPrograms());
 		printMap(teachers.getTeachers());
@@ -199,8 +200,23 @@ public class Algorithm {
 	private static int calculateRandomSchedule() {
 		int countNotOccupied = 0;
 		notOccupiedSlots.clear();
+		for (Course c : allCourses) {
+			Teacher randomTeacher = c.getTeacher();
+			Slot slot = new Slot();
+			Random r = new Random();
+			slot.setDay(r.nextInt(5));
+			if (c.getSlotsNeeded() == 1)
+				slot.setTime(r.nextInt(7));
+			else if (c.getSlotsNeeded() == 1)
+				slot.setTime(r.nextInt(6));
+			else
+				slot.setTime(r.nextInt(5));
+			c.setDay(slot.getDay());
+			c.setTime(c.getTime());
+
+		}
 		//for()
-		for (Slot slot : slots.getSlots().values()) {
+		/*for (Slot slot : slots.getSlots().values()) {
 			Object[] teacherObjs = teachers.getTeachers().values().toArray();
 			Teacher randomTeacher = (Teacher) teacherObjs[randomGen.nextInt(teacherObjs.length)];
 			//TODO: exit condition if all teachers are busy at that time
@@ -217,11 +233,11 @@ public class Algorithm {
 				notOccupiedSlots.add("Day: " + slot.getDay() + ", Time: " + slot.getTime());
 			}
 			for (Room room : rooms.getRooms().values()) {
-
+		
 			}
-		}
-		return countNotOccupied;
-
+		}*/
+		//return countNotOccupied;
+		return 0;
 	}
 
 	// 2. function to generate a simple Ur-Plan

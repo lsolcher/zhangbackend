@@ -68,7 +68,8 @@ public class TeachersPersistence {
 	}
 
 	// create useful teacher for learning
-	public void generateMockData() {
+	public void generateMockData(ArrayList<Course> allCourses) {
+
 		Program ba = new Program();
 		ba.setName("Bachelor IMI");
 		Program ma = new Program();
@@ -89,6 +90,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("GT 1 ‹");
@@ -99,6 +101,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("GT 1 M");
@@ -109,6 +112,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -128,6 +132,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("MW ‹");
@@ -138,6 +143,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -157,6 +163,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -176,6 +183,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("VCAT 1 SU");
@@ -186,6 +194,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("VC 1");
@@ -196,6 +205,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -215,6 +225,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("CS ‹");
@@ -225,6 +236,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -244,6 +256,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("GW ‹");
@@ -254,6 +267,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -273,6 +287,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("AO");
@@ -283,6 +298,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -302,6 +318,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("INFO 1 ‹");
@@ -312,6 +329,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -331,6 +349,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("BSAC");
@@ -341,6 +360,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -360,6 +380,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("INFO 2/1 ‹");
@@ -370,6 +391,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("INFO 2/2 SU");
@@ -380,6 +402,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("INFO 2/2 ‹");
@@ -390,6 +413,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("WT 4  /WT 5 ");
@@ -400,6 +424,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -419,6 +444,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("NW ‹");
@@ -429,6 +455,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -448,6 +475,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -467,6 +495,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("CG ‹");
@@ -477,6 +506,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("GTAT 1 SU");
@@ -487,6 +517,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("GTAT 1 ‹");
@@ -497,6 +528,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -516,6 +548,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("DB SU");
@@ -526,6 +559,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -545,6 +579,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("INFO 3 SU 2");
@@ -555,6 +590,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("INFO 3 ‹ 1");
@@ -565,6 +601,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("INFO 3 ‹ 2");
@@ -575,6 +612,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("B 24.2 PM ‹");
@@ -585,6 +623,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -604,6 +643,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -623,6 +663,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("BV ‹");
@@ -633,6 +674,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("VC 1 SU");
@@ -643,6 +685,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("VC 1 SU");
@@ -653,6 +696,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("VC 4  2SU / 2 ‹ 14t‹");
@@ -663,6 +707,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -682,6 +727,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -701,6 +747,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("WTAT 1 ‹");
@@ -711,6 +758,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -730,6 +778,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("WT 1 ‹");
@@ -740,6 +789,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("M1 EP");
@@ -750,6 +800,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		c = new Course();
 		c.setName("M 1");
@@ -760,6 +811,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -779,6 +831,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
@@ -798,6 +851,7 @@ public class TeachersPersistence {
 		c.setRoom(room);
 		c.setTeacher(t);
 		courses.add(c);
+		allCourses.add(c);
 
 		t.setCourses(courses);
 		create(t);
