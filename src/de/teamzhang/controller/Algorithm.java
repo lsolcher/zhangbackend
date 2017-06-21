@@ -13,6 +13,7 @@ import de.teamzhang.model.Course;
 import de.teamzhang.model.CoursesPersistence;
 import de.teamzhang.model.Prio;
 import de.teamzhang.model.PrioPersistence;
+import de.teamzhang.model.Program;
 import de.teamzhang.model.ProgramPersistence;
 import de.teamzhang.model.RoomPersistence;
 import de.teamzhang.model.SingleChoicePrio;
@@ -31,7 +32,9 @@ public class Algorithm {
 	private static RoomPersistence rooms = new RoomPersistence();
 	private static SlotsPersistence slots = new SlotsPersistence();
 	private static TeachersPersistence teachers = new TeachersPersistence();
+
 	static ArrayList<Course> allCourses = new ArrayList<Course>();
+	static ArrayList<Program> allPrograms = new ArrayList<Program>();
 
 	private static Random randomGen = new Random();
 
@@ -45,7 +48,7 @@ public class Algorithm {
 	// 1. generate some testdata
 	private static void generateMockData() {
 		programs.generateMockData();
-		teachers.generateMockData(allCourses);
+		teachers.generateMockData(allCourses, allPrograms);
 		rooms.generateMockData();
 		slots.generate(72, rooms.list());
 		prios.generateMockData(teachers.list());
@@ -73,8 +76,8 @@ public class Algorithm {
 			}
 			calculateRandomSchedule();
 			minusPoints = getMinusPoints();
-			//if (minusPoints < 1000)
-			//	System.out.println("Minuspoints: " + minusPoints);
+			if (minusPoints < 850)
+				System.out.println("Minuspoints: " + minusPoints);
 		} while (minusPoints > 750);
 		for (String s : notOccupiedSlots)
 			System.out.println(s);
@@ -198,29 +201,32 @@ public class Algorithm {
 	}
 
 	private static int calculateRandomSchedule() {
-		int countNotOccupied = 0;
-		notOccupiedSlots.clear();
-		for (Course c : allCourses) {
-			Teacher teacher = c.getTeacher();
-			Slot slot = new Slot();
-			Random r = new Random();
-			slot.setDay(r.nextInt(5));
-			if (c.getSlotsNeeded() == 1)
-				slot.setTime(r.nextInt(7));
-			else if (c.getSlotsNeeded() == 1)
-				slot.setTime(r.nextInt(6));
-			else
-				slot.setTime(r.nextInt(5));
-			c.setDay(slot.getDay());
-			c.setTime(c.getTime());
-			teacher.setFullSlot(slot.getDay(), slot.getTime());
-			if (c.getSlotsNeeded() == 2)
-				teacher.setFullSlot(slot.getDay(), slot.getTime() + 1);
-			if (c.getSlotsNeeded() == 3) {
-				teacher.setFullSlot(slot.getDay(), slot.getTime() + 2);
-				teacher.setFullSlot(slot.getDay(), slot.getTime() + 1);
-			}
 
+		notOccupiedSlots.clear();
+
+		for (Program p : allPrograms) {
+			for (Course c : allCourses) {
+				Teacher teacher = c.getTeacher();
+				Slot slot = new Slot();
+				Random r = new Random();
+				slot.setDay(r.nextInt(5));
+				if (c.getSlotsNeeded() == 1)
+					slot.setTime(r.nextInt(7));
+				else if (c.getSlotsNeeded() == 1)
+					slot.setTime(r.nextInt(6));
+				else
+					slot.setTime(r.nextInt(5));
+				c.setDay(slot.getDay());
+				c.setTime(c.getTime());
+				teacher.setFullSlot(slot.getDay(), slot.getTime());
+				if (c.getSlotsNeeded() == 2)
+					teacher.setFullSlot(slot.getDay(), slot.getTime() + 1);
+				if (c.getSlotsNeeded() == 3) {
+					teacher.setFullSlot(slot.getDay(), slot.getTime() + 2);
+					teacher.setFullSlot(slot.getDay(), slot.getTime() + 1);
+				}
+
+			}
 		}
 		//for()
 		/*for (Slot slot : slots.getSlots().values()) {
