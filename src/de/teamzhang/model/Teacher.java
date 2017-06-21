@@ -57,7 +57,7 @@ public class Teacher {
 	}
 
 	public void setFullSlot(int day, int time) {
-		teachingHours++;
+		//teachingHours++;
 		fullSlots[day][time] = true;
 	}
 

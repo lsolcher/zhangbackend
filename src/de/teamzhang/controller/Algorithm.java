@@ -199,6 +199,7 @@ public class Algorithm {
 	private static int calculateRandomSchedule() {
 		int countNotOccupied = 0;
 		notOccupiedSlots.clear();
+		//for()
 		for (Slot slot : slots.getSlots().values()) {
 			Object[] teacherObjs = teachers.getTeachers().values().toArray();
 			Teacher randomTeacher = (Teacher) teacherObjs[randomGen.nextInt(teacherObjs.length)];

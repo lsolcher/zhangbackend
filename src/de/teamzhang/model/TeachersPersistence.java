@@ -199,6 +199,609 @@ public class TeachersPersistence {
 
 		t.setCourses(courses);
 		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Müller");
+		t.setProf(false);
+		t.setFreeHours(3);
+
+		c = new Course();
+		c.setName("CS SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("CS SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("CS Ü");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("CS Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Dombach");
+		t.setProf(false);
+		t.setFreeHours(3);
+
+		c = new Course();
+		c.setName("GW");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("GW Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("GW Ü");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("GW Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Thiel");
+		t.setProf(false);
+		t.setFreeHours(2);
+
+		c = new Course();
+		c.setName("MA SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("MA SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("AO");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("AO Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Beecher");
+		t.setProf(false);
+		t.setFreeHours(3);
+
+		c = new Course();
+		c.setName("INFO 1 SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("INFO 1 SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("INFO 1 Ü");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("INFO 1 Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Busch");
+		t.setProf(true);
+		t.setFreeHours(3);
+
+		c = new Course();
+		c.setName("PR SU SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("PR SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("BSAC");
+		c.setSlotsNeeded(2);
+		c.setProgram(ma);
+		room = new Room();
+		room.setName("BSAC Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Kleinen");
+		t.setProf(true);
+		t.setFreeHours(6);
+
+		c = new Course();
+		c.setName("INFO 2/2 SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("INFO 2/2 SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("INFO 2/1 Ü");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("INFO 2/1 Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("INFO 2/2 SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("INFO 2/2 SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("INFO 2/2 Ü");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("INFO 2/2 Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("WT 4  /WT 5 ");
+		c.setSlotsNeeded(2);
+		c.setProgram(ma);
+		room = new Room();
+		room.setName("WT 4  /WT 5  Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Sabri");
+		t.setProf(false);
+		t.setFreeHours(2);
+
+		c = new Course();
+		c.setName("NW SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("NW SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("NW Ü");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("NW Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Obermann");
+		t.setProf(false);
+		t.setFreeHours(2);
+
+		c = new Course();
+		c.setName("GDM Ü");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("GDM Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Strippgen");
+		t.setProf(true);
+		t.setFreeHours(5);
+
+		c = new Course();
+		c.setName("CG SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("CG SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("CG Ü");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("CG Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("GTAT 1 SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("GTAT 1 SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("GTAT 1 Ü");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("GTAT 1 Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Oßwald");
+		t.setProf(false);
+		t.setFreeHours(3);
+
+		c = new Course();
+		c.setName("DB Ü");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("DB Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("DB SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("DB SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Zhang");
+		t.setProf(true);
+		t.setFreeHours(6);
+
+		c = new Course();
+		c.setName("INFO 3 SU 1");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("INFO 3 SU 1 Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("INFO 3 SU 2");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("INFO 3 SU 2 Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("INFO 3 Ü 1");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("INFO 3 Ü 1 Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("INFO 3 Ü 2");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("INFO 3 Ü 2 Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("B 24.2 PM Ü");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("B 24.2 PM Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Thünen");
+		t.setProf(false);
+		t.setFreeHours(2);
+
+		c = new Course();
+		c.setName("3 D Ü");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("3 D Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Jung");
+		t.setProf(true);
+		t.setFreeHours(6);
+
+		c = new Course();
+		c.setName("BV SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("BV SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("BV Ü");
+		c.setSlotsNeeded(2);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("BV Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("VC 1 SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("VC 1 Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("VC 1 SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("VC 1 Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("VC 4  2SU / 2 Ü 14tÜ");
+		c.setSlotsNeeded(2);
+		c.setProgram(ma);
+		room = new Room();
+		room.setName("BVC 4  2SU / 2 Ü 14t Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Hezel");
+		t.setProf(false);
+		t.setFreeHours(1);
+
+		c = new Course();
+		c.setName("VCAT 1 Ü");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("NW SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Kirschner");
+		t.setProf(false);
+		t.setFreeHours(2);
+
+		c = new Course();
+		c.setName("WTAT 1 SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("WTAT 1 SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("WTAT 1 Ü");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("WTAT 1 Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Baumeister");
+		t.setProf(false);
+		t.setFreeHours(5);
+
+		c = new Course();
+		c.setName("WT 1 SU");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("WT 1 SU Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("WT 1 Ü");
+		c.setSlotsNeeded(1);
+		c.setProgram(ba);
+		room = new Room();
+		room.setName("WT 1 Ü Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("M1 EP");
+		c.setSlotsNeeded(1);
+		c.setProgram(ma);
+		room = new Room();
+		room.setName("M1 EP Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		c = new Course();
+		c.setName("M 1");
+		c.setSlotsNeeded(2);
+		c.setProgram(ma);
+		room = new Room();
+		room.setName("M 1");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Steinicke");
+		t.setProf(false);
+		t.setFreeHours(2);
+
+		c = new Course();
+		c.setName("GT 2");
+		c.setSlotsNeeded(2);
+		c.setProgram(ma);
+		room = new Room();
+		room.setName("GT 2 Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
+		courses = new ArrayList<Course>();
+		t = new Teacher();
+		t.setName("Schneider");
+		t.setProf(false);
+		t.setFreeHours(2);
+
+		c = new Course();
+		c.setName("Mathe");
+		c.setSlotsNeeded(2);
+		c.setProgram(ma);
+		room = new Room();
+		room.setName("Mathe Room");
+		c.setRoom(room);
+		c.setTeacher(t);
+		courses.add(c);
+
+		t.setCourses(courses);
+		create(t);
+
 		/*for (int i = 0; i < 8; i++) {
 			Teacher t1 = new Teacher();
 			t1.setName("Prof " + i);
