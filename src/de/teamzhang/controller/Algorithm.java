@@ -64,18 +64,18 @@ public class Algorithm {
 		//calculateRandomSchedule();
 		//int minusPoints = getMinusPoints();
 		//System.out.println(minusPoints);
-		int badSlots = 0;
+		//int badSlots = 0;
 
 		do {
 			for (Teacher t : teachers.getTeachers().values()) {
 				t.resetSchedule();
 				teachers.update(t);
 			}
-			badSlots = calculateRandomSchedule();
+			calculateRandomSchedule();
 			minusPoints = getMinusPoints();
-			System.out.println(minusPoints);
-			System.out.println(badSlots);
-		} while (minusPoints > 700 && badSlots > 10);
+			//if (minusPoints < 1000)
+			//	System.out.println("Minuspoints: " + minusPoints);
+		} while (minusPoints > 750);
 		for (String s : notOccupiedSlots)
 			System.out.println(s);
 		for (Teacher t : teachers.getTeachers().values()) {
@@ -201,7 +201,7 @@ public class Algorithm {
 		int countNotOccupied = 0;
 		notOccupiedSlots.clear();
 		for (Course c : allCourses) {
-			Teacher randomTeacher = c.getTeacher();
+			Teacher teacher = c.getTeacher();
 			Slot slot = new Slot();
 			Random r = new Random();
 			slot.setDay(r.nextInt(5));
@@ -213,6 +213,13 @@ public class Algorithm {
 				slot.setTime(r.nextInt(5));
 			c.setDay(slot.getDay());
 			c.setTime(c.getTime());
+			teacher.setFullSlot(slot.getDay(), slot.getTime());
+			if (c.getSlotsNeeded() == 2)
+				teacher.setFullSlot(slot.getDay(), slot.getTime() + 1);
+			if (c.getSlotsNeeded() == 3) {
+				teacher.setFullSlot(slot.getDay(), slot.getTime() + 2);
+				teacher.setFullSlot(slot.getDay(), slot.getTime() + 1);
+			}
 
 		}
 		//for()
