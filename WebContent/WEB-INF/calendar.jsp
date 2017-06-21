@@ -158,9 +158,12 @@
             <div class="priority-conent" ng-hide="prio.hideContent">
               <div ng-if="prio.type == 'SingleChoicePrio'" class="somecontent">
                 <p class="priotext">{{prio.text[0]}}</p>
-                <select class="someselectclass" ng-model="prio.singlechoice" ng-change="change(prio.singlechoice)">
-                  <option ng-repeat="option in prio.options" value="{{$index}}">{{option}}</option>
-                </select>
+                <form name="myForm">
+                  <select class="someselectclass" ng-model="prio.singlechoice" ng-change="change(prio.singlechoice)" required>
+                    <option ng-repeat="option in prio.options" value="{{$index}}">{{option}}</option>
+                  </select>
+                  <span ng-show="myForm.prio.singlechoice.$touched && myForm.prio.singlechoice.$invalid">The name is required.</span>
+                </form>
                 <p class="priotext">{{prio.text[1]}}</p>
               </div>
               <div ng-if="prio.type == 'SimplePrio'" class="somecontent">
@@ -170,7 +173,7 @@
                 <p class="priotext">
                   {{prio.text[0]}}
                 </p>
-                <select name="day" ng-change="change(prio.dayOne[0])" ng-model="prio.dayOne[0]">
+                <select name="day" ng-change="change(prio.dayOne[0])" ng-model="prio.dayOne[0]" required>
                     <option value="Ersten Tag w�hlen">Ersten Tag w�hlen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
@@ -181,7 +184,7 @@
                 <p class="priotext">
                   {{prio.text[1]}}
                 </p>
-                <select name="day" ng-change="change(prio.dayTwo)" ng-model="prio.dayTwo">
+                <select name="day" ng-change="change(prio.dayTwo)" ng-model="prio.dayTwo" required>
                     <option value="Zweiten Tag w�hlen">Zweiten Tag w�hlen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
@@ -197,7 +200,7 @@
                 <p class="priotext">
                   {{prio.text[0]}}
                 </p>
-                <select ng-change="change(prio.dayOne)" ng-model="prio.dayOne">
+                <select ng-change="change(prio.dayOne)" ng-model="prio.dayOne" required>
                     <option value="Ersten Tag w�hlen">Ersten Tag w�hlen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
@@ -208,7 +211,7 @@
                 <p class="priotext">
                   {{prio.text[1]}}
                 </p>
-                <select ng-change="change(prio.dayOne[1])" ng-model="prio.dayOne[1]">
+                <select ng-change="change(prio.dayOne[1])" ng-model="prio.dayOne[1]" required>
                     <option value="Uhrzeit w�hlen">Uhrzeit w�hlen</option>
                     <option value="0">08:00-09:30</option>
                     <option value="1">09:45-11:15</option>
@@ -221,7 +224,7 @@
                 <p class="priotext">
                   {{prio.text[2]}}
                 </p>
-                <select ng-change="change(prio.dayTwo)" ng-model="prio.dayTwo">
+                <select ng-change="change(prio.dayTwo)" ng-model="prio.dayTwo" required>
                     <option value="Zweiten Tag w�hlen">Zweiten Tag w�hlen</option>
                     <option value="0">Montag</option>
                     <option value="1">Dienstag</option>
@@ -232,7 +235,7 @@
                 <p class="priotext">
                   {{prio.text[3]}}
                 </p>
-                <select ng-change="change(prio.timeTwo)" class="time second-time" ng-model="prio.timeTwo">
+                <select ng-change="change(prio.timeTwo)" class="time second-time" ng-model="prio.timeTwo" required>
                     <option value="Uhrzeit w�hlen">Uhrzeit w�hlen</option>
                     <option value="0">08:00-09:30</option>
                     <option value="1">09:45-11:15</option>
@@ -253,7 +256,7 @@
                 <textarea id="freeTextWish" name="freeTextWish" cols="35" rows="4" ng-change="change($event)" ng-model="prio.freetext"></textarea>
               </div>
               <div class="prio-course-select" ng-show="prio.showCourses">
-                <select ng-change="change(prio.course)" class="select-course" ng-model="prio.course">
+                <select ng-change="changeCourse(prio.course)" class="select-course" ng-model="prio.course" required>
                   <option value="Alle Kurse">Alle Kurse</option>
                   <option ng-repeat="course in $root.courseList" value="{{course.id}}">{{course.kurzname}}</option>
                 </select>
@@ -270,7 +273,7 @@
       <div id="template1">
         <p class="priotext">
         </p>
-        <select name="day">
+        <select name="day" required>
             <option>Ersten Tag w�hlen</option>
             <option value="montag">Montag</option>
             <option value="dienstag">Dienstag</option>
@@ -279,7 +282,7 @@
             <option value="freitag">Freitag</option>
         </select>
         <p class="priotext"></p>
-        <select name="time">
+        <select name="time" required>
             <option>Zweiten Tag w�hlen</option>
             <option value="montag">Montag</option>
             <option value="dienstag">Dienstag</option>
