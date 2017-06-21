@@ -171,7 +171,8 @@ header {
 }
 
 .calendar-body {
-    max-width: 600px;
+  max-width: 320px;
+  display: inline-block;
 }
 
 .active{
@@ -179,16 +180,25 @@ header {
     text-decoration: underline;
 }
 
-.first-calendar-row {
+.week-days {
     padding: 10px 0 10px 84px;
 }
 
 .week-day {
-	 padding: 0 23px;
+	 padding: 0 22px;
 }
 
 .week-day:last-child {
     padding-right: 0;
+}
+
+.week-times {
+  width: 80px;
+  display: inline-block;
+  vertical-align: top;
+}
+.week-time {
+  line-height: 54px;
 }
 
 .btn-calendar {
@@ -220,17 +230,17 @@ header {
     width: 50px;
 }
 
-.calendar-input[prio="0"] {
+.calendar-input[data-prio="0"] {
     background: #fff;
     border: 1px dotted grey;
 }
-.calendar-input[prio="1"] {
+.calendar-input[data-prio="1"] {
     background: #cfd8dc;
 }
-.calendar-input[prio="2"] {
+.calendar-input[data-prio="2"] {
     background: #a7ffeb;
 }
-.calendar-input[prio="3"] {
+.calendar-input[data-prio="3"] {
     background: #1de9b6;
 }
 
@@ -404,6 +414,46 @@ select {
 .zhang-selected {
   background-color: pink;
 }
+
+
+/*results*/
+
+
+.result-table  {
+	margin: 50px auto;
+	max-width: 1200px;
+}
+
+.result-table caption {
+	font-weight: bold;
+	margin: 0 0 20px 20px;
+	
+}
+
+.result-table td,
+.result-table th  {
+	display: inline-block;
+	margin: 10px 20px;
+}
+
+.result-table thead {
+	background: #00BFA6;
+}
+
+.new-day {
+	background: #a7ffeb; /*#00BFA6;  #cfd8dc*/
+	margin: 40px 0;
+}
+
+.new-day td {
+	font-weight: bold;
+}
+
+.result-table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+
 
 /* ==========================================================================
    Helper classes

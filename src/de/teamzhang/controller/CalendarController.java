@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,7 +34,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.teamzhang.model.ExcludeDayCombinationPrio;
 import de.teamzhang.model.FreeTextInputPrio;
 import de.teamzhang.model.Prio;
-import de.teamzhang.model.Room;
+//import de.teamzhang.model.Room;
 import de.teamzhang.model.SecUserDetails;
 import de.teamzhang.model.SimplePrio;
 import de.teamzhang.model.SingleChoicePrio;
@@ -79,11 +80,12 @@ public class CalendarController extends AbstractController {
 
 	@RequestMapping(value = "/post.json", method = RequestMethod.POST)
 	public @ResponseBody void updateData(@RequestBody String prios) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String currentPrincipalName = authentication.getName();
-		SecUserDetails userDetails = (SecUserDetails) authentication.getPrincipal();
-		BigInteger userId = userDetails.getId();
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		String currentPrincipalName = authentication.getName();
+//		SecUserDetails userDetails = (SecUserDetails) authentication.getPrincipal();
+//		BigInteger userId = userDetails.getId();
 		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(prios);
 		try {
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			List<HashMap> list = mapper.readValue(prios, List.class);
@@ -99,7 +101,7 @@ public class CalendarController extends AbstractController {
 					prio.setValidForAllCourses(true);
 				}
 				prio.setName((String) m.get("title"));
-				prio.setUserId(userId);
+//				prio.setUserId(userId);
 				try {
 					@SuppressWarnings("unchecked")
 					List<String> text = (List<String>) m.get("text");
@@ -120,16 +122,31 @@ public class CalendarController extends AbstractController {
 					prio = new SimplePrio();
 				} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
 					prio = new ExcludeDayCombinationPrio();
-					if (!m.get("title").equals("Tage ausschlie�en")) {
-						@SuppressWarnings("unchecked")
-						List<String> dayAndTimeOne = (ArrayList<String>) m.get("dayOne");
-						@SuppressWarnings("unchecked")
-						List<String> dayAndTimeTwo = (ArrayList<String>) m.get("dayTwo");
-						((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt(dayAndTimeOne.get(0)));
-						((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt(dayAndTimeTwo.get(0)));
-						((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt(dayAndTimeOne.get(1)));
-						((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt(dayAndTimeTwo.get(1)));
-					}
+
+//					if (!m.get("title").equals("Tage ausschließen")) {
+						if( m.get("dayOne").equals(Type.class) ) {
+							((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt((String) m.get("dayOne")));
+						}
+						if( m.get("dayOne").equals(Type.class) ) {
+							((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt((String) m.get("dayTwo")));
+						}
+						if( m.get("dayOne").equals(Type.class) ) {
+							((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt((String) m.get("timeOne")));
+						}
+						if( m.get("dayOne").equals(Type.class) ) {
+							((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt((String) m.get("timeTwo")));
+						}
+//						System.out.println(m.get("dayOne"));
+//						@SuppressWarnings("unchecked")
+//						List<String> dayAndTimeOne = (ArrayList<String>) m.get("dayOne");
+//						@SuppressWarnings("unchecked")
+//						List<String> dayAndTimeTwo = (ArrayList<String>) m.get("dayTwo");
+//						((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt(dayAndTimeOne.get(0)));
+//						((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt(dayAndTimeTwo.get(0)));
+//						((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt(dayAndTimeOne.get(1)));
+//						((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt(dayAndTimeTwo.get(1)));
+//					}
+
 				} else if (m.get("type").equals("FreeTextInputPrio")) {
 					prio = new FreeTextInputPrio();
 				}
