@@ -76,8 +76,9 @@ public class Algorithm {
 			minusPoints = getMinusPoints();
 			if (minusPoints < 900)
 				System.out.println("Minuspoints: " + minusPoints);
-		} while (minusPoints > 800);
-		System.out.println(count);
+		} while (minusPoints > 850);
+		System.out.println(
+				"Done! Generated a schedule with " + minusPoints + ". It took " + count + " itearations to create it.");
 		for (Program p : allPrograms) {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = new int[5][7];
