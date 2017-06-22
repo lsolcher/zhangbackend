@@ -1,4 +1,5 @@
-  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html ng-app="zhang-app" xmlns:th="http://www.thymeleaf.org">
   <head>

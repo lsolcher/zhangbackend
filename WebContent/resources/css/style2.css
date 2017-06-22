@@ -339,6 +339,10 @@ select option:hover {
     padding: 0;
 }
 
+#priority-list:last-child {
+    display: none;
+}
+
 #priority-list li {
     cursor: pointer;
     list-style: none;

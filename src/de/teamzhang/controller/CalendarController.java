@@ -34,6 +34,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.teamzhang.model.ExcludeDayCombinationPrio;
 import de.teamzhang.model.FreeTextInputPrio;
 import de.teamzhang.model.Prio;
+import de.teamzhang.model.Schedule;
 import de.teamzhang.model.SecUserDetails;
 import de.teamzhang.model.SimplePrio;
 import de.teamzhang.model.SingleChoicePrio;
@@ -119,6 +120,9 @@ public class CalendarController extends AbstractController {
 					((SingleChoicePrio) prio).setOption(Integer.parseInt((String) m.get("option")));
 				} else if (m.get("type").equals("SimplePrio")) {
 					prio = new SimplePrio();
+				} else if (m.get("type").equals("Schedule")) {
+					prio = new Schedule();
+//					((Schedule) prio).setSchedule( m.get("calendar" ));
 				} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
 					prio = new ExcludeDayCombinationPrio();
 //					if (!m.get("title").equals("Tage ausschließen")) {
