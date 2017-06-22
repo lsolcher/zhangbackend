@@ -133,7 +133,7 @@ public class Algorithm {
 			try {
 				//File file = new File("\\WebContent\\resources\\" + p.getName() + ".csv");
 				File file = new File(p.getName() + ".csv");
-				file.getParentFile().mkdirs();
+				//file.getParentFile().mkdirs();
 				writer = new BufferedWriter(new FileWriter(file));
 				writer.write(builder.toString());
 				writer.close();
