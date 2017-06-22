@@ -1,15 +1,17 @@
 
 $(document).ready(function(){
 	
+	var allTimeslots = [];
 	var singleElements = [];
+	
 	var semesterID = "";
 	var timeID = "";
 	var fullTableID = "";
 	
-//	for (var semesterIMIba = 1; semesterIMIba < 6; semesterIMIba++) {
+	for (var semesterIMIba = 1; semesterIMIba < 6; semesterIMIba++) {
 	
-//		var fileUrl = "/ZhangProjectBackend/resources/BachelorIMI" + semesterIMIba + ".csv";
-		var fileUrl = "/ZhangProjectBackend/resources/BachelorIMI1.csv";
+		var fileUrl = "/ZhangProjectBackend/resources/BachelorIMI" + semesterIMIba + ".csv";
+//		var fileUrl = "/ZhangProjectBackend/resources/BachelorIMI1.csv";
 		
 		$.ajax({
 			type: "GET",
@@ -22,26 +24,26 @@ $(document).ready(function(){
 		});
 		
 		
-//		semesterID = "" + (semesterIMIba - 1 ); //TODO .toString
-//			
-//		for (var i = 0; i < singleElements.length; i++) {	
-//						
-//			timeID = "";
-//			fullTableID = "table-cell-" + timeID + semesterID;
-//			
-//			if (singleElements[i] != null ) {
-//				
-//				console.log("null");
-////				document.getElementById(fullTableID).innerHTML = ;
-//				
-//				
-//				
-////				document.getElementById(fullTableID).innerHTML = "Kurs: " + kurs + ", Dozent: " + dozent + ", Raum: " + raum;
-//			}
-//		}
+		semesterID = "" + (semesterIMIba - 1 ); //TODO .toString
+			
+		for (var i = 0; i < allTimeslots.length; i++) {	
+						
+			timeID = i;
+			fullTableID = "table-cell-" + timeID + semesterID;
+			
+			if (allTimeslots[i] != null ) {
+				
+				console.log("allTimeslots[i]");
+				document.getElementById(fullTableID).innerHTML = allTimeslots[i];
+				
+				
+				
+//				document.getElementById(fullTableID).innerHTML = "Kurs: " + kurs + ", Dozent: " + dozent + ", Raum: " + raum;
+			}
+		}
 		
 	
-//	}
+	}
 //	for (var semesterIMIma = 1; semesterIMIma < 4; semesterIMIma++) {
 //		semesterID = "" + (semesterIMIma + 5 );  //  + 6 - 1 //TODO .toString
 //		timeID = "";
@@ -57,51 +59,31 @@ $(document).ready(function(){
 
 	function processData(allText) {
 		
-		var allTextLines = allText.split(/\r\n|\n/);
+		var allTextLines = allText.split(/\r\n|\n/);		// tODO: var allTextLines = allText.split(/\r\n|\n/|';');	???!!
 //		singleElements = allText.split("\n|';'");
 		
-		var allTimeslots = [];
 		
-//		console.log("-> " + allTextLines[0]);
+		for (var i = 0; i < allTextLines.length-1; i++) {
+			console.log("-> " + allTextLines[i]);
+		}
 		
 		
-		for (var i = 0; i < allTextLines.length; i++) {
+		for (var i = 0; i < allTextLines.length-1; i++) {
 			allTimeslots.push(allTextLines[i].split(';'));
 			
 		}
-		for (var i = 0; i < allTimeslots.length-1; i++) {
+		for (var i = 0; i < allTimeslots.length; i++) {
 			console.log(allTimeslots[i]);
 		}
 		
 		
-		for (var i = 0; i < allTimeslots.length; i++) {
-			singleElements.push(allTimeslots[i].split(','))
-		}
-		for (var i = 0; i < singleElements.length; i++) {
-			console.log(singleElements[i]);
-		}
-
-		//function processData(allText) {
-//		    var allTextLines = allText.split(/\r\n|\n/);
-//		    var headers = allTextLines[0].split(';');
-//		    var lines = [];
-		//    
-//		    console.log("in!");
-		//
-//		    for (var i=1; i<allTextLines.length; i++) {
-//		        var data = allTextLines[i].split(';');
-//		        if (data.length == headers.length) {
-		//
-//		            var tarr = [];
-//		            for (var j=0; j<headers.length; j++) {
-//		                tarr.push(headers[j]+":"+data[j]);
-//		            }
-//		            lines.push(tarr);
-//		        }
-//		    }
-//		    // alert(lines);
-		//}
-
+//		for (var i = 0; i < allTimeslots.length; i++) {
+//			singleElements.push(allTimeslots[i].split(','))
+//		}
+//		for (var i = 0; i < singleElements.length; i++) {
+//			console.log("->> " + singleElements[i]);
+//		}
+		
 	}
 	
 	
