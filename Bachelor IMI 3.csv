@@ -1,8 +1,7 @@
-;Montag;Dienstag;Mittwoch;Donnerstag;Freitag
-Zeit 0;;3 D � Th�nen 2 Doppelstunden 3 D � Room, Minuspunkte: 11;;;DB � O�wald 2 Doppelstunden DB � Room, Minuspunkte: 21
-Zeit 1;INFO 3 � 2 Zhang 1 Doppelstunden INFO 3 � 2 Room, Minuspunkte: 10;;;;
-Zeit 2;;;CG � Strippgen 2 Doppelstunden CG � Room, Minuspunkte: 20;BV SU Jung 1 Doppelstunden BV SU Room, Minuspunkte: 0;
-Zeit 3;;INFO 3 SU 2 Zhang 1 Doppelstunden INFO 3 SU 2 Room, Minuspunkte: 0;;;INFO 3 � 1 Zhang 1 Doppelstunden INFO 3 � 1 Room, Minuspunkte: 0
-Zeit 4;;INFO 3 SU 1 Zhang 1 Doppelstunden INFO 3 SU 1 Room, Minuspunkte: 30;;;
-Zeit 5;;;CG SU Strippgen 1 Doppelstunden CG SU Room, Minuspunkte: 0;;BV � Jung 2 Doppelstunden BV � Room, Minuspunkte: 10
-Zeit 6;DB SU O�wald 1 Doppelstunden DB SU Room, Minuspunkte: 21;;;;
+;;;;
+;CG �, Strippgen, CG � Room, 2 Doppelstunden, Minuspunkte: 30;DB SU, O�wald, DB SU Room, 1 Doppelstunden, Minuspunkte: 11;;
+;;;;
+BV �, Jung, BV � Room, 2 Doppelstunden, Minuspunkte: 10;INFO 3 � 1, Zhang, INFO 3 � 1 Room, 1 Doppelstunden, Minuspunkte: 10;INFO 3 � 2, Zhang, INFO 3 � 2 Room, 1 Doppelstunden, Minuspunkte: 10;INFO 3 SU 1, Zhang, INFO 3 SU 1 Room, 1 Doppelstunden, Minuspunkte: 10;
+BV SU, Jung, BV SU Room, 1 Doppelstunden, Minuspunkte: 0;;3 D �, Th�nen, 3 D � Room, 2 Doppelstunden, Minuspunkte: 1;CG SU, Strippgen, CG SU Room, 1 Doppelstunden, Minuspunkte: 0;INFO 3 SU 2, Zhang, INFO 3 SU 2 Room, 1 Doppelstunden, Minuspunkte: 20
+DB �, O�wald, DB � Room, 2 Doppelstunden, Minuspunkte: 21;;;;
+;;;;

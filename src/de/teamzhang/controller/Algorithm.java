@@ -83,20 +83,20 @@ public class Algorithm {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = new int[5][7];
 			//boolean[][] isTeaching = t.getFullSlots();
-			builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
+//			builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
 
 			for (int i = 0; i < board[0].length; i++)//for each row
 			{
 
 				for (int j = 0; j < board.length; j++)//for each column
 				{
-					if (j == 0)
-						builder.append("Zeit " + i + ";");
+//					if (j == 0)
+//						builder.append("Zeit " + i + ";");
 					boolean isCourse = false;
 					for (Course c : p.getCourses()) {
 						if (c.getTime() == i && c.getDay() == j)
-							builder.append(c.getName() + " " + c.getTeacher().getName() + " " + c.getSlotsNeeded()
-									+ " Doppelstunden " + c.getRoom().getName() + ", Minuspunkte: "
+							builder.append(c.getName() + ", " + c.getTeacher().getName() + ", " + c.getRoom().getName() + ", " + c.getSlotsNeeded()
+									+ " Doppelstunden" + ", Minuspunkte: "
 									+ c.getTeacher().getWeightedDayTimeWishes()[j][i]);//append to the output string
 						isCourse = true;
 					}
@@ -221,7 +221,7 @@ public class Algorithm {
 
 	}
 
-	// 1 minuspunkt wenn der teacher um 9 anfängt und early start gewählt hat, 2 bei 12 etc
+	// 1 minuspunkt wenn der teacher um 9 anfï¿½ngt und early start gewï¿½hlt hat, 2 bei 12 etc
 	// genau anders bei later
 	private static void weightClassStart(Teacher t, SingleChoicePrio p) {
 		boolean later = false;

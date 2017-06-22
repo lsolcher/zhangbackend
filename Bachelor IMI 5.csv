@@ -1,8 +1,7 @@
-;Montag;Dienstag;Mittwoch;Donnerstag;Freitag
-Zeit 0;GTAT 1 � Strippgen 1 Doppelstunden GTAT 1 � Room, Minuspunkte: 10;VCAT 1 SU Barthel 1 Doppelstunden VCAT 1 SU Room, Minuspunkte: 10;;VCAT 1 � Hezel 1 Doppelstunden NW SU Room, Minuspunkte: 11;
-Zeit 1;WTAT 1 SU Kirschner 1 Doppelstunden WTAT 1 SU Room, Minuspunkte: 21;WTAT 1 � Kirschner 1 Doppelstunden WTAT 1 � Room, Minuspunkte: 31;;;
-Zeit 2;GT 1 � Lenz 1 Doppelstunden GT 1 � Room, Minuspunkte: 10;;VC 1 SU Jung 1 Doppelstunden VC 1 � Room, Minuspunkte: 20;GTAT 1 SU Strippgen 1 Doppelstunden GTAT 1 SU Room, Minuspunkte: 20;WT 1 � Baumeister 1 Doppelstunden WT 1 � Room, Minuspunkte: 31
-Zeit 3;VC 1 SU Jung 1 Doppelstunden VC 1 � Room, Minuspunkte: 20;B 24.2 PM � Zhang 2 Doppelstunden B 24.2 PM � Room, Minuspunkte: 0;;;
-Zeit 4;;GT 1 SU Lenz 1 Doppelstunden GT 1 Room, Minuspunkte: 20;;;
-Zeit 5;;;WT 1 SU Baumeister 1 Doppelstunden WT 1 SU Room, Minuspunkte: 1;;
-Zeit 6;;;;;
+;;VC 1 SU, Jung, VC 1 � Room, 1 Doppelstunden, Minuspunkte: 0;;
+;GTAT 1 SU, Strippgen, GTAT 1 SU Room, 1 Doppelstunden, Minuspunkte: 30;GTAT 1 �, Strippgen, GTAT 1 � Room, 1 Doppelstunden, Minuspunkte: 10;;
+WTAT 1 �, Kirschner, WTAT 1 � Room, 1 Doppelstunden, Minuspunkte: 1;;GT 1 SU, Lenz, GT 1 Room, 1 Doppelstunden, Minuspunkte: 0;WT 1 �, Baumeister, WT 1 � Room, 1 Doppelstunden, Minuspunkte: 1;
+;;VC 1 SU, Jung, VC 1 � Room, 1 Doppelstunden, Minuspunkte: 0;VCAT 1 �, Hezel, NW SU Room, 1 Doppelstunden, Minuspunkte: 44;
+;;WTAT 1 SU, Kirschner, WTAT 1 SU Room, 1 Doppelstunden, Minuspunkte: 1;;
+B 24.2 PM �, Zhang, B 24.2 PM � Room, 2 Doppelstunden, Minuspunkte: 20;VCAT 1 SU, Barthel, VCAT 1 SU Room, 1 Doppelstunden, Minuspunkte: 20;;;
+GT 1 �, Lenz, GT 1 � Room, 1 Doppelstunden, Minuspunkte: 10;;WT 1 SU, Baumeister, WT 1 SU Room, 1 Doppelstunden, Minuspunkte: 1;;
