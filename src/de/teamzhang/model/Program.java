@@ -1,6 +1,7 @@
 package de.teamzhang.model;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -13,9 +14,19 @@ public class Program {
 	private String name;
 	int noOfDays;
 	List<Slot> assignedSlots;
+	List<Course> courseList = new ArrayList<Course>();
+	private boolean[][] fullSlots = new boolean[5][7];
 
 	void Program() {
 
+	}
+
+	public void addCourse(Course c) {
+		courseList.add(c);
+	}
+
+	public List<Course> getCourses() {
+		return courseList;
 	}
 
 	public int getNoOfDays() {
@@ -62,5 +73,19 @@ public class Program {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isTimeOccupied(int randomTime, int randomDay) {
+		return fullSlots[randomDay][randomTime];
+	}
+
+	public void setFullSlot(int day, int time) {
+		fullSlots[day][time] = true;
+	}
+
+	public void resetFullSlots() {
+		for (int index = 0; index < fullSlots.length; index++)
+			for (int inner = 0; inner < fullSlots[index].length; inner++)
+				fullSlots[index][inner] = false;
 	}
 }
