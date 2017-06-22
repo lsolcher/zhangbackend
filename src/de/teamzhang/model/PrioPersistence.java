@@ -130,9 +130,9 @@ public class PrioPersistence {
 	}
 
 	// create (maybe) useful prios for testing
-	public void generateMockData(Collection<Teacher> teachers) {
+	public void generateMockData(Collection<Teacher> teachers, int amountPrios) {
 		for (Teacher teacher : teachers) {
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < amountPrios; i++) {
 				Prio prio = randomize(teacher);
 				teacher.addPrio(prio);
 				create(prio);

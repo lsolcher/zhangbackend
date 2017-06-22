@@ -63,7 +63,7 @@ public class Teacher {
 
 	public void setFreeSlot(int day, int time) {
 		fullSlots[day][time] = false;
-		teachingHours--;
+		//teachingHours--;
 	}
 
 	public boolean isProf() {
@@ -292,6 +292,11 @@ public class Teacher {
 			}
 		}
 		return prioDoesntFit;
+	}
+
+	public void setEmptySlot(int randomDay, int randomTime) {
+		// TODO Auto-generated method stub
+
 	}
 
 	/*private void calculatePrios() {

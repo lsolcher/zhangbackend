@@ -88,4 +88,9 @@ public class Program {
 			for (int inner = 0; inner < fullSlots[index].length; inner++)
 				fullSlots[index][inner] = false;
 	}
+
+	public void setFreeSlot(int day, int time) {
+		fullSlots[day][time] = false;
+
+	}
 }
