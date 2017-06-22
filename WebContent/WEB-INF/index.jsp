@@ -1,4 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html ng-app="zhang-app">
   <head>
@@ -43,7 +44,7 @@
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
             			<li>
-							<a href="calendar.html">zur Eingabe der Lehrkraftwünsche</a>
+							<a href="calendar.html">zur Eingabe der LehrkraftwÃ¼nsche</a>
 						</li>
 					</ul>
 				</nav>
@@ -53,10 +54,10 @@
 		<div class="main group">
 			<h2>Willkommen beim Tool zur automatischen Lehreinsatzplanung!</h1>
 			
-			<p>Sie haben hier die Möglichkeit dieses und solches und jenes zu tun. ... Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			<p>Sie haben hier die MÃ¶glichkeit dieses und solches und jenes zu tun. ... Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 			
 			<button>Administratorzugriff</button>
-			<button>Eingabe der Wünsche der Lehrkräfte</button>
+			<button>Eingabe der WÃ¼nsche der LehrkrÃ¤fte</button>
 		</div>
     </div>
   </body>
