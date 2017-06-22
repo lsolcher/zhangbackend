@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import de.teamzhang.model.Course;
 import de.teamzhang.model.CoursesPersistence;
 import de.teamzhang.model.Prio;
 import de.teamzhang.model.PrioPersistence;
+import de.teamzhang.model.Program;
 import de.teamzhang.model.ProgramPersistence;
-import de.teamzhang.model.Room;
 import de.teamzhang.model.RoomPersistence;
 import de.teamzhang.model.SingleChoicePrio;
-import de.teamzhang.model.Slot;
 import de.teamzhang.model.SlotsPersistence;
 import de.teamzhang.model.Teacher;
 import de.teamzhang.model.TeachersPersistence;
@@ -32,6 +32,9 @@ public class Algorithm {
 	private static SlotsPersistence slots = new SlotsPersistence();
 	private static TeachersPersistence teachers = new TeachersPersistence();
 
+	static ArrayList<Course> allCourses = new ArrayList<Course>();
+	static ArrayList<Program> allPrograms = new ArrayList<Program>();
+
 	private static Random randomGen = new Random();
 
 	private static int optimalThreshold = 0;
@@ -44,11 +47,11 @@ public class Algorithm {
 	// 1. generate some testdata
 	private static void generateMockData() {
 		programs.generateMockData();
-		teachers.generateMockData();
+		teachers.generateMockData(allCourses, allPrograms);
 		rooms.generateMockData();
-		slots.generate(58, rooms.list());
+		slots.generate(72, rooms.list());
 		prios.generateMockData(teachers.list());
-		courses.generateMockData(programs.list(), teachers.list());
+		//courses.generateMockData(programs.list(), teachers.list());
 
 		printMap(programs.getPrograms());
 		printMap(teachers.getTeachers());
@@ -63,20 +66,57 @@ public class Algorithm {
 		//calculateRandomSchedule();
 		//int minusPoints = getMinusPoints();
 		//System.out.println(minusPoints);
-		int badSlots = 0;
+		//int badSlots = 0;
 
+		int count = 0;
 		do {
-			for (Teacher t : teachers.getTeachers().values()) {
-				t.resetSchedule();
-				teachers.update(t);
-			}
-			badSlots = calculateRandomSchedule();
+			reset();
+			count++;
+			calculateRandomSchedule();
 			minusPoints = getMinusPoints();
-			System.out.println(minusPoints);
-			System.out.println(badSlots);
-		} while (minusPoints > 700 && badSlots > 10);
-		for (String s : notOccupiedSlots)
-			System.out.println(s);
+			if (minusPoints < 900)
+				System.out.println("Minuspoints: " + minusPoints);
+		} while (minusPoints > 850);
+		System.out.println(
+				"Done! Generated a schedule with " + minusPoints + ". It took " + count + " itearations to create it.");
+		for (Program p : allPrograms) {
+			StringBuilder builder = new StringBuilder();
+			int[][] board = new int[5][7];
+			//boolean[][] isTeaching = t.getFullSlots();
+			builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
+
+			for (int i = 0; i < board[0].length; i++)//for each row
+			{
+
+				for (int j = 0; j < board.length; j++)//for each column
+				{
+					if (j == 0)
+						builder.append("Zeit " + i + ";");
+					boolean isCourse = false;
+					for (Course c : p.getCourses()) {
+						if (c.getTime() == i && c.getDay() == j)
+							builder.append(c.getName() + " " + c.getTeacher().getName() + " " + c.getSlotsNeeded()
+									+ " Doppelstunden " + c.getRoom().getName() + ", Minuspunkte: "
+									+ c.getTeacher().getWeightedDayTimeWishes()[j][i]);//append to the output string
+						isCourse = true;
+					}
+					if (!isCourse)
+						builder.append("-" + "");//append to the output string
+					if (j < board.length - 1)//if this is not the last row element
+						builder.append(";");//then add comma (if you don't like commas you can use spaces)
+				}
+				builder.append("\n");//append new line at the end of the row
+			}
+			BufferedWriter writer;
+			try {
+				writer = new BufferedWriter(new FileWriter(p.getName() + ".csv"));
+				writer.write(builder.toString());//save the string representation of the board
+				writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		for (Teacher t : teachers.getTeachers().values()) {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = t.getWeightedDayTimeWishes();
@@ -114,6 +154,18 @@ public class Algorithm {
 
 		optimalThreshold = 700;
 
+	}
+
+	private static void reset() {
+		for (Teacher t : teachers.getTeachers().values()) {
+			t.resetSchedule();
+			teachers.update(t);
+		}
+		for (Course c : allCourses)
+			c.setSet(false);
+		for (Program p : allPrograms) {
+			p.resetFullSlots();
+		}
 	}
 
 	private static int getMinusPoints() {
@@ -197,9 +249,41 @@ public class Algorithm {
 	}
 
 	private static int calculateRandomSchedule() {
-		int countNotOccupied = 0;
+
 		notOccupiedSlots.clear();
-		for (Slot slot : slots.getSlots().values()) {
+
+		for (Program p : allPrograms) {
+			for (Course c : p.getCourses()) {
+				if (!c.isSet()) {
+					Teacher teacher = c.getTeacher();
+					//Slot slot = new Slot();
+					Random r = new Random();
+					int randomTime = r.nextInt(7);
+					int randomDay = r.nextInt(5);
+					if (c.getSlotsNeeded() == 2 && randomTime == 6)
+						randomTime -= 1;
+					while (p.isTimeOccupied(randomTime, randomDay)) {
+						randomTime = r.nextInt(7);
+						randomDay = r.nextInt(5);
+						if (c.getSlotsNeeded() == 2 && randomTime == 6)
+							randomTime -= 1;
+					}
+					p.setFullSlot(randomDay, randomTime);
+					c.setDay(randomDay);
+					c.setTime(randomTime);
+					teacher.setFullSlot(randomDay, randomTime);
+					if (c.getSlotsNeeded() == 2) {
+						teacher.setFullSlot(randomDay, randomTime + 1);
+						p.setFullSlot(randomDay, randomTime + 1);
+					}
+					c.setSet(true);
+				}
+			}
+
+		}
+
+		//for()
+		/*for (Slot slot : slots.getSlots().values()) {
 			Object[] teacherObjs = teachers.getTeachers().values().toArray();
 			Teacher randomTeacher = (Teacher) teacherObjs[randomGen.nextInt(teacherObjs.length)];
 			//TODO: exit condition if all teachers are busy at that time
@@ -216,10 +300,11 @@ public class Algorithm {
 				notOccupiedSlots.add("Day: " + slot.getDay() + ", Time: " + slot.getTime());
 			}
 			for (Room room : rooms.getRooms().values()) {
-
+		
 			}
-		}
-		return countNotOccupied;
+		}*/
+		//return countNotOccupied;
+		return 0;
 
 	}
 
