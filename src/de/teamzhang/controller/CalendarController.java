@@ -35,6 +35,7 @@ import de.teamzhang.model.ExcludeDayCombinationPrio;
 import de.teamzhang.model.FreeTextInputPrio;
 import de.teamzhang.model.Prio;
 import de.teamzhang.model.Schedule;
+import de.teamzhang.model.Room;
 import de.teamzhang.model.SecUserDetails;
 import de.teamzhang.model.SimplePrio;
 import de.teamzhang.model.SingleChoicePrio;
@@ -148,6 +149,7 @@ public class CalendarController extends AbstractController {
 //						((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt(dayAndTimeOne.get(1)));
 //						((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt(dayAndTimeTwo.get(1)));
 //					}
+
 				} else if (m.get("type").equals("FreeTextInputPrio")) {
 					prio = new FreeTextInputPrio();
 				}

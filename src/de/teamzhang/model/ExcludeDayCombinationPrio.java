@@ -1,12 +1,14 @@
 package de.teamzhang.model;
 
+import java.util.Collection;
+
 public class ExcludeDayCombinationPrio extends Prio {
 
 	//
 	// Monday = 0; Sunday = 6
 	private int dayOne;
 	private int dayTwo;
-	// time represented without :
+	// 0 = 8, 1 = 9:30...
 	private int timeOne = 0;
 	private int timeTwo = 0;
 
@@ -19,6 +21,10 @@ public class ExcludeDayCombinationPrio extends Prio {
 
 	public ExcludeDayCombinationPrio() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public ExcludeDayCombinationPrio(String string, Teacher teacher, Collection<Course> courses) {
+		super(string, teacher, courses);
 	}
 
 	public int getDayOne() {

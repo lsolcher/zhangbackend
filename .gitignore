@@ -1,5 +1,3 @@
-<<<<<<< HEAD
 /target/
-=======
-.DS_Store
->>>>>>> branch 'master' of https://github.com/TommyBom/TeamZhangProject.git
+*.csv
+

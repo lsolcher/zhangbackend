@@ -2,7 +2,9 @@ package de.teamzhang.model;
 
 public class Schedule extends Prio {
 
-	private int[] weightedDayTimeWishes = new int[42];
+	// x = day
+	// y = slot
+	private int[] weightedDayTimeWishes = new int[24];
 
 	public void setSchedule(int[] schedule) {
 		weightedDayTimeWishes = schedule;
