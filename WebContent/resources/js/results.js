@@ -8,15 +8,15 @@ $(document).ready(function(){
 	
 //	for (var semesterIMIba = 1; semesterIMIba < 6; semesterIMIba++) {
 	
-//		var fileUrl = "ZhangProjectBackend/resources/Bachelor IMI " + semesterIMIba + ".csv";
-		var fileUrl = "ZhangProjectBackend/resources/Bachelor IMI 1.csv";
+//		var fileUrl = "ZhangProjectBackend/resources/BachelorIMI" + semesterIMIba + ".csv";
+		var fileUrl = "ZhangProjectBackend/resources/BachelorIMI1.csv";
 		
 		$.ajax({
 			type: "GET",
-			url: "/ZhangProjectBackend/resources/Jung2.csv", //fileUrl,
+			url: fileUrl, //"/ZhangProjectBackend/resources/Jung2.csv",
 			dataType: "text",
 			contentType:"text/plain",
-			success: function(data) {processData(data);},
+			success: function(data) {console.log(data);processData(data);},
 //			error: function(a,b,c){console.log(a,b,c);console.log("!!!!!!!!!!!!!!!!!!!!!!!");}
 		});
 		
