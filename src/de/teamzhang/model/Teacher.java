@@ -19,13 +19,15 @@ public class Teacher {
 	private int teachingHours;
 	private int freeHours;
 	private List<Prio> prios = new ArrayList<Prio>();
+	private int minusPoints = 0;
 
 	public Teacher() {
 	}
 
 	public boolean isBusy() {
-		//if ((isProf && teachingHours >= 6) || (!isProf && teachingHours >= 2))
-		//return true;
+		// if ((isProf && teachingHours >= 6) || (!isProf && teachingHours >=
+		// 2))
+		// return true;
 		if (freeHours == 0)
 			return true;
 		else
@@ -57,13 +59,13 @@ public class Teacher {
 	}
 
 	public void setFullSlot(int day, int time) {
-		//teachingHours++;
+		// teachingHours++;
 		fullSlots[day][time] = true;
 	}
 
 	public void setFreeSlot(int day, int time) {
 		fullSlots[day][time] = false;
-		//teachingHours--;
+		// teachingHours--;
 	}
 
 	public boolean isProf() {
@@ -123,7 +125,9 @@ public class Teacher {
 				;
 			else if (p instanceof SingleChoicePrio)
 				prioDoesntFit = checkIfSingleChoicePrioFits((SingleChoicePrio) p, day, time);
-			else if (p instanceof SimplePrio) // no need to check, simplePrio is weighted in schedule and not excluding
+			else if (p instanceof SimplePrio) // no need to check, simplePrio is
+												// weighted in schedule and not
+												// excluding
 				;
 			else if (p instanceof ExcludeDayCombinationPrio)
 				prioDoesntFit = checkIfExcludeDayCombinationPrioFits((ExcludeDayCombinationPrio) p, day, time);
@@ -294,51 +298,52 @@ public class Teacher {
 		return prioDoesntFit;
 	}
 
-	public void setEmptySlot(int randomDay, int randomTime) {
-		// TODO Auto-generated method stub
-
+	public void removeMinusPoints(int i) {
+		minusPoints -= i;
 	}
 
-	/*private void calculatePrios() {
-		for (Prio p : prios) {
-			if (p instanceof ExcludeDayCombinationPrio) {
-				weightExcludeDayCombinationPrio((ExcludeDayCombinationPrio) p);
-			} else if (p instanceof SingleChoicePrio)
-				weightSingleChoicePrio(p);
-			else if (p instanceof SimplePrio)
-				weightSimplePrio(p);
-			else if (p instanceof FreeTextInputPrio)
-				;
-	
-		}
-	
+	public void addMinusPoints(int i) {
+		minusPoints += i;
 	}
-	
-	private static void weightSimplePrio(Prio p) {
-		int[][] weightedDayTimeWishes = p.getTeacher().getWeightedDayTimeWishes();
-		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
-			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
-	
-			}
-		}
+	/*
+	 * private void calculatePrios() { for (Prio p : prios) { if (p instanceof
+	 * ExcludeDayCombinationPrio) {
+	 * weightExcludeDayCombinationPrio((ExcludeDayCombinationPrio) p); } else if
+	 * (p instanceof SingleChoicePrio) weightSingleChoicePrio(p); else if (p
+	 * instanceof SimplePrio) weightSimplePrio(p); else if (p instanceof
+	 * FreeTextInputPrio) ;
+	 * 
+	 * }
+	 * 
+	 * }
+	 * 
+	 * private static void weightSimplePrio(Prio p) { int[][]
+	 * weightedDayTimeWishes = p.getTeacher().getWeightedDayTimeWishes(); for
+	 * (int days = 0; days < weightedDayTimeWishes.length; days++) { for (int
+	 * time = 0; time < weightedDayTimeWishes[days].length; time++) {
+	 * 
+	 * } } }
+	 * 
+	 * private static void weightSingleChoicePrio(Prio p) {
+	 * 
+	 * }
+	 * 
+	 * // substract one minuspoint if days fit private void
+	 * weightExcludeDayCombinationPrio(ExcludeDayCombinationPrio p) { if
+	 * (!p.isExcluding()) { int dayOne = p.getDayOne(); int dayTwo =
+	 * p.getDayTwo(); for (int days = 0; days < weightedDayTimeWishes.length;
+	 * days++) { if (days == dayOne || days == dayTwo) for (int time = 0; time <
+	 * weightedDayTimeWishes[days].length; time++) {
+	 * weightedDayTimeWishes[days][time] -= 1; } } }
+	 * 
+	 * }
+	 */
+
+	public int getMinusPoints() {
+		return minusPoints;
 	}
-	
-	private static void weightSingleChoicePrio(Prio p) {
-	
+
+	public void resetMinuspoints() {
+		minusPoints = 0;
 	}
-	
-	// substract one minuspoint if days fit
-	private void weightExcludeDayCombinationPrio(ExcludeDayCombinationPrio p) {
-		if (!p.isExcluding()) {
-			int dayOne = p.getDayOne();
-			int dayTwo = p.getDayTwo();
-			for (int days = 0; days < weightedDayTimeWishes.length; days++) {
-				if (days == dayOne || days == dayTwo)
-					for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
-						weightedDayTimeWishes[days][time] -= 1;
-					}
-			}
-		}
-	
-	}*/
 }
