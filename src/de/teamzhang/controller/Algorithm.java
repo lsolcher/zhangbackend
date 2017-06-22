@@ -1,6 +1,7 @@
 package de.teamzhang.controller;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -70,7 +71,7 @@ public class Algorithm {
 		// int badSlots = 0;
 
 		int count = 0;
-		int minusPointsThreshold = 250;
+		int minusPointsThreshold = 400;
 		do {
 			reset();
 			count++;
@@ -106,40 +107,35 @@ public class Algorithm {
 			// boolean[][] isTeaching = t.getFullSlots();
 			// builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
 
-			for (int i = 0; i < board[0].length; i++)// for each row
+			for (int i = 0; i < board.length; i++)// for each row
 			{
 
-				for (int j = 0; j < board.length; j++)// for each column
+				for (int j = 0; j < board[0].length; j++)// for each column
 				{
 					// if (j == 0)
 					// builder.append("Zeit " + i + ";");
 					boolean isCourse = false;
 					for (Course c : p.getCourses()) {
-						if (c.getTime() == i && c.getDay() == j)
+						if (c.getTime() == j && c.getDay() == i)
 							builder.append(c.getName() + ", " + c.getTeacher().getName() + ", " + c.getRoom().getName()
 									+ ", " + c.getSlotsNeeded() + " Doppelstunden" + ", Minuspunkte: "
-									+ c.getTeacher().getWeightedDayTimeWishes()[j][i]);// append
-																						// to
-																						// the
-																						// output
-																						// string
+									+ c.getTeacher().getWeightedDayTimeWishes()[i][j]);
 						isCourse = true;
 					}
 					if (!isCourse)
-						builder.append("-" + "");// append to the output string
-					if (j < board.length - 1)// if this is not the last row
-												// element
-						builder.append(";");// then add comma (if you don't like
-											// commas you can use spaces)
+						builder.append("-" + "");
+					if (i < board.length - 1)
+						builder.append(";");
 				}
 				builder.append("\n");// append new line at the end of the row
 			}
 			BufferedWriter writer;
 			try {
-				writer = new BufferedWriter(new FileWriter(p.getName() + ".csv"));
-				writer.write(builder.toString());// save the string
-													// representation of the
-													// board
+				//File file = new File("\\WebContent\\resources\\" + p.getName() + ".csv");
+				File file = new File(p.getName() + ".csv");
+				file.getParentFile().mkdirs();
+				writer = new BufferedWriter(new FileWriter(file));
+				writer.write(builder.toString());
 				writer.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -156,22 +152,20 @@ public class Algorithm {
 				{
 					if (isTeaching[i][j])
 						builder.append(board[i][j] + "");// append to the output
-															// string
+														// string
 					else
 						builder.append("0" + "");// append to the output string
 					if (j < board[i].length - 1)// if this is not the last row
-												// element
+													// element
 						builder.append(",");// then add comma (if you don't like
-											// commas you can use spaces)
+					// commas you can use spaces)
 				}
 				builder.append("\n");// append new line at the end of the row
 			}
 			BufferedWriter writer;
 			try {
 				writer = new BufferedWriter(new FileWriter(t.getName() + ".csv"));
-				writer.write(builder.toString());// save the string
-													// representation of the
-													// board
+				writer.write(builder.toString());
 				writer.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
