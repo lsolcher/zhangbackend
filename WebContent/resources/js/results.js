@@ -8,23 +8,23 @@ $(document).ready(function(){
 	
 //	for (var semesterIMIba = 1; semesterIMIba < 6; semesterIMIba++) {
 	
-//		var fileUrl = "ZhangProjectBackend/resources/BachelorIMI" + semesterIMIba + ".csv";
-		var fileUrl = "ZhangProjectBackend/resources/BachelorIMI1.csv";
+//		var fileUrl = "/ZhangProjectBackend/resources/BachelorIMI" + semesterIMIba + ".csv";
+		var fileUrl = "/ZhangProjectBackend/resources/BachelorIMI1.csv";
 		
 		$.ajax({
 			type: "GET",
-			url: fileUrl, //"/ZhangProjectBackend/resources/Jung2.csv",
+//			url: fileUrl, //"/ZhangProjectBackend/resources/Jung2.csv",
+			url: "/ZhangProjectBackend/resources/BachelorIMI1.csv",
 			dataType: "text",
 			contentType:"text/plain",
-			success: function(data) {console.log(data);processData(data);},
+			success: function(data) {/*console.log(data);*/ processData(data);},
 //			error: function(a,b,c){console.log(a,b,c);console.log("!!!!!!!!!!!!!!!!!!!!!!!");}
 		});
 		
 		
 //		semesterID = "" + (semesterIMIba - 1 ); //TODO .toString
 //			
-//		for (var i = 0; i < 35; i++) {
-//		//for (var i = 0; i < singleElements.length; i++) {	
+//		for (var i = 0; i < singleElements.length; i++) {	
 //						
 //			timeID = "";
 //			fullTableID = "table-cell-" + timeID + semesterID;
@@ -57,22 +57,29 @@ $(document).ready(function(){
 
 	function processData(allText) {
 		
-		console.log("HI!!! ");
-		
 		var allTextLines = allText.split(/\r\n|\n/);
 //		singleElements = allText.split("\n|';'");
+		
+		var allTimeslots = [];
 		
 //		console.log("-> " + allTextLines[0]);
 		
 		
-//		for (var i = 0; i < singleElements.length; i++) {
-//			alert("entry: " + singleElements[i]);
-//		}
+		for (var i = 0; i < allTextLines.length; i++) {
+			allTimeslots.push(allTextLines[i].split(';'));
+			
+		}
+		for (var i = 0; i < allTimeslots.length-1; i++) {
+			console.log(allTimeslots[i]);
+		}
 		
-//		for (var i = 1; i < allTextLines.length; i++) {
-//			singleElements.push(allTextLines[i].split(','));
-//			alert((allTextLines[i].split(',')));
-//		}
+		
+		for (var i = 0; i < allTimeslots.length; i++) {
+			singleElements.push(allTimeslots[i].split(','))
+		}
+		for (var i = 0; i < singleElements.length; i++) {
+			console.log(singleElements[i]);
+		}
 
 		//function processData(allText) {
 //		    var allTextLines = allText.split(/\r\n|\n/);
