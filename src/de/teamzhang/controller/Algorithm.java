@@ -32,6 +32,7 @@ public class Algorithm {
 	private static SlotsPersistence slots = new SlotsPersistence();
 	private static TeachersPersistence teachers = new TeachersPersistence();
 
+	private static int MINUSPOINTTHRESHOLD = 10;
 	static ArrayList<Course> allCourses = new ArrayList<Course>();
 	static ArrayList<Program> allPrograms = new ArrayList<Program>();
 
@@ -74,9 +75,14 @@ public class Algorithm {
 			count++;
 			calculateRandomSchedule();
 			minusPoints = getMinusPoints();
-			if (minusPoints < 850)
+			if (minusPoints < 1000) {
 				System.out.println("Minuspoints: " + minusPoints);
-			if (count % 10000000 == 0)
+				climbHill();
+				minusPoints = getMinusPoints();
+				System.out.println("Minuspoints after hillclimbing: " + minusPoints);
+
+			}
+			if (count % 1000000 == 0)
 				System.out.println("Iteration: " + count);
 		} while (minusPoints > 800);
 		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
@@ -155,6 +161,53 @@ public class Algorithm {
 		//printMap(slots.getSlots());
 
 		optimalThreshold = 700;
+
+	}
+
+	private static void climbHill() {
+		for (Program p : allPrograms) {
+			for (Course c : p.getCourses()) {
+				//if minusPoints are 
+				if (c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()] > MINUSPOINTTHRESHOLD) {
+
+					Teacher teacher = c.getTeacher();
+
+					//Slot slot = new Slot();
+					Random r = new Random();
+					int randomTime = r.nextInt(7);
+					int randomDay = r.nextInt(5);
+					teacher.setFreeSlot(c.getDay(), c.getTime());
+					p.setFreeSlot(c.getDay(), c.getTime());
+					if (c.getSlotsNeeded() == 2) {
+						teacher.setFreeSlot(c.getDay(), c.getTime() + 1);
+						p.setFreeSlot(c.getDay(), c.getTime() + 1);
+					}
+					if (c.getSlotsNeeded() == 2 && randomTime == 6)
+						randomTime -= 1;
+					int iteration = 0;
+					while ((p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
+							|| c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))))
+							|| (c.getTeacher().getWeightedDayTimeWishes()[randomDay][randomTime] > MINUSPOINTTHRESHOLD)
+									&& iteration < 1000) {
+						iteration++;
+						randomTime = r.nextInt(7);
+						randomDay = r.nextInt(5);
+						if (c.getSlotsNeeded() == 2 && randomTime == 6)
+							randomTime -= 1;
+					}
+					p.setFullSlot(randomDay, randomTime);
+					c.setDay(randomDay);
+					c.setTime(randomTime);
+					teacher.setFullSlot(randomDay, randomTime);
+					if (c.getSlotsNeeded() == 2) {
+						teacher.setFullSlot(randomDay, randomTime + 1);
+						p.setFullSlot(randomDay, randomTime + 1);
+					}
+					c.setSet(true);
+				}
+			}
+
+		}
 
 	}
 
@@ -264,7 +317,8 @@ public class Algorithm {
 					int randomDay = r.nextInt(5);
 					if (c.getSlotsNeeded() == 2 && randomTime == 6)
 						randomTime -= 1;
-					while (p.isTimeOccupied(randomTime, randomDay)) {
+					while (p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
+							|| c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay)))) {
 						randomTime = r.nextInt(7);
 						randomDay = r.nextInt(5);
 						if (c.getSlotsNeeded() == 2 && randomTime == 6)
