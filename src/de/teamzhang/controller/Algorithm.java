@@ -32,6 +32,7 @@ public class Algorithm {
 	private static SlotsPersistence slots = new SlotsPersistence();
 	private static TeachersPersistence teachers = new TeachersPersistence();
 
+	private static int MINUSPOINTTHRESHOLD = 10;
 	static ArrayList<Course> allCourses = new ArrayList<Course>();
 	static ArrayList<Program> allPrograms = new ArrayList<Program>();
 
@@ -50,7 +51,7 @@ public class Algorithm {
 		teachers.generateMockData(allCourses, allPrograms);
 		rooms.generateMockData();
 		slots.generate(72, rooms.list());
-		prios.generateMockData(teachers.list());
+		prios.generateMockData(teachers.list(), 4);
 		//courses.generateMockData(programs.list(), teachers.list());
 
 		printMap(programs.getPrograms());
@@ -69,36 +70,50 @@ public class Algorithm {
 		//int badSlots = 0;
 
 		int count = 0;
+		int minusPointsThreshold = 250;
 		do {
 			reset();
 			count++;
 			calculateRandomSchedule();
 			minusPoints = getMinusPoints();
-			if (minusPoints < 850)
+			if (minusPoints < 1200) {
 				System.out.println("Minuspoints: " + minusPoints);
-			if (count % 10000000 == 0)
-				System.out.println("Iteration: " + count);
-		} while (minusPoints > 800);
+				climbHill(100);
+				minusPoints = getMinusPoints();
+				System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
+				climbHill(10);
+				minusPoints = getMinusPoints();
+				System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
+				climbHill(1);
+				minusPoints = getMinusPoints();
+				System.out.println("Minuspoints after hillclimbing with threshold 1: " + minusPoints);
+
+			}
+			if (count % 1000000 == 0) {
+				minusPointsThreshold += 25;
+				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
+			}
+		} while (minusPoints > minusPointsThreshold);
 		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
 				+ " iterations to create it.");
 		for (Program p : allPrograms) {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = new int[5][7];
 			//boolean[][] isTeaching = t.getFullSlots();
-//			builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
+			//			builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
 
 			for (int i = 0; i < board[0].length; i++)//for each row
 			{
 
 				for (int j = 0; j < board.length; j++)//for each column
 				{
-//					if (j == 0)
-//						builder.append("Zeit " + i + ";");
+					//					if (j == 0)
+					//						builder.append("Zeit " + i + ";");
 					boolean isCourse = false;
 					for (Course c : p.getCourses()) {
 						if (c.getTime() == i && c.getDay() == j)
-							builder.append(c.getName() + ", " + c.getTeacher().getName() + ", " + c.getRoom().getName() + ", " + c.getSlotsNeeded()
-									+ " Doppelstunden" + ", Minuspunkte: "
+							builder.append(c.getName() + ", " + c.getTeacher().getName() + ", " + c.getRoom().getName()
+									+ ", " + c.getSlotsNeeded() + " Doppelstunden" + ", Minuspunkte: "
 									+ c.getTeacher().getWeightedDayTimeWishes()[j][i]);//append to the output string
 						isCourse = true;
 					}
@@ -155,6 +170,53 @@ public class Algorithm {
 		//printMap(slots.getSlots());
 
 		optimalThreshold = 700;
+
+	}
+
+	private static void climbHill(int threshold) {
+		for (Program p : allPrograms) {
+			for (Course c : p.getCourses()) {
+				//if minusPoints are 
+				if (c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()] > threshold) {
+
+					Teacher teacher = c.getTeacher();
+
+					//Slot slot = new Slot();
+					Random r = new Random();
+					int randomTime = r.nextInt(7);
+					int randomDay = r.nextInt(5);
+					teacher.setFreeSlot(c.getDay(), c.getTime());
+					p.setFreeSlot(c.getDay(), c.getTime());
+					if (c.getSlotsNeeded() == 2) {
+						teacher.setFreeSlot(c.getDay(), c.getTime() + 1);
+						p.setFreeSlot(c.getDay(), c.getTime() + 1);
+					}
+					if (c.getSlotsNeeded() == 2 && randomTime == 6)
+						randomTime -= 1;
+					int iteration = 0;
+					while ((p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
+							|| c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))))
+							|| (c.getTeacher().getWeightedDayTimeWishes()[randomDay][randomTime] > threshold)
+									&& iteration < 1000) {
+						iteration++;
+						randomTime = r.nextInt(7);
+						randomDay = r.nextInt(5);
+						if (c.getSlotsNeeded() == 2 && randomTime == 6)
+							randomTime -= 1;
+					}
+					p.setFullSlot(randomDay, randomTime);
+					c.setDay(randomDay);
+					c.setTime(randomTime);
+					teacher.setFullSlot(randomDay, randomTime);
+					if (c.getSlotsNeeded() == 2) {
+						teacher.setFullSlot(randomDay, randomTime + 1);
+						p.setFullSlot(randomDay, randomTime + 1);
+					}
+					c.setSet(true);
+				}
+			}
+
+		}
 
 	}
 
@@ -264,7 +326,8 @@ public class Algorithm {
 					int randomDay = r.nextInt(5);
 					if (c.getSlotsNeeded() == 2 && randomTime == 6)
 						randomTime -= 1;
-					while (p.isTimeOccupied(randomTime, randomDay)) {
+					while (p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
+							|| c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay)))) {
 						randomTime = r.nextInt(7);
 						randomDay = r.nextInt(5);
 						if (c.getSlotsNeeded() == 2 && randomTime == 6)
