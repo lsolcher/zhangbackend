@@ -77,34 +77,40 @@ public class Algorithm {
 			minusPoints = getMinusPoints();
 			if (minusPoints < 1000) {
 				System.out.println("Minuspoints: " + minusPoints);
-				climbHill();
+				climbHill(100);
 				minusPoints = getMinusPoints();
-				System.out.println("Minuspoints after hillclimbing: " + minusPoints);
+				System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
+				climbHill(10);
+				minusPoints = getMinusPoints();
+				System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
+				climbHill(0);
+				minusPoints = getMinusPoints();
+				System.out.println("Minuspoints after hillclimbing with threshold 1: " + minusPoints);
 
 			}
 			if (count % 1000000 == 0)
 				System.out.println("Iteration: " + count);
-		} while (minusPoints > 800);
+		} while (minusPoints > 400);
 		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
 				+ " iterations to create it.");
 		for (Program p : allPrograms) {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = new int[5][7];
 			//boolean[][] isTeaching = t.getFullSlots();
-//			builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
+			//			builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
 
 			for (int i = 0; i < board[0].length; i++)//for each row
 			{
 
 				for (int j = 0; j < board.length; j++)//for each column
 				{
-//					if (j == 0)
-//						builder.append("Zeit " + i + ";");
+					//					if (j == 0)
+					//						builder.append("Zeit " + i + ";");
 					boolean isCourse = false;
 					for (Course c : p.getCourses()) {
 						if (c.getTime() == i && c.getDay() == j)
-							builder.append(c.getName() + ", " + c.getTeacher().getName() + ", " + c.getRoom().getName() + ", " + c.getSlotsNeeded()
-									+ " Doppelstunden" + ", Minuspunkte: "
+							builder.append(c.getName() + ", " + c.getTeacher().getName() + ", " + c.getRoom().getName()
+									+ ", " + c.getSlotsNeeded() + " Doppelstunden" + ", Minuspunkte: "
 									+ c.getTeacher().getWeightedDayTimeWishes()[j][i]);//append to the output string
 						isCourse = true;
 					}
@@ -164,11 +170,11 @@ public class Algorithm {
 
 	}
 
-	private static void climbHill() {
+	private static void climbHill(int threshold) {
 		for (Program p : allPrograms) {
 			for (Course c : p.getCourses()) {
 				//if minusPoints are 
-				if (c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()] > MINUSPOINTTHRESHOLD) {
+				if (c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()] > threshold) {
 
 					Teacher teacher = c.getTeacher();
 
