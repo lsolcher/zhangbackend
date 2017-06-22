@@ -1,8 +1,8 @@
 ;Montag;Dienstag;Mittwoch;Donnerstag;Freitag
-Zeit 0;;;;;INFO 2/2 SU Kleinen 1 Doppelstunden INFO 2/2 SU Room, Minuspunkte: 0
-Zeit 1;MA Ü Vigerske 1 Doppelstunden MA Ü Room, Minuspunkte: 1;;;;
-Zeit 2;;;INFO 2/1 Ü Kleinen 1 Doppelstunden INFO 2/1 Ü Room, Minuspunkte: 30;;
-Zeit 3;GDM Ü Obermann 2 Doppelstunden GDM Ü Room, Minuspunkte: 1;INFO 2/2 SU Kleinen 1 Doppelstunden INFO 2/2 SU Room, Minuspunkte: 0;;;
-Zeit 4;GDM SU Barthel 2 Doppelstunden GDM SU Room, Minuspunkte: 10;;MW SU Escher 2 Doppelstunden MW SU Room, Minuspunkte: 31;NW SU Sabri 1 Doppelstunden NW SU Room, Minuspunkte: 21;MA SU Vigerske 1 Doppelstunden MA SU Room, Minuspunkte: 11
-Zeit 5;;NW Ü Sabri 1 Doppelstunden NW Ü Room, Minuspunkte: 11;;MW Ü Escher 1 Doppelstunden MW Ü Room, Minuspunkte: 11;
-Zeit 6;;;;;INFO 2/2 Ü Kleinen 1 Doppelstunden INFO 2/2 Ü Room, Minuspunkte: 0
+Zeit 0;;;INFO 2/1 ï¿½ Kleinen 1 Doppelstunden INFO 2/1 ï¿½ Room, Minuspunkte: 0;;
+Zeit 1;;NW ï¿½ Sabri 1 Doppelstunden NW ï¿½ Room, Minuspunkte: 31;;;GDM ï¿½ Obermann 2 Doppelstunden GDM ï¿½ Room, Minuspunkte: 7
+Zeit 2;MW ï¿½ Escher 1 Doppelstunden MW ï¿½ Room, Minuspunkte: 31;;;;
+Zeit 3;NW SU Sabri 1 Doppelstunden NW SU Room, Minuspunkte: 1;;;;MA SU Vigerske 1 Doppelstunden MA SU Room, Minuspunkte: 11
+Zeit 4;;;;GDM SU Barthel 2 Doppelstunden GDM SU Room, Minuspunkte: 10;MA ï¿½ Vigerske 1 Doppelstunden MA ï¿½ Room, Minuspunkte: 1
+Zeit 5;INFO 2/2 SU Kleinen 1 Doppelstunden INFO 2/2 SU Room, Minuspunkte: 20;INFO 2/2 ï¿½ Kleinen 1 Doppelstunden INFO 2/2 ï¿½ Room, Minuspunkte: 10;MW SU Escher 2 Doppelstunden MW SU Room, Minuspunkte: 31;;
+Zeit 6;;INFO 2/2 SU Kleinen 1 Doppelstunden INFO 2/2 SU Room, Minuspunkte: 0;;;
