@@ -8,9 +8,11 @@ $(document).ready(function(){
 	
 	for (var semesterIMIba = 1; semesterIMIba < 6; semesterIMIba++) {
 	
+		var fileUrl = "Bachelor IMI " + semesterIMIba + ".csv";
+		
 		$.ajax({
 			type: "GET",
-			url: "Bachelor IMI " + semesterIMIba + ".csv",
+			url: fileUrl,
 			dataType: "csv",
 			success: function(data) {processData(data);}
 		});
