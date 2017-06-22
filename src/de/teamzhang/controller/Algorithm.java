@@ -51,7 +51,7 @@ public class Algorithm {
 		teachers.generateMockData(allCourses, allPrograms);
 		rooms.generateMockData();
 		slots.generate(72, rooms.list());
-		prios.generateMockData(teachers.list());
+		prios.generateMockData(teachers.list(), 4);
 		//courses.generateMockData(programs.list(), teachers.list());
 
 		printMap(programs.getPrograms());
@@ -70,12 +70,13 @@ public class Algorithm {
 		//int badSlots = 0;
 
 		int count = 0;
+		int minusPointsThreshold = 250;
 		do {
 			reset();
 			count++;
 			calculateRandomSchedule();
 			minusPoints = getMinusPoints();
-			if (minusPoints < 1000) {
+			if (minusPoints < 1200) {
 				System.out.println("Minuspoints: " + minusPoints);
 				climbHill(100);
 				minusPoints = getMinusPoints();
@@ -83,14 +84,16 @@ public class Algorithm {
 				climbHill(10);
 				minusPoints = getMinusPoints();
 				System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
-				climbHill(0);
+				climbHill(1);
 				minusPoints = getMinusPoints();
 				System.out.println("Minuspoints after hillclimbing with threshold 1: " + minusPoints);
 
 			}
-			if (count % 1000000 == 0)
-				System.out.println("Iteration: " + count);
-		} while (minusPoints > 400);
+			if (count % 1000000 == 0) {
+				minusPointsThreshold += 25;
+				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
+			}
+		} while (minusPoints > minusPointsThreshold);
 		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
 				+ " iterations to create it.");
 		for (Program p : allPrograms) {
@@ -193,7 +196,7 @@ public class Algorithm {
 					int iteration = 0;
 					while ((p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
 							|| c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))))
-							|| (c.getTeacher().getWeightedDayTimeWishes()[randomDay][randomTime] > MINUSPOINTTHRESHOLD)
+							|| (c.getTeacher().getWeightedDayTimeWishes()[randomDay][randomTime] > threshold)
 									&& iteration < 1000) {
 						iteration++;
 						randomTime = r.nextInt(7);
