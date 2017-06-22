@@ -90,8 +90,17 @@ public class TeachersPersistence {
 		ba5.setName("Bachelor IMI 5");
 		allPrograms.add(ba5);
 
-		Program ma = new Program();
-		ma.setName("Master IMI");
+		Program ma1 = new Program();
+		ma1.setName("Master IMI 1");
+		allPrograms.add(ma1);
+
+		Program ma2 = new Program();
+		ma2.setName("Master IMI 2");
+		allPrograms.add(ma2);
+
+		Program ma3 = new Program();
+		ma3.setName("Master IMI 3");
+		allPrograms.add(ma3);
 
 		Teacher t = new Teacher();
 		t.setName("Lenz");
@@ -124,7 +133,10 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("GT 1 M");
 		c.setSlotsNeeded(2);
-		c.setProgram(ma);
+		c.setProgram(ma1);
+		c.setProgram(ma2);
+		c.setProgram(ma3);
+
 		room = new Room();
 		room.setName("GT 1 M Room");
 		c.setRoom(room);
@@ -228,7 +240,9 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("VC 1");
 		c.setSlotsNeeded(2);
-		c.setProgram(ma);
+		c.setProgram(ma1);
+		c.setProgram(ma2);
+		c.setProgram(ma3);
 		room = new Room();
 		room.setName("VC 1 Room");
 		c.setRoom(room);
@@ -321,7 +335,7 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("AO");
 		c.setSlotsNeeded(1);
-		c.setProgram(ma);
+		c.setProgram(ma2);
 		room = new Room();
 		room.setName("AO Room");
 		c.setRoom(room);
@@ -383,7 +397,7 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("BSAC");
 		c.setSlotsNeeded(2);
-		c.setProgram(ma);
+		c.setProgram(ma1);
 		room = new Room();
 		room.setName("BSAC Room");
 		c.setRoom(room);
@@ -447,7 +461,9 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("WT 4  /WT 5 ");
 		c.setSlotsNeeded(2);
-		c.setProgram(ma);
+		c.setProgram(ma1);
+		c.setProgram(ma2);
+		c.setProgram(ma3);
 		room = new Room();
 		room.setName("WT 4  /WT 5  Room");
 		c.setRoom(room);
@@ -730,7 +746,9 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("VC 4  2SU / 2 ‹ 14t‹");
 		c.setSlotsNeeded(2);
-		c.setProgram(ma);
+		c.setProgram(ma1);
+		c.setProgram(ma2);
+		c.setProgram(ma3);
 		room = new Room();
 		room.setName("BVC 4  2SU / 2 ‹ 14t Room");
 		c.setRoom(room);
@@ -823,7 +841,7 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("M1 EP");
 		c.setSlotsNeeded(1);
-		c.setProgram(ma);
+		c.setProgram(ma1);
 		room = new Room();
 		room.setName("M1 EP Room");
 		c.setRoom(room);
@@ -834,7 +852,7 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("M 1");
 		c.setSlotsNeeded(2);
-		c.setProgram(ma);
+		c.setProgram(ma1);
 		room = new Room();
 		room.setName("M 1");
 		c.setRoom(room);
@@ -854,7 +872,9 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("GT 2");
 		c.setSlotsNeeded(2);
-		c.setProgram(ma);
+		c.setProgram(ma1);
+		c.setProgram(ma2);
+		c.setProgram(ma3);
 		room = new Room();
 		room.setName("GT 2 Room");
 		c.setRoom(room);
@@ -874,7 +894,7 @@ public class TeachersPersistence {
 		c = new Course();
 		c.setName("Mathe");
 		c.setSlotsNeeded(2);
-		c.setProgram(ma);
+		c.setProgram(ma1);
 		room = new Room();
 		room.setName("Mathe Room");
 		c.setRoom(room);

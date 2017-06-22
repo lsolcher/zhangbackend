@@ -15,9 +15,18 @@ public class Course {
 	protected Teacher teacher;
 	private int day;
 	private int time;
+	private boolean isSet = false;
 
 	public Course() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public boolean isSet() {
+		return isSet;
+	}
+
+	public void setSet(boolean isSet) {
+		this.isSet = isSet;
 	}
 
 	public int getDay() {

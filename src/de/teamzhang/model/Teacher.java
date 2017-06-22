@@ -107,7 +107,10 @@ public class Teacher {
 	}
 
 	public void resetSchedule() {
-		fullSlots = new boolean[5][35];
+		for (int index = 0; index < fullSlots.length; index++)
+			for (int inner = 0; inner < fullSlots[index].length; inner++)
+				fullSlots[index][inner] = false;
+
 		teachingHours = 0;
 	}
 

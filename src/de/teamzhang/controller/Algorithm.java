@@ -17,7 +17,6 @@ import de.teamzhang.model.Program;
 import de.teamzhang.model.ProgramPersistence;
 import de.teamzhang.model.RoomPersistence;
 import de.teamzhang.model.SingleChoicePrio;
-import de.teamzhang.model.Slot;
 import de.teamzhang.model.SlotsPersistence;
 import de.teamzhang.model.Teacher;
 import de.teamzhang.model.TeachersPersistence;
@@ -69,18 +68,54 @@ public class Algorithm {
 		//System.out.println(minusPoints);
 		//int badSlots = 0;
 
+		int count = 0;
 		do {
-			for (Teacher t : teachers.getTeachers().values()) {
-				t.resetSchedule();
-				teachers.update(t);
-			}
+			reset();
+			count++;
 			calculateRandomSchedule();
 			minusPoints = getMinusPoints();
-			if (minusPoints < 850)
+			if (minusPoints < 900)
 				System.out.println("Minuspoints: " + minusPoints);
-		} while (minusPoints > 750);
-		for (String s : notOccupiedSlots)
-			System.out.println(s);
+		} while (minusPoints > 800);
+		System.out.println(count);
+		for (Program p : allPrograms) {
+			StringBuilder builder = new StringBuilder();
+			int[][] board = new int[5][7];
+			//boolean[][] isTeaching = t.getFullSlots();
+			builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
+
+			for (int i = 0; i < board[0].length; i++)//for each row
+			{
+
+				for (int j = 0; j < board.length; j++)//for each column
+				{
+					if (j == 0)
+						builder.append("Zeit " + i + ";");
+					boolean isCourse = false;
+					for (Course c : p.getCourses()) {
+						if (c.getTime() == i && c.getDay() == j)
+							builder.append(c.getName() + " " + c.getTeacher().getName() + " " + c.getSlotsNeeded()
+									+ " Doppelstunden " + c.getRoom().getName() + ", Minuspunkte: "
+									+ c.getTeacher().getWeightedDayTimeWishes()[j][i]);//append to the output string
+						isCourse = true;
+					}
+					if (!isCourse)
+						builder.append("-" + "");//append to the output string
+					if (j < board.length - 1)//if this is not the last row element
+						builder.append(";");//then add comma (if you don't like commas you can use spaces)
+				}
+				builder.append("\n");//append new line at the end of the row
+			}
+			BufferedWriter writer;
+			try {
+				writer = new BufferedWriter(new FileWriter(p.getName() + ".csv"));
+				writer.write(builder.toString());//save the string representation of the board
+				writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		for (Teacher t : teachers.getTeachers().values()) {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = t.getWeightedDayTimeWishes();
@@ -118,6 +153,18 @@ public class Algorithm {
 
 		optimalThreshold = 700;
 
+	}
+
+	private static void reset() {
+		for (Teacher t : teachers.getTeachers().values()) {
+			t.resetSchedule();
+			teachers.update(t);
+		}
+		for (Course c : allCourses)
+			c.setSet(false);
+		for (Program p : allPrograms) {
+			p.resetFullSlots();
+		}
 	}
 
 	private static int getMinusPoints() {
@@ -206,24 +253,30 @@ public class Algorithm {
 
 		for (Program p : allPrograms) {
 			for (Course c : p.getCourses()) {
-				Teacher teacher = c.getTeacher();
-				Slot slot = new Slot();
-				Random r = new Random();
-				int randomTime = r.nextInt(7);
-				int randomDay = r.nextInt(5);
-				if (c.getSlotsNeeded() == 2 && randomTime == 6)
-					randomTime -= 1;
-				while (p.isTimeOccupied(randomTime, randomDay)) {
-					randomTime = r.nextInt(7);
-					randomDay = r.nextInt(5);
+				if (!c.isSet()) {
+					Teacher teacher = c.getTeacher();
+					//Slot slot = new Slot();
+					Random r = new Random();
+					int randomTime = r.nextInt(7);
+					int randomDay = r.nextInt(5);
 					if (c.getSlotsNeeded() == 2 && randomTime == 6)
 						randomTime -= 1;
+					while (p.isTimeOccupied(randomTime, randomDay)) {
+						randomTime = r.nextInt(7);
+						randomDay = r.nextInt(5);
+						if (c.getSlotsNeeded() == 2 && randomTime == 6)
+							randomTime -= 1;
+					}
+					p.setFullSlot(randomDay, randomTime);
+					c.setDay(randomDay);
+					c.setTime(randomTime);
+					teacher.setFullSlot(randomDay, randomTime);
+					if (c.getSlotsNeeded() == 2) {
+						teacher.setFullSlot(randomDay, randomTime + 1);
+						p.setFullSlot(randomDay, randomTime + 1);
+					}
+					c.setSet(true);
 				}
-				c.setDay(randomDay);
-				c.setTime(randomTime);
-				teacher.setFullSlot(randomDay, randomTime);
-				if (c.getSlotsNeeded() == 2)
-					teacher.setFullSlot(randomDay, randomTime + 1);
 			}
 
 		}
