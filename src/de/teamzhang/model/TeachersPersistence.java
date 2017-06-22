@@ -71,35 +71,35 @@ public class TeachersPersistence {
 	public void generateMockData(ArrayList<Course> allCourses, ArrayList<Program> allPrograms) {
 
 		Program ba1 = new Program();
-		ba1.setName("Bachelor IMI 1");
+		ba1.setName("BachelorIMI1");
 		allPrograms.add(ba1);
 
 		Program ba2 = new Program();
-		ba2.setName("Bachelor IMI 2");
+		ba2.setName("BachelorIMI2");
 		allPrograms.add(ba2);
 
 		Program ba3 = new Program();
-		ba3.setName("Bachelor IMI 3");
+		ba3.setName("BachelorIMI3");
 		allPrograms.add(ba3);
 
 		Program ba4 = new Program();
-		ba4.setName("Bachelor IMI 4");
+		ba4.setName("BachelorIMI4");
 		allPrograms.add(ba4);
 
 		Program ba5 = new Program();
-		ba5.setName("Bachelor IMI 5");
+		ba5.setName("BachelorIMI5");
 		allPrograms.add(ba5);
 
 		Program ma1 = new Program();
-		ma1.setName("Master IMI 1");
+		ma1.setName("MasterIMI1");
 		allPrograms.add(ma1);
 
 		Program ma2 = new Program();
-		ma2.setName("Master IMI 2");
+		ma2.setName("MasterIMI2");
 		allPrograms.add(ma2);
 
 		Program ma3 = new Program();
-		ma3.setName("Master IMI 3");
+		ma3.setName("MasterIMI3");
 		allPrograms.add(ma3);
 
 		Teacher t = new Teacher();

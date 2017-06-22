@@ -1,6 +1,7 @@
 package de.teamzhang.controller;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class Algorithm {
 		rooms.generateMockData();
 		slots.generate(72, rooms.list());
 		prios.generateMockData(teachers.list(), 4);
-		//courses.generateMockData(programs.list(), teachers.list());
+		// courses.generateMockData(programs.list(), teachers.list());
 
 		printMap(programs.getPrograms());
 		printMap(teachers.getTeachers());
@@ -64,19 +65,21 @@ public class Algorithm {
 		weightPrios();
 
 		int minusPoints = 0;
-		//calculateRandomSchedule();
-		//int minusPoints = getMinusPoints();
-		//System.out.println(minusPoints);
-		//int badSlots = 0;
+		// calculateRandomSchedule();
+		// int minusPoints = getMinusPoints();
+		// System.out.println(minusPoints);
+		// int badSlots = 0;
 
 		int count = 0;
-		int minusPointsThreshold = 250;
+		int minusPointsThreshold = 400;
 		do {
 			reset();
 			count++;
 			calculateRandomSchedule();
+			boolean hillclimbingReached = false;
 			minusPoints = getMinusPoints();
 			if (minusPoints < 1200) {
+				hillclimbingReached = true;
 				System.out.println("Minuspoints: " + minusPoints);
 				climbHill(100);
 				minusPoints = getMinusPoints();
@@ -84,11 +87,13 @@ public class Algorithm {
 				climbHill(10);
 				minusPoints = getMinusPoints();
 				System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
-				climbHill(1);
+				climbHill(5);
 				minusPoints = getMinusPoints();
-				System.out.println("Minuspoints after hillclimbing with threshold 1: " + minusPoints);
+				System.out.println("Minuspoints after hillclimbing with threshold 5: " + minusPoints);
 
 			}
+			// if (!hillclimbingReached && count % 10000 == 0)
+			// inspectTeachers();
 			if (count % 1000000 == 0) {
 				minusPointsThreshold += 25;
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
@@ -99,35 +104,38 @@ public class Algorithm {
 		for (Program p : allPrograms) {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = new int[5][7];
-			//boolean[][] isTeaching = t.getFullSlots();
-			//			builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
+			// boolean[][] isTeaching = t.getFullSlots();
+			// builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
 
-			for (int i = 0; i < board[0].length; i++)//for each row
+			for (int i = 0; i < board.length; i++)// for each row
 			{
 
-				for (int j = 0; j < board.length; j++)//for each column
+				for (int j = 0; j < board[0].length; j++)// for each column
 				{
-					//					if (j == 0)
-					//						builder.append("Zeit " + i + ";");
+					// if (j == 0)
+					// builder.append("Zeit " + i + ";");
 					boolean isCourse = false;
 					for (Course c : p.getCourses()) {
-						if (c.getTime() == i && c.getDay() == j)
+						if (c.getTime() == j && c.getDay() == i)
 							builder.append(c.getName() + ", " + c.getTeacher().getName() + ", " + c.getRoom().getName()
 									+ ", " + c.getSlotsNeeded() + " Doppelstunden" + ", Minuspunkte: "
-									+ c.getTeacher().getWeightedDayTimeWishes()[j][i]);//append to the output string
+									+ c.getTeacher().getWeightedDayTimeWishes()[i][j]);
 						isCourse = true;
 					}
 					if (!isCourse)
-						builder.append("-" + "");//append to the output string
-					if (j < board.length - 1)//if this is not the last row element
-						builder.append(";");//then add comma (if you don't like commas you can use spaces)
+						builder.append("-" + "");
+					if (i < board.length - 1)
+						builder.append(";");
 				}
-				builder.append("\n");//append new line at the end of the row
+				builder.append("\n");// append new line at the end of the row
 			}
 			BufferedWriter writer;
 			try {
-				writer = new BufferedWriter(new FileWriter(p.getName() + ".csv"));
-				writer.write(builder.toString());//save the string representation of the board
+				//File file = new File("\\WebContent\\resources\\" + p.getName() + ".csv");
+				File file = new File(p.getName() + ".csv");
+				file.getParentFile().mkdirs();
+				writer = new BufferedWriter(new FileWriter(file));
+				writer.write(builder.toString());
 				writer.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -138,23 +146,26 @@ public class Algorithm {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = t.getWeightedDayTimeWishes();
 			boolean[][] isTeaching = t.getFullSlots();
-			for (int i = 0; i < board.length; i++)//for each row
+			for (int i = 0; i < board.length; i++)// for each row
 			{
-				for (int j = 0; j < board[i].length; j++)//for each column
+				for (int j = 0; j < board[i].length; j++)// for each column
 				{
 					if (isTeaching[i][j])
-						builder.append(board[i][j] + "");//append to the output string
+						builder.append(board[i][j] + "");// append to the output
+														// string
 					else
-						builder.append("0" + "");//append to the output string
-					if (j < board[i].length - 1)//if this is not the last row element
-						builder.append(",");//then add comma (if you don't like commas you can use spaces)
+						builder.append("0" + "");// append to the output string
+					if (j < board[i].length - 1)// if this is not the last row
+													// element
+						builder.append(",");// then add comma (if you don't like
+					// commas you can use spaces)
 				}
-				builder.append("\n");//append new line at the end of the row
+				builder.append("\n");// append new line at the end of the row
 			}
 			BufferedWriter writer;
 			try {
 				writer = new BufferedWriter(new FileWriter(t.getName() + ".csv"));
-				writer.write(builder.toString());//save the string representation of the board
+				writer.write(builder.toString());
 				writer.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -163,33 +174,42 @@ public class Algorithm {
 
 		}
 
-		//TODO: stundenten miteinberechnen?
-		//TODO: stundenplaene verbessern - bewerten und neu berechnen
-		//TODO: stundenplaene darstellen
+		// TODO: stundenten miteinberechnen?
+		// TODO: stundenplaene verbessern - bewerten und neu berechnen
+		// TODO: stundenplaene darstellen
 
-		//printMap(slots.getSlots());
+		// printMap(slots.getSlots());
 
 		optimalThreshold = 700;
 
 	}
 
+	private static void inspectTeachers() {
+		System.out.println("Couldn't find a schedule with selected teacher-prios, inspecting teachers...");
+		for (Teacher t : teachers.getTeachers().values()) {
+			System.out.println(t.getName() + " has " + t.getMinusPoints() + " minuspoints.");
+		}
+	}
+
 	private static void climbHill(int threshold) {
 		for (Program p : allPrograms) {
 			for (Course c : p.getCourses()) {
-				//if minusPoints are 
+				// if minusPoints are
 				if (c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()] > threshold) {
 
 					Teacher teacher = c.getTeacher();
 
-					//Slot slot = new Slot();
+					// Slot slot = new Slot();
 					Random r = new Random();
 					int randomTime = r.nextInt(7);
 					int randomDay = r.nextInt(5);
 					teacher.setFreeSlot(c.getDay(), c.getTime());
+					teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[c.getDay()][c.getTime()]);
 					p.setFreeSlot(c.getDay(), c.getTime());
 					if (c.getSlotsNeeded() == 2) {
 						teacher.setFreeSlot(c.getDay(), c.getTime() + 1);
 						p.setFreeSlot(c.getDay(), c.getTime() + 1);
+						teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[c.getDay()][c.getTime() + 1]);
 					}
 					if (c.getSlotsNeeded() == 2 && randomTime == 6)
 						randomTime -= 1;
@@ -208,7 +228,9 @@ public class Algorithm {
 					c.setDay(randomDay);
 					c.setTime(randomTime);
 					teacher.setFullSlot(randomDay, randomTime);
+					teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
 					if (c.getSlotsNeeded() == 2) {
+						teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
 						teacher.setFullSlot(randomDay, randomTime + 1);
 						p.setFullSlot(randomDay, randomTime + 1);
 					}
@@ -224,6 +246,7 @@ public class Algorithm {
 		for (Teacher t : teachers.getTeachers().values()) {
 			t.resetSchedule();
 			teachers.update(t);
+			t.resetMinuspoints();
 		}
 		for (Course c : allCourses)
 			c.setSet(false);
@@ -262,14 +285,14 @@ public class Algorithm {
 
 	private static void weightSingleSchedule(Teacher t) {
 		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
-		//3 = auf keinen fall
-		//0 = top
+		// 3 = auf keinen fall
+		// 0 = top
 		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
 				int random = randomGen.nextInt(4) * 10;
 				if (random == 3)
 					random = 9999;
-				//add minus point if teacher is extern
+				// add minus point if teacher is extern
 				if (!t.isProf())
 					random++;
 				weightedDayTimeWishes[days][time] = random;
@@ -285,7 +308,8 @@ public class Algorithm {
 
 	}
 
-	// 1 minuspunkt wenn der teacher um 9 anf�ngt und early start gew�hlt hat, 2 bei 12 etc
+	// 1 minuspunkt wenn der teacher um 9 anfängt und early start gew�hlt
+	// hat, 2 bei 12 etc
 	// genau anders bei later
 	private static void weightClassStart(Teacher t, SingleChoicePrio p) {
 		boolean later = false;
@@ -320,7 +344,7 @@ public class Algorithm {
 			for (Course c : p.getCourses()) {
 				if (!c.isSet()) {
 					Teacher teacher = c.getTeacher();
-					//Slot slot = new Slot();
+					// Slot slot = new Slot();
 					Random r = new Random();
 					int randomTime = r.nextInt(7);
 					int randomDay = r.nextInt(5);
@@ -334,12 +358,14 @@ public class Algorithm {
 							randomTime -= 1;
 					}
 					p.setFullSlot(randomDay, randomTime);
+					teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
 					c.setDay(randomDay);
 					c.setTime(randomTime);
 					teacher.setFullSlot(randomDay, randomTime);
 					if (c.getSlotsNeeded() == 2) {
 						teacher.setFullSlot(randomDay, randomTime + 1);
 						p.setFullSlot(randomDay, randomTime + 1);
+						teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime + 1]);
 					}
 					c.setSet(true);
 				}
@@ -347,28 +373,24 @@ public class Algorithm {
 
 		}
 
-		//for()
-		/*for (Slot slot : slots.getSlots().values()) {
-			Object[] teacherObjs = teachers.getTeachers().values().toArray();
-			Teacher randomTeacher = (Teacher) teacherObjs[randomGen.nextInt(teacherObjs.length)];
-			//TODO: exit condition if all teachers are busy at that time
-			int iteration = 0;
-			while (randomTeacher.getFullSlots()[slot.getDay()][slot.getTime()] == true || randomTeacher.isBusy()
-					|| randomTeacher.priosDontFit(slot) && iteration < 10000) {
-				randomTeacher = (Teacher) teacherObjs[randomGen.nextInt(teacherObjs.length)];
-				iteration++;
-			}
-			if (iteration < 10000)
-				randomTeacher.setFullSlot(slot.getDay(), slot.getTime());
-			else {
-				countNotOccupied++;
-				notOccupiedSlots.add("Day: " + slot.getDay() + ", Time: " + slot.getTime());
-			}
-			for (Room room : rooms.getRooms().values()) {
-		
-			}
-		}*/
-		//return countNotOccupied;
+		// for()
+		/*
+		 * for (Slot slot : slots.getSlots().values()) { Object[] teacherObjs =
+		 * teachers.getTeachers().values().toArray(); Teacher randomTeacher =
+		 * (Teacher) teacherObjs[randomGen.nextInt(teacherObjs.length)]; //TODO:
+		 * exit condition if all teachers are busy at that time int iteration =
+		 * 0; while (randomTeacher.getFullSlots()[slot.getDay()][slot.getTime()]
+		 * == true || randomTeacher.isBusy() || randomTeacher.priosDontFit(slot)
+		 * && iteration < 10000) { randomTeacher = (Teacher)
+		 * teacherObjs[randomGen.nextInt(teacherObjs.length)]; iteration++; } if
+		 * (iteration < 10000) randomTeacher.setFullSlot(slot.getDay(),
+		 * slot.getTime()); else { countNotOccupied++;
+		 * notOccupiedSlots.add("Day: " + slot.getDay() + ", Time: " +
+		 * slot.getTime()); } for (Room room : rooms.getRooms().values()) {
+		 * 
+		 * } }
+		 */
+		// return countNotOccupied;
 		return 0;
 
 	}
@@ -376,10 +398,10 @@ public class Algorithm {
 	// 2. function to generate a simple Ur-Plan
 	private static void generateUrPlan() {
 		// iterate slots
-		// 		iterate teachers
-		//			iterate courses
-		// 				iterate rooms
-		//					find a matching combination
+		// iterate teachers
+		// iterate courses
+		// iterate rooms
+		// find a matching combination
 		// should come up with VALID stupid plan
 	}
 
@@ -387,7 +409,7 @@ public class Algorithm {
 	// getting closer to the optimum
 	private static int calculateCurrentThresholdValue() {
 		// iterate slots and calc value
-		// based on continuously used slots per day 
+		// based on continuously used slots per day
 		// multiply with days
 		return 7;
 	}
@@ -395,7 +417,7 @@ public class Algorithm {
 	// 3. iterate plan and try to optimize per Teacher
 	private static void climbHillWithTeachers() {
 		// random pick and change slots
-		// calc current threshold 
+		// calc current threshold
 		// and compare to old
 		// use if better
 		// do XXX Times
