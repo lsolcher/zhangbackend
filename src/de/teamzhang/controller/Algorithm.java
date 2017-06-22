@@ -74,11 +74,13 @@ public class Algorithm {
 			count++;
 			calculateRandomSchedule();
 			minusPoints = getMinusPoints();
-			if (minusPoints < 900)
+			if (minusPoints < 850)
 				System.out.println("Minuspoints: " + minusPoints);
-		} while (minusPoints > 850);
-		System.out.println(
-				"Done! Generated a schedule with " + minusPoints + ". It took " + count + " itearations to create it.");
+			if (count % 10000000 == 0)
+				System.out.println("Iteration: " + count);
+		} while (minusPoints > 800);
+		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
+				+ " iterations to create it.");
 		for (Program p : allPrograms) {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = new int[5][7];
