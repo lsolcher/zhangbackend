@@ -1,8 +1,8 @@
 ;Montag;Dienstag;Mittwoch;Donnerstag;Freitag
-Zeit 0;;GW Dombach 1 Doppelstunden GW Room, Minuspunkte: 31;INFO 1 SU Beecher 1 Doppelstunden INFO 1 SU Room, Minuspunkte: 11;;CS SU Müller 1 Doppelstunden CS SU Room, Minuspunkte: 21
-Zeit 1;MA SU Thiel 1 Doppelstunden MA SU Room, Minuspunkte: 1;;;;
+Zeit 0;MA SU Thiel 1 Doppelstunden MA SU Room, Minuspunkte: 1;CS ï¿½ Mï¿½ller 2 Doppelstunden CS ï¿½ Room, Minuspunkte: 1;;;
+Zeit 1;;;;;INFO 1 ï¿½ Beecher 2 Doppelstunden INFO 1 ï¿½ Room, Minuspunkte: 1
 Zeit 2;;;;;
-Zeit 3;;;GW Ü Dombach 2 Doppelstunden GW Ü Room, Minuspunkte: 1;PR SU Busch 1 Doppelstunden PR SU Room, Minuspunkte: 0;
-Zeit 4;;;;;
-Zeit 5;;CS Ü Müller 2 Doppelstunden CS Ü Room, Minuspunkte: 11;;INFO 1 Ü Beecher 2 Doppelstunden INFO 1 Ü Room, Minuspunkte: 1;
+Zeit 3;PR SU Busch 1 Doppelstunden PR SU Room, Minuspunkte: 10;;;;
+Zeit 4;;;;INFO 1 SU Beecher 1 Doppelstunden INFO 1 SU Room, Minuspunkte: 21;
+Zeit 5;;GW Dombach 1 Doppelstunden GW Room, Minuspunkte: 1;CS SU Mï¿½ller 1 Doppelstunden CS SU Room, Minuspunkte: 31;GW ï¿½ Dombach 2 Doppelstunden GW ï¿½ Room, Minuspunkte: 21;
 Zeit 6;;;;;
