@@ -124,7 +124,7 @@ public class Algorithm {
 					}
 					if (!isCourse)
 						builder.append("-" + "");
-					if ((i <= board.length - 1) && (j < board[0].length-1)) 
+					if ((i <= board.length - 1) && (j < board[0].length-1))
 						builder.append(";");
 				}
 				if (i < board.length-1)
