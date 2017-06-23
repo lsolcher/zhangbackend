@@ -105,6 +105,10 @@ $(document).ready(function(){
 				
 //				document.getElementById(fullTableID).innerHTML = allTimeslots[i];
 				document.getElementById(fullTableID).innerHTML = singleElements[0] + singleElements[1] + singleElements[2];
+				
+//				if (singleElements[3] == " 2 Doppelstunden") {
+//					document.getElementById(fullTableID+1).innerHTML = singleElements[0] + singleElements[1] + singleElements[2];
+//				}
 			}
 		}
 	}
