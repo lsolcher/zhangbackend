@@ -1,40 +1,125 @@
 
 $(document).ready(function(){
 	
+	var allSemestersText = "";
+	
 	var allTimeslots = [];
 	var singleElements = [];
-	var allTimeslots = [];
 	
-	var semesterID = "";
-	var timeID = "";
+	var semesterID = 0;
+	var timeID = 0;
 	var fullTableID = "";
 	
-	for (var semesterIMIba = 1; semesterIMIba < 6; semesterIMIba++) {
+	$.ajax({
+		type: "GET",
+		url: "/ZhangProjectBackend/resources/BachelorIMI1.csv",
+		dataType: "text",
+		contentType:"text/plain",
+		success: function(data) {saveFirstData(data);},
+	});
+	$.ajax({
+		type: "GET",
+		url: "/ZhangProjectBackend/resources/BachelorIMI2.csv",
+		dataType: "text",
+		contentType:"text/plain",
+		success: function(data) {saveData(data);},
+	});
+	$.ajax({
+		type: "GET",
+		url: "/ZhangProjectBackend/resources/BachelorIMI3.csv",
+		dataType: "text",
+		contentType:"text/plain",
+		success: function(data) {saveData(data);},
+	});
+	$.ajax({
+		type: "GET",
+		url: "/ZhangProjectBackend/resources/BachelorIMI4.csv",
+		dataType: "text",
+		contentType:"text/plain",
+		success: function(data) {saveData(data);},
+	});
+	$.ajax({
+		type: "GET",
+		url: "/ZhangProjectBackend/resources/BachelorIMI5.csv",
+		dataType: "text",
+		contentType:"text/plain",
+		success: function(data) {saveData(data);},
+	});
+	$.ajax({
+		type: "GET",
+		url: "/ZhangProjectBackend/resources/BachelorIMI6.csv",
+		dataType: "text",
+		contentType:"text/plain",
+		success: function(data) {saveData(data);},
+	});
+	$.ajax({
+		type: "GET",
+		url: "/ZhangProjectBackend/resources/MasterIMI1.csv",
+		dataType: "text",
+		contentType:"text/plain",
+		success: function(data) {saveData(data);},
+	});
+	$.ajax({
+		type: "GET",
+		url: "/ZhangProjectBackend/resources/MasterIMI2.csv",
+		dataType: "text",
+		contentType:"text/plain",
+		success: function(data) {saveData(data);},
+	});
+	$.ajax({
+		type: "GET",
+		url: "/ZhangProjectBackend/resources/MasterIMI3.csv",
+		dataType: "text",
+		contentType:"text/plain",
+		success: function(data) {saveData(data);},
+	});
+	$.ajax({
+		type: "GET",
+		url: "/ZhangProjectBackend/resources/MasterIMI4.csv",
+		dataType: "text",
+		contentType:"text/plain",
+		success: function(data) {saveData(data); processData(data);},
+	});
+		
 	
-		var fileUrl = "/ZhangProjectBackend/resources/BachelorIMI" + semesterIMIba + ".csv";
-//		var fileUrl = "/ZhangProjectBackend/resources/BachelorIMI1.csv";
+	
+	function saveFirstData (allTextOfOneSemester) {
+		allSemestersText = allSemestersText + allTextOfOneSemester;
+	}
+	
+	function saveData (allTextOfOneSemester) {
+		allSemestersText = allSemestersText + " ; " + allTextOfOneSemester;
+	}
+	
+	function processData() {
 		
-		$.ajax({
-			type: "GET",
-//			url: fileUrl, //"/ZhangProjectBackend/resources/Jung2.csv",
-			url: fileUrl,
-			dataType: "text",
-			contentType:"text/plain",
-			success: function(data) {/*console.log(data);*/ processData(data);},
-//			error: function(a,b,c){console.log(a,b,c);console.log("!!!!!!!!!!!!!!!!!!!!!!!");}
-		});
+//		console.log(allSemestersText);
+		
+//		var allTextLines = allText.split(/\r\n|\n/);		
+		allTimeslots = allSemestersText.split(/[\n;]/);
+				
+//		for (var i = 0; i < allTimeslots.length; i++) {
+//			console.log(allTimeslots[i]);
+//		}
+		
+//		
+//		for (var i = 0; i < allTextLines.length-1; i++) {
+//			allTimeslots.push(allTextLines[i].split(';'));
+//			
+//		}
+//		for (var i = 0; i < allTimeslots.length; i++) {
+//			singleElements.push(allTimeslots[i].split(','))
+//		}
 		
 		
-		semesterID = "" + (semesterIMIba - 1 ); //TODO .toString
-			
 		for (var i = 0; i < allTimeslots.length; i++) {	
-					
-			console.log("hi");
 			
-			timeID = i;
-			fullTableID = "table-cell-" + timeID + semesterID;
-			
-			if (allTimeslots[i] != null ) {
+			fullTableID = "table-cell-" + i;
+						
+			if (!((allTimeslots[i] == "")||(allTimeslots[i] == "-")||(allTimeslots[i] == " ")||(allTimeslots[i] == " -")||(allTimeslots[i] == "- "))) {
+				
+//				console.log(allTimeslots[i]);
+
 				
 				document.getElementById(fullTableID).innerHTML = allTimeslots[i];
 				
@@ -43,52 +128,7 @@ $(document).ready(function(){
 //				document.getElementById(fullTableID).innerHTML = "Kurs: " + kurs + ", Dozent: " + dozent + ", Raum: " + raum;
 			}
 		}
-		
-	
 	}
-//	for (var semesterIMIma = 1; semesterIMIma < 4; semesterIMIma++) {
-//		semesterID = "" + (semesterIMIma + 5 );  //  + 6 - 1 //TODO .toString
-//		timeID = "";
-//		fullTableID = "table-cell-" + timeID + semesterID;
-//		
-//		
-//		
-//		
-//		
-//		
-//	}
-	
-
-	function processData(allText) {
-		
-//		var allTextLines = allText.split(/\r\n|\n/);		// tODO: var allTextLines = allText.split(/\r\n|\n/|';');	???!!
-		allTimeslots.push(allText.split(/[\n;]/));
-		
-		
-//		for (var i = 0; i < allTextLines.length-1; i++) {
-//			console.log("-> " + allTextLines[i]);
-//		}
-//		
-//		
-//		for (var i = 0; i < allTextLines.length-1; i++) {
-//			allTimeslots.push(allTextLines[i].split(';'));
-//			
-//		}
-		for (var i = 0; i < allTimeslots.length; i++) {
-			console.log(allTimeslots[i]);
-		}
-		
-		
-//		for (var i = 0; i < allTimeslots.length; i++) {
-//			singleElements.push(allTimeslots[i].split(','))
-//		}
-//		for (var i = 0; i < singleElements.length; i++) {
-//			console.log("->> " + singleElements[i]);
-//		}
-		
-	}
-	
-	
 });
 
 
