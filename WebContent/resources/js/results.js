@@ -3,6 +3,7 @@ $(document).ready(function(){
 	
 	var allTimeslots = [];
 	var singleElements = [];
+	var allTimeslots = [];
 	
 	var semesterID = "";
 	var timeID = "";
@@ -16,7 +17,7 @@ $(document).ready(function(){
 		$.ajax({
 			type: "GET",
 //			url: fileUrl, //"/ZhangProjectBackend/resources/Jung2.csv",
-			url: "/ZhangProjectBackend/resources/BachelorIMI1.csv",
+			url: fileUrl,
 			dataType: "text",
 			contentType:"text/plain",
 			success: function(data) {/*console.log(data);*/ processData(data);},
@@ -27,13 +28,14 @@ $(document).ready(function(){
 		semesterID = "" + (semesterIMIba - 1 ); //TODO .toString
 			
 		for (var i = 0; i < allTimeslots.length; i++) {	
-						
+					
+			console.log("hi");
+			
 			timeID = i;
 			fullTableID = "table-cell-" + timeID + semesterID;
 			
 			if (allTimeslots[i] != null ) {
 				
-				console.log("allTimeslots[i]");
 				document.getElementById(fullTableID).innerHTML = allTimeslots[i];
 				
 				
@@ -59,19 +61,19 @@ $(document).ready(function(){
 
 	function processData(allText) {
 		
-		var allTextLines = allText.split(/\r\n|\n/);		// tODO: var allTextLines = allText.split(/\r\n|\n/|';');	???!!
-//		singleElements = allText.split("\n|';'");
+//		var allTextLines = allText.split(/\r\n|\n/);		// tODO: var allTextLines = allText.split(/\r\n|\n/|';');	???!!
+		allTimeslots.push(allText.split(/[\n;]/));
 		
 		
-		for (var i = 0; i < allTextLines.length-1; i++) {
-			console.log("-> " + allTextLines[i]);
-		}
-		
-		
-		for (var i = 0; i < allTextLines.length-1; i++) {
-			allTimeslots.push(allTextLines[i].split(';'));
-			
-		}
+//		for (var i = 0; i < allTextLines.length-1; i++) {
+//			console.log("-> " + allTextLines[i]);
+//		}
+//		
+//		
+//		for (var i = 0; i < allTextLines.length-1; i++) {
+//			allTimeslots.push(allTextLines[i].split(';'));
+//			
+//		}
 		for (var i = 0; i < allTimeslots.length; i++) {
 			console.log(allTimeslots[i]);
 		}
