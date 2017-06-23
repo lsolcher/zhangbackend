@@ -93,24 +93,7 @@ $(document).ready(function(){
 	
 	function processData() {
 		
-//		console.log(allSemestersText);
-		
-//		var allTextLines = allText.split(/\r\n|\n/);		
 		allTimeslots = allSemestersText.split(/[\n;]/);
-				
-//		for (var i = 0; i < allTimeslots.length; i++) {
-//			console.log(allTimeslots[i]);
-//		}
-		
-//		
-//		for (var i = 0; i < allTextLines.length-1; i++) {
-//			allTimeslots.push(allTextLines[i].split(';'));
-//			
-//		}
-//		for (var i = 0; i < allTimeslots.length; i++) {
-//			singleElements.push(allTimeslots[i].split(','))
-//		}
-		
 		
 		for (var i = 0; i < allTimeslots.length; i++) {	
 			
@@ -118,14 +101,10 @@ $(document).ready(function(){
 						
 			if (!((allTimeslots[i] == "")||(allTimeslots[i] == "-")||(allTimeslots[i] == " ")||(allTimeslots[i] == " -")||(allTimeslots[i] == "- "))) {
 				
-//				console.log(allTimeslots[i]);
-
+				singleElements = allTimeslots[i].split(',');
 				
-				document.getElementById(fullTableID).innerHTML = allTimeslots[i];
-				
-				
-				
-//				document.getElementById(fullTableID).innerHTML = "Kurs: " + kurs + ", Dozent: " + dozent + ", Raum: " + raum;
+//				document.getElementById(fullTableID).innerHTML = allTimeslots[i];
+				document.getElementById(fullTableID).innerHTML = singleElements[0] + singleElements[1] + singleElements[2];
 			}
 		}
 	}
