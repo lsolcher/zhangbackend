@@ -1,6 +1,9 @@
 package de.teamzhang.model;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Random;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,9 +20,40 @@ public class Prio {
 	protected int course;
 	protected boolean isValidForAllCourses;
 	private String text;
+	protected Teacher teacher;
+	protected Collection<Course> courses = (Collection<Course>) new ArrayList(1);
 
-	public Prio(String string, BigInteger profID, BigInteger[] courses) {
+	public Prio(String string, Teacher teacher, Collection<Course> courses) {
 		this.name = string;
+		this.teacher = teacher;
+		this.courses = courses;
+		createId();
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+
+	public Collection<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(Collection<Course> courses) {
+		this.courses = courses;
+	}
+
+	private void createId() {
+		BigInteger n = new BigInteger("999999999999");
+		Random rand = new Random();
+		BigInteger result = new BigInteger(n.bitLength(), rand);
+		while (result.compareTo(n) >= 0) {
+			result = new BigInteger(n.bitLength(), rand);
+		}
+		id = result;
 	}
 
 	public Prio() {
@@ -76,6 +110,51 @@ public class Prio {
 
 	public void setUserId(BigInteger userId) {
 		this.userId = userId;
+	}
+
+	public void setExcluding(boolean nextBoolean) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public boolean isExcluding() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void setDayOne(int nextInt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void setHasTime(boolean nextBoolean) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void setDayTwo(int nextInt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public boolean isHasTime() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void setTimeOne(int nextInt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void setTimeTwo(int nextInt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void setOption(int nextInt) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
