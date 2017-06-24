@@ -267,6 +267,47 @@ h1, h2, h3, h4, h5 {
 
 
 /**********************
+  Result Table
+**********************/
+.result-table  {
+	margin: 50px auto;
+	max-width: 1200px;
+	table-layout: fixed;
+}
+
+.result-table caption {
+	font-weight: bold;
+	margin: 0 0 20px 20px;
+
+}
+
+.result-table td,
+.result-table th  {
+	display: inline-block;
+	margin: 10px 20px;
+	width: 80px;
+}
+
+.result-table thead {
+	background: #00BFA6;
+}
+
+.new-day {
+	background: #a7ffeb; /*#00BFA6;  #cfd8dc*/
+	margin: 40px 0;
+}
+
+.new-day td {
+	font-weight: bold;
+}
+
+.result-table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+/**********************
   Bootstrap Overwrite
 **********************/
 .navbar-collapse {
