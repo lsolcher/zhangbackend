@@ -64,7 +64,7 @@
       </div>
     </div>
 
-    <header class="group">
+    <header>
       <div class="container">
 				<div class="navbar-header">
 					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">

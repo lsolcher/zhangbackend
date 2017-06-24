@@ -95,4 +95,10 @@ public class DataController {
 		return null;
 		// }
 	}
+
+	@GetMapping(value = "/controlpanel")
+	protected ModelAndView controlpanelPage(HttpServletRequest request, HttpServletResponse arg1) {
+		ModelAndView modelandview = new ModelAndView("controlpanel");
+		return modelandview;
+	}
 }
