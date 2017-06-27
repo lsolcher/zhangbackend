@@ -150,10 +150,11 @@ public class Algorithm {
 					}
 					if (!isCourse)
 						builder.append("-" + "");
-					if (i <= board.length - 1)
+					if ((i <= board.length - 1) && (j < board[0].length-1))
 						builder.append(";");
 				}
-				builder.append("\n");// append new line at the end of the row
+				if (i < board.length-1)
+					builder.append("\n");// append new line at the end of the row
 			}
 			BufferedWriter writer;
 			try {
