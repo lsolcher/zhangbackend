@@ -2,12 +2,15 @@ package de.teamzhang.controller;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Random;
 
 import de.teamzhang.model.Course;
@@ -39,6 +42,8 @@ public class Algorithm {
 
 	private static Random randomGen = new Random();
 
+	private static Properties prop = new Properties();
+
 	private static int optimalThreshold = 0;
 	private static List<String> notOccupiedSlots = new ArrayList<String>();
 
@@ -48,6 +53,27 @@ public class Algorithm {
 
 	// 1. generate some testdata
 	private static void generateMockData() {
+
+		Config.mockProps();
+		InputStream input = null;
+		try {
+
+			input = new FileInputStream("settings.properties");
+
+			// load a properties file
+			prop.load(input);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
 		programs.generateMockData();
 		teachers.generateMockData(allCourses, allPrograms);
 		rooms.generateMockData();
