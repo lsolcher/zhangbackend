@@ -34,10 +34,14 @@ public class Algorithm {
 	private static TeachersPersistence teachers = new TeachersPersistence();
 
 	private static int MINUSPOINTTHRESHOLD = 10;
+
+	private static int RANDOMGENERATIONMINUSPOINTSTHRESHOLD = 1500;
 	static ArrayList<Course> allCourses = new ArrayList<Course>();
 	static ArrayList<Program> allPrograms = new ArrayList<Program>();
 
 	private static Random randomGen = new Random();
+
+	// private static
 
 	private static int optimalThreshold = 0;
 	private static List<String> notOccupiedSlots = new ArrayList<String>();
@@ -48,11 +52,15 @@ public class Algorithm {
 
 	// 1. generate some testdata
 	private static void generateMockData() {
+
 		programs.generateMockData();
 		teachers.generateMockData(allCourses, allPrograms);
 		rooms.generateMockData();
 		slots.generate(72, rooms.list());
 		prios.generateMockData(teachers.list(), 4);
+
+		for (Program p : allPrograms)
+			p.generateMockConfig();
 		// courses.generateMockData(programs.list(), teachers.list());
 
 		printMap(programs.getPrograms());
@@ -65,11 +73,6 @@ public class Algorithm {
 		weightPrios();
 
 		int minusPoints = 0;
-		// calculateRandomSchedule();
-		// int minusPoints = getMinusPoints();
-		// System.out.println(minusPoints);
-		// int badSlots = 0;
-
 		int count = 0;
 		int minusPointsThreshold = 400;
 		do {
@@ -78,7 +81,7 @@ public class Algorithm {
 			calculateRandomSchedule();
 			boolean hillclimbingReached = false;
 			minusPoints = getMinusPoints();
-			if (minusPoints < 1200) {
+			if (minusPoints < RANDOMGENERATIONMINUSPOINTSTHRESHOLD) {
 				hillclimbingReached = true;
 				System.out.println("Minuspoints: " + minusPoints);
 				climbHill(100);
@@ -90,10 +93,18 @@ public class Algorithm {
 				climbHill(5);
 				minusPoints = getMinusPoints();
 				System.out.println("Minuspoints after hillclimbing with threshold 5: " + minusPoints);
-
+				for (Program p : allPrograms) {
+					System.out.println("Program " + p.getName() + " has " + p.getProgramMinusPoints() + " minusPoints");
+				}
 			}
-			// if (!hillclimbingReached && count % 10000 == 0)
-			// inspectTeachers();
+			if (!hillclimbingReached && count % 10000 == 0) {
+				// TODO
+				// inspectTeachers();
+				// inspectStudentPrios();
+				RANDOMGENERATIONMINUSPOINTSTHRESHOLD += 100;
+				System.out.println("Iteration " + count + ", new threshold for random generation: "
+						+ RANDOMGENERATIONMINUSPOINTSTHRESHOLD);
+			}
 			if (count % 1000000 == 0) {
 				minusPointsThreshold += 25;
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
@@ -124,16 +135,19 @@ public class Algorithm {
 					}
 					if (!isCourse)
 						builder.append("-" + "");
-					if (i <= board.length - 1)
+					if ((i <= board.length - 1) && (j < board[0].length - 1))
 						builder.append(";");
 				}
-				builder.append("\n");// append new line at the end of the row
+				if (i < board.length - 1)
+					builder.append("\n");// append new line at the end of the
+											// row
 			}
 			BufferedWriter writer;
 			try {
-				//File file = new File("\\WebContent\\resources\\" + p.getName() + ".csv");
+				// File file = new File("\\WebContent\\resources\\" +
+				// p.getName() + ".csv");
 				File file = new File(p.getName() + ".csv");
-				//file.getParentFile().mkdirs();
+				// file.getParentFile().mkdirs();
 				writer = new BufferedWriter(new FileWriter(file));
 				writer.write(builder.toString());
 				writer.close();
@@ -152,11 +166,11 @@ public class Algorithm {
 				{
 					if (isTeaching[i][j])
 						builder.append(board[i][j] + "");// append to the output
-														// string
+															// string
 					else
 						builder.append("0" + "");// append to the output string
 					if (j < board[i].length - 1)// if this is not the last row
-													// element
+												// element
 						builder.append(",");// then add comma (if you don't like
 					// commas you can use spaces)
 				}
@@ -240,6 +254,11 @@ public class Algorithm {
 
 		}
 
+		for (Program p : allPrograms) {
+			p.resetMinusPoints();
+			addStudentMinusPoints(p);
+		}
+
 	}
 
 	private static void reset() {
@@ -266,6 +285,9 @@ public class Algorithm {
 						minusPoints += weightedDayTimeWishes[days][time];
 				}
 			}
+		}
+		for (Program p : allPrograms) {
+			minusPoints += p.getProgramMinusPoints();
 		}
 		return minusPoints;
 	}
@@ -343,8 +365,8 @@ public class Algorithm {
 		for (Program p : allPrograms) {
 			for (Course c : p.getCourses()) {
 				if (!c.isSet()) {
+
 					Teacher teacher = c.getTeacher();
-					// Slot slot = new Slot();
 					Random r = new Random();
 					int randomTime = r.nextInt(7);
 					int randomDay = r.nextInt(5);
@@ -358,6 +380,7 @@ public class Algorithm {
 							randomTime -= 1;
 					}
 					p.setFullSlot(randomDay, randomTime);
+
 					teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
 					c.setDay(randomDay);
 					c.setTime(randomTime);
@@ -372,7 +395,8 @@ public class Algorithm {
 			}
 
 		}
-
+		for (Program p : allPrograms)
+			addStudentMinusPoints(p);
 		// for()
 		/*
 		 * for (Slot slot : slots.getSlots().values()) { Object[] teacherObjs =
@@ -393,6 +417,97 @@ public class Algorithm {
 		// return countNotOccupied;
 		return 0;
 
+	}
+
+	private static void addStudentMinusPoints(Program p) {
+		addMaxHoursMinusPoints(p);
+		addMaxDaysMinusPoints(p);
+		addMaxBreakLengthMinusPoints(p);
+	}
+
+	private static void addMaxBreakLengthMinusPoints(Program p) {
+		try {
+			int studentMaxBreakLengthValue = Integer.parseInt(p.getProp().getProperty("studentMaxBreakLengthValue"));
+			int studentMaxBreakLengthMinusPoints = Integer
+					.parseInt(p.getProp().getProperty("studentMaxBreakLengthMinusPoints"));
+			boolean[][] fullSlots = p.getFullSlots();
+			if (studentMaxBreakLengthMinusPoints > 0) {
+
+				for (int days = 0; days < fullSlots.length; days++) {
+					int count = 0;
+					int maxValue = 0;
+					for (int time = 0; time < fullSlots[days].length; time++) {
+						if (fullSlots[days][time] == false && time > 0 && time < 7) {
+							count++;
+							if (count >= studentMaxBreakLengthValue) {
+								p.addMinusPoints(studentMaxBreakLengthValue);
+								count = 0;
+								break;
+							}
+						} else
+							count = 0;
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void addMaxDaysMinusPoints(Program p) {
+		try {
+			int studentMaxDaysValue = Integer.parseInt(p.getProp().getProperty("studentMaxDaysValue"));
+			int studentMaxDaysMinusPoints = Integer.parseInt(p.getProp().getProperty("studentMaxDaysMinusPoints"));
+			boolean[][] fullSlots = p.getFullSlots();
+			if (studentMaxDaysMinusPoints > 0) {
+				boolean[] daysBusy = new boolean[7];
+				for (int days = 0; days < fullSlots.length; days++) {
+					for (int time = 0; time < fullSlots[days].length; time++) {
+						if (fullSlots[days][time] == true)
+							daysBusy[days] = true;
+					}
+
+				}
+				int count = 0;
+				for (boolean b : daysBusy)
+					if (b == true)
+						count++;
+				if (count >= studentMaxDaysValue)
+					p.addMinusPoints(studentMaxDaysMinusPoints);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void addMaxHoursMinusPoints(Program p) {
+		try {
+			int studentMaxHoursValue = Integer.parseInt(p.getProp().getProperty("studentMaxHoursValue"));
+			int studentMaxHoursMinusPoints = Integer.parseInt(p.getProp().getProperty("studentMaxHoursMinusPoints"));
+			boolean[][] fullSlots = p.getFullSlots();
+			if (studentMaxHoursMinusPoints > 0) {
+				for (int days = 0; days < fullSlots.length; days++) {
+					int count = 0;
+					for (int time = 0; time < fullSlots[days].length; time++) {
+						if (fullSlots[days][time] == true) {
+							if (time == 0)
+								count++;
+							else if (fullSlots[days][time - 1] == true)
+								count++;
+							else if (fullSlots[days][time] == false)
+								count = 0;
+							if (count >= studentMaxHoursValue) {
+								p.addMinusPoints(studentMaxHoursValue);
+								break;
+							}
+						}
+
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	// 2. function to generate a simple Ur-Plan
