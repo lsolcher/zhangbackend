@@ -2,15 +2,12 @@ package de.teamzhang.controller;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.Random;
 
 import de.teamzhang.model.Course;
@@ -42,7 +39,7 @@ public class Algorithm {
 
 	private static Random randomGen = new Random();
 
-	private static Properties prop = new Properties();
+	// private static
 
 	private static int optimalThreshold = 0;
 	private static List<String> notOccupiedSlots = new ArrayList<String>();
@@ -54,31 +51,14 @@ public class Algorithm {
 	// 1. generate some testdata
 	private static void generateMockData() {
 
-		Config.mockProps();
-		InputStream input = null;
-		try {
-
-			input = new FileInputStream("settings.properties");
-
-			// load a properties file
-			prop.load(input);
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} finally {
-			if (input != null) {
-				try {
-					input.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
 		programs.generateMockData();
 		teachers.generateMockData(allCourses, allPrograms);
 		rooms.generateMockData();
 		slots.generate(72, rooms.list());
 		prios.generateMockData(teachers.list(), 4);
+
+		for (Program p : allPrograms)
+			p.generateMockConfig();
 		// courses.generateMockData(programs.list(), teachers.list());
 
 		printMap(programs.getPrograms());
@@ -150,17 +130,19 @@ public class Algorithm {
 					}
 					if (!isCourse)
 						builder.append("-" + "");
-					if ((i <= board.length - 1) && (j < board[0].length-1))
+					if ((i <= board.length - 1) && (j < board[0].length - 1))
 						builder.append(";");
 				}
-				if (i < board.length-1)
-					builder.append("\n");// append new line at the end of the row
+				if (i < board.length - 1)
+					builder.append("\n");// append new line at the end of the
+											// row
 			}
 			BufferedWriter writer;
 			try {
-				//File file = new File("\\WebContent\\resources\\" + p.getName() + ".csv");
+				// File file = new File("\\WebContent\\resources\\" +
+				// p.getName() + ".csv");
 				File file = new File(p.getName() + ".csv");
-				//file.getParentFile().mkdirs();
+				// file.getParentFile().mkdirs();
 				writer = new BufferedWriter(new FileWriter(file));
 				writer.write(builder.toString());
 				writer.close();
@@ -179,11 +161,11 @@ public class Algorithm {
 				{
 					if (isTeaching[i][j])
 						builder.append(board[i][j] + "");// append to the output
-														// string
+															// string
 					else
 						builder.append("0" + "");// append to the output string
 					if (j < board[i].length - 1)// if this is not the last row
-													// element
+												// element
 						builder.append(",");// then add comma (if you don't like
 					// commas you can use spaces)
 				}
@@ -370,8 +352,8 @@ public class Algorithm {
 		for (Program p : allPrograms) {
 			for (Course c : p.getCourses()) {
 				if (!c.isSet()) {
+
 					Teacher teacher = c.getTeacher();
-					// Slot slot = new Slot();
 					Random r = new Random();
 					int randomTime = r.nextInt(7);
 					int randomDay = r.nextInt(5);
@@ -385,6 +367,7 @@ public class Algorithm {
 							randomTime -= 1;
 					}
 					p.setFullSlot(randomDay, randomTime);
+
 					teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
 					c.setDay(randomDay);
 					c.setTime(randomTime);
@@ -399,7 +382,8 @@ public class Algorithm {
 			}
 
 		}
-
+		for (Program p : allPrograms)
+			addStudentMinusPoints(p);
 		// for()
 		/*
 		 * for (Slot slot : slots.getSlots().values()) { Object[] teacherObjs =
@@ -420,6 +404,97 @@ public class Algorithm {
 		// return countNotOccupied;
 		return 0;
 
+	}
+
+	private static void addStudentMinusPoints(Program p) {
+		addMaxHoursMinusPoints(p);
+		addMaxDaysMinusPoints(p);
+		addMaxBreakLengthMinusPoints(p);
+	}
+
+	private static void addMaxBreakLengthMinusPoints(Program p) {
+		try {
+			int studentMaxBreakLengthValue = Integer.parseInt(p.getProp().getProperty("studentMaxBreakLengthValue"));
+			int studentMaxBreakLengthMinusPoints = Integer
+					.parseInt(p.getProp().getProperty("studentMaxBreakLengthMinusPoints"));
+			boolean[][] fullSlots = p.getFullSlots();
+			if (studentMaxBreakLengthMinusPoints > 0) {
+
+				for (int days = 0; days < fullSlots.length; days++) {
+					int count = 0;
+					int maxValue = 0;
+					for (int time = 0; time < fullSlots[days].length; time++) {
+						if (fullSlots[days][time] == false && time > 0 && time < 7) {
+							count++;
+							if (count >= studentMaxBreakLengthValue) {
+								p.addMinusPoints(studentMaxBreakLengthValue);
+								count = 0;
+								break;
+							}
+						} else
+							count = 0;
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void addMaxDaysMinusPoints(Program p) {
+		try {
+			int studentMaxDaysValue = Integer.parseInt(p.getProp().getProperty("studentMaxDaysValue"));
+			int studentMaxDaysMinusPoints = Integer.parseInt(p.getProp().getProperty("studentMaxDaysMinusPoints"));
+			boolean[][] fullSlots = p.getFullSlots();
+			if (studentMaxDaysMinusPoints > 0) {
+				boolean[] daysBusy = new boolean[7];
+				for (int days = 0; days < fullSlots.length; days++) {
+					for (int time = 0; time < fullSlots[days].length; time++) {
+						if (fullSlots[days][time] == true)
+							daysBusy[days] = true;
+					}
+
+				}
+				int count = 0;
+				for (boolean b : daysBusy)
+					if (b == true)
+						count++;
+				if (count >= studentMaxDaysValue)
+					p.addMinusPoints(studentMaxDaysMinusPoints);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void addMaxHoursMinusPoints(Program p) {
+		try {
+			int studentMaxHoursValue = Integer.parseInt(p.getProp().getProperty("studentMaxHoursValue"));
+			int studentMaxHoursMinusPoints = Integer.parseInt(p.getProp().getProperty("studentMaxHoursMinusPoints"));
+			boolean[][] fullSlots = p.getFullSlots();
+			if (studentMaxHoursMinusPoints > 0) {
+				for (int days = 0; days < fullSlots.length; days++) {
+					int count = 0;
+					for (int time = 0; time < fullSlots[days].length; time++) {
+						if (fullSlots[days][time] == true) {
+							if (time == 0)
+								count++;
+							else if (fullSlots[days][time - 1] == true)
+								count++;
+							else if (fullSlots[days][time] == false)
+								count = 0;
+							if (count >= studentMaxHoursValue) {
+								p.addMinusPoints(studentMaxHoursValue);
+								break;
+							}
+						}
+
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	// 2. function to generate a simple Ur-Plan
