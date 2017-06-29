@@ -1,7 +1,29 @@
 (function() {
   var app = angular.module("zhang-app").controller('additionalPrioController', function($scope, $rootScope) {
 
-    $rootScope.additionalPriorities = [];
+    $rootScope.additionalPriorities = [
+      {
+        type: 'additionalPrio',
+        title: 'MaxStunden',
+        options: '3',
+        text: 'Maximale Stunden pro Tag: ',
+        prio: 'hoch'
+      },
+      {
+        type: 'additionalPrio',
+        title: 'MaxMinuspunkte',
+        options: '2',
+        text: 'Maximale Stunden pro Tag: ',
+        prio: 'niedrig'
+      },
+      {
+        type: 'additionalPrio',
+        title: 'MaxPausen',
+        options: '1',
+        text: 'Maximale Stunden pro Tag: ',
+        prio: 'mittel'
+      }
+    ];
 
     // TODO: When Checkbox "checked" add Object to $rootScope.additionalPriorities
 
@@ -11,7 +33,7 @@
 	      $.ajax({
 	        type: 'POST',
 	        contentType : 'application/json; charset=utf-8',
-	        url: '/ZhangProjectBackend/post.json',
+	        url: '/ZhangProjectBackend/postConfig.json',
 	        data: JSON.stringify($rootScope.additionalPriorities),
 	        success: function(response) {
 	          console.log('Response', response);
