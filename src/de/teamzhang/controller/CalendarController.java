@@ -86,7 +86,7 @@ public class CalendarController extends AbstractController {
 //		SecUserDetails userDetails = (SecUserDetails) authentication.getPrincipal();
 //		BigInteger userId = userDetails.getId();
 		ObjectMapper mapper = new ObjectMapper();
-		System.out.println(prios);
+//		System.out.println(prios);
 		try {
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			List<HashMap> list = mapper.readValue(prios, List.class);
@@ -107,6 +107,7 @@ public class CalendarController extends AbstractController {
 					@SuppressWarnings("unchecked")
 					List<String> text = (List<String>) m.get("text");
 					StringBuilder sb = new StringBuilder();
+					if(text != null && !text.equals(""))
 					for (String s : text) {
 						sb.append(s);
 
@@ -123,7 +124,8 @@ public class CalendarController extends AbstractController {
 					prio = new SimplePrio();
 				} else if (m.get("type").equals("Schedule")) {
 					prio = new Schedule();
-//					((Schedule) prio).setSchedule( m.get("calendar" ));
+					ArrayList<Integer> calendar = (ArrayList<Integer>) m.get("calendar" );
+					((Schedule) prio).setSchedule(calendar);
 				} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
 					prio = new ExcludeDayCombinationPrio();
 //					if (!m.get("title").equals("Tage ausschließen")) {
