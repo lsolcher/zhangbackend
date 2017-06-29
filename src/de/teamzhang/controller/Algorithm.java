@@ -34,6 +34,8 @@ public class Algorithm {
 	private static TeachersPersistence teachers = new TeachersPersistence();
 
 	private static int MINUSPOINTTHRESHOLD = 10;
+
+	private static int RANDOMGENERATIONMINUSPOINTSTHRESHOLD = 1500;
 	static ArrayList<Course> allCourses = new ArrayList<Course>();
 	static ArrayList<Program> allPrograms = new ArrayList<Program>();
 
@@ -71,11 +73,6 @@ public class Algorithm {
 		weightPrios();
 
 		int minusPoints = 0;
-		// calculateRandomSchedule();
-		// int minusPoints = getMinusPoints();
-		// System.out.println(minusPoints);
-		// int badSlots = 0;
-
 		int count = 0;
 		int minusPointsThreshold = 400;
 		do {
@@ -84,7 +81,7 @@ public class Algorithm {
 			calculateRandomSchedule();
 			boolean hillclimbingReached = false;
 			minusPoints = getMinusPoints();
-			if (minusPoints < 1200) {
+			if (minusPoints < RANDOMGENERATIONMINUSPOINTSTHRESHOLD) {
 				hillclimbingReached = true;
 				System.out.println("Minuspoints: " + minusPoints);
 				climbHill(100);
@@ -96,10 +93,18 @@ public class Algorithm {
 				climbHill(5);
 				minusPoints = getMinusPoints();
 				System.out.println("Minuspoints after hillclimbing with threshold 5: " + minusPoints);
-
+				for (Program p : allPrograms) {
+					System.out.println("Program " + p.getName() + " has " + p.getProgramMinusPoints() + " minusPoints");
+				}
 			}
-			// if (!hillclimbingReached && count % 10000 == 0)
-			// inspectTeachers();
+			if (!hillclimbingReached && count % 10000 == 0) {
+				// TODO
+				// inspectTeachers();
+				// inspectStudentPrios();
+				RANDOMGENERATIONMINUSPOINTSTHRESHOLD += 100;
+				System.out.println("Iteration " + count + ", new threshold for random generation: "
+						+ RANDOMGENERATIONMINUSPOINTSTHRESHOLD);
+			}
 			if (count % 1000000 == 0) {
 				minusPointsThreshold += 25;
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
@@ -249,6 +254,11 @@ public class Algorithm {
 
 		}
 
+		for (Program p : allPrograms) {
+			p.resetMinusPoints();
+			addStudentMinusPoints(p);
+		}
+
 	}
 
 	private static void reset() {
@@ -275,6 +285,9 @@ public class Algorithm {
 						minusPoints += weightedDayTimeWishes[days][time];
 				}
 			}
+		}
+		for (Program p : allPrograms) {
+			minusPoints += p.getProgramMinusPoints();
 		}
 		return minusPoints;
 	}
