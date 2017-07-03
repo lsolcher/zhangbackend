@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.portlet.ModelAndView;
 
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+
 import de.teamzhang.model.Course;
 import de.teamzhang.model.CoursesPersistence;
 import de.teamzhang.model.Prio;
@@ -63,7 +67,8 @@ public class Algorithm {
 
 	// 1. generate some testdata
 	@RequestMapping(value = "/algorithm", method = RequestMethod.GET)
-	private static ModelAndView generateCalendar() {
+	private ModelAndView generateCalendar() {
+		setTeachers();
 
 		programs.generateMockData();
 		teachers.generateMockData(allCourses, allPrograms);
@@ -211,6 +216,17 @@ public class Algorithm {
 		ModelAndView modelandview = new ModelAndView("calendar");
 		return modelandview;
 		//return "generated a plan with " + minusPoints + " minuspoints.";
+	}
+
+	private void setTeachers() {
+		DBCollection teachersDB = mongoTemplate.getCollection("teachers");
+		DBCursor cursor = teachersDB.find();
+		while (cursor.hasNext()) {
+			DBObject obj = cursor.next();
+			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
+			System.out.println(obj);
+		}
+
 	}
 
 	private static void generateMockData() {

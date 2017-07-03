@@ -58,7 +58,7 @@ public class ConfigController {
 				e.printStackTrace();
 			}*/
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 
 	}

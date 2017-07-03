@@ -64,7 +64,7 @@
             </li>
           </ul>
           <button type="button" name="button" ng-click="save()">Speichern</button>
-		  <form action="<c:url value="/algorithm" />" >
+		  <form action="<c:url value="/algorithm.html" />" >
 		            <button type="submit" name="action">Stundenplan erstellen</button>
 		  </form>
         </div>
