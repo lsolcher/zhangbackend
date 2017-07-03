@@ -10,6 +10,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.portlet.ModelAndView;
+
 import de.teamzhang.model.Course;
 import de.teamzhang.model.CoursesPersistence;
 import de.teamzhang.model.Prio;
@@ -22,7 +29,11 @@ import de.teamzhang.model.SlotsPersistence;
 import de.teamzhang.model.Teacher;
 import de.teamzhang.model.TeachersPersistence;
 
+@Controller
 public class Algorithm {
+
+	@Autowired
+	private MongoTemplate mongoTemplate;
 
 	// temporary holding the model
 	// TODO: replace with real models
@@ -35,7 +46,7 @@ public class Algorithm {
 
 	private static int MINUSPOINTTHRESHOLD = 10;
 
-	private static int RANDOMGENERATIONMINUSPOINTSTHRESHOLD = 1500;
+	private static int RANDOMGENERATIONMINUSPOINTSTHRESHOLD = 150000;
 	static ArrayList<Course> allCourses = new ArrayList<Course>();
 	static ArrayList<Program> allPrograms = new ArrayList<Program>();
 
@@ -51,6 +62,157 @@ public class Algorithm {
 	}
 
 	// 1. generate some testdata
+	@RequestMapping(value = "/algorithm", method = RequestMethod.GET)
+	private static ModelAndView generateCalendar() {
+
+		programs.generateMockData();
+		teachers.generateMockData(allCourses, allPrograms);
+		rooms.generateMockData();
+		slots.generate(72, rooms.list());
+		prios.generateMockData(teachers.list(), 4);
+
+		for (Program p : allPrograms)
+			p.generateMockConfig();
+		// courses.generateMockData(programs.list(), teachers.list());
+
+		printMap(programs.getPrograms());
+		printMap(teachers.getTeachers());
+		printMap(rooms.getRooms());
+		printMap(slots.getSlots());
+		printMap(prios.getPrios());
+		printMap(courses.getCourses());
+
+		weightPrios();
+
+		int minusPoints = 0;
+		int count = 0;
+		int minusPointsThreshold = 400000;
+		do {
+			reset();
+			count++;
+			calculateRandomSchedule();
+			boolean hillclimbingReached = false;
+			minusPoints = getMinusPoints();
+			System.out.println(minusPoints);
+			if (minusPoints < RANDOMGENERATIONMINUSPOINTSTHRESHOLD) {
+				hillclimbingReached = true;
+				System.out.println("Minuspoints: " + minusPoints);
+				climbHill(100);
+				minusPoints = getMinusPoints();
+				System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
+				climbHill(10);
+				minusPoints = getMinusPoints();
+				System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
+				climbHill(5);
+				minusPoints = getMinusPoints();
+				System.out.println("Minuspoints after hillclimbing with threshold 5: " + minusPoints);
+				for (Program p : allPrograms) {
+					System.out.println("Program " + p.getName() + " has " + p.getProgramMinusPoints() + " minusPoints");
+				}
+			}
+			if (!hillclimbingReached && count % 10000 == 0) {
+				// TODO
+				// inspectTeachers();
+				// inspectStudentPrios();
+				RANDOMGENERATIONMINUSPOINTSTHRESHOLD += 100;
+				System.out.println("Iteration " + count + ", new threshold for random generation: "
+						+ RANDOMGENERATIONMINUSPOINTSTHRESHOLD);
+			}
+			if (count % 1000000 == 0) {
+				minusPointsThreshold += 25;
+				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
+			}
+		} while (minusPoints > minusPointsThreshold);
+		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
+				+ " iterations to create it.");
+		for (Program p : allPrograms) {
+			StringBuilder builder = new StringBuilder();
+			int[][] board = new int[5][7];
+			// boolean[][] isTeaching = t.getFullSlots();
+			// builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
+
+			for (int i = 0; i < board.length; i++)// for each row
+			{
+
+				for (int j = 0; j < board[0].length; j++)// for each column
+				{
+					// if (j == 0)
+					// builder.append("Zeit " + i + ";");
+					boolean isCourse = false;
+					for (Course c : p.getCourses()) {
+						if (c.getTime() == j && c.getDay() == i)
+							builder.append(c.getName() + ", " + c.getTeacher().getLastName() + ", "
+									+ c.getRoom().getName() + ", " + c.getSlotsNeeded() + " Doppelstunden"
+									+ ", Minuspunkte: " + c.getTeacher().getWeightedDayTimeWishes()[i][j]);
+						isCourse = true;
+					}
+					if (!isCourse)
+						builder.append("-" + "");
+					if ((i <= board.length - 1) && (j < board[0].length - 1))
+						builder.append(";");
+				}
+				if (i < board.length - 1)
+					builder.append("\n");// append new line at the end of the
+										// row
+			}
+			BufferedWriter writer;
+			try {
+				// File file = new File("\\WebContent\\resources\\" +
+				// p.getName() + ".csv");
+				File file = new File(p.getName() + ".csv");
+				// file.getParentFile().mkdirs();
+				writer = new BufferedWriter(new FileWriter(file));
+				writer.write(builder.toString());
+				writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		for (Teacher t : teachers.getTeachers().values()) {
+			StringBuilder builder = new StringBuilder();
+			int[][] board = t.getWeightedDayTimeWishes();
+			boolean[][] isTeaching = t.getFullSlots();
+			for (int i = 0; i < board.length; i++)// for each row
+			{
+				for (int j = 0; j < board[i].length; j++)// for each column
+				{
+					if (isTeaching[i][j])
+						builder.append(board[i][j] + "");// append to the output
+														// string
+					else
+						builder.append("0" + "");// append to the output string
+					if (j < board[i].length - 1)// if this is not the last row
+													// element
+						builder.append(",");// then add comma (if you don't like
+					// commas you can use spaces)
+				}
+				builder.append("\n");// append new line at the end of the row
+			}
+			BufferedWriter writer;
+			try {
+				writer = new BufferedWriter(new FileWriter(t.getLastName() + ".csv"));
+				writer.write(builder.toString());
+				writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		// TODO: stundenten miteinberechnen?
+		// TODO: stundenplaene verbessern - bewerten und neu berechnen
+		// TODO: stundenplaene darstellen
+
+		// printMap(slots.getSlots());
+
+		optimalThreshold = 700;
+		ModelAndView modelandview = new ModelAndView("calendar");
+		return modelandview;
+		//return "generated a plan with " + minusPoints + " minuspoints.";
+	}
+
 	private static void generateMockData() {
 
 		programs.generateMockData();

@@ -49,13 +49,9 @@ public class CalendarController extends AbstractController {
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
 	protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse arg1)
 			throws Exception {
-
 		ModelAndView modelandview = new ModelAndView("calendar");
-		// modelandview.addObject("welcomeMessage", "Hi User");
 		modelandview.addObject("veranstaltungen", getVeranstaltungen(request));
-
 		return modelandview;
-
 	}
 
 	@SuppressWarnings("unchecked")

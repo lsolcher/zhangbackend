@@ -6,7 +6,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,25 +37,26 @@ public class ConfigController {
 		try {
 			List<HashMap> list = mapper.readValue(props, List.class);
 			ArrayList<String> settings = new ArrayList<String>();
-
 			try {
-				for (Map m : list) {
-					if (m.get("title").equals("MaxStunden")) {
-
-					}
-					try {
-						if (!mongoTemplate.collectionExists("settings")) {
-							mongoTemplate.createCollection("settings");
-						}
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					mongoTemplate.insert(list, "settings");
-
+				if (!mongoTemplate.collectionExists("settings")) {
+					mongoTemplate.createCollection("settings");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			mongoTemplate.insert(list, "settings");
+
+			/*try {
+				for (Map m : list) {
+					if (m.get("title").equals("MaxStunden")) {
+			
+					}
+			
+			
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}*/
 		} catch (Exception e) {
 
 		}

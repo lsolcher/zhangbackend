@@ -1,4 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html ng-app="zhang-app">
@@ -63,6 +64,9 @@
             </li>
           </ul>
           <button type="button" name="button" ng-click="save()">Speichern</button>
+		  <form action="<c:url value="/algorithm" />" >
+		            <button type="submit" name="action">Stundenplan erstellen</button>
+		  </form>
         </div>
 
       </div>
