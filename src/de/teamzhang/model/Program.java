@@ -138,4 +138,12 @@ public class Program {
 	public void addMinusPoints(int value) {
 		programMinusPoints += value;
 	}
+
+	public int getProgramMinusPoints() {
+		return programMinusPoints;
+	}
+
+	public void resetMinusPoints() {
+		programMinusPoints = 0;
+	}
 }

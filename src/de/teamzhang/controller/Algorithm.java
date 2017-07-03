@@ -81,6 +81,7 @@ public class Algorithm {
 			calculateRandomSchedule();
 			boolean hillclimbingReached = false;
 			minusPoints = getMinusPoints();
+			System.out.println(minusPoints);
 			if (minusPoints < RANDOMGENERATIONMINUSPOINTSTHRESHOLD) {
 				hillclimbingReached = true;
 				System.out.println("Minuspoints: " + minusPoints);
@@ -140,7 +141,7 @@ public class Algorithm {
 				}
 				if (i < board.length - 1)
 					builder.append("\n");// append new line at the end of the
-											// row
+										// row
 			}
 			BufferedWriter writer;
 			try {
@@ -166,11 +167,11 @@ public class Algorithm {
 				{
 					if (isTeaching[i][j])
 						builder.append(board[i][j] + "");// append to the output
-															// string
+														// string
 					else
 						builder.append("0" + "");// append to the output string
 					if (j < board[i].length - 1)// if this is not the last row
-												// element
+													// element
 						builder.append(",");// then add comma (if you don't like
 					// commas you can use spaces)
 				}
@@ -271,6 +272,7 @@ public class Algorithm {
 			c.setSet(false);
 		for (Program p : allPrograms) {
 			p.resetFullSlots();
+			p.resetMinusPoints();
 		}
 	}
 
