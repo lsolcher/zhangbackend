@@ -40,14 +40,14 @@ public class PrioPersistence {
 			prio = randomizeExcludeDayCombinationPrio(teacher);
 			break;
 		case 1:
-			prio = new FreeTextInputPrio("prio_" + teacher.getName(), teacher, teacher.getCourses());
+			prio = new FreeTextInputPrio("prio_" + teacher.getLastName(), teacher, teacher.getCourses());
 			prio.setText("blalvsfas");
 			break;
 		case 2:
 			prio = randomizeSingleChoicePrio(teacher);
 			break;
 		case 3:
-			prio = new SimplePrio("prio_" + teacher.getName(), teacher, teacher.getCourses());
+			prio = new SimplePrio("prio_" + teacher.getLastName(), teacher, teacher.getCourses());
 			break;
 		}
 		return prio;
@@ -57,7 +57,7 @@ public class PrioPersistence {
 	private Prio randomizeSingleChoicePrio(Teacher teacher) {
 		Random r = new Random();
 
-		Prio prio = new SingleChoicePrio("prio_" + teacher.getName(), teacher, teacher.getCourses());
+		Prio prio = new SingleChoicePrio("prio_" + teacher.getLastName(), teacher, teacher.getCourses());
 		int prioType = r.nextInt(4);
 		switch (prioType) {
 		case 0:
@@ -88,7 +88,7 @@ public class PrioPersistence {
 	private ExcludeDayCombinationPrio randomizeExcludeDayCombinationPrio(Teacher teacher) {
 		Random r = new Random();
 
-		Prio prio = new ExcludeDayCombinationPrio("prio_" + teacher.getName(), teacher, teacher.getCourses());
+		Prio prio = new ExcludeDayCombinationPrio("prio_" + teacher.getLastName(), teacher, teacher.getCourses());
 		prio.setExcluding(r.nextBoolean());
 		if (!prio.isExcluding())
 			prio.setHasTime(r.nextBoolean());

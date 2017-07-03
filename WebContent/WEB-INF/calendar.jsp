@@ -78,7 +78,7 @@
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
             <li><a href="#" id="add-course">Kurse bearbeiten</a></li>
-						<li><a href="#" id="logout">Logout</a></li>
+						<li><a href="/ZhangProjectBackend/logout.html" id="logout" >Logout</a></li>
 					</ul>
 				</nav>
 			</div>

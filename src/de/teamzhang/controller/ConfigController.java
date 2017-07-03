@@ -1,4 +1,4 @@
-package de.teamzhang.config;
+package de.teamzhang.controller;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
-public class Config {
+public class ConfigController {
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
@@ -37,10 +37,11 @@ public class Config {
 		System.out.println(props);
 		try {
 			List<HashMap> list = mapper.readValue(props, List.class);
+			ArrayList<String> settings = new ArrayList<String>();
+
 			try {
 				for (Map m : list) {
 					if (m.get("title").equals("MaxStunden")) {
-						ArrayList<String> setting = new ArrayList<String>();
 
 					}
 					try {
@@ -50,7 +51,7 @@ public class Config {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-					mongoTemplate.insert(String.class, "settings");
+					mongoTemplate.insert(list, "settings");
 
 				}
 			} catch (Exception e) {

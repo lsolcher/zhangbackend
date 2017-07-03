@@ -129,9 +129,9 @@ public class Algorithm {
 					boolean isCourse = false;
 					for (Course c : p.getCourses()) {
 						if (c.getTime() == j && c.getDay() == i)
-							builder.append(c.getName() + ", " + c.getTeacher().getName() + ", " + c.getRoom().getName()
-									+ ", " + c.getSlotsNeeded() + " Doppelstunden" + ", Minuspunkte: "
-									+ c.getTeacher().getWeightedDayTimeWishes()[i][j]);
+							builder.append(c.getName() + ", " + c.getTeacher().getLastName() + ", "
+									+ c.getRoom().getName() + ", " + c.getSlotsNeeded() + " Doppelstunden"
+									+ ", Minuspunkte: " + c.getTeacher().getWeightedDayTimeWishes()[i][j]);
 						isCourse = true;
 					}
 					if (!isCourse)
@@ -179,7 +179,7 @@ public class Algorithm {
 			}
 			BufferedWriter writer;
 			try {
-				writer = new BufferedWriter(new FileWriter(t.getName() + ".csv"));
+				writer = new BufferedWriter(new FileWriter(t.getLastName() + ".csv"));
 				writer.write(builder.toString());
 				writer.close();
 			} catch (IOException e) {
@@ -202,7 +202,7 @@ public class Algorithm {
 	private static void inspectTeachers() {
 		System.out.println("Couldn't find a schedule with selected teacher-prios, inspecting teachers...");
 		for (Teacher t : teachers.getTeachers().values()) {
-			System.out.println(t.getName() + " has " + t.getMinusPoints() + " minuspoints.");
+			System.out.println(t.getLastName() + " has " + t.getMinusPoints() + " minuspoints.");
 		}
 	}
 

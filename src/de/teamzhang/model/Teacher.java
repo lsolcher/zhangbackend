@@ -9,7 +9,9 @@ import org.springframework.data.annotation.Id;
 
 public class Teacher {
 
-	protected String name;
+	protected String firstName;
+	protected String lastName;
+
 	@Id
 	private BigInteger id;
 	private boolean isProf;
@@ -92,12 +94,8 @@ public class Teacher {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public String getLastName() {
+		return lastName;
 	}
 
 	public Collection<Course> getCourses() {
@@ -126,7 +124,7 @@ public class Teacher {
 			else if (p instanceof SingleChoicePrio)
 				prioDoesntFit = checkIfSingleChoicePrioFits((SingleChoicePrio) p, day, time);
 			else if (p instanceof SimplePrio) // no need to check, simplePrio is
-												// weighted in schedule and not
+													// weighted in schedule and not
 												// excluding
 				;
 			else if (p instanceof ExcludeDayCombinationPrio)
@@ -345,5 +343,18 @@ public class Teacher {
 
 	public void resetMinuspoints() {
 		minusPoints = 0;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getFirstName() {
+		return firstName;
 	}
 }

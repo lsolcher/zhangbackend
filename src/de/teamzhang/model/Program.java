@@ -10,7 +10,7 @@ import java.util.Properties;
 
 import org.springframework.data.annotation.Id;
 
-import de.teamzhang.config.Config;
+import de.teamzhang.controller.ConfigController;
 
 public class Program {
 	static int MAX_DAYS = 4;
@@ -131,7 +131,7 @@ public class Program {
 	}
 
 	public void generateMockConfig() {
-		Config.mockProps(name);
+		ConfigController.mockProps(name);
 
 	}
 

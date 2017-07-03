@@ -35,10 +35,10 @@ import de.teamzhang.model.ExcludeDayCombinationPrio;
 import de.teamzhang.model.FreeTextInputPrio;
 import de.teamzhang.model.Prio;
 import de.teamzhang.model.Schedule;
-import de.teamzhang.model.Room;
 import de.teamzhang.model.SecUserDetails;
 import de.teamzhang.model.SimplePrio;
 import de.teamzhang.model.SingleChoicePrio;
+import de.teamzhang.model.Teacher;
 
 @Controller
 public class CalendarController extends AbstractController {
@@ -81,12 +81,22 @@ public class CalendarController extends AbstractController {
 
 	@RequestMapping(value = "/post.json", method = RequestMethod.POST)
 	public @ResponseBody void updateData(@RequestBody String prios) {
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		String currentPrincipalName = authentication.getName();
-//		SecUserDetails userDetails = (SecUserDetails) authentication.getPrincipal();
-//		BigInteger userId = userDetails.getId();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		SecUserDetails userDetails = (SecUserDetails) authentication.getPrincipal();
+		BigInteger userId = userDetails.getId();
+		String firstName = userDetails.getUser().getFirstName();
+		String lastName = userDetails.getUser().getLastName();
+		Teacher teacher = new Teacher();
+		teacher.setFirstName(firstName);
+		teacher.setLastName(lastName);
+		teacher.setId(userId);
+		boolean isProf = false;
+		if (userDetails.getUser().getRole() == 0)
+			isProf = true;
+		teacher.setProf(isProf);
 		ObjectMapper mapper = new ObjectMapper();
-//		System.out.println(prios);
+		//		System.out.println(prios);
 		try {
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			List<HashMap> list = mapper.readValue(prios, List.class);
@@ -102,17 +112,17 @@ public class CalendarController extends AbstractController {
 					prio.setValidForAllCourses(true);
 				}
 				prio.setName((String) m.get("title"));
-//				prio.setUserId(userId);
+				//				prio.setUserId(userId);
 				try {
 					@SuppressWarnings("unchecked")
 					List<String> text = (List<String>) m.get("text");
 					StringBuilder sb = new StringBuilder();
-					if(text != null && !text.equals(""))
-					for (String s : text) {
-						sb.append(s);
+					if (text != null && !text.equals(""))
+						for (String s : text) {
+							sb.append(s);
 
-						sb.append("\t");
-					}
+							sb.append("\t");
+						}
 					prio.setText((sb.toString()));
 				} catch (ClassCastException e) {
 					prio.setText((String) m.get("text"));
@@ -124,45 +134,28 @@ public class CalendarController extends AbstractController {
 					prio = new SimplePrio();
 				} else if (m.get("type").equals("Schedule")) {
 					prio = new Schedule();
-					ArrayList<Integer> calendar = (ArrayList<Integer>) m.get("calendar" );
+					ArrayList<Integer> calendar = (ArrayList<Integer>) m.get("calendar");
 					((Schedule) prio).setSchedule(calendar);
 				} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
 					prio = new ExcludeDayCombinationPrio();
-//					if (!m.get("title").equals("Tage ausschließen")) {
-						if( m.get("dayOne").equals(Type.class) ) {
-							((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt((String) m.get("dayOne")));
-						}
-						if( m.get("dayOne").equals(Type.class) ) {
-							((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt((String) m.get("dayTwo")));
-						}
-						if( m.get("dayOne").equals(Type.class) ) {
-							((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt((String) m.get("timeOne")));
-						}
-						if( m.get("dayOne").equals(Type.class) ) {
-							((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt((String) m.get("timeTwo")));
-						}
-//						System.out.println(m.get("dayOne"));
-//						@SuppressWarnings("unchecked")
-//						List<String> dayAndTimeOne = (ArrayList<String>) m.get("dayOne");
-//						@SuppressWarnings("unchecked")
-//						List<String> dayAndTimeTwo = (ArrayList<String>) m.get("dayTwo");
-//						((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt(dayAndTimeOne.get(0)));
-//						((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt(dayAndTimeTwo.get(0)));
-//						((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt(dayAndTimeOne.get(1)));
-//						((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt(dayAndTimeTwo.get(1)));
-//					}
-
+					//					if (!m.get("title").equals("Tage ausschließen")) {
+					if (m.get("dayOne").equals(Type.class)) {
+						((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt((String) m.get("dayOne")));
+					}
+					if (m.get("dayOne").equals(Type.class)) {
+						((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt((String) m.get("dayTwo")));
+					}
+					if (m.get("dayOne").equals(Type.class)) {
+						((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt((String) m.get("timeOne")));
+					}
+					if (m.get("dayOne").equals(Type.class)) {
+						((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt((String) m.get("timeTwo")));
+					}
 				} else if (m.get("type").equals("FreeTextInputPrio")) {
 					prio = new FreeTextInputPrio();
 				}
-				try {
-					if (!mongoTemplate.collectionExists("prios")) {
-						mongoTemplate.createCollection("prios");
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				mongoTemplate.insert(prio, "prios");
+				teacher.addPrio(prio);
+
 			}
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();
@@ -171,6 +164,16 @@ public class CalendarController extends AbstractController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		try {
+			if (!mongoTemplate.collectionExists("teachers")) {
+				mongoTemplate.createCollection("teachers");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		mongoTemplate.insert(teacher, "teachers");
+		System.out.println(mongoTemplate.getCollection("teachers").getCount());
+
 	}
 
 }

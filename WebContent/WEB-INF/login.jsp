@@ -28,8 +28,6 @@
 		<script type="text/javascript" src="${courses}"></script>
 		<spring:url var ="priorities" value="/resources/js/priorities.js" />
 	 	<script type="text/javascript" src="${priorities}"></script>
-		<spring:url var ="calendar" value="/resources/js/calendar.js" />
-		<script type="text/javascript" src="${calendar}"></script>
 		<spring:url var ="bootstrap" value="/resources/js/bootstrap.js" />
 	  	<script type="text/javascript" src="${bootstrap}"></script>
 		<!-- libs end -->
