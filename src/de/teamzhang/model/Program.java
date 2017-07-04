@@ -10,8 +10,6 @@ import java.util.Properties;
 
 import org.springframework.data.annotation.Id;
 
-import de.teamzhang.controller.ConfigController;
-
 public class Program {
 	static int MAX_DAYS = 4;
 	static int MAX_SLOTS_PER_DAY = 4;
@@ -127,11 +125,6 @@ public class Program {
 
 	public void setFreeSlot(int day, int time) {
 		fullSlots[day][time] = false;
-
-	}
-
-	public void generateMockConfig() {
-		ConfigController.mockProps(name);
 
 	}
 

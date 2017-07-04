@@ -30,6 +30,7 @@ import de.teamzhang.model.ProgramPersistence;
 import de.teamzhang.model.RoomPersistence;
 import de.teamzhang.model.SingleChoicePrio;
 import de.teamzhang.model.SlotsPersistence;
+import de.teamzhang.model.StudentSettings;
 import de.teamzhang.model.Teacher;
 import de.teamzhang.model.TeachersPersistence;
 
@@ -49,6 +50,7 @@ public class Algorithm {
 	private static TeachersPersistence teachers = new TeachersPersistence();
 
 	private List<Teacher> allTeachers = new ArrayList<Teacher>();
+	private List<StudentSettings> allSettings = new ArrayList<StudentSettings>();
 
 	private static int MINUSPOINTTHRESHOLD = 10;
 
@@ -68,19 +70,17 @@ public class Algorithm {
 	}
 
 	// 1. generate some testdata
-	@RequestMapping(value = "/conrolpanel", method = RequestMethod.GET)
+	@RequestMapping(value = "/algorithm", method = RequestMethod.GET)
 	private ModelAndView generateCalendar() {
 		setTeachers();
 		setStudentPrios();
 
 		programs.generateMockData();
 		teachers.generateMockData(allCourses, allPrograms);
-		rooms.generateMockData();
-		slots.generate(72, rooms.list());
-		prios.generateMockData(teachers.list(), 4);
+		//rooms.generateMockData();
+		//slots.generate(72, rooms.list());
+		//prios.generateMockData(teachers.list(), 4);
 
-		for (Program p : allPrograms)
-			p.generateMockConfig();
 		// courses.generateMockData(programs.list(), teachers.list());
 
 		printMap(programs.getPrograms());
@@ -226,8 +226,8 @@ public class Algorithm {
 		DBCursor cursor = settingsDB.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
-			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
-			allTeachers.add(t);
+			StudentSettings s = mongoTemplate.getConverter().read(StudentSettings.class, obj);
+			allSettings.add(s);
 		}
 	}
 
@@ -250,8 +250,6 @@ public class Algorithm {
 		slots.generate(72, rooms.list());
 		prios.generateMockData(teachers.list(), 4);
 
-		for (Program p : allPrograms)
-			p.generateMockConfig();
 		// courses.generateMockData(programs.list(), teachers.list());
 
 		printMap(programs.getPrograms());
