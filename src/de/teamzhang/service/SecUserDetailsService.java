@@ -23,6 +23,7 @@ public class SecUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
 		User user = userRepository.findByLastName(username);
+
 		if (user == null) {
 			throw new UsernameNotFoundException(username);
 		} else {
