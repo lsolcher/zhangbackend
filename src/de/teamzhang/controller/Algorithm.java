@@ -21,6 +21,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
+import de.teamzhang.model.CalculatedSchedule;
 import de.teamzhang.model.Course;
 import de.teamzhang.model.CoursesPersistence;
 import de.teamzhang.model.Prio;
@@ -144,24 +145,31 @@ public class Algorithm {
 			int[][] board = new int[5][7];
 			// boolean[][] isTeaching = t.getFullSlots();
 			// builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
-
+			CalculatedSchedule cs = new CalculatedSchedule();
+			cs.setProgramName(p.getName());
 			for (int i = 0; i < board.length; i++)// for each row
 			{
-
 				for (int j = 0; j < board[0].length; j++)// for each column
 				{
 					// if (j == 0)
 					// builder.append("Zeit " + i + ";");
 					boolean isCourse = false;
 					for (Course c : p.getCourses()) {
-						if (c.getTime() == j && c.getDay() == i)
+						if (c.getTime() == j && c.getDay() == i) {
 							builder.append(c.getName() + ", " + c.getTeacher().getLastName() + ", "
 									+ c.getRoom().getName() + ", " + c.getSlotsNeeded() + " Doppelstunden"
 									+ ", Minuspunkte: " + c.getTeacher().getWeightedDayTimeWishes()[i][j]);
+							cs.setFullSlot(c.getDay(), c.getTime(),
+									c.getName() + ", " + c.getTeacher().getLastName() + ", " + c.getRoom().getName()
+											+ ", " + c.getSlotsNeeded() + " Doppelstunden" + ", Minuspunkte: "
+											+ c.getTeacher().getWeightedDayTimeWishes()[i][j]);
+						}
 						isCourse = true;
 					}
-					if (!isCourse)
+					if (!isCourse) {
+						cs.setEmptySlot(i, j);
 						builder.append("-" + "");
+					}
 					if ((i <= board.length - 1) && (j < board[0].length - 1))
 						builder.append(";");
 				}
@@ -169,6 +177,14 @@ public class Algorithm {
 					builder.append("\n");// append new line at the end of the
 										// row
 			}
+			try {
+				if (!mongoTemplate.collectionExists("schedules")) {
+					mongoTemplate.createCollection("schedules");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			mongoTemplate.insert(cs, "schedules");
 			BufferedWriter writer;
 			try {
 				// File file = new File("\\WebContent\\resources\\" +
@@ -183,7 +199,7 @@ public class Algorithm {
 				e.printStackTrace();
 			}
 		}
-		for (Teacher t : teachers.getTeachers().values()) {
+		/*for (Teacher t : teachers.getTeachers().values()) {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = t.getWeightedDayTimeWishes();
 			boolean[][] isTeaching = t.getFullSlots();
@@ -212,8 +228,8 @@ public class Algorithm {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
-		}
+		
+		}*/
 
 		// TODO: stundenten miteinberechnen?
 		// TODO: stundenplaene verbessern - bewerten und neu berechnen
