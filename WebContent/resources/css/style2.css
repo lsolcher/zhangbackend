@@ -114,7 +114,7 @@ h1, h2, h3, h4, h5 {
   #priority-list {
       padding: 0;
   }
-    #priority-list:last-child {
+    #priority-list:last-child, #priority-list:nth-last-child(2) {
         display: none;
     }
     .priority-entry {
