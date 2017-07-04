@@ -26,7 +26,7 @@
   	<script type="text/javascript" src="${layout}"></script>
   	<spring:url var ="bootstrap" value="/resources/js/bootstrap.js" />
   	<script type="text/javascript" src="${bootstrap}"></script>
-	   <!-- libs end -->
+    <!-- libs end -->
 
   </head>
   <body>
@@ -73,7 +73,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand">HTW FB4 Lehreinsatzplanung</a>
+					<a href="" class="navbar-brand">HTW FB4 Lehreinsatzplanung</a>
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
