@@ -47,6 +47,7 @@ public class DataController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		user.setRole(0);
 		mongoTemplate.insert(user, "user");
 		ModelAndView index = new ModelAndView(new RedirectView("index.html"));
 		index.addObject("test");
