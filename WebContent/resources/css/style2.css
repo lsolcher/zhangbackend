@@ -225,7 +225,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .calendar-body {
-  max-width: 340px;
+  max-width: 300px;
   display: inline-block;
   }
   .calendar-input {
