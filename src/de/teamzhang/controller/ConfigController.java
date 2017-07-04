@@ -3,9 +3,6 @@ package de.teamzhang.controller;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +30,66 @@ public class ConfigController {
 	@RequestMapping(value = "/postConfig.json", method = RequestMethod.POST)
 	public @ResponseBody void setProperties(@RequestBody String props) {
 		ObjectMapper mapper = new ObjectMapper();
-		System.out.println(props);
+
+		/*try {
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			List<HashMap> list = mapper.readValue(props, List.class);
+			for (Map m : list) {
+				StudentSettings setting = new StudentSettings();
+				//setting.setName((String) m.get("title"));
+				//				prio.setUserId(userId);
+				try {
+					@SuppressWarnings("unchecked")
+					List<String> text = (List<String>) m.get("text");
+					StringBuilder sb = new StringBuilder();
+					if (text != null && !text.equals(""))
+						for (String s : text) {
+							sb.append(s);
+		
+							sb.append("\t");
+						}
+					prio.setText((sb.toString()));
+				} catch (ClassCastException e) {
+					prio.setText((String) m.get("text"));
+				}
+				if (m.get("type").equals("SingleChoicePrio")) {
+					prio = new SingleChoicePrio();
+					((SingleChoicePrio) prio).setOption(Integer.parseInt((String) m.get("option")));
+				} else if (m.get("type").equals("SimplePrio")) {
+					prio = new SimplePrio();
+				} else if (m.get("type").equals("Schedule")) {
+					prio = new Schedule();
+					ArrayList<Integer> calendar = (ArrayList<Integer>) m.get("calendar");
+					((Schedule) prio).setSchedule(calendar);
+				} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
+					prio = new ExcludeDayCombinationPrio();
+					//					if (!m.get("title").equals("Tage ausschließen")) {
+					if (m.get("dayOne").equals(Type.class)) {
+						((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt((String) m.get("dayOne")));
+					}
+					if (m.get("dayOne").equals(Type.class)) {
+						((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt((String) m.get("dayTwo")));
+					}
+					if (m.get("dayOne").equals(Type.class)) {
+						((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt((String) m.get("timeOne")));
+					}
+					if (m.get("dayOne").equals(Type.class)) {
+						((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt((String) m.get("timeTwo")));
+					}
+				} else if (m.get("type").equals("FreeTextInputPrio")) {
+					prio = new FreeTextInputPrio();
+				}
+				teacher.addPrio(prio);
+		
+			}
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		try {
 			List<HashMap> list = mapper.readValue(props, List.class);
 			ArrayList<String> settings = new ArrayList<String>();
@@ -45,7 +101,7 @@ public class ConfigController {
 				e.printStackTrace();
 			}
 			mongoTemplate.insert(list, "settings");
-
+		
 			/*try {
 				for (Map m : list) {
 					if (m.get("title").equals("MaxStunden")) {
@@ -57,9 +113,9 @@ public class ConfigController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}*/
-		} catch (Exception e) {
+		/*} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 

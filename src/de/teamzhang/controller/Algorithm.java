@@ -48,6 +48,8 @@ public class Algorithm {
 	private static SlotsPersistence slots = new SlotsPersistence();
 	private static TeachersPersistence teachers = new TeachersPersistence();
 
+	private List<Teacher> allTeachers = new ArrayList<Teacher>();
+
 	private static int MINUSPOINTTHRESHOLD = 10;
 
 	private static int RANDOMGENERATIONMINUSPOINTSTHRESHOLD = 150000;
@@ -66,9 +68,10 @@ public class Algorithm {
 	}
 
 	// 1. generate some testdata
-	@RequestMapping(value = "/algorithm", method = RequestMethod.GET)
+	@RequestMapping(value = "/conrolpanel", method = RequestMethod.GET)
 	private ModelAndView generateCalendar() {
 		setTeachers();
+		setStudentPrios();
 
 		programs.generateMockData();
 		teachers.generateMockData(allCourses, allPrograms);
@@ -218,13 +221,23 @@ public class Algorithm {
 		//return "generated a plan with " + minusPoints + " minuspoints.";
 	}
 
+	private void setStudentPrios() {
+		DBCollection settingsDB = mongoTemplate.getCollection("settings");
+		DBCursor cursor = settingsDB.find();
+		while (cursor.hasNext()) {
+			DBObject obj = cursor.next();
+			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
+			allTeachers.add(t);
+		}
+	}
+
 	private void setTeachers() {
 		DBCollection teachersDB = mongoTemplate.getCollection("teachers");
 		DBCursor cursor = teachersDB.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
 			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
-			System.out.println(obj);
+			allTeachers.add(t);
 		}
 
 	}

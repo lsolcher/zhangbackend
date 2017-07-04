@@ -78,7 +78,7 @@ public class CalendarController extends AbstractController {
 	@RequestMapping(value = "/post.json", method = RequestMethod.POST)
 	public @ResponseBody void updateData(@RequestBody String prios) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String currentPrincipalName = authentication.getName();
+		//String currentPrincipalName = authentication.getName();
 		SecUserDetails userDetails = (SecUserDetails) authentication.getPrincipal();
 		BigInteger userId = userDetails.getId();
 		String firstName = userDetails.getUser().getFirstName();

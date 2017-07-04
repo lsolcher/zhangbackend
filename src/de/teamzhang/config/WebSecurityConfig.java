@@ -41,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		//		.formLogin().loginPage("/login.html").permitAll().and().logout().permitAll();
 
 		http.authorizeRequests().antMatchers("/signup**").permitAll().anyRequest().authenticated().and().formLogin()
-				.loginPage("/login.html").defaultSuccessUrl("/calendar.html", true).permitAll().and().logout()
+				.loginPage("/index.html").defaultSuccessUrl("/calendar.html", true).permitAll().and().logout()
 				.permitAll();
 
 	}
