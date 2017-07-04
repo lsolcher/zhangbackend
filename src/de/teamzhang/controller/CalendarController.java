@@ -162,7 +162,6 @@ public class CalendarController extends AbstractController {
 						prio = new FreeTextInputPrio();
 					}
 					teacher.addPrio(prio);
-					teacher.setCourses(courseList);
 				}
 			}
 		} catch (JsonGenerationException e) {
@@ -179,8 +178,8 @@ public class CalendarController extends AbstractController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		teacher.setCourses(courseList);
 		mongoTemplate.insert(teacher, "teachers");
-		System.out.println(mongoTemplate.getCollection("teachers").getCount());
 
 	}
 

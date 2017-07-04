@@ -72,16 +72,22 @@ public class Algorithm {
 	// 1. generate some testdata
 	@RequestMapping(value = "/algorithm", method = RequestMethod.GET)
 	private ModelAndView generateCalendar() {
+		setPrograms();
 		setTeachers();
+		mockCourseProgramMapping();
 		setStudentPrios();
+		for (Teacher t : allTeachers) {
+			for (Course c : t.getCourses())
+				allCourses.add(c);
+		}
 
 		programs.generateMockData();
 		teachers.generateMockData(allCourses, allPrograms);
-		//rooms.generateMockData();
+		rooms.generateMockData();
 		//slots.generate(72, rooms.list());
 		//prios.generateMockData(teachers.list(), 4);
 
-		// courses.generateMockData(programs.list(), teachers.list());
+		//courses.generateMockData(programs.list(), teachers.list());
 
 		printMap(programs.getPrograms());
 		printMap(teachers.getTeachers());
@@ -219,6 +225,53 @@ public class Algorithm {
 		ModelAndView modelandview = new ModelAndView("calendar");
 		return modelandview;
 		//return "generated a plan with " + minusPoints + " minuspoints.";
+	}
+
+	private void mockCourseProgramMapping() {
+		for (Teacher t : allTeachers) {
+			for (Course c : t.getCourses()) {
+				int rand = (int) (Math.random() * 9);
+				Program p = allPrograms.get(rand);
+				c.setProgram(p);
+			}
+		}
+
+	}
+
+	private void setPrograms() {
+
+		Program ba1 = new Program();
+		ba1.setName("BachelorIMI1");
+		allPrograms.add(ba1);
+
+		Program ba2 = new Program();
+		ba2.setName("BachelorIMI2");
+		allPrograms.add(ba2);
+
+		Program ba3 = new Program();
+		ba3.setName("BachelorIMI3");
+		allPrograms.add(ba3);
+
+		Program ba4 = new Program();
+		ba4.setName("BachelorIMI4");
+		allPrograms.add(ba4);
+
+		Program ba5 = new Program();
+		ba5.setName("BachelorIMI5");
+		allPrograms.add(ba5);
+
+		Program ma1 = new Program();
+		ma1.setName("MasterIMI1");
+		allPrograms.add(ma1);
+
+		Program ma2 = new Program();
+		ma2.setName("MasterIMI2");
+		allPrograms.add(ma2);
+
+		Program ma3 = new Program();
+		ma3.setName("MasterIMI3");
+		allPrograms.add(ma3);
+
 	}
 
 	private void setStudentPrios() {

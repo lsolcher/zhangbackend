@@ -45,8 +45,8 @@ public class ConfigController {
 					setting.setMinusPoints(10);
 					break;
 				}
-				System.out.println(m.get("options"));
 				setting.setValue(Integer.parseInt((String) m.get("options")));
+				setting.setProgram((String) m.get("program"));
 				try {
 					if (!mongoTemplate.collectionExists("settings")) {
 						mongoTemplate.createCollection("settings");

@@ -6,6 +6,7 @@ public class StudentSettings {
 	private boolean isSet = false;
 	private int value = 0;
 	private int minusPoints = 0;
+	private String program;
 
 	public boolean isSet() {
 		return isSet;
@@ -37,6 +38,14 @@ public class StudentSettings {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public void setProgram(String program) {
+		this.program = program;
+	}
+
+	public String getProgram() {
+		return program;
 	}
 
 }
