@@ -15,7 +15,7 @@ public class Teacher {
 	@Id
 	private BigInteger id;
 	private boolean isProf;
-	private ArrayList<Course> courses = new ArrayList<Course>();
+	private List<Course> courses = new ArrayList<Course>();
 	private int[][] weightedDayTimeWishes = new int[5][7];
 	private boolean[][] fullSlots = new boolean[5][7];
 	private int teachingHours;
@@ -102,8 +102,8 @@ public class Teacher {
 		return courses;
 	}
 
-	public void setCourses(ArrayList<Course> courses) {
-		this.courses = courses;
+	public void setCourses(List<Course> courseList) {
+		this.courses = courseList;
 	}
 
 	public void resetSchedule() {

@@ -16,21 +16,24 @@
               title: 'MaxStunden',
               options: '3',
               text: 'Maximale Stunden pro Tag: ',
-              prio: 'hoch'
+              prio: 'hoch',
+              program: 'IMI-B'
           },
           {
               type: 'additionalPrio',
               title: 'MaxMinuspunkte',
               options: '2',
               text: 'Maximale Stunden pro Tag: ',
-              prio: 'niedrig'
+              prio: 'niedrig',
+              program: 'IMI-B'
           },
           {
               type: 'additionalPrio',
               title: 'MaxPausen',
               options: '1',
               text: 'Maximale Stunden pro Tag: ',
-              prio: 'mittel'
+              prio: 'mittel',
+              program: 'IMI-B'
           }
       ];
       //$scope.additionalPriorities = [];
