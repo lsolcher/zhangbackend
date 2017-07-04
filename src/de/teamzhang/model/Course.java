@@ -10,6 +10,7 @@ public class Course {
 	@Id
 	private BigInteger id;
 	protected int slotsNeeded;
+	private String group;
 	protected Program program;
 	protected String name;
 	protected Teacher teacher;
@@ -19,6 +20,14 @@ public class Course {
 
 	public Course() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getGroup() {
+		return group;
+	}
+
+	public void setGroup(String group) {
+		this.group = group;
 	}
 
 	public boolean isSet() {

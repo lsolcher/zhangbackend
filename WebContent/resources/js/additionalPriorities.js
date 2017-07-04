@@ -8,6 +8,7 @@
         options: '3',
         text: 'Maximale Stunden pro Tag: ',
         prio: 'hoch'
+       
       },
       {
         type: 'additionalPrio',
