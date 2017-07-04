@@ -101,7 +101,6 @@
               <div class="week-day">MI</div>
               <div class="week-day">DO</div>
               <div class="week-day">FR</div>
-              <div class="week-day">SA</div>
             </div>
             <div class="week-times">
               <div class="week-time">08:00 - 09:30</div>
