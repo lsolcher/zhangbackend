@@ -47,16 +47,19 @@
 
         <h4>Zusätzliche Optionen:</h4>
         <div class="selected-additional-priorities">
-          <ul id="additionalPriority-list" ng-repeat="prio in possibleAdditionalPriorities track by $index" priority>
+          <ul id="additionalPriority-list" ng-repeat="prio in possibleAdditionalPriorities track by $index" AddPriority>
             <li class="priority-entry">
               <div class="priority-container">
                 <div class="priority-content">
                   <span class="priotext">{{prio.text}}</span>
-                  <select ng-model="prio.additionalPrio" ng-change="change(prio.additionalPrio)" required>
+                  <select ng-model="prio.additionalPrio" ng-change="change1(prio.additionalPrio)" required>
                     <option ng-repeat="option in prio.options" value="{{$index}}">{{option}}</option>
                   </select>
-                  <select ng-model="prio.additionalPrio2" ng-change="changePrio(prio.additionalPrio2)" required>
+                  <select ng-model="prio.additionalPrio2" ng-change="change2(prio.additionalPrio2)" required>
                     <option ng-repeat="option in prio.prio" value="{{$index}}">{{option}}</option>
+                  </select>
+                  <select ng-model="prio.additionalPrio3" ng-change="change3(prio.additionalPrio3)" required>
+                    <option ng-repeat="option in prio.program" value="{{$index}}">{{option}}</option>
                   </select>
                   Aktivieren: <input type="checkbox" name="" value="">
                 </div>
