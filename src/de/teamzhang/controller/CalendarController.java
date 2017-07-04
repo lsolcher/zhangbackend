@@ -107,42 +107,17 @@ public class CalendarController extends AbstractController {
 						c.setGroup((String) course.get("parallelgruppe"));
 						courseList.add(c);
 					}
+				} else if (m.get("type").equals("Schedule")) {
+					Prio prio = new Schedule();
+					ArrayList<Integer> calendar = (ArrayList<Integer>) m.get("calendar");
+					((Schedule) prio).setSchedule(calendar);
 				} else {
 					Prio prio = new Prio();
-					try {
-						if (m.get("course").equals("Alle Kurse")) {
-							prio.setValidForAllCourses(true);
-						} else
-							prio.setCourse(Integer.parseInt((String) m.get("course")));
-					} catch (NullPointerException ne) { // no courses chosen, we
-															// assume all
-						prio.setValidForAllCourses(true);
-					}
-					prio.setName((String) m.get("title"));
-					//				prio.setUserId(userId);
-					try {
-						@SuppressWarnings("unchecked")
-						List<String> text = (List<String>) m.get("text");
-						StringBuilder sb = new StringBuilder();
-						if (text != null && !text.equals(""))
-							for (String s : text) {
-								sb.append(s);
-
-								sb.append("\t");
-							}
-						prio.setText((sb.toString()));
-					} catch (ClassCastException e) {
-						prio.setText((String) m.get("text"));
-					}
 					if (m.get("type").equals("SingleChoicePrio")) {
 						prio = new SingleChoicePrio();
 						((SingleChoicePrio) prio).setOption(Integer.parseInt((String) m.get("option")));
 					} else if (m.get("type").equals("SimplePrio")) {
 						prio = new SimplePrio();
-					} else if (m.get("type").equals("Schedule")) {
-						prio = new Schedule();
-						ArrayList<Integer> calendar = (ArrayList<Integer>) m.get("calendar");
-						((Schedule) prio).setSchedule(calendar);
 					} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
 						prio = new ExcludeDayCombinationPrio();
 						//					if (!m.get("title").equals("Tage ausschließen")) {
@@ -161,7 +136,34 @@ public class CalendarController extends AbstractController {
 					} else if (m.get("type").equals("FreeTextInputPrio")) {
 						prio = new FreeTextInputPrio();
 					}
+					/*try {
+						if (m.get("course").equals("Alle Kurse")) {
+							prio.setValidForAllCourses(true);
+						} else
+							prio.setCourse(Integer.parseInt((String) m.get("course")));
+					} catch (NullPointerException ne) {*/
+					// no courses chosen, we assume all
+					//TODO: set valid for certain courses
+					prio.setValidForAllCourses(true);
+					//}
+					prio.setName((String) m.get("title"));
+					//prio.setUserId(userId);
+					try {
+						@SuppressWarnings("unchecked")
+						List<String> text = (List<String>) m.get("text");
+						StringBuilder sb = new StringBuilder();
+						if (text != null && !text.equals(""))
+							for (String s : text) {
+								sb.append(s);
+
+								sb.append("\t");
+							}
+						prio.setText((sb.toString()));
+					} catch (ClassCastException e) {
+						prio.setText((String) m.get("text"));
+					}
 					teacher.addPrio(prio);
+					//prio.setTeacher(teacher);
 				}
 			}
 		} catch (JsonGenerationException e) {
@@ -178,8 +180,14 @@ public class CalendarController extends AbstractController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//for (Course c : courseList)
+		//c.setTeacher(teacher);
 		teacher.setCourses(courseList);
-		mongoTemplate.insert(teacher, "teachers");
+		try {
+			mongoTemplate.insert(teacher, "teachers");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 

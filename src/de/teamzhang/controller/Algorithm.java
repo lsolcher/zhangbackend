@@ -27,6 +27,7 @@ import de.teamzhang.model.Prio;
 import de.teamzhang.model.PrioPersistence;
 import de.teamzhang.model.Program;
 import de.teamzhang.model.ProgramPersistence;
+import de.teamzhang.model.Room;
 import de.teamzhang.model.RoomPersistence;
 import de.teamzhang.model.SingleChoicePrio;
 import de.teamzhang.model.SlotsPersistence;
@@ -65,10 +66,6 @@ public class Algorithm {
 	private static int optimalThreshold = 0;
 	private static List<String> notOccupiedSlots = new ArrayList<String>();
 
-	public static void main(String[] args) {
-		generateMockData();
-	}
-
 	// 1. generate some testdata
 	@RequestMapping(value = "/algorithm", method = RequestMethod.GET)
 	private ModelAndView generateCalendar() {
@@ -80,21 +77,24 @@ public class Algorithm {
 			for (Course c : t.getCourses())
 				allCourses.add(c);
 		}
+		mockRooms();
 
-		programs.generateMockData();
-		teachers.generateMockData(allCourses, allPrograms);
-		rooms.generateMockData();
+		addTeachersToCourses();
+
+		//programs.generateMockData();
+		//teachers.generateMockData(allCourses, allPrograms);
+		//rooms.generateMockData();
 		//slots.generate(72, rooms.list());
 		//prios.generateMockData(teachers.list(), 4);
 
 		//courses.generateMockData(programs.list(), teachers.list());
 
-		printMap(programs.getPrograms());
+		/*printMap(programs.getPrograms());
 		printMap(teachers.getTeachers());
 		printMap(rooms.getRooms());
 		printMap(slots.getSlots());
 		printMap(prios.getPrios());
-		printMap(courses.getCourses());
+		printMap(courses.getCourses());*/
 
 		weightPrios();
 
@@ -227,10 +227,28 @@ public class Algorithm {
 		//return "generated a plan with " + minusPoints + " minuspoints.";
 	}
 
+	private void mockRooms() {
+		for (Course c : allCourses) {
+			Room r = new Room();
+			r.setName("C441");
+			c.setRoom(r);
+		}
+
+	}
+
+	private void addTeachersToCourses() {
+		for (Teacher t : allTeachers) {
+			for (Course c : t.getCourses()) {
+				c.setTeacher(t);
+			}
+		}
+
+	}
+
 	private void mockCourseProgramMapping() {
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses()) {
-				int rand = (int) (Math.random() * 9);
+				int rand = (int) (Math.random() * 8);
 				Program p = allPrograms.get(rand);
 				c.setProgram(p);
 			}
@@ -295,25 +313,29 @@ public class Algorithm {
 
 	}
 
-	private static void generateMockData() {
+	//public static void main(String[] args) {
+	//generateMockData();
+	//}
 
+	/*private static void generateMockData() {
+	
 		programs.generateMockData();
 		teachers.generateMockData(allCourses, allPrograms);
 		rooms.generateMockData();
 		slots.generate(72, rooms.list());
 		prios.generateMockData(teachers.list(), 4);
-
+	
 		// courses.generateMockData(programs.list(), teachers.list());
-
+	
 		printMap(programs.getPrograms());
 		printMap(teachers.getTeachers());
 		printMap(rooms.getRooms());
 		printMap(slots.getSlots());
 		printMap(prios.getPrios());
 		printMap(courses.getCourses());
-
+	
 		weightPrios();
-
+	
 		int minusPoints = 0;
 		int count = 0;
 		int minusPointsThreshold = 400;
@@ -360,10 +382,10 @@ public class Algorithm {
 			int[][] board = new int[5][7];
 			// boolean[][] isTeaching = t.getFullSlots();
 			// builder.append(";Montag;Dienstag;Mittwoch;Donnerstag;Freitag\n");
-
+	
 			for (int i = 0; i < board.length; i++)// for each row
 			{
-
+	
 				for (int j = 0; j < board[0].length; j++)// for each column
 				{
 					// if (j == 0)
@@ -428,18 +450,18 @@ public class Algorithm {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+	
 		}
-
+	
 		// TODO: stundenten miteinberechnen?
 		// TODO: stundenplaene verbessern - bewerten und neu berechnen
 		// TODO: stundenplaene darstellen
-
+	
 		// printMap(slots.getSlots());
-
+	
 		optimalThreshold = 700;
-
-	}
+	
+	}*/
 
 	private static void inspectTeachers() {
 		System.out.println("Couldn't find a schedule with selected teacher-prios, inspecting teachers...");
@@ -504,7 +526,12 @@ public class Algorithm {
 
 	}
 
-	private static void reset() {
+	private void reset() {
+		for (Teacher t : allTeachers) {
+			t.resetSchedule();
+			teachers.update(t);
+			t.resetMinuspoints();
+		}
 		for (Teacher t : teachers.getTeachers().values()) {
 			t.resetSchedule();
 			teachers.update(t);
@@ -536,16 +563,12 @@ public class Algorithm {
 		return minusPoints;
 	}
 
-	private static void weightPrios() {
+	private void weightPrios() {
 		// avoid ConcurentModi Exception
-		ArrayList<Teacher> allTeachers = new ArrayList<Teacher>(10);
-		for (Teacher t : teachers.list()) {
-			allTeachers.add(t);
-		}
 
 		for (Teacher t : allTeachers) {
 			weightSingleSchedule(t);
-			teachers.update(t);
+			//teachers.update(t);
 		}
 	}
 
