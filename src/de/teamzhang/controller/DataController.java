@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.mongodb.DB;
 
@@ -37,7 +38,7 @@ public class DataController {
 	}
 
 	@PostMapping(value = "/signup")
-	public String registerUser(Model model, @ModelAttribute("user") User user) {
+	public ModelAndView registerUser(Model model, @ModelAttribute("user") User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		try {
 			if (!mongoTemplate.collectionExists(User.class)) {
@@ -47,7 +48,9 @@ public class DataController {
 			e.printStackTrace();
 		}
 		mongoTemplate.insert(user, "user");
-		return "signupSuccess";
+		ModelAndView index = new ModelAndView(new RedirectView("index.html"));
+		index.addObject("test");
+		return index;
 	}
 
 	@GetMapping(value = "/login")
