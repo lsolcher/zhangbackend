@@ -69,16 +69,11 @@ public class CalendarController extends AbstractController {
 			e.printStackTrace();
 		}
 		return null;
-		// return "[{\"stg_name\": \"Angewandte Informatik
-		// (B)\",\"veranstaltungsart\": \"Übung\",\"parallelgruppe\":
-		// \"\",\"semester\": \"20162\",\"rhythmus\":
-		// \"Einzeltermin\",\"kurzname\": \"DeO1Ws\",\"sws\": \"4\"}]";
 	}
 
 	@RequestMapping(value = "/post.json", method = RequestMethod.POST)
-	public @ResponseBody void updateData(@RequestBody String prios) {
+	public @ResponseBody void updateData(HttpServletRequest request, @RequestBody String prios) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		//String currentPrincipalName = authentication.getName();
 		SecUserDetails userDetails = (SecUserDetails) authentication.getPrincipal();
 		BigInteger userId = userDetails.getId();
 		String firstName = userDetails.getUser().getFirstName();

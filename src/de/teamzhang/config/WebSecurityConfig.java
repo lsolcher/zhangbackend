@@ -42,9 +42,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		//http.authorizeRequests().antMatchers("/", "/login", "/signup").permitAll().anyRequest().authenticated().and()
 		//		.formLogin().loginPage("/login.html").permitAll().and().logout().permitAll();
 
-		http.authorizeRequests().antMatchers().permitAll().anyRequest().authenticated().and().formLogin()
-				.loginPage("/index.html").defaultSuccessUrl("/calendar.html", true).permitAll().and().logout()
-				.permitAll();
+		http.authorizeRequests().antMatchers("/signup**", "/login**", "/index**", "signupSuccess**").permitAll()
+				.anyRequest().authenticated().and().formLogin().loginPage("/index.html")
+				.defaultSuccessUrl("/calendar.html", true).permitAll().and().logout().permitAll();
 
 	}
 
