@@ -10,8 +10,6 @@ import java.util.Properties;
 
 import org.springframework.data.annotation.Id;
 
-import de.teamzhang.config.Config;
-
 public class Program {
 	static int MAX_DAYS = 4;
 	static int MAX_SLOTS_PER_DAY = 4;
@@ -130,11 +128,6 @@ public class Program {
 
 	}
 
-	public void generateMockConfig() {
-		Config.mockProps(name);
-
-	}
-
 	public void addMinusPoints(int value) {
 		programMinusPoints += value;
 	}
@@ -146,4 +139,15 @@ public class Program {
 	public void resetMinusPoints() {
 		programMinusPoints = 0;
 	}
+<<<<<<< HEAD
+
+	public int getProgramMinusPoints() {
+		return programMinusPoints;
+	}
+
+	public void resetMinusPoints() {
+		programMinusPoints = 0;
+	}
+=======
+>>>>>>> develop
 }

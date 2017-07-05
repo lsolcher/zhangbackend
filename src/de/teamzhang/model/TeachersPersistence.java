@@ -103,7 +103,7 @@ public class TeachersPersistence {
 		allPrograms.add(ma3);
 
 		Teacher t = new Teacher();
-		t.setName("Lenz");
+		t.setLastName("Lenz");
 		t.setProf(true);
 		t.setFreeHours(4);
 		ArrayList<Course> courses = new ArrayList<Course>();
@@ -149,7 +149,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Escher");
+		t.setLastName("Escher");
 		t.setProf(false);
 		t.setFreeHours(3);
 
@@ -180,7 +180,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Vigerske");
+		t.setLastName("Vigerske");
 		t.setProf(false);
 		t.setFreeHours(2);
 
@@ -211,7 +211,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Barthel");
+		t.setLastName("Barthel");
 		t.setProf(true);
 		t.setFreeHours(5);
 
@@ -255,7 +255,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Müller");
+		t.setLastName("Müller");
 		t.setProf(false);
 		t.setFreeHours(3);
 
@@ -286,7 +286,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Dombach");
+		t.setLastName("Dombach");
 		t.setProf(false);
 		t.setFreeHours(3);
 
@@ -317,7 +317,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Thiel");
+		t.setLastName("Thiel");
 		t.setProf(false);
 		t.setFreeHours(2);
 
@@ -348,7 +348,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Beecher");
+		t.setLastName("Beecher");
 		t.setProf(false);
 		t.setFreeHours(3);
 
@@ -379,7 +379,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Busch");
+		t.setLastName("Busch");
 		t.setProf(true);
 		t.setFreeHours(3);
 
@@ -410,7 +410,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Kleinen");
+		t.setLastName("Kleinen");
 		t.setProf(true);
 		t.setFreeHours(6);
 
@@ -476,7 +476,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Sabri");
+		t.setLastName("Sabri");
 		t.setProf(false);
 		t.setFreeHours(2);
 
@@ -507,7 +507,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Obermann");
+		t.setLastName("Obermann");
 		t.setProf(false);
 		t.setFreeHours(2);
 
@@ -527,7 +527,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Strippgen");
+		t.setLastName("Strippgen");
 		t.setProf(true);
 		t.setFreeHours(5);
 
@@ -580,7 +580,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Oßwald");
+		t.setLastName("Oßwald");
 		t.setProf(false);
 		t.setFreeHours(3);
 
@@ -611,7 +611,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Zhang");
+		t.setLastName("Zhang");
 		t.setProf(true);
 		t.setFreeHours(6);
 
@@ -675,7 +675,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Thünen");
+		t.setLastName("Thünen");
 		t.setProf(false);
 		t.setFreeHours(2);
 
@@ -695,7 +695,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Jung");
+		t.setLastName("Jung");
 		t.setProf(true);
 		t.setFreeHours(6);
 
@@ -761,7 +761,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Hezel");
+		t.setLastName("Hezel");
 		t.setProf(false);
 		t.setFreeHours(1);
 
@@ -781,7 +781,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Kirschner");
+		t.setLastName("Kirschner");
 		t.setProf(false);
 		t.setFreeHours(2);
 
@@ -812,7 +812,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Baumeister");
+		t.setLastName("Baumeister");
 		t.setProf(false);
 		t.setFreeHours(5);
 
@@ -865,7 +865,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Steinicke");
+		t.setLastName("Steinicke");
 		t.setProf(false);
 		t.setFreeHours(2);
 
@@ -887,7 +887,7 @@ public class TeachersPersistence {
 
 		courses = new ArrayList<Course>();
 		t = new Teacher();
-		t.setName("Schneider");
+		t.setLastName("Schneider");
 		t.setProf(false);
 		t.setFreeHours(2);
 

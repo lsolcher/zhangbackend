@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.mongodb.DB;
 
@@ -25,12 +25,7 @@ public class DataController {
 	private MongoTemplate mongoTemplate;
 
 	@Autowired
-	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-	/*
-	 * @InitBinder void allowFields(WebDataBinder webDataBinder) {
-	 * webDataBinder.setAllowedFields("*"); }
-	 */
+	private PasswordEncoder passwordEncoder;
 
 	@GetMapping(value = "/signup")
 	protected ModelAndView signupPage(HttpServletRequest request, HttpServletResponse arg1) {
@@ -43,9 +38,8 @@ public class DataController {
 	}
 
 	@PostMapping(value = "/signup")
-	public String registerUser(Model model, @ModelAttribute("user") User user) {
+	public ModelAndView registerUser(Model model, @ModelAttribute("user") User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		// This is for saving collections, i.e. prios 
 		try {
 			if (!mongoTemplate.collectionExists(User.class)) {
 				mongoTemplate.createCollection(User.class);
@@ -53,18 +47,11 @@ public class DataController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		user.setRole(0);
 		mongoTemplate.insert(user, "user");
-
-		//this is for using mongos "user" db
-		/*user.setPassword(passwordEncoder.encode(user.getPassword()));
-		Map<String, Object> commandArguments = new BasicDBObject();
-		commandArguments.put("createUser", user.getLastName());
-		commandArguments.put("pwd", user.getPassword());
-		String[] roles = { "readWrite" };
-		commandArguments.put("roles", roles);
-		BasicDBObject command = new BasicDBObject(commandArguments);
-		mongoTemplate.executeCommand(command);*/
-		return "signupSuccess";
+		ModelAndView index = new ModelAndView(new RedirectView("index.html"));
+		index.addObject("test");
+		return index;
 	}
 
 	@GetMapping(value = "/login")

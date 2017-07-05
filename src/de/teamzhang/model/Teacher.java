@@ -9,11 +9,13 @@ import org.springframework.data.annotation.Id;
 
 public class Teacher {
 
-	protected String name;
+	protected String firstName;
+	protected String lastName;
+
 	@Id
 	private BigInteger id;
 	private boolean isProf;
-	private ArrayList<Course> courses = new ArrayList<Course>();
+	private List<Course> courses = new ArrayList<Course>();
 	private int[][] weightedDayTimeWishes = new int[5][7];
 	private boolean[][] fullSlots = new boolean[5][7];
 	private int teachingHours;
@@ -92,20 +94,16 @@ public class Teacher {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public String getLastName() {
+		return lastName;
 	}
 
 	public Collection<Course> getCourses() {
 		return courses;
 	}
 
-	public void setCourses(ArrayList<Course> courses) {
-		this.courses = courses;
+	public void setCourses(List<Course> courseList) {
+		this.courses = courseList;
 	}
 
 	public void resetSchedule() {
@@ -126,7 +124,7 @@ public class Teacher {
 			else if (p instanceof SingleChoicePrio)
 				prioDoesntFit = checkIfSingleChoicePrioFits((SingleChoicePrio) p, day, time);
 			else if (p instanceof SimplePrio) // no need to check, simplePrio is
-												// weighted in schedule and not
+													// weighted in schedule and not
 												// excluding
 				;
 			else if (p instanceof ExcludeDayCombinationPrio)
@@ -345,5 +343,18 @@ public class Teacher {
 
 	public void resetMinuspoints() {
 		minusPoints = 0;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getFirstName() {
+		return firstName;
 	}
 }

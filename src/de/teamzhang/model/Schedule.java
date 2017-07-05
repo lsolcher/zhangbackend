@@ -7,10 +7,15 @@ public class Schedule extends Prio {
 	// x = day
 	// y = slot
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private int[] weightedDayTimeWishes = new int[42];
+=======
+	private int[] weightedDayTimeWishes = new int[35];
+>>>>>>> develop
 
-	public void setSchedule(int[] schedule) {
-		weightedDayTimeWishes = schedule;
+	public void setSchedule(ArrayList<Integer> schedule) {
+		for(int i = 0; i < schedule.size(); i++)
+			weightedDayTimeWishes[i] = schedule.get(i);
 	}
 	
 	public int[] getWeightedDayTimeWishes() {

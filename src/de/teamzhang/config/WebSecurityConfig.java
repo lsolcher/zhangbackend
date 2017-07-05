@@ -18,7 +18,6 @@ import de.teamzhang.service.SecUserDetailsService;
 @Configuration
 @EnableWebSecurity
 @ComponentScan("de.teamzhang.**")
-
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -26,6 +25,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	MongoTemplate mongoTemplate;
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -40,9 +42,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		//http.authorizeRequests().antMatchers("/", "/login", "/signup").permitAll().anyRequest().authenticated().and()
 		//		.formLogin().loginPage("/login.html").permitAll().and().logout().permitAll();
 
-		//http.authorizeRequests().antMatchers("/signup**").permitAll().anyRequest().authenticated().and().formLogin()
-		//		.loginPage("/login.html").defaultSuccessUrl("/calendar.html", true).permitAll().and().logout()
-		//		.permitAll();
+		http.authorizeRequests().antMatchers("/signup**", "/login**", "/index**", "signupSuccess**").permitAll()
+				.anyRequest().authenticated().and().formLogin().loginPage("/index.html")
+				.defaultSuccessUrl("/calendar.html", true).permitAll().and().logout().permitAll();
 
 	}
 
@@ -62,13 +64,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		List<User> myUsers = mongoTemplate.findAll(User.class);*/
 		//User user = userRepository.findByUsername(username);
 
-		auth.userDetailsService(userDetailsService);
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
 		//auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+		return new BCryptPasswordEncoder(11);
 	}
 
 	@Override

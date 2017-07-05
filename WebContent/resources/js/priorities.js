@@ -71,8 +71,8 @@
   	  else if (newPrio.title == "Wöchentliche Veranstaltungen") numberOfSelectedWeeklyLections--;
     }
 
-    $rootScope.selectedPriorities = [ { type: 'Schedule', calendar: $scope.calendar} ];
-    $rootScope.calendar = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+    $rootScope.selectedPriorities = [ { type: 'Courses', courses: $rootScope.courseList}, { type: 'Schedule', calendar: $scope.calendar} ];
+    $rootScope.calendar = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 //    $rootScope.acceptedPriorities = [];			//TODO
 
     $scope.save = function() {
@@ -199,11 +199,14 @@
 
 	      //console.log('Save:', $rootScope.selectedPriorities);	// TODO: change to acceptedPriorities
         // console.log(JSON.stringify($rootScope.selectedPriorities), JSON.stringify($scope.calendar));
-        var lastElement = $rootScope.selectedPriorities.length - 1;
+          var lastElement = $rootScope.selectedPriorities.length - 1;
           if ($rootScope.selectedPriorities[lastElement].type != 'Schedule') {
-            $rootScope.selectedPriorities.push( { type: 'schedule', calendar: $scope.calendar} );
+            $rootScope.selectedPriorities.push( { type: 'Schedule', calendar: $scope.calendar} );
+          } else if ($rootScope.selectedPriorities[lastElement-1].type != 'Courses') {
+            $rootScope.selectedPriorities.push( { type: 'Courses', courses: $rootScope.courseList} );
           } else {
             $rootScope.selectedPriorities[lastElement] = { type: 'Schedule', calendar: $scope.calendar};
+            $rootScope.selectedPriorities[lastElement-1] = { type: 'Courses', courses: $rootScope.courseList};
           }
 
         console.log($rootScope.selectedPriorities);
