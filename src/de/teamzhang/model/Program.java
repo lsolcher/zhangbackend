@@ -139,15 +139,4 @@ public class Program {
 	public void resetMinusPoints() {
 		programMinusPoints = 0;
 	}
-<<<<<<< HEAD
-
-	public int getProgramMinusPoints() {
-		return programMinusPoints;
-	}
-
-	public void resetMinusPoints() {
-		programMinusPoints = 0;
-	}
-=======
->>>>>>> develop
 }

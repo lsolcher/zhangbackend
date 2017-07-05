@@ -34,15 +34,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.teamzhang.model.Course;
 import de.teamzhang.model.ExcludeDayCombinationPrio;
 import de.teamzhang.model.FreeTextInputPrio;
-<<<<<<< HEAD
 
 import de.teamzhang.model.Prio;
 import de.teamzhang.model.Schedule;
 import de.teamzhang.model.Room;
-=======
-import de.teamzhang.model.Prio;
-import de.teamzhang.model.Schedule;
->>>>>>> develop
+
 import de.teamzhang.model.SecUserDetails;
 import de.teamzhang.model.SimplePrio;
 import de.teamzhang.model.SingleChoicePrio;
@@ -115,15 +111,7 @@ public class CalendarController extends AbstractController {
 						courseList.add(c);
 					}
 				} else if (m.get("type").equals("Schedule")) {
-<<<<<<< HEAD
-					prio = new Schedule();
-//					((Schedule) prio).setSchedule( m.get("calendar" ));
-				} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
 
-					prio = new ExcludeDayCombinationPrio();
-//					if (!m.get("title").equals("Tage ausschließen")) {
-						if( m.get("dayOne").equals(Type.class) ) {
-=======
 					Prio prio = new Schedule();
 					ArrayList<Integer> calendar = (ArrayList<Integer>) m.get("calendar");
 					((Schedule) prio).setSchedule(calendar);
@@ -138,7 +126,6 @@ public class CalendarController extends AbstractController {
 						prio = new ExcludeDayCombinationPrio();
 						//					if (!m.get("title").equals("Tage ausschließen")) {
 						if (m.get("dayOne").equals(Type.class)) {
->>>>>>> develop
 							((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt((String) m.get("dayOne")));
 						}
 						if (m.get("dayOne").equals(Type.class)) {
