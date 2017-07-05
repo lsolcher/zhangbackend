@@ -22,8 +22,8 @@
   	<script type="text/javascript" src="${courses}"></script>
   	<spring:url var ="priorities" value="/resources/js/priorities.js" />
     <script type="text/javascript" src="${priorities}"></script>
-    <spring:url var ="calendar" value="/resources/js/calendar.js" />
-  	<script type="text/javascript" src="${calendar}"></script>
+    <spring:url var ="layout" value="/resources/js/layout.js" />
+  	<script type="text/javascript" src="${layout}"></script>
   	<spring:url var ="bootstrap" value="/resources/js/bootstrap.js" />
   	<script type="text/javascript" src="${bootstrap}"></script>
 	   <!-- libs end -->
@@ -64,7 +64,7 @@
       </div>
     </div>
 
-    <header class="group">
+    <header>
       <div class="container">
 				<div class="navbar-header">
 					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
