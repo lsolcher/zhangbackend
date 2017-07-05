@@ -1,10 +1,16 @@
 package de.teamzhang.model;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.springframework.data.annotation.Id;
+
+import de.teamzhang.config.Config;
 
 public class Program {
 	static int MAX_DAYS = 4;
@@ -17,8 +23,38 @@ public class Program {
 	List<Course> courseList = new ArrayList<Course>();
 	private boolean[][] fullSlots = new boolean[5][7];
 
+	private int programMinusPoints;
+
+	private Properties prop = new Properties();
+
 	void Program() {
 
+	}
+
+	public boolean[][] getFullSlots() {
+		return fullSlots;
+	}
+
+	public Properties getProp() {
+		InputStream input = null;
+		try {
+
+			input = new FileInputStream(name + "settings.properties");
+
+			// load a properties file
+			prop.load(input);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return prop;
 	}
 
 	public void addCourse(Course c) {
@@ -41,7 +77,7 @@ public class Program {
 		return noOfDays < MAX_DAYS;
 	}
 
-	//max 4 slots per day constraint
+	// max 4 slots per day constraint
 	public boolean hasMoreSlotsPerDay(int day) {
 		int cnt = 1;
 		for (Slot slot : assignedSlots) {
@@ -92,5 +128,22 @@ public class Program {
 	public void setFreeSlot(int day, int time) {
 		fullSlots[day][time] = false;
 
+	}
+
+	public void generateMockConfig() {
+		Config.mockProps(name);
+
+	}
+
+	public void addMinusPoints(int value) {
+		programMinusPoints += value;
+	}
+
+	public int getProgramMinusPoints() {
+		return programMinusPoints;
+	}
+
+	public void resetMinusPoints() {
+		programMinusPoints = 0;
 	}
 }

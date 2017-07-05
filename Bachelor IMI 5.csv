@@ -1,7 +1,5 @@
-;;VCAT 1 ï¿½, Hezel, NW SU Room, 1 Doppelstunden, Minuspunkte: 31;;VC 1 SU, Jung, VC 1 ï¿½ Room, 1 Doppelstunden, Minuspunkte: 0
-;B 24.2 PM ï¿½, Zhang, B 24.2 PM ï¿½ Room, 2 Doppelstunden, Minuspunkte: 20;;;
-GTAT 1 ï¿½, Strippgen, GTAT 1 ï¿½ Room, 1 Doppelstunden, Minuspunkte: 30;;;;GT 1 ï¿½, Lenz, GT 1 ï¿½ Room, 1 Doppelstunden, Minuspunkte: 10
-WT 1 SU, Baumeister, WT 1 SU Room, 1 Doppelstunden, Minuspunkte: 21;WTAT 1 SU, Kirschner, WTAT 1 SU Room, 1 Doppelstunden, Minuspunkte: 21;;;VCAT 1 SU, Barthel, VCAT 1 SU Room, 1 Doppelstunden, Minuspunkte: 0
-;GTAT 1 SU, Strippgen, GTAT 1 SU Room, 1 Doppelstunden, Minuspunkte: 0;;VC 1 SU, Jung, VC 1 ï¿½ Room, 1 Doppelstunden, Minuspunkte: 0;WTAT 1 ï¿½, Kirschner, WTAT 1 ï¿½ Room, 1 Doppelstunden, Minuspunkte: 21
-;;WT 1 ï¿½, Baumeister, WT 1 ï¿½ Room, 1 Doppelstunden, Minuspunkte: 21;;
-;;;;GT 1 SU, Lenz, GT 1 Room, 1 Doppelstunden, Minuspunkte: 6
+;VCAT 1 SU, Barthel, VCAT 1 SU Room, 1 Doppelstunden, Minuspunkte: 0;;GT 1 SU, Lenz, GT 1 Room, 1 Doppelstunden, Minuspunkte: 0;GT 1 Ü, Lenz, GT 1 Ü Room, 1 Doppelstunden, Minuspunkte: 0;WT 1 SU, Baumeister, WT 1 SU Room, 1 Doppelstunden, Minuspunkte: 1;;
+WTAT 1 Ü, Kirschner, WTAT 1 Ü Room, 1 Doppelstunden, Minuspunkte: 1;;;;;;;
+;;WT 1 Ü, Baumeister, WT 1 Ü Room, 1 Doppelstunden, Minuspunkte: 1;GTAT 1 Ü, Strippgen, GTAT 1 Ü Room, 1 Doppelstunden, Minuspunkte: 0;;;;
+;B 24.2 PM Ü, Zhang, B 24.2 PM Ü Room, 2 Doppelstunden, Minuspunkte: 0;;VC 1 SU, Jung, VC 1 Ü Room, 1 Doppelstunden, Minuspunkte: 0;;VCAT 1 Ü, Hezel, NW SU Room, 1 Doppelstunden, Minuspunkte: 1;GTAT 1 SU, Strippgen, GTAT 1 SU Room, 1 Doppelstunden, Minuspunkte: 0;
+WTAT 1 SU, Kirschner, WTAT 1 SU Room, 1 Doppelstunden, Minuspunkte: 1VC 1 SU, Jung, VC 1 Ü Room, 1 Doppelstunden, Minuspunkte: 0
