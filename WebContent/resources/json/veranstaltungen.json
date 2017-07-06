@@ -299,15 +299,6 @@
  {
    "semester": "1",
    "kurzname": "INFO 1",
-   "sws": 4,
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "w�chentlich",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "INFO 1",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -344,15 +335,6 @@
  {
    "semester": "2",
    "kurzname": "INFO 2",
-   "sws": 4,
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "w�chentlich",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "INFO 2",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -366,15 +348,6 @@
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "3",
-   "kurzname": "INFO 3",
-   "sws": 4,
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "w�chentlich",
-   "parallelgrupper": "1. Zug",
    "stg_name": "Internationale Medieninformatik (B)"
  },
  {
@@ -528,24 +501,6 @@
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "GRDL DIME",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "gerade Woche",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "GRDL DIME",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "ungerade Woche",
-   "parallelgrupper": "1. Zug, nur 2. Gruppe",
    "stg_name": "Internationale Medieninformatik (B)"
  },
  {
@@ -670,24 +625,6 @@
    "kurzname": "DB",
    "sws": 2,
    "veranstaltungsart": "�bung",
-   "rhythmus": "gerade Woche",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "3",
-   "kurzname": "DB",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "ungerade Woche",
-   "parallelgrupper": "1. Zug, nur 2. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "3",
-   "kurzname": "DB",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
    "stg_name": "Internationale Medieninformatik (B)"
@@ -726,69 +663,6 @@
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "4",
-   "kurzname": "B19(SU)",
-   "sws": 2,
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Blockveranstaltung",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "4",
-   "kurzname": "B19(SU)",
-   "sws": 2,
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Blockveranstaltung",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "4",
-   "kurzname": "B19(SU)",
-   "sws": 2,
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Blockveranstaltung",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "4",
-   "kurzname": "B19(SU)",
-   "sws": 2,
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Blockveranstaltung",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "4",
-   "kurzname": "B19(SU)",
-   "sws": 2,
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Blockveranstaltung",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "4",
-   "kurzname": "B19 (�)",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Blockveranstaltung",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "4",
-   "kurzname": "B19 (�)",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Blockveranstaltung",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
    "stg_name": "Internationale Medieninformatik (B)"
  },
  {
@@ -834,24 +708,6 @@
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "3",
-   "kurzname": "CG",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "gerade Woche",
-   "parallelgrupper": "1. Zug, nur 2. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "3",
-   "kurzname": "CG",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "ungerade Woche",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
    "stg_name": "Internationale Medieninformatik (B)"
  },
  {
@@ -928,60 +784,6 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "AKTH",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "AKTH",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "AKTH",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "AKTH",
-   "sws": 2,
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "AKTTH",
-   "sws": 2,
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "AKTH",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
    "kurzname": "AKTTH",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
@@ -1002,7 +804,7 @@
    "semester": "5,6",
    "kurzname": "AKTH",
    "sws": 2,
-   "veranstaltungsart": "Seminaristischer Unterricht",
+   "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
    "stg_name": "Internationale Medieninformatik (B)"
@@ -1138,24 +940,6 @@
    "kurzname": "GT2 (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
-   "rhythmus": "gerade Woche",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "GT2 (�)",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "ungerade Woche",
-   "parallelgrupper": "1. Zug, nur 2. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "GT2 (�)",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
    "stg_name": "Internationale Medieninformatik (B)"
@@ -1255,15 +1039,6 @@
    "kurzname": "WTAT2 (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "gerade Woche",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WTAT2 (SU)",
-   "sws": 2,
-   "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug",
    "stg_name": "Internationale Medieninformatik (B)"
@@ -1274,15 +1049,6 @@
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WTAT 2 (�)",
-   "sws": 2,
-   "veranstaltungsart": "�bung",
-   "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
    "stg_name": "Internationale Medieninformatik (B)"
  },
@@ -1477,15 +1243,6 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "GT4",
-   "sws": 3,
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "w�chentlich",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7,8,9",
    "kurzname": "VC3",
    "sws": 3,
    "veranstaltungsart": "Praktische �bung",
@@ -1513,37 +1270,10 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "WT1",
-   "sws": 3,
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "ungerade Woche",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7,8,9",
    "kurzname": "WT3",
    "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "gerade Woche",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7,8,9",
-   "kurzname": "WT3",
-   "sws": 3,
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "ungerade Woche",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7,8,9",
-   "kurzname": "VC5",
-   "sws": 3,
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
    "stg_name": "Internationale Medieninformatik (M)"
  },
@@ -1560,33 +1290,6 @@
    "semester": "7",
    "kurzname": "PROG",
    "sws": 4,
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "w�chentlich",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7",
-   "kurzname": "M1",
-   "sws": 6,
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "w�chentlich",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7",
-   "kurzname": "M1",
-   "sws": 6,
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "w�chentlich",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7",
-   "kurzname": "M1",
-   "sws": 6,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1662,15 +1365,6 @@
    "veranstaltungsart": "Projekt",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "8",
-   "kurzname": "PRX 1",
-   "sws": 6,
-   "veranstaltungsart": "Einzelbuchung",
-   "rhythmus": "",
-   "parallelgrupper": "",
    "stg_name": "Internationale Medieninformatik (M)"
  },
  {
