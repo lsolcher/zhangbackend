@@ -101,7 +101,7 @@ public class CalendarController extends AbstractController {
 						Course c = new Course();
 						c.setName((String) course.get("kurzname"));
 
-						int sws = Integer.parseInt((String) course.get("sws"));
+						int sws = (Integer) course.get("sws");
 						if (sws % 2 == 1)
 							sws += 1;
 						int slotsNeeded = sws / 2;
