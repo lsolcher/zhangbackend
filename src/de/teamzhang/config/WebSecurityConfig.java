@@ -50,22 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		/*User user = new User();
-		user.setPassword("1");
-		user.setLastName("e");
-		Map<String, Object> commandArguments = new BasicDBObject();
-		commandArguments.put("createUser", user.getLastName());
-		commandArguments.put("pwd", user.getPassword());
-		String[] roles = { "readWrite" };
-		commandArguments.put("roles", roles);
-		BasicDBObject command = new BasicDBObject(commandArguments);
-		mongoTemplate.executeCommand(command);
-		DBCollection collection = mongoTemplate.getCollection("users");
-		List<User> myUsers = mongoTemplate.findAll(User.class);*/
-		//User user = userRepository.findByUsername(username);
-
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
-		//auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
 	}
 
 	@Bean

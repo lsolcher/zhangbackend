@@ -96,7 +96,7 @@ public class CalendarController extends AbstractController {
 			for (Map m : list) {
 				if (m.get("type").equals("Courses")) {
 					List<HashMap> courses = (List<HashMap>) m.get("courses");
-					for (Map course : courses) {
+					for (Map<?, ?> course : courses) {
 						Course c = new Course();
 						c.setName((String) course.get("kurzname"));
 						int sws = Integer.parseInt((String) course.get("sws"));

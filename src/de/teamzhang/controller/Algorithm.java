@@ -34,7 +34,6 @@ import de.teamzhang.model.SingleChoicePrio;
 import de.teamzhang.model.SlotsPersistence;
 import de.teamzhang.model.StudentSettings;
 import de.teamzhang.model.Teacher;
-import de.teamzhang.model.TeachersPersistence;
 
 @Controller
 public class Algorithm {
@@ -49,7 +48,7 @@ public class Algorithm {
 	private static ProgramPersistence programs = new ProgramPersistence();
 	private static RoomPersistence rooms = new RoomPersistence();
 	private static SlotsPersistence slots = new SlotsPersistence();
-	private static TeachersPersistence teachers = new TeachersPersistence();
+	//private static TeachersPersistence teachers = new TeachersPersistence();
 
 	private List<Teacher> allTeachers = new ArrayList<Teacher>();
 	private List<StudentSettings> allSettings = new ArrayList<StudentSettings>();
@@ -70,6 +69,7 @@ public class Algorithm {
 	// 1. generate some testdata
 	@RequestMapping(value = "/algorithm", method = RequestMethod.GET)
 	private ModelAndView generateCalendar() {
+		dropExistingSchedules();
 		setPrograms();
 		setTeachers();
 		mockCourseProgramMapping();
@@ -241,6 +241,11 @@ public class Algorithm {
 		ModelAndView modelandview = new ModelAndView("calendar");
 		return modelandview;
 		//return "generated a plan with " + minusPoints + " minuspoints.";
+	}
+
+	private void dropExistingSchedules() {
+		DBCollection schedules = mongoTemplate.getCollection("schedules");
+		schedules.drop();
 	}
 
 	private void mockRooms() {
@@ -479,9 +484,9 @@ public class Algorithm {
 	
 	}*/
 
-	private static void inspectTeachers() {
+	private void inspectTeachers() {
 		System.out.println("Couldn't find a schedule with selected teacher-prios, inspecting teachers...");
-		for (Teacher t : teachers.getTeachers().values()) {
+		for (Teacher t : allTeachers) {
 			System.out.println(t.getLastName() + " has " + t.getMinusPoints() + " minuspoints.");
 		}
 	}
@@ -545,14 +550,14 @@ public class Algorithm {
 	private void reset() {
 		for (Teacher t : allTeachers) {
 			t.resetSchedule();
-			teachers.update(t);
+			//teachers.update(t);
 			t.resetMinuspoints();
 		}
-		for (Teacher t : teachers.getTeachers().values()) {
+		/*for (Teacher t : teachers.getTeachers().values()) {
 			t.resetSchedule();
-			teachers.update(t);
+			//teachers.update(t);
 			t.resetMinuspoints();
-		}
+		}*/
 		for (Course c : allCourses)
 			c.setSet(false);
 		for (Program p : allPrograms) {
@@ -561,9 +566,9 @@ public class Algorithm {
 		}
 	}
 
-	private static int getMinusPoints() {
+	private int getMinusPoints() {
 		int minusPoints = 0;
-		for (Teacher t : teachers.list()) {
+		for (Teacher t : allTeachers) {
 			int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
 			boolean[][] isTeaching = t.getFullSlots();
 			for (int days = 0; days < weightedDayTimeWishes.length; days++) {
