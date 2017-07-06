@@ -2,61 +2,16 @@
  {
    "semester": "6",
    "kurzname": "AWE CoCa",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Lehrvortrag",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
    "stg_name": "Angewandte Informatik"
  },
  {
-   "semester": "semester",
-   "kurzname": "kurzname",
-   "sws": "sws",
-   "veranstaltungsart": "veranstaltungsart",
-   "rhythmus": "rhythmus",
-   "parallelgrupper": "parallelgrupper",
-   "stg_name": "stg_name"
- },
- {
    "semester": "1,3",
    "kurzname": "EnM2Ts",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1,3",
-   "kurzname": "EnM2Ts",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 2. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1,3",
-   "kurzname": "EnM2Ts",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1,3",
-   "kurzname": "EnM2Ts",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 2. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1,3",
-   "kurzname": "EnM2Ts",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -65,7 +20,7 @@
  {
    "semester": "1,3",
    "kurzname": "EnM2Ts",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -74,43 +29,7 @@
  {
    "semester": "2,3",
    "kurzname": "EnM3Ts",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2,3",
-   "kurzname": "EnM3Ts",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 2. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2,3",
-   "kurzname": "EnM3Ts",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2,3",
-   "kurzname": "EnM3Ts",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 2. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2,3",
-   "kurzname": "EnM3Ts",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -119,7 +38,7 @@
  {
    "semester": "2,3",
    "kurzname": "EnM3Ts",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -128,25 +47,7 @@
  {
    "semester": "1,3",
    "kurzname": "ItG1As",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1,3",
-   "kurzname": "ItG1As",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1,3",
-   "kurzname": "ItG1As",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -155,7 +56,7 @@
  {
    "semester": "1,3",
    "kurzname": "ItG1As",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -164,25 +65,7 @@
  {
    "semester": "1,3",
    "kurzname": "SpG1As",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1,3",
-   "kurzname": "SpG1As",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1,3",
-   "kurzname": "SpG1As",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "",
@@ -191,7 +74,7 @@
  {
    "semester": "3",
    "kurzname": "RsO1Ws",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -200,7 +83,7 @@
  {
    "semester": "3",
    "kurzname": "RsO1Ws",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -209,7 +92,7 @@
  {
    "semester": "3",
    "kurzname": "RsO1Ws",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -218,7 +101,7 @@
  {
    "semester": "1,2,3",
    "kurzname": "RsM2Ab",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -227,43 +110,7 @@
  {
    "semester": "6",
    "kurzname": "AWE: SHWBZ",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: SHWBZ",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: SHWBZ",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: SHWBZ",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: SHWBZ",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -272,7 +119,7 @@
  {
    "semester": "6",
    "kurzname": "AWE: SHWBZ",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -281,7 +128,7 @@
  {
    "semester": "6",
    "kurzname": "AWE: LaTex",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -290,7 +137,7 @@
  {
    "semester": "6",
    "kurzname": "AWE: LaTex",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -299,7 +146,7 @@
  {
    "semester": "6",
    "kurzname": "AWE:DiFok",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -308,25 +155,7 @@
  {
    "semester": "6",
    "kurzname": "AWE: Prax",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: Prax",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: Prax",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -335,7 +164,7 @@
  {
    "semester": "6",
    "kurzname": "AWE:PhilSF",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -344,7 +173,7 @@
  {
    "semester": "6",
    "kurzname": "AWE VP",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "14-t�glich",
    "parallelgrupper": "Gruppe A",
@@ -353,7 +182,7 @@
  {
    "semester": "6",
    "kurzname": "AWE CoCa",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Lehrvortrag",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -362,7 +191,7 @@
  {
    "semester": "6",
    "kurzname": "AWE CoCa",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Lehrvortrag",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -371,7 +200,7 @@
  {
    "semester": "6",
    "kurzname": "AWE: ETHIC",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -380,7 +209,7 @@
  {
    "semester": "6",
    "kurzname": "AWE Gender",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -389,7 +218,7 @@
  {
    "semester": "6",
    "kurzname": "AWE BEWERB",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "Blockveranstaltung und Samstag",
    "parallelgrupper": "Gruppe A",
@@ -398,7 +227,7 @@
  {
    "semester": "6",
    "kurzname": "AWE BEWERB",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "Blockveranstaltung und Samstag",
    "parallelgrupper": "Gruppe A",
@@ -407,25 +236,7 @@
  {
    "semester": "6",
    "kurzname": "MERE",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "MERE",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "MERE",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -434,25 +245,7 @@
  {
    "semester": "6",
    "kurzname": "AWE: RE IT",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: RE IT",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: RE IT",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -461,7 +254,7 @@
  {
    "semester": "6",
    "kurzname": "AWE FOTO",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -470,7 +263,7 @@
  {
    "semester": "6",
    "kurzname": "AWE FOTO",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -479,43 +272,7 @@
  {
    "semester": "6",
    "kurzname": "AWE: SYNTH",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: SYNTH",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: SYNTH",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: SYNTH",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "AWE: SYNTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -524,7 +281,7 @@
  {
    "semester": "6",
    "kurzname": "AWE: SYNTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -533,34 +290,7 @@
  {
    "semester": "1",
    "kurzname": "INFO 1",
-   "sws": "4",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "INFO 1",
-   "sws": "4",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "INFO 1",
-   "sws": "4",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "INFO 1",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -569,7 +299,7 @@
  {
    "semester": "1",
    "kurzname": "INFO 1",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -578,7 +308,7 @@
  {
    "semester": "1",
    "kurzname": "INFO 1",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -587,7 +317,7 @@
  {
    "semester": "1",
    "kurzname": "INFO 1",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -596,7 +326,7 @@
  {
    "semester": "1",
    "kurzname": "INFO 1",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 3. Gruppe",
@@ -605,25 +335,7 @@
  {
    "semester": "2",
    "kurzname": "INFO 2",
-   "sws": "4",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "INFO 2",
-   "sws": "4",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "INFO 2",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -632,7 +344,7 @@
  {
    "semester": "2",
    "kurzname": "INFO 2",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -641,7 +353,7 @@
  {
    "semester": "2",
    "kurzname": "INFO 2",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -650,7 +362,7 @@
  {
    "semester": "2",
    "kurzname": "INFO 2",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -659,25 +371,7 @@
  {
    "semester": "3",
    "kurzname": "INFO 3",
-   "sws": "4",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "3",
-   "kurzname": "INFO 3",
-   "sws": "4",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "3",
-   "kurzname": "INFO 3",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -686,7 +380,7 @@
  {
    "semester": "3",
    "kurzname": "INFO 3",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -695,7 +389,7 @@
  {
    "semester": "3",
    "kurzname": "INFO 3",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -704,7 +398,7 @@
  {
    "semester": "3",
    "kurzname": "INFO 3",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -713,25 +407,7 @@
  {
    "semester": "1",
    "kurzname": "CS",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "CS",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "CS",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -740,7 +416,7 @@
  {
    "semester": "1",
    "kurzname": "CS",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -749,7 +425,7 @@
  {
    "semester": "1",
    "kurzname": "CS",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -758,25 +434,7 @@
  {
    "semester": "1",
    "kurzname": "MATHE 1",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "MATHE 1",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "MATHE 1",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -785,7 +443,7 @@
  {
    "semester": "1",
    "kurzname": "MATHE 1",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -794,7 +452,7 @@
  {
    "semester": "1",
    "kurzname": "MATHE 1",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -803,25 +461,7 @@
  {
    "semester": "2",
    "kurzname": "MATHE 2",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "MATHE 2",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "MATHE 2",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -830,7 +470,7 @@
  {
    "semester": "2",
    "kurzname": "MATHE 2",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -839,7 +479,7 @@
  {
    "semester": "2",
    "kurzname": "MATHE 2",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -848,25 +488,7 @@
  {
    "semester": "1",
    "kurzname": "GWP",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "GWP",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "GWP",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -875,7 +497,7 @@
  {
    "semester": "1",
    "kurzname": "GWP",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -884,7 +506,7 @@
  {
    "semester": "1",
    "kurzname": "GWP",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -893,25 +515,7 @@
  {
    "semester": "2",
    "kurzname": "GRDL DIME",
-   "sws": "4",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "GRDL DIME",
-   "sws": "4",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "GRDL DIME",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -920,7 +524,7 @@
  {
    "semester": "2",
    "kurzname": "GRDL DIME",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -929,7 +533,7 @@
  {
    "semester": "2",
    "kurzname": "GRDL DIME",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -938,7 +542,7 @@
  {
    "semester": "2",
    "kurzname": "GRDL DIME",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -947,7 +551,7 @@
  {
    "semester": "2",
    "kurzname": "GRDL DIME",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -956,25 +560,7 @@
  {
    "semester": "2",
    "kurzname": "NETZ",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "NETZ",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "NETZ",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -983,7 +569,7 @@
  {
    "semester": "2",
    "kurzname": "NETZ",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -992,7 +578,7 @@
  {
    "semester": "2",
    "kurzname": "NETZ",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1001,7 +587,7 @@
  {
    "semester": "2",
    "kurzname": "NETZ",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 3. Gruppe",
@@ -1010,25 +596,7 @@
  {
    "semester": "1",
    "kurzname": "P & MT",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "P & MT",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "P & MT",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1037,7 +605,7 @@
  {
    "semester": "1",
    "kurzname": "P & MT",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1046,7 +614,7 @@
  {
    "semester": "1",
    "kurzname": "P & MT",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1055,25 +623,7 @@
  {
    "semester": "2",
    "kurzname": "MEWI",
-   "sws": "4",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "MEWI",
-   "sws": "4",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "2",
-   "kurzname": "MEWI",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1082,7 +632,7 @@
  {
    "semester": "2",
    "kurzname": "MEWI",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1091,7 +641,7 @@
  {
    "semester": "2",
    "kurzname": "MEWI",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1100,7 +650,7 @@
  {
    "semester": "3",
    "kurzname": "DB",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1109,7 +659,7 @@
  {
    "semester": "3",
    "kurzname": "DB",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1118,7 +668,7 @@
  {
    "semester": "3",
    "kurzname": "DB",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1127,7 +677,7 @@
  {
    "semester": "3",
    "kurzname": "DB",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1136,7 +686,7 @@
  {
    "semester": "3",
    "kurzname": "DB",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1145,25 +695,7 @@
  {
    "semester": "3",
    "kurzname": "BV",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "3",
-   "kurzname": "BV",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "3",
-   "kurzname": "BV",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1172,7 +704,7 @@
  {
    "semester": "3",
    "kurzname": "BV",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1181,7 +713,7 @@
  {
    "semester": "3",
    "kurzname": "BV",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1190,7 +722,7 @@
  {
    "semester": "4",
    "kurzname": "B19(SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug",
@@ -1199,7 +731,7 @@
  {
    "semester": "4",
    "kurzname": "B19(SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug",
@@ -1208,7 +740,7 @@
  {
    "semester": "4",
    "kurzname": "B19(SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug",
@@ -1217,7 +749,7 @@
  {
    "semester": "4",
    "kurzname": "B19(SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug",
@@ -1226,7 +758,7 @@
  {
    "semester": "4",
    "kurzname": "B19(SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug",
@@ -1235,7 +767,7 @@
  {
    "semester": "4",
    "kurzname": "B19(SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug",
@@ -1244,7 +776,7 @@
  {
    "semester": "4",
    "kurzname": "B19 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1253,7 +785,7 @@
  {
    "semester": "4",
    "kurzname": "B19 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1262,7 +794,7 @@
  {
    "semester": "4",
    "kurzname": "B19 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1271,7 +803,7 @@
  {
    "semester": "3",
    "kurzname": "3D-Design",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1280,7 +812,7 @@
  {
    "semester": "3",
    "kurzname": "3D-Design",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1289,25 +821,7 @@
  {
    "semester": "3",
    "kurzname": "CG",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "3",
-   "kurzname": "CG",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "3",
-   "kurzname": "CG",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1316,7 +830,7 @@
  {
    "semester": "3",
    "kurzname": "CG",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1325,7 +839,7 @@
  {
    "semester": "3",
    "kurzname": "CG",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1334,7 +848,7 @@
  {
    "semester": "3",
    "kurzname": "CG",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1343,7 +857,7 @@
  {
    "semester": "3",
    "kurzname": "CG",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1352,7 +866,7 @@
  {
    "semester": "5,6",
    "kurzname": "MedProg",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1361,7 +875,7 @@
  {
    "semester": "5,6",
    "kurzname": "MedProg",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1370,7 +884,7 @@
  {
    "semester": "5,6",
    "kurzname": "VS",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1379,7 +893,7 @@
  {
    "semester": "5,6",
    "kurzname": "VS",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1388,7 +902,7 @@
  {
    "semester": "5,6",
    "kurzname": "INTDES",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1397,7 +911,7 @@
  {
    "semester": "5,6",
    "kurzname": "INTDES",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1406,7 +920,7 @@
  {
    "semester": "5,6",
    "kurzname": "AKTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1415,7 +929,7 @@
  {
    "semester": "5,6",
    "kurzname": "AKTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1424,7 +938,7 @@
  {
    "semester": "5,6",
    "kurzname": "AKTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1433,7 +947,7 @@
  {
    "semester": "5,6",
    "kurzname": "AKTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1442,7 +956,7 @@
  {
    "semester": "5,6",
    "kurzname": "AKTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1451,7 +965,7 @@
  {
    "semester": "5,6",
    "kurzname": "AKTTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1460,7 +974,7 @@
  {
    "semester": "5,6",
    "kurzname": "AKTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1469,7 +983,7 @@
  {
    "semester": "5,6",
    "kurzname": "AKTTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1478,7 +992,7 @@
  {
    "semester": "5,6",
    "kurzname": "AKTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1487,7 +1001,7 @@
  {
    "semester": "5,6",
    "kurzname": "AKTH",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1496,25 +1010,7 @@
  {
    "semester": "5",
    "kurzname": "PM",
-   "sws": "2",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5",
-   "kurzname": "PM",
-   "sws": "2",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 2. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5",
-   "kurzname": "PM",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1523,7 +1019,7 @@
  {
    "semester": "5",
    "kurzname": "PM",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1532,7 +1028,7 @@
  {
    "semester": "4",
    "kurzname": "B20.1 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1541,7 +1037,7 @@
  {
    "semester": "4",
    "kurzname": "B20.1 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "Blockveranstaltung",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1550,7 +1046,7 @@
  {
    "semester": "4",
    "kurzname": "B20.1 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1559,7 +1055,7 @@
  {
    "semester": "4",
    "kurzname": "B20.1 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1568,7 +1064,7 @@
  {
    "semester": "4",
    "kurzname": "B20.2",
-   "sws": "0",
+   "sws": 0,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1577,16 +1073,7 @@
  {
    "semester": "5",
    "kurzname": "PRAXISPHA",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5",
-   "kurzname": "PRAXISPHA",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1595,7 +1082,7 @@
  {
    "semester": "5",
    "kurzname": "PRAXISPHA",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1604,7 +1091,7 @@
  {
    "semester": "5",
    "kurzname": "PRAXISPHA",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1613,7 +1100,7 @@
  {
    "semester": "5",
    "kurzname": "Praxisphas",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -1622,106 +1109,16 @@
  {
    "semester": "5",
    "kurzname": "Praxisphas",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
    "stg_name": "Internationale Medieninformatik (B)"
  },
  {
-   "semester": "5",
-   "kurzname": "PRAXISPHA",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5",
-   "kurzname": "PRAXISPHA",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5",
-   "kurzname": "PRAXISPHA",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5",
-   "kurzname": "PRAXISPHA",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5",
-   "kurzname": "PRAXISPHA",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5",
-   "kurzname": "PRAXISPHA",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5",
-   "kurzname": "PRAXISPHA",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5",
-   "kurzname": "PRAXISPHA",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
    "semester": "5,6",
    "kurzname": "GT2(SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "GT2(SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "GT2(SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1730,7 +1127,7 @@
  {
    "semester": "5,6",
    "kurzname": "GT2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1739,7 +1136,7 @@
  {
    "semester": "5,6",
    "kurzname": "GT2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1748,7 +1145,7 @@
  {
    "semester": "5,6",
    "kurzname": "GT2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1757,7 +1154,7 @@
  {
    "semester": "5,6",
    "kurzname": "GT2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1766,7 +1163,7 @@
  {
    "semester": "5,6",
    "kurzname": "GTAT2 (SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1775,7 +1172,7 @@
  {
    "semester": "5,6",
    "kurzname": "GTAT2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1784,25 +1181,7 @@
  {
    "semester": "5,6",
    "kurzname": "VC2 (SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "VC2 (SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "VC2 (SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1811,7 +1190,7 @@
  {
    "semester": "5,6",
    "kurzname": "VC2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1820,25 +1199,7 @@
  {
    "semester": "5,6",
    "kurzname": "VCAT2 (SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "VCAT2 (SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "VCAT2 (SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1847,7 +1208,7 @@
  {
    "semester": "5,6",
    "kurzname": "VCAT2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1856,7 +1217,7 @@
  {
    "semester": "5,6",
    "kurzname": "VCAT2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1865,25 +1226,7 @@
  {
    "semester": "5,6",
    "kurzname": "WT2 (SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WT2 (SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WT2 (SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1892,7 +1235,7 @@
  {
    "semester": "5,6",
    "kurzname": "WT2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1901,7 +1244,7 @@
  {
    "semester": "5,6",
    "kurzname": "WT2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -1910,43 +1253,7 @@
  {
    "semester": "5,6",
    "kurzname": "WTAT2 (SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WTAT2 (SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WTAT2 (SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WTAT2 (SU)",
-   "sws": "2",
-   "veranstaltungsart": "Seminaristischer Unterricht",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WTAT2 (SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug",
@@ -1955,7 +1262,7 @@
  {
    "semester": "5,6",
    "kurzname": "WTAT2 (SU)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug",
@@ -1964,43 +1271,7 @@
  {
    "semester": "5,6",
    "kurzname": "WTAT 2 (�)",
-   "sws": "2",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WTAT 2 (�)",
-   "sws": "2",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WTAT 2 (�)",
-   "sws": "2",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WTAT 2 (�)",
-   "sws": "2",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "5,6",
-   "kurzname": "WTAT 2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -2009,7 +1280,7 @@
  {
    "semester": "5,6",
    "kurzname": "WTAT 2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -2018,79 +1289,7 @@
  {
    "semester": "6",
    "kurzname": "B30 (�)",
-   "sws": "1",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "B30 (�)",
-   "sws": "1",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "B30 (�)",
-   "sws": "1",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "B30 (�)",
-   "sws": "1",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "B30 (�)",
-   "sws": "1",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "B30 (�)",
-   "sws": "1",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "B30 (�)",
-   "sws": "1",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "B30 (�)",
-   "sws": "1",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "6",
-   "kurzname": "B30 (�)",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2099,7 +1298,7 @@
  {
    "semester": "6",
    "kurzname": "B30 (�)",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2108,7 +1307,7 @@
  {
    "semester": "6",
    "kurzname": "B30 (�)",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2117,7 +1316,7 @@
  {
    "semester": "6",
    "kurzname": "B30 (�)",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2126,7 +1325,7 @@
  {
    "semester": "6",
    "kurzname": "B30 (�)",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2135,7 +1334,7 @@
  {
    "semester": "6",
    "kurzname": "B30 (�)",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2144,7 +1343,7 @@
  {
    "semester": "6",
    "kurzname": "B30 (�)",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2153,7 +1352,7 @@
  {
    "semester": "6",
    "kurzname": "B30 (�)",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "",
@@ -2162,43 +1361,16 @@
  {
    "semester": "6",
    "kurzname": "BaS/Koll",
-   "sws": "1",
+   "sws": 1,
    "veranstaltungsart": "Seminar/Projektseminar",
    "rhythmus": "",
    "parallelgrupper": "",
    "stg_name": "Internationale Medieninformatik (B)"
  },
  {
-   "semester": "1",
-   "kurzname": "EINF�1",
-   "sws": "",
-   "veranstaltungsart": "Einzelbuchung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "HELLO IMI",
-   "sws": "",
-   "veranstaltungsart": "Einzelbuchung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
-   "semester": "1",
-   "kurzname": "Intro. IMI",
-   "sws": "",
-   "veranstaltungsart": "Einzelbuchung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (B)"
- },
- {
    "semester": "2",
    "kurzname": "TuT Info1",
-   "sws": "",
+   "sws": null,
    "veranstaltungsart": "Tutorium",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -2207,7 +1379,7 @@
  {
    "semester": "2",
    "kurzname": "TUT Info2",
-   "sws": "",
+   "sws": null,
    "veranstaltungsart": "Tutorium",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -2216,7 +1388,7 @@
  {
    "semester": "2",
    "kurzname": "TUT Info2",
-   "sws": "",
+   "sws": null,
    "veranstaltungsart": "Tutorium",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",
@@ -2225,25 +1397,7 @@
  {
    "semester": "7,9",
    "kurzname": "ItG1As",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7,9",
-   "kurzname": "ItG1As",
-   "sws": "4",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7,9",
-   "kurzname": "ItG1As",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -2252,7 +1406,7 @@
  {
    "semester": "7,9",
    "kurzname": "ItG1As",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -2261,7 +1415,7 @@
  {
    "semester": "7,9",
    "kurzname": "AWE: LaTex",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2270,7 +1424,7 @@
  {
    "semester": "7,9",
    "kurzname": "AWE:DiFok",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2279,7 +1433,7 @@
  {
    "semester": "7,9",
    "kurzname": "AWE:PhilSF",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2288,7 +1442,7 @@
  {
    "semester": "7,9",
    "kurzname": "AWE VP",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "14-t�glich",
    "parallelgrupper": "Gruppe A",
@@ -2297,7 +1451,7 @@
  {
    "semester": "7,9",
    "kurzname": "MeltingPot",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -2306,7 +1460,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "GT3",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -2315,7 +1469,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "GT4",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -2324,7 +1478,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "GT4",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -2333,25 +1487,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "VC3",
-   "sws": "3",
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7,8,9",
-   "kurzname": "VC3",
-   "sws": "3",
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7,8,9",
-   "kurzname": "VC3",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2360,7 +1496,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "VC3",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -2369,16 +1505,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT1",
-   "sws": "3",
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7,8,9",
-   "kurzname": "WT1",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2387,7 +1514,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT1",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2396,25 +1523,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT3",
-   "sws": "3",
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7,8,9",
-   "kurzname": "WT3",
-   "sws": "3",
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7,8,9",
-   "kurzname": "WT3",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "gerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2423,7 +1532,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT3",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2432,7 +1541,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "VC5",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -2441,7 +1550,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "VC5",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -2450,7 +1559,7 @@
  {
    "semester": "7",
    "kurzname": "PROG",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -2459,7 +1568,7 @@
  {
    "semester": "7",
    "kurzname": "M1",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -2468,7 +1577,7 @@
  {
    "semester": "7",
    "kurzname": "M1",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -2477,7 +1586,7 @@
  {
    "semester": "7",
    "kurzname": "M1",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -2486,7 +1595,7 @@
  {
    "semester": "7",
    "kurzname": "M1",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -2495,7 +1604,7 @@
  {
    "semester": "7",
    "kurzname": "M1",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -2504,25 +1613,7 @@
  {
    "semester": "7",
    "kurzname": "MATH",
-   "sws": "4",
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7",
-   "kurzname": "MATH",
-   "sws": "4",
-   "veranstaltungsart": "Praktische �bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7",
-   "kurzname": "MATH",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -2531,7 +1622,7 @@
  {
    "semester": "7",
    "kurzname": "MATH",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -2540,7 +1631,7 @@
  {
    "semester": "7",
    "kurzname": "M3",
-   "sws": "4",
+   "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -2549,25 +1640,7 @@
  {
    "semester": "8",
    "kurzname": "A&O",
-   "sws": "2",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "8",
-   "kurzname": "A&O",
-   "sws": "2",
-   "veranstaltungsart": "�bung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug, nur 1. Gruppe",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "8",
-   "kurzname": "A&O",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -2576,25 +1649,7 @@
  {
    "semester": "8",
    "kurzname": "PRX 1",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "8",
-   "kurzname": "PRX 1",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "8",
-   "kurzname": "PRX 1",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "Projekt",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "Gruppe A",
@@ -2603,16 +1658,7 @@
  {
    "semester": "8",
    "kurzname": "PRX 1",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "8",
-   "kurzname": "PRX 1",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "Projekt",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "Gruppe A",
@@ -2621,79 +1667,16 @@
  {
    "semester": "8",
    "kurzname": "PRX 1",
-   "sws": "6",
+   "sws": 6,
    "veranstaltungsart": "Einzelbuchung",
    "rhythmus": "",
    "parallelgrupper": "",
    "stg_name": "Internationale Medieninformatik (M)"
  },
  {
-   "semester": "9",
-   "kurzname": "PRX 2",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "9",
-   "kurzname": "PRX 2",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "9",
-   "kurzname": "PRX 2",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "9",
-   "kurzname": "PRX 2",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "9",
-   "kurzname": "PRX 2",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "9",
-   "kurzname": "PRX 2",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "w�chentlich",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "9",
-   "kurzname": "PRX 2",
-   "sws": "6",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
    "semester": "8",
    "kurzname": "ICW 1",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2702,7 +1685,7 @@
  {
    "semester": "8",
    "kurzname": "ICW 1",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2711,7 +1694,7 @@
  {
    "semester": "8",
    "kurzname": "ICW 1",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2720,7 +1703,7 @@
  {
    "semester": "8",
    "kurzname": "ICW 1",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2729,7 +1712,7 @@
  {
    "semester": "8",
    "kurzname": "ICW 1",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2738,7 +1721,7 @@
  {
    "semester": "8",
    "kurzname": "ICW 1",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2747,7 +1730,7 @@
  {
    "semester": "8",
    "kurzname": "ICW 1",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2756,7 +1739,7 @@
  {
    "semester": "8",
    "kurzname": "ICW 1",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2765,7 +1748,7 @@
  {
    "semester": "9",
    "kurzname": "ICW 2",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2774,7 +1757,7 @@
  {
    "semester": "9",
    "kurzname": "ICW 2",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2783,7 +1766,7 @@
  {
    "semester": "9",
    "kurzname": "ICW 2",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2792,7 +1775,7 @@
  {
    "semester": "9",
    "kurzname": "ICW 2",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2801,7 +1784,7 @@
  {
    "semester": "9",
    "kurzname": "ICW 2",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2810,7 +1793,7 @@
  {
    "semester": "9",
    "kurzname": "ICW 2",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
    "parallelgrupper": "Gruppe A",
@@ -2819,25 +1802,16 @@
  {
    "semester": "9",
    "kurzname": "ICW 2",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Projekt",
    "rhythmus": "",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "9",
-   "kurzname": "ICW 2",
-   "sws": "3",
-   "veranstaltungsart": "Projekt",
-   "rhythmus": "Einzeltermin",
    "parallelgrupper": "Gruppe A",
    "stg_name": "Internationale Medieninformatik (M)"
  },
  {
    "semester": "10",
    "kurzname": "MS",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "Seminar/Projektseminar",
    "rhythmus": "ungerade Woche",
    "parallelgrupper": "1. Zug",
@@ -2846,7 +1820,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "GT1 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2855,7 +1829,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "GT2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2864,7 +1838,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "GT3 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2873,7 +1847,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "GT4 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2882,7 +1856,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "VC1 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2891,7 +1865,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "VC4 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2900,7 +1874,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "VC2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2909,7 +1883,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "VC3 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2918,7 +1892,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT2 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2927,7 +1901,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT4 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2936,7 +1910,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT4a (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2945,7 +1919,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT1 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2954,7 +1928,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT3 (�)",
-   "sws": "2",
+   "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2963,7 +1937,7 @@
  {
    "semester": "8,9",
    "kurzname": "M9+12IS(�)",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2972,7 +1946,7 @@
  {
    "semester": "8,9",
    "kurzname": "M9+12IP(�)",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2981,7 +1955,7 @@
  {
    "semester": "8,9",
    "kurzname": "M9+12SR(�)",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2990,7 +1964,7 @@
  {
    "semester": "8,9",
    "kurzname": "M9+12PR(�)",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -2999,7 +1973,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "GT1(P�)",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -3008,7 +1982,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "GT2(P�)",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -3017,7 +1991,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "VC1(P�)",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -3026,7 +2000,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "VC2(P�)",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -3035,7 +2009,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "VC4(P�)",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -3044,7 +2018,7 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT2(P�)",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
    "parallelgrupper": "",
@@ -3053,27 +2027,9 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT4(P�)",
-   "sws": "3",
+   "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
-   "parallelgrupper": "",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7",
-   "kurzname": "HELLO IMI",
-   "sws": "",
-   "veranstaltungsart": "Einzelbuchung",
-   "rhythmus": "Einzeltermin",
-   "parallelgrupper": "1. Zug",
-   "stg_name": "Internationale Medieninformatik (M)"
- },
- {
-   "semester": "7",
-   "kurzname": "Intro. IMI",
-   "sws": "",
-   "veranstaltungsart": "Einzelbuchung",
-   "rhythmus": "Einzeltermin",
    "parallelgrupper": "",
    "stg_name": "Internationale Medieninformatik (M)"
  }
