@@ -9,6 +9,10 @@ $(document).ready(function(){
 	var semesterID = 0;
 	var timeID = 0;
 	var fullTableID = "";
+	var fullTableIDFollower = "";
+	
+	var mongoTemplate;
+
 	
 	$.ajax({
 		type: "GET",
@@ -98,20 +102,44 @@ $(document).ready(function(){
 		for (var i = 0; i < allTimeslots.length; i++) {	
 			
 			fullTableID = "table-cell-" + i;
+			fullTableIDFollower = "table-cell-" + (i+1);
 						
 			if (!((allTimeslots[i] == "")||(allTimeslots[i] == "-")||(allTimeslots[i] == " ")||(allTimeslots[i] == " -")||(allTimeslots[i] == "- "))) {
 				
 				singleElements = allTimeslots[i].split(',');
 				
-//				document.getElementById(fullTableID).innerHTML = allTimeslots[i];
-				document.getElementById(fullTableID).innerHTML = singleElements[0] + singleElements[1] + singleElements[2];
+				if (!((singleElements[0] == undefined) || (singleElements[1] == undefined) || (singleElements[2] == undefined))) {
+					document.getElementById(fullTableID).innerHTML = allTimeslots[i];
+					document.getElementById(fullTableID).innerHTML = singleElements[0] + singleElements[1] + singleElements[2];
+				}
 				
-//				if (singleElements[3] == " 2 Doppelstunden") {
-//					document.getElementById(fullTableID+1).innerHTML = singleElements[0] + singleElements[1] + singleElements[2];
-//				}
+				if (singleElements[3] == " 2 Doppelstunden") {
+					document.getElementById(fullTableIDFollower).innerHTML = singleElements[0] + singleElements[1] + singleElements[2];
+				}
 			}
 		}
+		
+		mongoTemplate.createCollection("schedules");
+		
+		var schedulesDB = mongoTemplate.getCollection("teachers");
+		var cursor = schedulesDB.find();
+		while (cursor.hasNext()) {
+
+            var object = cursor.next();
+
+            console.log(object);
+
+        }
 	}
+	
+//	private void setTeachers() {
+//        DBCollection teachersDB = mongoTemplate.getCollection("teachers");
+//        DBCursor cursor = teachersDB.find();
+//        while (cursor.hasNext()) {
+//            DBObject obj = cursor.next();
+//            Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
+//            allTeachers.add(t);
+//        }    }
 });
 
 
