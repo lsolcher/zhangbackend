@@ -1,43 +1,35 @@
 (function() {
   var app = angular.module("zhang-app").controller('additionalPrioController', function($scope, $rootScope) {
 
-/*      $scope.selectAdditionalPrio = function(index, prio) {
-          for(var i in $rootScope.additionalPriorities) {
-              $rootScope.additionalPriorities[i].hideContent = true;
-          }
+      // $scope.additionalPriorities = [
+      //     {
+      //         type: 'additionalPrio',
+      //         title: 'MaxStunden',
+      //         text: 'Maximale Stunden pro Tag: ',
+      //     },
+      //     {
+      //         type: 'additionalPrio',
+      //         title: 'MaxMinuspunkte',
+      //         text: 'Maximale Minuspunkte: ',
+      //
+      //     },
+      //     {
+      //         type: 'additionalPrio',
+      //         title: 'MaxPausen',
+      //         text: 'Maximale Pausen pro Tag: ',
+      //     }
+      // ];
+      $scope.additionalPriorities = [];
+      $scope.selectPrio = function(index, prio) {
           var newPrio = jQuery.extend(true, {}, prio);
           newPrio.origin = index;
-          $rootScope.additionalPriorities.push(newPrio);
-      }*/
+          $scope.additionalPriorities.push(newPrio);
+      }
 
-      $rootScope.additionalPriorities = [
-          {
-              type: 'additionalPrio',
-              title: 'MaxStunden',
-              options: '3',
-              text: 'Maximale Stunden pro Tag: ',
-              prio: 'hoch',
-              program: 'IMI-B'
-          },
-          {
-              type: 'additionalPrio',
-              title: 'MaxMinuspunkte',
-              options: '2',
-              text: 'Maximale Stunden pro Tag: ',
-              prio: 'niedrig',
-              program: 'IMI-B'
-          },
-          {
-              type: 'additionalPrio',
-              title: 'MaxPausen',
-              options: '1',
-              text: 'Maximale Stunden pro Tag: ',
-              prio: 'mittel',
-              program: 'IMI-B'
-          }
-      ];
-      //$scope.additionalPriorities = [];
-
+      // $scope.change = function(selected) {
+      //     console.log(selected);
+      //     $scope.additionalPriorities.options = selected;
+      // }
 
     // TODO: When Checkbox "checked" add Object to $rootScope.additionalPriorities
 
@@ -88,14 +80,18 @@
   });
 
 
-    /*      angular.module("zhang-app").directive('AddPriority', function($rootScope) {
-              return function(scope, element, attrs) {
+      angular.module("zhang-app").directive('AddPriority', function($scope) {
+          return function(scope, element, attrs) {
 
-                  scope.prio.course = "Alle Kurse";
-
-                  scope.change1 = function(selected) {
-                      scope.prio.option = selected;
-                  }
+              scope.changeOption = function(selected) {
+                  console.log(selected);
+                  scope.prio.options = selected;
               }
-      });*/
+              scope.changePrio = function(selected) {
+                  console.log(selected);
+                  scope.prio.prio = selected;
+              }
+
+          }
+      });
   })();

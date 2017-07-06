@@ -52,20 +52,19 @@
               <div class="priority-container">
                 <div class="priority-content">
                   <span class="priotext">{{prio.text}}</span>
-                  <select ng-model="prio.additionalPrio" ng-change="change1(prio.additionalPrio)" required>
+                  <select ng-model="prio.additionalPrio" ng-change="changeOption(prio.additionalPrio); selectPrio(prio.additionalPrio)" required>
                     <option ng-repeat="option in prio.options" value="{{$index}}">{{option}}</option>
                   </select>
-                  <select ng-model="prio.additionalPrio2" ng-change="change2(prio.additionalPrio2)" required>
+                  <select ng-model="prio.additionalPrio2" ng-change="changePrio(prio.additionalPrio2); selectPrio(prio.additionalPrio2)" required>
                     <option ng-repeat="option in prio.prio" value="{{$index}}">{{option}}</option>
                   </select>
-                  <select ng-model="prio.additionalPrio3" ng-change="change3(prio.additionalPrio3)" required>
-                    <option ng-repeat="option in prio.program" value="{{$index}}">{{option}}</option>
-                  </select>
-                  Aktivieren: <input type="checkbox" name="" value="">
                 </div>
               </div>
             </li>
           </ul>
+          <%--<select ng-model="prio.additionalPrio3" ng-change="change3(prio.additionalPrio3)" required>--%>
+            <%--<option ng-repeat="option in possibleAdditionalPriorities.program" value="{{$index}}">{{option}}</option>--%>
+          <%--</select>--%>
           <button type="button" name="button" ng-click="save()">Speichern</button>
 		  <form action="<c:url value="/algorithm.html" />" >
 		            <button type="submit" name="action">Stundenplan erstellen</button>
