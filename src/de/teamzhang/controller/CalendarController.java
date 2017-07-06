@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,7 +89,7 @@ public class CalendarController extends AbstractController {
 			isProf = true;
 		teacher.setProf(isProf);
 		ObjectMapper mapper = new ObjectMapper();
-		//		System.out.println(prios);
+		// System.out.println(prios);
 		List<Course> courseList = new ArrayList<Course>();
 		try {
 			@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -99,12 +100,15 @@ public class CalendarController extends AbstractController {
 					for (Map<?, ?> course : courses) {
 						Course c = new Course();
 						c.setName((String) course.get("kurzname"));
+
 						int sws = Integer.parseInt((String) course.get("sws"));
 						if (sws % 2 == 1)
 							sws += 1;
 						int slotsNeeded = sws / 2;
 						c.setSlotsNeeded(slotsNeeded);
 						c.setGroup((String) course.get("parallelgruppe"));
+						addSemesters(c, course);
+
 						courseList.add(c);
 					}
 				} else if (m.get("type").equals("Schedule")) {
@@ -120,7 +124,7 @@ public class CalendarController extends AbstractController {
 						prio = new SimplePrio();
 					} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
 						prio = new ExcludeDayCombinationPrio();
-						//					if (!m.get("title").equals("Tage ausschließen")) {
+						// if (!m.get("title").equals("Tage ausschließen")) {
 						if (m.get("dayOne").equals(Type.class)) {
 							((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt((String) m.get("dayOne")));
 						}
@@ -136,18 +140,18 @@ public class CalendarController extends AbstractController {
 					} else if (m.get("type").equals("FreeTextInputPrio")) {
 						prio = new FreeTextInputPrio();
 					}
-					/*try {
-						if (m.get("course").equals("Alle Kurse")) {
-							prio.setValidForAllCourses(true);
-						} else
-							prio.setCourse(Integer.parseInt((String) m.get("course")));
-					} catch (NullPointerException ne) {*/
+					/*
+					 * try { if (m.get("course").equals("Alle Kurse")) {
+					 * prio.setValidForAllCourses(true); } else
+					 * prio.setCourse(Integer.parseInt((String)
+					 * m.get("course"))); } catch (NullPointerException ne) {
+					 */
 					// no courses chosen, we assume all
-					//TODO: set valid for certain courses
+					// TODO: set valid for certain courses
 					prio.setValidForAllCourses(true);
-					//}
+					// }
 					prio.setName((String) m.get("title"));
-					//prio.setUserId(userId);
+					// prio.setUserId(userId);
 					try {
 						@SuppressWarnings("unchecked")
 						List<String> text = (List<String>) m.get("text");
@@ -163,7 +167,7 @@ public class CalendarController extends AbstractController {
 						prio.setText((String) m.get("text"));
 					}
 					teacher.addPrio(prio);
-					//prio.setTeacher(teacher);
+					// prio.setTeacher(teacher);
 				}
 			}
 		} catch (JsonGenerationException e) {
@@ -180,13 +184,25 @@ public class CalendarController extends AbstractController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//for (Course c : courseList)
-		//c.setTeacher(teacher);
 		teacher.setCourses(courseList);
 		try {
 			mongoTemplate.insert(teacher, "teachers");
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+
+	}
+
+	private void addSemesters(Course c, Map<?, ?> course) {
+		String semesters = (String) course.get("semester");
+		List<String> semesterList = Arrays.asList(semesters.split(","));
+		for (String s : semesterList) {
+			try {
+				int semesterNumber = Integer.parseInt(s.replaceAll(" ", ""));
+				c.addSemester(semesterNumber);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 	}

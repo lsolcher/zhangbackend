@@ -1,6 +1,8 @@
 package de.teamzhang.model;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
@@ -17,9 +19,14 @@ public class Course {
 	private int day;
 	private int time;
 	private boolean isSet = false;
+	private List<Integer> semesters = new ArrayList<Integer>();
 
 	public Course() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public void addSemester(int semester) {
+		semesters.add(semester);
 	}
 
 	public String getGroup() {
