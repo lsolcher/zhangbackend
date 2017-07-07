@@ -1,14 +1,5 @@
 [
  {
-   "semester": "6",
-   "kurzname": "AWE CoCa",
-   "sws": 2,
-   "veranstaltungsart": "Seminaristischer Lehrvortrag",
-   "rhythmus": "w�chentlich",
-   "parallelgrupper": "Gruppe A",
-   "stg_name": "Angewandte Informatik"
- },
- {
    "semester": "1,3",
    "kurzname": "EnM2Ts",
    "sws": 4,
@@ -289,7 +280,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "INFO 1",
+   "kurzname": "INFO 1 (SU)",
    "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -298,7 +289,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "INFO 1",
+   "kurzname": "INFO 1 (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -307,7 +298,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "INFO 1",
+   "kurzname": "INFO 1 (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -316,7 +307,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "INFO 1",
+   "kurzname": "INFO 1 (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -325,7 +316,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "INFO 2",
+   "kurzname": "INFO 2 (SU)",
    "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -334,7 +325,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "INFO 2",
+   "kurzname": "INFO 2 (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -343,7 +334,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "INFO 2",
+   "kurzname": "INFO 2 (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -352,7 +343,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "INFO 3",
+   "kurzname": "INFO 3 (SU)",
    "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -361,7 +352,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "INFO 3",
+   "kurzname": "INFO 3 (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -370,7 +361,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "INFO 3",
+   "kurzname": "INFO 3 (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -379,7 +370,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "CS",
+   "kurzname": "CS (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -388,7 +379,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "CS",
+   "kurzname": "CS (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -397,7 +388,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "CS",
+   "kurzname": "CS (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -406,7 +397,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "MATHE 1",
+   "kurzname": "MATHE 1 (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -415,7 +406,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "MATHE 1",
+   "kurzname": "MATHE 1 (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -424,7 +415,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "MATHE 1",
+   "kurzname": "MATHE 1 (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -433,7 +424,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "MATHE 2",
+   "kurzname": "MATHE 2 (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -442,7 +433,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "MATHE 2",
+   "kurzname": "MATHE 2 (�)",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -451,7 +442,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "MATHE 2",
+   "kurzname": "MATHE 2 (�)",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -460,7 +451,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "GWP",
+   "kurzname": "GWP (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -469,7 +460,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "GWP",
+   "kurzname": "GWP (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -478,7 +469,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "GWP",
+   "kurzname": "GWP (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -487,7 +478,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "GRDL DIME",
+   "kurzname": "GRDL DIME (SU)",
    "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -496,7 +487,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "GRDL DIME",
+   "kurzname": "GRDL DIME (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -505,7 +496,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "GRDL DIME",
+   "kurzname": "GRDL DIME (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -514,7 +505,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "NETZ",
+   "kurzname": "NETZ (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -523,7 +514,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "NETZ",
+   "kurzname": "NETZ (�)",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -532,7 +523,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "NETZ",
+   "kurzname": "NETZ (�)",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -541,7 +532,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "NETZ",
+   "kurzname": "NETZ (�)",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -550,7 +541,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "P & MT",
+   "kurzname": "P & MT (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -559,7 +550,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "P & MT",
+   "kurzname": "P & MT (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -568,7 +559,7 @@
  },
  {
    "semester": "1",
-   "kurzname": "P & MT",
+   "kurzname": "P & MT (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -577,7 +568,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "MEWI",
+   "kurzname": "MEWI (SU)",
    "sws": 4,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -586,7 +577,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "MEWI",
+   "kurzname": "MEWI (�)",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -595,7 +586,7 @@
  },
  {
    "semester": "2",
-   "kurzname": "MEWI",
+   "kurzname": "MEWI (�)",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -604,7 +595,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "DB",
+   "kurzname": "DB (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -613,7 +604,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "DB",
+   "kurzname": "DB (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -622,7 +613,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "DB",
+   "kurzname": "DB (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -631,7 +622,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "BV",
+   "kurzname": "BV (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -640,7 +631,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "BV",
+   "kurzname": "BV (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -649,7 +640,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "BV",
+   "kurzname": "BV (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -658,7 +649,7 @@
  },
  {
    "semester": "4",
-   "kurzname": "B19(SU)",
+   "kurzname": "B19 (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "Blockveranstaltung",
@@ -694,7 +685,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "CG",
+   "kurzname": "CG (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -703,7 +694,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "CG",
+   "kurzname": "CG (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -712,7 +703,7 @@
  },
  {
    "semester": "3",
-   "kurzname": "CG",
+   "kurzname": "CG (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -721,7 +712,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "MedProg",
+   "kurzname": "MedProg (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
@@ -730,7 +721,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "MedProg",
+   "kurzname": "MedProg (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -739,7 +730,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "VS",
+   "kurzname": "VS (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
@@ -748,7 +739,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "VS",
+   "kurzname": "VS (�)",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -757,7 +748,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "INTDES",
+   "kurzname": "INTDES (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
@@ -766,7 +757,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "INTDES",
+   "kurzname": "INTDES (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -775,7 +766,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "AKTH",
+   "kurzname": "AKTH (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
@@ -784,7 +775,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "AKTTH",
+   "kurzname": "AKTTH (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
@@ -793,7 +784,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "AKTH",
+   "kurzname": "AKTH (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -802,7 +793,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "AKTH",
+   "kurzname": "AKTH (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -811,7 +802,7 @@
  },
  {
    "semester": "5",
-   "kurzname": "PM",
+   "kurzname": "PM (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -820,7 +811,7 @@
  },
  {
    "semester": "5",
-   "kurzname": "PM",
+   "kurzname": "PM (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -919,7 +910,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "GT2(SU)",
+   "kurzname": "GT2(SU) (B)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -928,7 +919,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "GT2 (�)",
+   "kurzname": "GT2 (�) (B)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -937,7 +928,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "GT2 (�)",
+   "kurzname": "GT2 (�) (B)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -964,7 +955,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "VC2 (SU)",
+   "kurzname": "VC2 (SU) (B)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -973,7 +964,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "VC2 (�)",
+   "kurzname": "VC2 (�) (B)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -1009,7 +1000,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "WT2 (SU)",
+   "kurzname": "WT2 (SU) (B)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -1018,7 +1009,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "WT2 (�)",
+   "kurzname": "WT2 (�) (B)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -1027,7 +1018,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "WT2 (�)",
+   "kurzname": "WT2 (�) (B)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -1225,7 +1216,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "GT3",
+   "kurzname": "GT3 (P�)",
    "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1234,7 +1225,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "GT4",
+   "kurzname": "GT4 (P�)",
    "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1243,7 +1234,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "VC3",
+   "kurzname": "VC3 (P�)",
    "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "gerade Woche",
@@ -1252,7 +1243,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "VC3",
+   "kurzname": "VC3 (P�)",
    "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1261,7 +1252,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "WT1",
+   "kurzname": "WT1 (P�) (M)",
    "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "gerade Woche",
@@ -1270,7 +1261,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "WT3",
+   "kurzname": "WT3 (P�)",
    "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "gerade Woche",
@@ -1279,7 +1270,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "VC5",
+   "kurzname": "VC5 (P�)",
    "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1288,7 +1279,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "PROG",
+   "kurzname": "PROG (P�)",
    "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1297,7 +1288,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "M1",
+   "kurzname": "M1 (P�)",
    "sws": 6,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1306,7 +1297,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "M1",
+   "kurzname": "M1 (P�)",
    "sws": 6,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1315,7 +1306,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "MATH",
+   "kurzname": "MATH (P�)",
    "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1324,7 +1315,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "MATH",
+   "kurzname": "MATH (P�)",
    "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1333,7 +1324,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "M3",
+   "kurzname": "M3 (P�)",
    "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1342,7 +1333,7 @@
  },
  {
    "semester": "8",
-   "kurzname": "A&O",
+   "kurzname": "A&O (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -1513,7 +1504,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "GT1 (�)",
+   "kurzname": "GT1 (�) (M)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -1522,7 +1513,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "GT2 (�)",
+   "kurzname": "GT2 (�) (M)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -1549,7 +1540,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "VC1 (�)",
+   "kurzname": "VC1 (�) (M)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -1567,7 +1558,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "VC2 (�)",
+   "kurzname": "VC2 (�) (M)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -1585,7 +1576,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "WT2 (�)",
+   "kurzname": "WT2 (�) (M)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -1612,7 +1603,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "WT1 (�)",
+   "kurzname": "WT1 (�) (M)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -1630,7 +1621,7 @@
  },
  {
    "semester": "8,9",
-   "kurzname": "M9+12IS(�)",
+   "kurzname": "M9 + 12IS (�)",
    "sws": 3,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -1639,7 +1630,7 @@
  },
  {
    "semester": "8,9",
-   "kurzname": "M9+12IP(�)",
+   "kurzname": "M9 + 12IP (�)",
    "sws": 3,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -1648,7 +1639,7 @@
  },
  {
    "semester": "8,9",
-   "kurzname": "M9+12SR(�)",
+   "kurzname": "M9 + 12SR (�)",
    "sws": 3,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -1657,7 +1648,7 @@
  },
  {
    "semester": "8,9",
-   "kurzname": "M9+12PR(�)",
+   "kurzname": "M9 + 12PR (�)",
    "sws": 3,
    "veranstaltungsart": "�bung",
    "rhythmus": "",
@@ -1666,7 +1657,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "GT1(P�)",
+   "kurzname": "GT1 (P�) (M)",
    "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
@@ -1675,7 +1666,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "GT2(P�)",
+   "kurzname": "GT2 (P�) (M)",
    "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
@@ -1684,7 +1675,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "VC1(P�)",
+   "kurzname": "VC1 (P�) (M)",
    "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
@@ -1693,7 +1684,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "VC2(P�)",
+   "kurzname": "VC2 (P�) (M)",
    "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
@@ -1702,7 +1693,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "VC4(P�)",
+   "kurzname": "VC4 (P�)",
    "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
@@ -1711,7 +1702,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "WT2(P�)",
+   "kurzname": "WT2 (P�) (M)",
    "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
@@ -1720,7 +1711,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "WT4(P�)",
+   "kurzname": "WT4 (P�)",
    "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
