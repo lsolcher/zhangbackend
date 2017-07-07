@@ -136,7 +136,7 @@
  },
  {
    "semester": "6",
-   "kurzname": "AWE:DiFok",
+   "kurzname": "AWE: DiFok",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
@@ -154,7 +154,7 @@
  },
  {
    "semester": "6",
-   "kurzname": "AWE:PhilSF",
+   "kurzname": "AWE: PhilSF",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
@@ -711,7 +711,7 @@
    "stg_name": "Internationale Medieninformatik (B)"
  },
  {
-   "semester": "5,6",
+   "semester": "7",
    "kurzname": "MedProg (SU)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
@@ -720,7 +720,7 @@
    "stg_name": "Internationale Medieninformatik (B)"
  },
  {
-   "semester": "5,6",
+   "semester": "7",
    "kurzname": "MedProg (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
@@ -802,7 +802,7 @@
  },
  {
    "semester": "5",
-   "kurzname": "PM (�)",
+   "kurzname": "PM",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -811,7 +811,7 @@
  },
  {
    "semester": "5",
-   "kurzname": "PM (�)",
+   "kurzname": "PM",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -910,7 +910,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "GT2(SU) (B)",
+   "kurzname": "GT2 (SU) (B)",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "w�chentlich",
@@ -1036,7 +1036,7 @@
  },
  {
    "semester": "5,6",
-   "kurzname": "WTAT 2 (�)",
+   "kurzname": "WTAT2 (�)",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "gerade Woche",
@@ -1045,7 +1045,7 @@
  },
  {
    "semester": "6",
-   "kurzname": "B30 (�)",
+   "kurzname": "B30",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -1054,7 +1054,7 @@
  },
  {
    "semester": "6",
-   "kurzname": "B30 (�)",
+   "kurzname": "B30",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -1063,7 +1063,7 @@
  },
  {
    "semester": "6",
-   "kurzname": "B30 (�)",
+   "kurzname": "B30",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -1072,7 +1072,7 @@
  },
  {
    "semester": "6",
-   "kurzname": "B30 (�)",
+   "kurzname": "B30",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -1081,7 +1081,7 @@
  },
  {
    "semester": "6",
-   "kurzname": "B30 (�)",
+   "kurzname": "B30",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -1090,7 +1090,7 @@
  },
  {
    "semester": "6",
-   "kurzname": "B30 (�)",
+   "kurzname": "B30",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -1099,7 +1099,7 @@
  },
  {
    "semester": "6",
-   "kurzname": "B30 (�)",
+   "kurzname": "B30",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -1108,7 +1108,7 @@
  },
  {
    "semester": "6",
-   "kurzname": "B30 (�)",
+   "kurzname": "B30",
    "sws": 1,
    "veranstaltungsart": "�bung",
    "rhythmus": "ungerade Woche",
@@ -1180,7 +1180,7 @@
  },
  {
    "semester": "7,9",
-   "kurzname": "AWE:DiFok",
+   "kurzname": "AWE: DiFok",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
@@ -1189,7 +1189,7 @@
  },
  {
    "semester": "7,9",
-   "kurzname": "AWE:PhilSF",
+   "kurzname": "AWE: PhilSF",
    "sws": 2,
    "veranstaltungsart": "Seminaristischer Unterricht",
    "rhythmus": "",
@@ -1270,7 +1270,7 @@
  },
  {
    "semester": "7,8,9",
-   "kurzname": "VC5 (P�)",
+   "kurzname": "VC5",
    "sws": 3,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1279,7 +1279,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "PROG (P�)",
+   "kurzname": "PROG",
    "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1288,7 +1288,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "M1 (P�)",
+   "kurzname": "M1",
    "sws": 6,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1297,7 +1297,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "M1 (P�)",
+   "kurzname": "M1",
    "sws": 6,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1306,7 +1306,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "MATH (P�)",
+   "kurzname": "MATH",
    "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1315,7 +1315,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "MATH (P�)",
+   "kurzname": "MATH",
    "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1324,7 +1324,7 @@
  },
  {
    "semester": "7",
-   "kurzname": "M3 (P�)",
+   "kurzname": "M3",
    "sws": 4,
    "veranstaltungsart": "Praktische �bung",
    "rhythmus": "w�chentlich",
@@ -1333,7 +1333,7 @@
  },
  {
    "semester": "8",
-   "kurzname": "A&O (�)",
+   "kurzname": "A&O",
    "sws": 2,
    "veranstaltungsart": "�bung",
    "rhythmus": "w�chentlich",
@@ -1603,6 +1603,15 @@
  },
  {
    "semester": "7,8,9",
+   "kurzname": "WT5 (�)",
+   "sws": 2,
+   "veranstaltungsart": "�bung",
+   "rhythmus": "",
+   "parallelgrupper": "",
+   "stg_name": "Internationale Medieninformatik (M)"
+ },
+ {
+   "semester": "7,8,9",
    "kurzname": "WT1 (�) (M)",
    "sws": 2,
    "veranstaltungsart": "�bung",
@@ -1712,6 +1721,15 @@
  {
    "semester": "7,8,9",
    "kurzname": "WT4 (P�)",
+   "sws": 3,
+   "veranstaltungsart": "Vorlesung",
+   "rhythmus": "",
+   "parallelgrupper": "",
+   "stg_name": "Internationale Medieninformatik (M)"
+ },
+ {
+   "semester": "7,8,9",
+   "kurzname": "WT5 (P�)",
    "sws": 3,
    "veranstaltungsart": "Vorlesung",
    "rhythmus": "",
