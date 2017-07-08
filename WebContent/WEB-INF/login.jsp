@@ -39,8 +39,8 @@
 	        <fieldset>
 	          <legend></legend>
 	          
-	          <label for="name">Nachname:</label>
-	          <input type="text" th:field="*{username}" id="name" name="username">
+				<label for="name">Mail:</label>
+				<input type="text" th:field="*{mail}" id="name" name="username">
 	          
 	          <label for="password">Password:</label>
 	          <input type="password" th:field="*{password}" id="password" name="password">
