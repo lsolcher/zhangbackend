@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.mongodb.DB;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 
 import de.teamzhang.model.User;
 
@@ -30,16 +32,13 @@ public class DataController {
 	@GetMapping(value = "/signup")
 	protected ModelAndView signupPage(HttpServletRequest request, HttpServletResponse arg1) {
 		ModelAndView modelandview = new ModelAndView("signup");
-		User user = new User();
-		user.setFirstName("test");
-		modelandview.addObject("user", user);
-
 		return modelandview;
 	}
 
 	@PostMapping(value = "/signup")
 	public ModelAndView registerUser(Model model, @ModelAttribute("user") User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setUsername(user.getMail());
 		try {
 			if (!mongoTemplate.collectionExists(User.class)) {
 				mongoTemplate.createCollection(User.class);
@@ -47,10 +46,20 @@ public class DataController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		user.setRole(0);
-		mongoTemplate.insert(user, "user");
+		DBCollection users = mongoTemplate.getCollection("user");
+		BasicDBObject mail = new BasicDBObject();
+		mail.put("mail", user.getMail());
+		boolean userExists = false;
+		DBCursor curs = users.find(mail);
+		if (curs.size() > 0)
+			userExists = true;
 		ModelAndView index = new ModelAndView(new RedirectView("index.html"));
-		index.addObject("test");
+		if (!userExists) {
+			mongoTemplate.insert(user, "user");
+			index.addObject("registrationSuccess");
+		} else {
+			index.addObject("userExists");
+		}
 		return index;
 	}
 
@@ -60,18 +69,18 @@ public class DataController {
 		return modelandview;
 	}
 
-	@PostMapping(value = "/login")
+	/*@PostMapping(value = "/login")
 	public ModelAndView loginVerification(Model model, @ModelAttribute("user") User user) {
-
+	
 		user.getPassword();
 		user.getLastName();
-
+	
 		DB db = mongoTemplate.getDb();
 		// db.get
 		// db.command()
-
+	
 		// mongoTemplate.getDb().
-
+	
 		// boolean auth = db.authenticate("user", "password".toCharArray());
 		//
 		// if (success)
@@ -81,7 +90,7 @@ public class DataController {
 		// return new ModelAndView("loginFail");
 		return null;
 		// }
-	}
+	}*/
 
 	@GetMapping(value = "/controlpanel")
 	protected ModelAndView controlpanelPage(HttpServletRequest request, HttpServletResponse arg1) {

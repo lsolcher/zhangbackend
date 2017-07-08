@@ -22,7 +22,7 @@ public class SecUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		User user = userRepository.findByLastName(username);
+		User user = userRepository.findByMail(username);
 
 		if (user == null) {
 			throw new UsernameNotFoundException(username);

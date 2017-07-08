@@ -33,7 +33,7 @@ public class SecUserDetails implements UserDetails {
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return user.getUsername();
+		return user.getMail();
 	}
 
 	@Override
