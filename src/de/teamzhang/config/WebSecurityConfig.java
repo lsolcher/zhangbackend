@@ -42,15 +42,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		//http.authorizeRequests().antMatchers("/", "/login", "/signup").permitAll().anyRequest().authenticated().and()
 		//		.formLogin().loginPage("/login.html").permitAll().and().logout().permitAll();
 
-		http.authorizeRequests().antMatchers("/signup**", "/login**", "/index**", "signupSuccess**").permitAll()
-				.anyRequest().authenticated().and().formLogin().loginPage("/index.html")
+		http.authorizeRequests().antMatchers("/controlpanel**").access("hasRole('ROLE_ADMIN')")
+				.antMatchers("/signup**", "/login**", "/index**").permitAll().anyRequest()
+				.access("hasRole('ROLE_USER')").and().formLogin().loginPage("/index.html")
 				.defaultSuccessUrl("/calendar.html", true).permitAll().and().logout().permitAll();
 
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder).and().inMemoryAuthentication()
+				.withUser("admin").password("admin").authorities("ROLE_USER", "ROLE_ADMIN");
 	}
 
 	@Bean

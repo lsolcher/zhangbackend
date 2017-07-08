@@ -1,10 +1,17 @@
 package de.teamzhang.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +46,18 @@ public class DataController {
 	public ModelAndView registerUser(Model model, @ModelAttribute("user") User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setUsername(user.getMail());
+		Collection<SimpleGrantedAuthority> oldAuthorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder
+				.getContext().getAuthentication().getAuthorities();
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_USER");
+		List<SimpleGrantedAuthority> updatedAuthorities = new ArrayList<SimpleGrantedAuthority>();
+		updatedAuthorities.add(authority);
+		SecurityContextHolder.getContext()
+				.setAuthentication(new UsernamePasswordAuthenticationToken(
+						SecurityContextHolder.getContext().getAuthentication().getPrincipal(),
+						SecurityContextHolder.getContext().getAuthentication().getCredentials(), updatedAuthorities));
+		/*Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		authorities.add(new SimpleGrantedAuthority("USER_ROLE"));
+		SecUserDetailsService service = new SecUserDetailsService();*/
 		try {
 			if (!mongoTemplate.collectionExists(User.class)) {
 				mongoTemplate.createCollection(User.class);

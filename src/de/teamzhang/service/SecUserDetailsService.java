@@ -22,12 +22,17 @@ public class SecUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		User user = userRepository.findByMail(username);
+		User user = null;
+		if (username.equals("admin"))
+			user = userRepository.findByUsername("admin");
+		else
+			user = userRepository.findByMail(username);
 
 		if (user == null) {
 			throw new UsernameNotFoundException(username);
 		} else {
 			UserDetails details = new SecUserDetails(user);
+			System.out.println(details.getAuthorities());
 			return details;
 		}
 	}

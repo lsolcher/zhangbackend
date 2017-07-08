@@ -1,9 +1,12 @@
 package de.teamzhang.model;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class SecUserDetails implements UserDetails {
@@ -20,8 +23,11 @@ public class SecUserDetails implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		List<SimpleGrantedAuthority> authList = new ArrayList<SimpleGrantedAuthority>();
+		authList.add(new SimpleGrantedAuthority("ROLE_USER"));
+		if (user.getUsername().equals("admin"))
+			authList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		return authList;
 	}
 
 	@Override
