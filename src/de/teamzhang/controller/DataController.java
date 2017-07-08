@@ -55,9 +55,7 @@ public class DataController {
 				.setAuthentication(new UsernamePasswordAuthenticationToken(
 						SecurityContextHolder.getContext().getAuthentication().getPrincipal(),
 						SecurityContextHolder.getContext().getAuthentication().getCredentials(), updatedAuthorities));
-		/*Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority("USER_ROLE"));
-		SecUserDetailsService service = new SecUserDetailsService();*/
+
 		try {
 			if (!mongoTemplate.collectionExists(User.class)) {
 				mongoTemplate.createCollection(User.class);

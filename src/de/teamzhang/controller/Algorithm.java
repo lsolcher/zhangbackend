@@ -238,8 +238,8 @@ public class Algorithm {
 		// printMap(slots.getSlots());
 
 		optimalThreshold = 700;
-		ModelAndView modelandview = new ModelAndView("calendar");
-		return modelandview;
+
+		return new ModelAndView("redirect:" + "index.html");
 		//return "generated a plan with " + minusPoints + " minuspoints.";
 	}
 

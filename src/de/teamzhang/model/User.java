@@ -18,6 +18,7 @@ public class User {
 	private String password;
 	private String username;
 	private int role;
+	private boolean enabled = false;
 
 	public String getFirstName() {
 		return firstName;

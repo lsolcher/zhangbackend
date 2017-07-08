@@ -140,13 +140,6 @@ public class CalendarController extends AbstractController {
 					} else if (m.get("type").equals("FreeTextInputPrio")) {
 						prio = new FreeTextInputPrio();
 					}
-					/*
-					 * try { if (m.get("course").equals("Alle Kurse")) {
-					 * prio.setValidForAllCourses(true); } else
-					 * prio.setCourse(Integer.parseInt((String)
-					 * m.get("course"))); } catch (NullPointerException ne) {
-					 */
-					// no courses chosen, we assume all
 					// TODO: set valid for certain courses
 					prio.setValidForAllCourses(true);
 					// }
