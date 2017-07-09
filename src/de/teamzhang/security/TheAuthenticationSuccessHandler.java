@@ -60,9 +60,9 @@ public class TheAuthenticationSuccessHandler implements AuthenticationSuccessHan
 		}
 
 		if (isUser) {
-			return "/homepage.html";
+			return "/calendar.html";
 		} else if (isAdmin) {
-			return "/console.html";
+			return "/controlpanel.html";
 		} else {
 			throw new IllegalStateException();
 		}

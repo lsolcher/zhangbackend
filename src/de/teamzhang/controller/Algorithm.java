@@ -247,7 +247,6 @@ public class Algorithm {
 		ModelAndView modelandview = new ModelAndView("algoSuccess");
 		modelandview.addObject("schedules", serialize);
 		return modelandview;
-		//return "generated a plan with " + minusPoints + " minuspoints.";
 	}
 
 	private void dropExistingSchedules() {

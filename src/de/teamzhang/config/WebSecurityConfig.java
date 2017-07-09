@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import de.teamzhang.security.TheAuthenticationSuccessHandler;
 import de.teamzhang.service.SecUserDetailsService;
 
 @Configuration
@@ -28,6 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
+
+	@Autowired
+	TheAuthenticationSuccessHandler successHandler;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -45,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/controlpanel**").access("hasRole('ROLE_ADMIN')")
 				.antMatchers("/signup**", "/login**", "/index**").permitAll().anyRequest()
 				.access("hasRole('ROLE_USER')").and().formLogin().loginPage("/index.html")
-				.defaultSuccessUrl("/calendar.html", true).permitAll().and().logout().permitAll();
+				.successHandler(successHandler).permitAll().and().logout().permitAll();
 
 	}
 
