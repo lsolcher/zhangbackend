@@ -6,5 +6,6 @@
 </head>
 <body>
     <h1>${errorMsg}</h1>
+    <h2><a href=${index}>zur Startseite</a></h2>
 </body>
 </html>

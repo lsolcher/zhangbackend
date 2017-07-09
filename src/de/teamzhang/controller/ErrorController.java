@@ -16,6 +16,7 @@ public class ErrorController {
 		ModelAndView errorPage = new ModelAndView("errorPage");
 		String errorMsg = "";
 		int httpErrorCode = getErrorCode(httpRequest);
+		//Object lastUrl = httpRequest.getAttribute("javax.servlet.forward.request_uri");
 
 		switch (httpErrorCode) {
 		case 400: {
@@ -40,6 +41,7 @@ public class ErrorController {
 		}
 		}
 		errorPage.addObject("errorMsg", errorMsg);
+		errorPage.addObject("index", "/ZhangProjectBackend/index.html");
 		return errorPage;
 	}
 
