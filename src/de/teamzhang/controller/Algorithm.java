@@ -15,11 +15,12 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.portlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.mongodb.util.JSON;
 
 import de.teamzhang.model.CalculatedSchedule;
 import de.teamzhang.model.Course;
@@ -238,8 +239,14 @@ public class Algorithm {
 		// printMap(slots.getSlots());
 
 		optimalThreshold = 700;
-
-		return new ModelAndView("redirect:" + "index.html");
+		DBCollection schedules = mongoTemplate.getCollection("schedules");
+		DBCursor cursor = schedules.find();
+		JSON json = new JSON();
+		String serialize = json.serialize(cursor);
+		System.out.println(serialize);
+		ModelAndView modelandview = new ModelAndView("algoSuccess");
+		modelandview.addObject("schedules", serialize);
+		return modelandview;
 		//return "generated a plan with " + minusPoints + " minuspoints.";
 	}
 
