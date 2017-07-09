@@ -26,6 +26,10 @@ public class ErrorController {
 			errorMsg = "Http Error Code: 401. Unauthorized";
 			break;
 		}
+		case 403: {
+			errorMsg = "You do not have sufficient rights to access this page";
+			break;
+		}
 		case 404: {
 			errorMsg = "Http Error Code: 404. Resource not found";
 			break;
