@@ -14,7 +14,33 @@
 
       }
 
-      $rootScope.additionalPriorities = [];
+      //$rootScope.additionalPriorities = [];
+      $rootScope.additionalPriorities = [
+          {
+              type: 'additionalPrio',
+              title: 'MaxStunden',
+              options: '3',
+              text: 'Maximale Stunden pro Tag: ',
+              prio: 'hoch',
+              program: 'IMI-B'
+          },
+          {
+              type: 'additionalPrio',
+              title: 'MaxMinuspunkte',
+              options: '2',
+              text: 'Maximale Stunden pro Tag: ',
+              prio: 'niedrig',
+              program: 'IMI-B'
+          },
+          {
+              type: 'additionalPrio',
+              title: 'MaxPausen',
+              options: '1',
+              text: 'Maximale Stunden pro Tag: ',
+              prio: 'mittel',
+              program: 'IMI-B'
+          }
+      ];
       // $scope.selectPrio = function(index, prio) {
       //     var newPrio = jQuery.extend(true, {}, prio);
       //     newPrio.origin = index;
@@ -37,7 +63,8 @@
 	        url: '/ZhangProjectBackend/postConfig.json',
 	        data: JSON.stringify($rootScope.additionalPriorities),
 	        success: function(response) {
-	          console.log('Response', response);
+	          console.log('Responese', response);
+	          alert('Die Daten wurden erfolgreich in der Datenbank gespeichert.');
 	        },
 	        error: function(response) {
 	          console.error('Response', response);
