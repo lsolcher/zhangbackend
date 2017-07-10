@@ -18,6 +18,7 @@
   	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
   	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   	<spring:url var ="courses" value="/resources/js/courses.js" />
   	<script type="text/javascript" src="${courses}"></script>
   	<spring:url var ="priorities" value="/resources/js/priorities.js" />

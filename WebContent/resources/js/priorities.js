@@ -43,11 +43,13 @@
 
 	    	if ((newPrio.title == "Raumbeschaffenheit") && (numberOfSelectedRooms < numberOfCourses)) {
 	    		$rootScope.selectedPriorities.unshift(newPrio);
+                toastr.info('Die Prios wurde zur Liste hinzugefügt!');
 	    		numberOfSelectedRooms++;
 	    		numberOfPriosSelected++;
 	    	}
 	    	else if ((newPrio.title == "Wöchentliche Veranstaltungen") && (numberOfSelectedWeeklyLections < numberOfCourses)) {
     			$rootScope.selectedPriorities.unshift(newPrio);
+                toastr.info('Die Prios wurde zur Liste hinzugefügt!');
     			numberOfSelectedWeeklyLections++;
     			numberOfPriosSelected++;
     		}
@@ -65,6 +67,7 @@
         newPrios.push($rootScope.selectedPriorities[i]);
       }
       $rootScope.selectedPriorities = newPrios;
+      toastr.info('Die Prios wurde aus der Liste entfernt!');
 
       numberOfPriosSelected--;
       if (newPrio.title == "Raumbeschaffenheit") numberOfSelectedRooms--;
@@ -217,9 +220,11 @@
 	        data: JSON.stringify($rootScope.selectedPriorities),	// TODO: change to acceptedPriorities
 	        success: function(response) {
 	          console.log('Response', response);
+              toastr.success('Die Prios wurden erfolgreich gespeichert!');
 	        },
 	        error: function(response) {
 	          console.error('Response', response);
+              toastr.error('Die Prios wurden leider nicht gespeichert!');
 	        }
 	      });
     	// }
