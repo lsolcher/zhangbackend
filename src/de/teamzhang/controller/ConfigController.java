@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import de.teamzhang.model.Course;
 import de.teamzhang.model.StudentSettings;
 
 @Controller
@@ -32,29 +33,44 @@ public class ConfigController {
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			List<HashMap> list = mapper.readValue(props, List.class);
 			for (Map m : list) {
-				StudentSettings setting = new StudentSettings();
-				setting.setType((String) m.get("title"));
-				switch ((String) m.get("prio")) {
-				case "hoch":
-					setting.setMinusPoints(100);
-					break;
-				case "mittel":
-					setting.setMinusPoints(30);
-					break;
-				case "niedrig":
-					setting.setMinusPoints(10);
-					break;
-				}
-				setting.setValue(Integer.parseInt((String) m.get("options")));
-				setting.setProgram((String) m.get("program"));
-				try {
-					if (!mongoTemplate.collectionExists("settings")) {
-						mongoTemplate.createCollection("settings");
+				if (m.get("type").equals("additionalPrio")) {
+					String program = ((String) m.get("program"));
+					List<HashMap> props2 = (List<HashMap>) m.get("props");
+					for (Map prop : props2) {
+						StudentSettings setting = new StudentSettings();
+						setting.setType((String) prop.get("title"));
+						try {
+							switch ((String) prop.get("prio")) {
+							case "hoch":
+								setting.setMinusPoints(100);
+								break;
+							case "mittel":
+								setting.setMinusPoints(30);
+								break;
+							case "niedrig":
+								setting.setMinusPoints(10);
+								break;
+							}	
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						try {
+							setting.setValue(Integer.parseInt((String) prop.get("option")));
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						setting.setProgram(program);
+						try {
+							if (!mongoTemplate.collectionExists("settings")) {
+								mongoTemplate.createCollection("settings");
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						mongoTemplate.insert(setting, "settings");
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
 				}
-				mongoTemplate.insert(setting, "settings");
+
 			}
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();
