@@ -45,31 +45,42 @@
     <div class="container">
       <div ng-controller="additionalPrioController">
 
+        <div class="priority-select-list">
+            <div class="priority-select-list-entry" ng-repeat="option in possibleAdditionalPriorities track by $index" ng-click="selectPrio($index, option)">
+                <div class="title">
+                    {{option.program}}
+                </div>
+            </div>
+        </div>
+
         <h4>Zusätzliche Optionen:</h4>
         <div class="selected-additional-priorities">
-          <ul id="additionalPriority-list" ng-repeat="prio in possibleAdditionalPriorities track by $index" AddPriority>
+          <ul id="additionalPriority-list" ng-repeat="info in additionalPriorities track by $index" AddPriority>
             <li class="priority-entry">
               <div class="priority-container">
                 <div class="priority-content">
-                  <span class="priotext">{{prio.text}}</span>
-                  <select ng-model="prio.additionalPrio" ng-change="change1(prio.additionalPrio)" required>
-                    <option ng-repeat="option in prio.options" value="{{$index}}">{{option}}</option>
-                  </select>
-                  <select ng-model="prio.additionalPrio2" ng-change="change2(prio.additionalPrio2)" required>
-                    <option ng-repeat="option in prio.prio" value="{{$index}}">{{option}}</option>
-                  </select>
-                  <select ng-model="prio.additionalPrio3" ng-change="change3(prio.additionalPrio3)" required>
-                    <option ng-repeat="option in prio.program" value="{{$index}}">{{option}}</option>
-                  </select>
-                  Aktivieren: <input type="checkbox" name="" value="">
+                  <span class="priotext">{{info.program}}</span>
+                    <div ng-repeat="item in info.props track by $index">
+                        <span>{{item.text}}</span><br>
+                        <select ng-model="item.option" ng-change="changeOption(item.option)" required>
+                            <option ng-repeat="option in item.options">{{option}}</option>
+                        </select>
+                        <spasn>Priorität: </spasn>
+                        <select ng-model="item.prio" ng-change="changePrio(item.prio)" required>
+                            <option ng-repeat="option in item.prios">{{option}}</option>
+                        </select>
+                  </div>
                 </div>
               </div>
             </li>
           </ul>
-          <button type="button" name="button" ng-click="save()">Speichern</button>
-		  <form action="<c:url value="/algorithm.html" />" >
-		            <button type="submit" name="action">Stundenplan erstellen</button>
-		  </form>
+          <%--<select ng-model="prio.additionalPrio3" ng-change="change3(prio.additionalPrio3)" required>--%>
+            <%--<option ng-repeat="option in possibleAdditionalPriorities.program" value="{{$index}}">{{option}}</option>--%>
+          <%--</select>--%>
+            <button type="button" class="btn btn-default" id="priorities-submit-button" name="button" ng-click="save()">Speichern</button>
+            <form action="<c:url value="/algorithm.html" />" >
+                <button type="submit" class="btn btn-default" id="priorities-submit-button"  name="action">Stundenplan erstellen</button>
+            </form>
         </div>
 
       </div>
