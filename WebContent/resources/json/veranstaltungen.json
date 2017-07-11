@@ -1127,7 +1127,7 @@
  {
    "semester": "2",
    "kurzname": "TuT Info1",
-   "sws": null,
+   "sws": 0,
    "veranstaltungsart": "Tutorium",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug",
@@ -1136,7 +1136,7 @@
  {
    "semester": "2",
    "kurzname": "TUT Info2",
-   "sws": null,
+   "sws": 0,
    "veranstaltungsart": "Tutorium",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 1. Gruppe",
@@ -1145,7 +1145,7 @@
  {
    "semester": "2",
    "kurzname": "TUT Info2",
-   "sws": null,
+   "sws": 0,
    "veranstaltungsart": "Tutorium",
    "rhythmus": "w�chentlich",
    "parallelgrupper": "1. Zug, nur 2. Gruppe",

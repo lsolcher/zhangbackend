@@ -24,15 +24,10 @@ import com.mongodb.util.JSON;
 
 import de.teamzhang.model.CalculatedSchedule;
 import de.teamzhang.model.Course;
-import de.teamzhang.model.CoursesPersistence;
 import de.teamzhang.model.Prio;
-import de.teamzhang.model.PrioPersistence;
 import de.teamzhang.model.Program;
-import de.teamzhang.model.ProgramPersistence;
 import de.teamzhang.model.Room;
-import de.teamzhang.model.RoomPersistence;
 import de.teamzhang.model.SingleChoicePrio;
-import de.teamzhang.model.SlotsPersistence;
 import de.teamzhang.model.StudentSettings;
 import de.teamzhang.model.Teacher;
 
@@ -42,23 +37,14 @@ public class Algorithm {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
-	// temporary holding the model
-	// TODO: replace with real models
-	private static CoursesPersistence courses = new CoursesPersistence();;
-	private static PrioPersistence prios = new PrioPersistence();
-	private static ProgramPersistence programs = new ProgramPersistence();
-	private static RoomPersistence rooms = new RoomPersistence();
-	private static SlotsPersistence slots = new SlotsPersistence();
-	//private static TeachersPersistence teachers = new TeachersPersistence();
-
-	private List<Teacher> allTeachers = new ArrayList<Teacher>();
-	private List<StudentSettings> allSettings = new ArrayList<StudentSettings>();
-
 	private static int MINUSPOINTTHRESHOLD = 10;
 
 	private static int RANDOMGENERATIONMINUSPOINTSTHRESHOLD = 150000;
+
 	static ArrayList<Course> allCourses = new ArrayList<Course>();
 	static ArrayList<Program> allPrograms = new ArrayList<Program>();
+	private List<Teacher> allTeachers = new ArrayList<Teacher>();
+	private List<StudentSettings> allSettings = new ArrayList<StudentSettings>();
 
 	private static Random randomGen = new Random();
 
@@ -70,10 +56,12 @@ public class Algorithm {
 	// 1. generate some testdata
 	@RequestMapping(value = "/algorithm", method = RequestMethod.GET)
 	private ModelAndView generateCalendar() {
+
 		dropExistingSchedules();
+		resetData();
 		setPrograms();
 		setTeachers();
-		mockCourseProgramMapping();
+		weightPrios();
 		setStudentPrios();
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses())
@@ -249,6 +237,13 @@ public class Algorithm {
 		return modelandview;
 	}
 
+	private void resetData() {
+		allCourses.clear();
+		allPrograms.clear();
+		allTeachers.clear();
+		allSettings.clear();
+	}
+
 	private void dropExistingSchedules() {
 		DBCollection schedules = mongoTemplate.getCollection("schedules");
 		schedules.drop();
@@ -267,17 +262,6 @@ public class Algorithm {
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses()) {
 				c.setTeacher(t);
-			}
-		}
-
-	}
-
-	private void mockCourseProgramMapping() {
-		for (Teacher t : allTeachers) {
-			for (Course c : t.getCourses()) {
-				int rand = (int) (Math.random() * 8);
-				Program p = allPrograms.get(rand);
-				c.setProgram(p);
 			}
 		}
 
@@ -597,12 +581,46 @@ public class Algorithm {
 			weightSingleSchedule(t);
 			//teachers.update(t);
 		}
+		DBCollection teachers = mongoTemplate.getCollection("teachers");
+		teachers.drop();
+		for (Teacher t : allTeachers) {
+			mongoTemplate.insert(t, "teachers");
+		}
+
 	}
 
-	private static void weightSingleSchedule(Teacher t) {
+	private void weightSingleSchedule(Teacher t) {
 		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
 		// 3 = auf keinen fall
 		// 0 = top
+		boolean isSet = true;
+		for (int i = 0; i < weightedDayTimeWishes.length; i++)
+			for (int j = 0; j < weightedDayTimeWishes[i].length; j++) {
+				if (weightedDayTimeWishes[i][j] != 1) {
+					isSet = true;
+					break;
+				}
+			}
+		if (!isSet)
+			mockWeightedDayTimeWishes(t);
+		else {
+			for (int days = 0; days < weightedDayTimeWishes.length; days++) {
+				for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
+					for (Prio p : t.getPrios()) {
+						if (p instanceof SingleChoicePrio) {
+							if (p.getName().equals("Unterrichtsbeginn"))
+								weightClassStart(t, (SingleChoicePrio) p);
+						}
+					}
+				}
+			}
+			t.setWeightedDayTimeWishes(weightedDayTimeWishes);
+		}
+
+	}
+
+	private void mockWeightedDayTimeWishes(Teacher t) {
+		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
 		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
 				int random = randomGen.nextInt(4) * 10;

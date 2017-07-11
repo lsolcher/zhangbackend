@@ -303,39 +303,6 @@ public class Teacher {
 	public void addMinusPoints(int i) {
 		minusPoints += i;
 	}
-	/*
-	 * private void calculatePrios() { for (Prio p : prios) { if (p instanceof
-	 * ExcludeDayCombinationPrio) {
-	 * weightExcludeDayCombinationPrio((ExcludeDayCombinationPrio) p); } else if
-	 * (p instanceof SingleChoicePrio) weightSingleChoicePrio(p); else if (p
-	 * instanceof SimplePrio) weightSimplePrio(p); else if (p instanceof
-	 * FreeTextInputPrio) ;
-	 * 
-	 * }
-	 * 
-	 * }
-	 * 
-	 * private static void weightSimplePrio(Prio p) { int[][]
-	 * weightedDayTimeWishes = p.getTeacher().getWeightedDayTimeWishes(); for
-	 * (int days = 0; days < weightedDayTimeWishes.length; days++) { for (int
-	 * time = 0; time < weightedDayTimeWishes[days].length; time++) {
-	 * 
-	 * } } }
-	 * 
-	 * private static void weightSingleChoicePrio(Prio p) {
-	 * 
-	 * }
-	 * 
-	 * // substract one minuspoint if days fit private void
-	 * weightExcludeDayCombinationPrio(ExcludeDayCombinationPrio p) { if
-	 * (!p.isExcluding()) { int dayOne = p.getDayOne(); int dayTwo =
-	 * p.getDayTwo(); for (int days = 0; days < weightedDayTimeWishes.length;
-	 * days++) { if (days == dayOne || days == dayTwo) for (int time = 0; time <
-	 * weightedDayTimeWishes[days].length; time++) {
-	 * weightedDayTimeWishes[days][time] -= 1; } } }
-	 * 
-	 * }
-	 */
 
 	public int getMinusPoints() {
 		return minusPoints;
@@ -356,5 +323,15 @@ public class Teacher {
 
 	public String getFirstName() {
 		return firstName;
+	}
+
+	public void setWeightedDayTimeWishes(ArrayList<Integer> calendar) {
+		for (int i = 0; i < calendar.size(); i++) {
+			System.out.println(i / 7);
+			System.out.println(i % 7);
+			weightedDayTimeWishes[i % 5][i / 5] = calendar.get(i);
+		}
+		System.out.println();
+
 	}
 }

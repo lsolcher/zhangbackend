@@ -104,6 +104,7 @@ public class CalendarController extends AbstractController {
 						try {
 							sws = (Integer) course.get("sws");
 						} catch (ClassCastException cce) {
+							cce.printStackTrace();
 							sws = Integer.parseInt((String) m.get("sws"));
 						}
 						if (sws % 2 == 1)
@@ -119,6 +120,8 @@ public class CalendarController extends AbstractController {
 					Prio prio = new Schedule();
 					ArrayList<Integer> calendar = (ArrayList<Integer>) m.get("calendar");
 					((Schedule) prio).setSchedule(calendar);
+					teacher.setWeightedDayTimeWishes(calendar);
+
 				} else {
 					Prio prio = new Prio();
 					if (m.get("type").equals("SingleChoicePrio")) {
