@@ -70,14 +70,16 @@ public class DataController {
 		DBCursor curs = users.find(mail);
 		if (curs.size() > 0)
 			userExists = true;
-		ModelAndView index = new ModelAndView(new RedirectView("index.html"));
+		ModelAndView returnSite = null;
 		if (!userExists) {
 			mongoTemplate.insert(user, "user");
-			index.addObject("registrationSuccess");
+			returnSite = new ModelAndView(new RedirectView("index.html"));
+			returnSite.addObject("registrationSuccess");
 		} else {
-			index.addObject("userExists");
+			returnSite = new ModelAndView(new RedirectView("signup.html"));
+			returnSite.addObject("userExists");
 		}
-		return index;
+		return returnSite;
 	}
 
 	@GetMapping(value = "/login")

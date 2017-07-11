@@ -100,8 +100,12 @@ public class CalendarController extends AbstractController {
 					for (Map<?, ?> course : courses) {
 						Course c = new Course();
 						c.setName((String) course.get("kurzname"));
-
-						int sws = (Integer) course.get("sws");
+						int sws = 0;
+						try {
+							sws = (Integer) course.get("sws");
+						} catch (ClassCastException cce) {
+							sws = Integer.parseInt((String) m.get("sws"));
+						}
 						if (sws % 2 == 1)
 							sws += 1;
 						int slotsNeeded = sws / 2;
@@ -144,7 +148,6 @@ public class CalendarController extends AbstractController {
 					prio.setValidForAllCourses(true);
 					// }
 					prio.setName((String) m.get("title"));
-					// prio.setUserId(userId);
 					try {
 						@SuppressWarnings("unchecked")
 						List<String> text = (List<String>) m.get("text");
@@ -152,7 +155,6 @@ public class CalendarController extends AbstractController {
 						if (text != null && !text.equals(""))
 							for (String s : text) {
 								sb.append(s);
-
 								sb.append("\t");
 							}
 						prio.setText((sb.toString()));
@@ -160,7 +162,6 @@ public class CalendarController extends AbstractController {
 						prio.setText((String) m.get("text"));
 					}
 					teacher.addPrio(prio);
-					// prio.setTeacher(teacher);
 				}
 			}
 		} catch (JsonGenerationException e) {

@@ -41,7 +41,7 @@ public class ErrorController {
 		}
 		}
 		errorPage.addObject("errorMsg", errorMsg);
-		errorPage.addObject("index", "/ZhangProjectBackend/index.html");
+		errorPage.addObject("index", "/ZhangProjectBackend/calendar.html");
 		return errorPage;
 	}
 
