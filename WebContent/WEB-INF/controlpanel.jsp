@@ -60,7 +60,7 @@
               <div class="priority-container">
                 <div class="priority-content">
                   <span class="priotext">{{info.program}}</span>
-                    <div ng-repeat="item in info.info track by $index">
+                    <div ng-repeat="item in info.props track by $index">
                         <span>{{item.text}}</span><br>
                         <select ng-model="item.option" ng-change="changeOption(item.option)" required>
                             <option ng-repeat="option in item.options">{{option}}</option>

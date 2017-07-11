@@ -14,33 +14,33 @@
 
       }
 
-      //$rootScope.additionalPriorities = [];
-      $rootScope.additionalPriorities = [
-          {
-              type: 'additionalPrio',
-              title: 'MaxStunden',
-              options: '3',
-              text: 'Maximale Stunden pro Tag: ',
-              prio: 'hoch',
-              program: 'IMI-B'
-          },
-          {
-              type: 'additionalPrio',
-              title: 'MaxMinuspunkte',
-              options: '2',
-              text: 'Maximale Stunden pro Tag: ',
-              prio: 'niedrig',
-              program: 'IMI-B'
-          },
-          {
-              type: 'additionalPrio',
-              title: 'MaxPausen',
-              options: '1',
-              text: 'Maximale Stunden pro Tag: ',
-              prio: 'mittel',
-              program: 'IMI-B'
-          }
-      ];
+      $rootScope.additionalPriorities = [];
+      // $rootScope.additionalPriorities = [
+      //     {
+      //         type: 'additionalPrio',
+      //         title: 'MaxStunden',
+      //         options: '3',
+      //         text: 'Maximale Stunden pro Tag: ',
+      //         prio: 'hoch',
+      //         program: 'IMI-B'
+      //     },
+      //     {
+      //         type: 'additionalPrio',
+      //         title: 'MaxMinuspunkte',
+      //         options: '2',
+      //         text: 'Maximale Stunden pro Tag: ',
+      //         prio: 'niedrig',
+      //         program: 'IMI-B'
+      //     },
+      //     {
+      //         type: 'additionalPrio',
+      //         title: 'MaxPausen',
+      //         options: '1',
+      //         text: 'Maximale Stunden pro Tag: ',
+      //         prio: 'mittel',
+      //         program: 'IMI-B'
+      //     }
+      // ];
       // $scope.selectPrio = function(index, prio) {
       //     var newPrio = jQuery.extend(true, {}, prio);
       //     newPrio.origin = index;
@@ -75,16 +75,15 @@
     $scope.possibleAdditionalPriorities = [
         {
             program: 'IMI-B',
-            info: [
+            type: 'additionalPrio',
+            props: [
               {
-                type: 'additionalPrio',
                 title: 'MaxStunden',
                 options: ['1','2', '3', '4', '5', '6', '7'],
                 text: 'Maximale Stunden pro Tag: ',
                 prios: ['hoch', 'mittel', 'niedrig'],
               },
               {
-                type: 'additionalPrio',
                 title: 'MaxMinuspunkte',
                 options: ['-3','-2', '-1'],
                 text: 'Maximale Minuspunkte: ',
@@ -92,7 +91,6 @@
 
               },
               {
-                type: 'additionalPrio',
                 title: 'MaxPausen',
                 options: ['1','2', '3', '4'],
                 text: 'Maximale Pausen pro Tag: ',
@@ -102,16 +100,15 @@
         },
         {
             program: 'IMI-M',
-            info: [
+            type: 'additionalPrio',
+            props: [
                 {
-                    type: 'additionalPrio',
                     title: 'MaxStunden',
                     options: ['1','2', '3', '4', '5', '6', '7'],
                     text: 'Maximale Stunden pro Tag: ',
                     prios: ['hoch', 'mittel', 'niedrig'],
                 },
                 {
-                    type: 'additionalPrio',
                     title: 'MaxMinuspunkte',
                     options: ['-3','-2', '-1'],
                     text: 'Maximale Minuspunkte: ',
@@ -119,7 +116,6 @@
 
                 },
                 {
-                    type: 'additionalPrio',
                     title: 'MaxPausen',
                     options: ['1','2', '3', '4'],
                     text: 'Maximale Pausen pro Tag: ',
