@@ -1,7 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
-<html ng-app="zhang-app" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,14 +24,10 @@
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
-		<spring:url var ="courses" value="/resources/js/courses.js" />
-		<script type="text/javascript" src="${courses}"></script>
-		<spring:url var ="priorities" value="/resources/js/priorities.js" />
-	 	<script type="text/javascript" src="${priorities}"></script>
-		<spring:url var ="calendar" value="/resources/js/calendar.js" />
-		<script type="text/javascript" src="${calendar}"></script>
 		<spring:url var ="bootstrap" value="/resources/js/bootstrap.js" />
 	  	<script type="text/javascript" src="${bootstrap}"></script>
+        <spring:url var ="layout" value="/resources/js/layout.js" />
+        <script type="text/javascript" src="${layout}"></script>
 		<!-- libs end -->
     </head>
     <body>
@@ -43,19 +39,19 @@
         <fieldset>
           <legend>Your basic info</legend>
           <label for="name">Vorname:</label>
-          <input type="text" th:field="*{firstName}" id="name" name="firstName">
+          <input type="text" th:field="*{firstName}" id="name" name="firstName" required>
           
           <label for="name">Nachname:</label>
-          <input type="text" th:field="*{lastName}" id="name" name="lastName">
+          <input type="text" th:field="*{lastName}" id="name" name="lastName" required>
           
           <label for="mail">Email:</label>
-          <input type="email" th:field="*{mail}" id="mail" name="mail">
+          <input type="email" th:field="*{mail}" id="mail" name="mail" required>
           
           <label for="password">Password:</label>
-          <input type="password" th:field="*{password}" id="password" name="password">
+          <input type="password" th:field="*{password}" id="password" name="password" required>
       
         <label for="job">Job Role:</label>
-        <select id="job" name="user_job">
+        <select id="job" name="user_job" required>
           <optgroup label="Universität">
             <option value="prof">Professor</option>
             <option value="teacher">Lehrkraft</option>
@@ -64,7 +60,7 @@
         </select>
         
         </fieldset>
-        <button type="submit" value="Submit">Sign Up</button>
+        <button type="submit" value="Submit" onclick="lala()">Sign Up</button>
       </form>
       
     </body>
