@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
@@ -78,9 +78,10 @@ public class CalendarController extends AbstractController {
 		while (cursor.hasNext()) {
 			DBObject resultElement = cursor.next();
 			Map resultElementMap = resultElement.toMap();
-			Collection resultValues = resultElementMap.values();
-			for (Object o : resultValues)
-				System.out.println(o.toString());
+			BasicDBList prios = (BasicDBList) resultElementMap.get("prios");
+			Map prioMap = prios.toMap();
+			modelandview.addAllObjects(prioMap);
+
 		}
 
 		return modelandview;
