@@ -581,11 +581,11 @@ public class Algorithm {
 			weightSingleSchedule(t);
 			//teachers.update(t);
 		}
-		DBCollection teachers = mongoTemplate.getCollection("teachers");
-		teachers.drop();
-		for (Teacher t : allTeachers) {
-			mongoTemplate.insert(t, "teachers");
-		}
+		//DBCollection teachers = mongoTemplate.getCollection("teachers");
+		//teachers.drop();
+		//for (Teacher t : allTeachers) {
+		//	mongoTemplate.insert(t, "teachers");
+		//}
 
 	}
 
