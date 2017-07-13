@@ -17,7 +17,7 @@ public class User {
 	private String mail;
 	private String password;
 	private String username;
-	private int role;
+	private int role; // 0 = prof; 1 = else
 	private boolean enabled = false;
 
 	public String getFirstName() {

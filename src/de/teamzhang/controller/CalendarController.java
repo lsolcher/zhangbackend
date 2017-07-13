@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +33,10 @@ import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 
 import de.teamzhang.model.Course;
 import de.teamzhang.model.ExcludeDayCombinationPrio;
@@ -41,6 +47,7 @@ import de.teamzhang.model.SecUserDetails;
 import de.teamzhang.model.SimplePrio;
 import de.teamzhang.model.SingleChoicePrio;
 import de.teamzhang.model.Teacher;
+import de.teamzhang.model.User;
 
 @Controller
 public class CalendarController extends AbstractController {
@@ -48,12 +55,83 @@ public class CalendarController extends AbstractController {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
 	protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse arg1)
 			throws Exception {
 		ModelAndView modelandview = new ModelAndView("calendar");
 		modelandview.addObject("veranstaltungen", getVeranstaltungen(request));
+		//modelandview.addObject(attributeValue)
+		//setUserTeachers();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		SecUserDetails userDetails = (SecUserDetails) authentication.getPrincipal();
+		//BigInteger userId = userDetails.getId();
+		User user = userDetails.getUser();
+
+		DBCollection teachers = mongoTemplate.getCollection("teachers");
+		BasicDBObject whereQuery = new BasicDBObject();
+		whereQuery.put("firstName", user.getFirstName());
+		whereQuery.put("lastName", user.getLastName());
+		DBCursor cursor = teachers.find(whereQuery);
+		while (cursor.hasNext()) {
+			DBObject resultElement = cursor.next();
+			Map resultElementMap = resultElement.toMap();
+			Collection resultValues = resultElementMap.values();
+			for (Object o : resultValues)
+				System.out.println(o.toString());
+		}
+
 		return modelandview;
+	}
+
+	private void setUserTeachers() {
+		List<Teacher> allTeachers = new ArrayList<Teacher>();
+		List<User> allUsers = new ArrayList<User>();
+		DBCollection teachersDB = mongoTemplate.getCollection("teachers");
+		DBCursor cursor = teachersDB.find();
+		while (cursor.hasNext()) {
+			DBObject obj = cursor.next();
+			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
+			allTeachers.add(t);
+		}
+		teachersDB.drop();
+		for (Teacher t : allTeachers) {
+			String firstLetter = t.getFirstName().substring(0, 1);
+			User user = new User();
+			user.setFirstName(t.getFirstName());
+			user.setLastName(t.getLastName());
+			user.setPassword(passwordEncoder.encode("test"));
+			String mail = firstLetter + "." + t.getLastName() + "@webmail.htw-berlin.de";
+			user.setMail(mail);
+			user.setUsername(mail);
+			if (t.isProf())
+				user.setRole(0);
+			else
+				user.setRole(1);
+			t.setUser(user);
+			allUsers.add(user);
+		}
+		DBCollection users = mongoTemplate.getCollection("user");
+		users.drop();
+		try {
+			if (!mongoTemplate.collectionExists("teachers")) {
+				mongoTemplate.createCollection("teachers");
+			}
+			if (!mongoTemplate.collectionExists("user")) {
+				mongoTemplate.createCollection("user");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for (Teacher t : allTeachers) {
+			mongoTemplate.insert(t, "teachers");
+		}
+		for (User t : allUsers) {
+			mongoTemplate.insert(t, "user");
+		}
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -88,6 +166,10 @@ public class CalendarController extends AbstractController {
 		if (userDetails.getUser().getRole() == 0)
 			isProf = true;
 		teacher.setProf(isProf);
+
+		User user = userDetails.getUser();
+		teacher.setUser(user);
+
 		ObjectMapper mapper = new ObjectMapper();
 		// System.out.println(prios);
 		List<Course> courseList = new ArrayList<Course>();

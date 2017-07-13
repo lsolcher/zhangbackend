@@ -12,6 +12,7 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,15 +28,20 @@ import de.teamzhang.model.Course;
 import de.teamzhang.model.Prio;
 import de.teamzhang.model.Program;
 import de.teamzhang.model.Room;
+import de.teamzhang.model.Schedule;
 import de.teamzhang.model.SingleChoicePrio;
 import de.teamzhang.model.StudentSettings;
 import de.teamzhang.model.Teacher;
+import de.teamzhang.model.User;
 
 @Controller
 public class Algorithm {
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	private static int MINUSPOINTTHRESHOLD = 10;
 
@@ -57,11 +63,13 @@ public class Algorithm {
 	@RequestMapping(value = "/algorithm", method = RequestMethod.GET)
 	private ModelAndView generateCalendar() {
 
+		//updateMissingData();
+		//weightPrios();
+
 		dropExistingSchedules();
 		resetData();
 		setPrograms();
 		setTeachers();
-		weightPrios();
 		setStudentPrios();
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses())
@@ -70,21 +78,6 @@ public class Algorithm {
 		mockRooms();
 
 		addTeachersToCourses();
-
-		//programs.generateMockData();
-		//teachers.generateMockData(allCourses, allPrograms);
-		//rooms.generateMockData();
-		//slots.generate(72, rooms.list());
-		//prios.generateMockData(teachers.list(), 4);
-
-		//courses.generateMockData(programs.list(), teachers.list());
-
-		/*printMap(programs.getPrograms());
-		printMap(teachers.getTeachers());
-		printMap(rooms.getRooms());
-		printMap(slots.getSlots());
-		printMap(prios.getPrios());
-		printMap(courses.getCourses());*/
 
 		weightPrios();
 
@@ -235,6 +228,53 @@ public class Algorithm {
 		ModelAndView modelandview = new ModelAndView("algoSuccess");
 		modelandview.addObject("schedules", serialize);
 		return modelandview;
+	}
+
+	private void updateMissingData() {
+		List<Teacher> allTeachers = new ArrayList<Teacher>();
+		List<User> allUsers = new ArrayList<User>();
+		DBCollection teachersDB = mongoTemplate.getCollection("teachers");
+		DBCursor cursor = teachersDB.find();
+		while (cursor.hasNext()) {
+			DBObject obj = cursor.next();
+			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
+			allTeachers.add(t);
+		}
+		teachersDB.drop();
+		for (Teacher t : allTeachers) {
+			String firstLetter = t.getFirstName().substring(0, 1);
+			User user = new User();
+			user.setFirstName(t.getFirstName());
+			user.setLastName(t.getLastName());
+			user.setPassword(passwordEncoder.encode("test"));
+			String mail = firstLetter + "." + t.getLastName() + "@webmail.htw-berlin.de";
+			user.setMail(mail);
+			user.setUsername(mail);
+			if (t.isProf())
+				user.setRole(0);
+			else
+				user.setRole(1);
+			t.setUser(user);
+			allUsers.add(user);
+		}
+		DBCollection users = mongoTemplate.getCollection("user");
+		users.drop();
+		try {
+			if (!mongoTemplate.collectionExists("teachers")) {
+				mongoTemplate.createCollection("teachers");
+			}
+			if (!mongoTemplate.collectionExists("user")) {
+				mongoTemplate.createCollection("user");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for (Teacher t : allTeachers) {
+			mongoTemplate.insert(t, "teachers");
+		}
+		for (User t : allUsers) {
+			mongoTemplate.insert(t, "user");
+		}
 	}
 
 	private void resetData() {
@@ -581,11 +621,6 @@ public class Algorithm {
 			weightSingleSchedule(t);
 			//teachers.update(t);
 		}
-		//DBCollection teachers = mongoTemplate.getCollection("teachers");
-		//teachers.drop();
-		//for (Teacher t : allTeachers) {
-		//	mongoTemplate.insert(t, "teachers");
-		//}
 
 	}
 
@@ -593,44 +628,18 @@ public class Algorithm {
 		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
 		// 3 = auf keinen fall
 		// 0 = top
-		boolean isSet = true;
-		for (int i = 0; i < weightedDayTimeWishes.length; i++)
-			for (int j = 0; j < weightedDayTimeWishes[i].length; j++) {
-				if (weightedDayTimeWishes[i][j] != 1) {
-					isSet = true;
-					break;
-				}
+		for (Prio p : t.getPrios()) {
+			if (p instanceof Schedule) {
+				int[] test = ((Schedule) p).getSchedule();
+				t.setWeightedDayTimeWishes(test);
+
 			}
-		if (!isSet)
-			mockWeightedDayTimeWishes(t);
-		else {
-			for (int days = 0; days < weightedDayTimeWishes.length; days++) {
-				for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
-					for (Prio p : t.getPrios()) {
-						if (p instanceof SingleChoicePrio) {
-							if (p.getName().equals("Unterrichtsbeginn"))
-								weightClassStart(t, (SingleChoicePrio) p);
-						}
-					}
-				}
-			}
-			t.setWeightedDayTimeWishes(weightedDayTimeWishes);
 		}
-
-	}
-
-	private void mockWeightedDayTimeWishes(Teacher t) {
-		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
 		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
-				int random = randomGen.nextInt(4) * 10;
-				if (random == 3)
-					random = 9999;
-				// add minus point if teacher is extern
-				if (!t.isProf())
-					random++;
-				weightedDayTimeWishes[days][time] = random;
+
 				for (Prio p : t.getPrios()) {
+
 					if (p instanceof SingleChoicePrio) {
 						if (p.getName().equals("Unterrichtsbeginn"))
 							weightClassStart(t, (SingleChoicePrio) p);
@@ -639,6 +648,36 @@ public class Algorithm {
 			}
 		}
 		t.setWeightedDayTimeWishes(weightedDayTimeWishes);
+
+	}
+
+	private void mockWeightedDayTimeWishes(Teacher t) {
+		/*int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
+		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
+			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
+				int random = randomGen.nextInt(4);
+				if (random == 3)
+					random = 9999;
+				// add minus point if teacher is extern
+				if (!t.isProf())
+					random++;
+				weightedDayTimeWishes[days][time] = random;
+				/*for (Prio p : t.getPrios()) {
+					if (p instanceof SingleChoicePrio) {
+						if (p.getName().equals("Unterrichtsbeginn"))
+							weightClassStart(t, (SingleChoicePrio) p);
+					}
+				}
+			}
+		}*/
+		ArrayList<Integer> sche = new ArrayList<Integer>();
+		for (int i = 0; i < 35; i++) {
+			int random = randomGen.nextInt(4);
+			sche.add(random);
+		}
+		Schedule s = new Schedule();
+		s.setSchedule(sche);
+		t.addPrio(s);
 
 	}
 

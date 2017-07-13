@@ -18,12 +18,20 @@ public class Teacher {
 	private List<Course> courses = new ArrayList<Course>();
 	private int[][] weightedDayTimeWishes = new int[5][7];
 	private boolean[][] fullSlots = new boolean[5][7];
-	private int teachingHours;
 	private int freeHours;
 	private List<Prio> prios = new ArrayList<Prio>();
 	private int minusPoints = 0;
+	private User user;
 
 	public Teacher() {
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public boolean isBusy() {
@@ -111,7 +119,6 @@ public class Teacher {
 			for (int inner = 0; inner < fullSlots[index].length; inner++)
 				fullSlots[index][inner] = false;
 
-		teachingHours = 0;
 	}
 
 	public boolean priosDontFit(Slot slot) {
@@ -333,5 +340,18 @@ public class Teacher {
 		}
 		System.out.println();
 
+	}
+
+	public void setWeightedDayTimeWishes(int[] calendar) {
+		for (int i = 0; i < calendar.length; i++) {
+			System.out.println(i / 7);
+			System.out.println(i % 7);
+			int points = calendar[i];
+			if (points == 3)
+				points = 10000;
+			else
+				points *= 10;
+			weightedDayTimeWishes[i % 5][i / 5] = points;
+		}
 	}
 }
