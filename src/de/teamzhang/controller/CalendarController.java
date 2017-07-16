@@ -79,8 +79,12 @@ public class CalendarController extends AbstractController {
 			DBObject resultElement = cursor.next();
 			Map resultElementMap = resultElement.toMap();
 			BasicDBList prios = (BasicDBList) resultElementMap.get("prios");
+			BasicDBList courses = (BasicDBList) resultElementMap.get("courses");
 			Map prioMap = prios.toMap();
+			Map courseMap = courses.toMap();
+
 			modelandview.addAllObjects(prioMap);
+			modelandview.addAllObjects(courseMap);
 
 		}
 
