@@ -58,6 +58,18 @@ header {
   margin-bottom: 10px;
 }
 
+#priorities-save-button {
+  position: absolute;
+  right:0;
+  bottom: 0;
+  margin: 12px 190px 10px 12px;
+  background: #a2c3d1;
+  border: none;
+  padding: 9px 18px;
+  color: var(--concrete);
+  box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.2) inset;
+}
+
 .navbar-brand > img {
   display: inline-block;
   margin-right: 12px;
@@ -198,6 +210,12 @@ header {
       }
       .title[data-prio='Weitere Sonderwünsche - wenn dringend notwendig']:before {
         background-image: url("../img/icn-text.svg");
+      }
+      .title[data-prio='IMI-B']:before {
+        background-image: url("../img/icn-computer.svg");
+      }
+      .title[data-prio='IMI-M']:before {
+        background-image: url("../img/icn-computer.svg");
       }
       .priority-select-list-entry .title:hover {
         cursor: pointer;
@@ -375,6 +393,17 @@ header {
     /*background: #fff;*/
     /*border: 1px dotted #d5e4ea;*/
 /*}*/
+
+
+
+
+/**********************
+    Control Panel
+**********************/
+.prop-wrapper {
+  padding: 42px;
+}
+
 
 
 

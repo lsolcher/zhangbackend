@@ -34,57 +34,65 @@
     <header>
       <div class="container">
 				<div class="navbar-header">
-					<a href="/" class="navbar-brand">HTW FB4 Lehreinsatzplanung</a>
+					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="" class="navbar-brand"><img src="/ZhangProjectBackend/resources/img/logo.png" width="39" />Lehreinsatzplanung</a>
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
-						<li><a href="#" id="logout">Logout</a></li>
+                        <li><a href="#" th:inline='text'>Herzlich Willkommen,  ${user.lastName} </a></li>
+						<li><a href="/ZhangProjectBackend/logout.html" id="logout" >Logout</a></li>
 					</ul>
 				</nav>
 			</div>
     </header>
-    <div class="container">
-      <div ng-controller="additionalPrioController">
+    <div class="container content-container">
+        <div class="row">
+            <div class="col-md-12 prop-wrapper">
+                <div ng-controller="additionalPrioController">
+                    <h5>Verfügbare Studiengänge: </h5>
+                    <div class="priority-select-list">
+                        <div class="priority-select-list-entry" ng-repeat="option in possibleAdditionalPriorities track by $index" ng-click="selectPrio($index, option)">
+                            <div class="title" data-prio={{option.program}}>
+                                {{option.program}}
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="priority-select-list">
-            <div class="priority-select-list-entry" ng-repeat="option in possibleAdditionalPriorities track by $index" ng-click="selectPrio($index, option)">
-                <div class="title">
-                    {{option.program}}
+                    <h5>Zusätzliche Optionen:</h5>
+                    <div class="selected-additional-priorities">
+                      <ul id="additionalPriority-list" ng-repeat="info in additionalPriorities track by $index" AddPriority>
+                        <li class="priority-entry">
+                          <div class="priority-container">
+                            <div class="priority-content">
+                                <span class="priotext">{{info.program}}</span>
+                                <div ng-repeat="item in info.props track by $index">
+                                    <span>{{item.text}}</span><br>
+                                    <select ng-model="item.option" ng-change="changeOption(item.option)" required>
+                                        <option ng-repeat="option in item.options">{{option}}</option>
+                                    </select>
+                                    <spasn>Priorität: </spasn>
+                                    <select ng-model="item.prio" ng-change="changePrio(item.prio)" required>
+                                        <option ng-repeat="option in item.prios">{{option}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+
+                      <button type="button" class="btn btn-default" id="priorities-save-button" name="button" ng-click="save()">Speichern</button>
+                      <form action="<c:url value="/algorithm.html" />" >
+                        <button type="submit" class="btn btn-default" id="priorities-submit-button"  name="action">Stundenplan erstellen</button>
+                      </form>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <h4>Zusätzliche Optionen:</h4>
-        <div class="selected-additional-priorities">
-          <ul id="additionalPriority-list" ng-repeat="info in additionalPriorities track by $index" AddPriority>
-            <li class="priority-entry">
-              <div class="priority-container">
-                <div class="priority-content">
-                  <span class="priotext">{{info.program}}</span>
-                    <div ng-repeat="item in info.props track by $index">
-                        <span>{{item.text}}</span><br>
-                        <select ng-model="item.option" ng-change="changeOption(item.option)" required>
-                            <option ng-repeat="option in item.options">{{option}}</option>
-                        </select>
-                        <spasn>Priorität: </spasn>
-                        <select ng-model="item.prio" ng-change="changePrio(item.prio)" required>
-                            <option ng-repeat="option in item.prios">{{option}}</option>
-                        </select>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <%--<select ng-model="prio.additionalPrio3" ng-change="change3(prio.additionalPrio3)" required>--%>
-            <%--<option ng-repeat="option in possibleAdditionalPriorities.program" value="{{$index}}">{{option}}</option>--%>
-          <%--</select>--%>
-            <button type="button" class="btn btn-default" id="priorities-submit-button" name="button" ng-click="save()">Speichern</button>
-            <form action="<c:url value="/algorithm.html" />" >
-                <button type="submit" class="btn btn-default" id="priorities-submit-button"  name="action">Stundenplan erstellen</button>
-            </form>
-        </div>
-
-      </div>
     </div>
 
   </body>
