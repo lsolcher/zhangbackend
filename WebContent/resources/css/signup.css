@@ -14,13 +14,15 @@ form,
   max-width: 300px;
   margin: 40px auto;
   padding: 10px 20px;
-  background: #f4f7f8;
-  border-radius: 8px;
+  background: #f3f3f3;
+  border-radius: 6px;
 }
 
-h1 {
-  margin: 20px 0 30px 0;
+h3 {
+  margin: 18px 0 24px 0;
+  text-transform: uppercase;
   text-align: center;
+  font-weight: 700;
 }
 
 input[type="text"],
@@ -69,14 +71,15 @@ button {
   font-style: normal;
   border-radius: 5px;
   width: 100%;
- /* border: 1px solid #3ac162;*/
-  border-width: 1px 1px 3px;
-  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  background: #0099da;
+  border: none;
+  color: #fff;
+  box-shadow: 0 -4px 0 rgba(0, 0, 0, 0.2) inset;
   margin-bottom: 10px;
 }
 
 fieldset {
-  margin-bottom: 30px;
+  margin-bottom: 12px;
   border: none;
 }
 
@@ -88,6 +91,7 @@ legend {
 label {
   display: block;
   margin-bottom: 8px;
+  font-size: 16px;
 }
 
 label.light {

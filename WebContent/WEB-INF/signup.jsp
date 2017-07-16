@@ -11,12 +11,11 @@
 	          <!-- styles -->
 	    <spring:url var ="bootstrapcss" value="/resources/css/bootstrap.css" />
 	    <link rel="stylesheet" href="${bootstrapcss}"/>
-	    <spring:url var ="style" value="/resources/css/style2.css" />
-	    <link rel="stylesheet" href="${style}">
+        <spring:url var ="style" value="/resources/css/style2.css" />
+        <link rel="stylesheet" href="${style}">
+        <spring:url var ="signup" value="/resources/css/signup.css" />
+        <link rel="stylesheet" href="${signup}">
 	    <link rel="stylesheet" href="css/normalize.css">
-        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-        <spring:url var ="style" value="/resources/css/signup.css" />
-    	<link rel="stylesheet" href="${style}">
 	    <!-- end of styles -->
 	
 	    	<!-- libs -->
@@ -32,12 +31,30 @@
     </head>
     <body>
 
+    <header>
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="" class="navbar-brand"><img src="/ZhangProjectBackend/resources/img/logo.png" width="39" />Lehreinsatzplanung</a>
+            </div>
+            <nav class="collapse navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav pull-right">
+                 <li><a href="/ZhangProjectBackend/index.html" id="login" >Anmeldung</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <form action="#" th:action="@{/signup}" th:object="${user}" method="post">
       
-        <h1>Sign Up</h1>
+        <h3>Registrierung</h3>
         
         <fieldset>
-          <legend>Your basic info</legend>
           <label for="name">Vorname:</label>
           <input type="text" th:field="*{firstName}" id="name" name="firstName" required>
           
