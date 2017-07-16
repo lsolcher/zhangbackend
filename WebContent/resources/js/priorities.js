@@ -262,6 +262,12 @@
         showCourses: false
       },
       {
+        type: 'ExcludeDayCombinationPrio',		// einfachauswahl
+        title: 'Tage kombinieren',
+        text: ['Wenn ich am ',' unterrichte, möchte ich auch am ',' unterrichten.'],
+        showCourses: false
+      },
+      {
         type: 'SingleChoicePrio',				// einfachauswahl
         title: 'Anzahl Veranstaltungen pro Tag',
         options: ['mehr Veranstaltungen pro Tag, weniger Tage die Woche','weniger Veranstaltungen pro Tag, mehr Tage die Woche'],
@@ -274,6 +280,13 @@
         text: 'Ich ziehe es vor die vierzehntägigen 4SWS meines Unterrichts in zwei wöchentliche Einzelveranstaltungen mit je 2SWS aufzuteilen.',
         showCourses: true
       },
+    {
+        type: 'SingleChoicePrio',				// einfachauswahl
+        title: 'Maximale Anzahl aufeinanderfolgender Lehrtage',
+        options: ['1','2','3','4','5'],
+        text: ['Ich möchte pro Woche nicht mehr als ', ' Tage am Stück unterrichten.'],
+        showCourses: false
+    },
       {
         type: 'ExcludeDayCombinationPrio',		// einfachauswahl
         title: 'Tage ausschließen',
@@ -284,12 +297,6 @@
         type: 'ExcludeDayCombinationPrio',		// einfachauswahl
         title: 'Uhrzeit ausschließen',
         text: ['Wenn ich am ',' um ',' unterrichte, möchte ich nicht am ',' um ',' unterrichten.'],
-        showCourses: false
-      },
-      {
-        type: 'ExcludeDayCombinationPrio',		// einfachauswahl
-        title: 'Tage kombinieren',
-        text: ['Wenn ich am ',' unterrichte, möchte ich auch am ',' unterrichten.'],
         showCourses: false
       },
       {
@@ -304,13 +311,6 @@
         title: 'Maximale Lehrtage pro Woche',
         options: ['1','2','3','4','5'],
         text: ['Ich möchte nicht mehr als ', ' Tage pro Woche an der Hochschule unterrichten.'],
-        showCourses: false
-      },
-      {
-        type: 'SingleChoicePrio',				// einfachauswahl
-        title: 'Maximale Anzahl aufeinanderfolgender Lehrtage',
-        options: ['1','2','3','4','5'],
-        text: ['Ich möchte pro Woche nicht mehr als ', ' Tage am Stück unterrichten.'],
         showCourses: false
       },
       {

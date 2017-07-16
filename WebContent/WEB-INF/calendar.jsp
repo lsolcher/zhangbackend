@@ -19,7 +19,7 @@
   	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
   	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  	<spring:url var ="courses" value="/resources/js/courses.js" />
+    <spring:url var ="courses" value="/resources/js/courses.js" />
   	<script type="text/javascript" src="${courses}"></script>
   	<spring:url var ="priorities" value="/resources/js/priorities.js" />
     <script type="text/javascript" src="${priorities}"></script>
@@ -29,21 +29,24 @@
   	<script type="text/javascript" src="${bootstrap}"></script>
     <!-- libs end -->
 
+    <script>
+        var initCourses = '<% String veranstaltungen = (String) request.getAttribute("veranstaltungen"); out.print(veranstaltungen); %>';
+        var user = '<% String user = (String) request.getAttribute("user"); out.print(user); %>';
+        try {
+            initCourses = JSON.parse(initCourses);
+            user = JSON.parse(user);
+        } catch(e) {
+        //console.log('NOOO', initCourses);
+          console.log(e.stack);
+        }
+    </script>
+
   </head>
   <body>
-
     <div class="course-selector-wrapper">
       <div class="course-selector" ng-controller="courseController">
         <span>Bitte ihre Lehrveranstaltungen auswählen</span>
-        <script>
-        	var initCourses = '<% String veranstaltungen = (String) request.getAttribute("veranstaltungen"); out.print(veranstaltungen); %>';
-        	try {
-        		initCourses = JSON.parse(initCourses);
-        	} catch(e) {
-        		//console.log('NOOO', initCourses);
-        		console.log(e.stack);
-        	}
-        </script>
+
         <div class="course-list">
           <input type="search" id="course-list-search" ng-model="search" placeholder="Durchsuche Kurse">
           <div class="course-scroll">
@@ -74,27 +77,24 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="" class="navbar-brand">HTW FB4 Lehreinsatzplanung</a>
+					<a href="" class="navbar-brand"><img src="/ZhangProjectBackend/resources/img/logo.png" width="39" />Lehreinsatzplanung</a>
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
-            <li><a href="#" id="add-course">Kurse bearbeiten</a></li>
+                        <li><a href="#" th:inline='text'>Herzlich Willkommen,  ${user.lastName} </a></li>
+                        <li><a href="#" id="add-course">Kurse bearbeiten</a></li>
 						<li><a href="/ZhangProjectBackend/logout.html" id="logout" >Logout</a></li>
 					</ul>
 				</nav>
 			</div>
     </header>
-    <div class="container">
+
+    <div class="container content-container">
+
       <div class="row">
 
-        <div class="col-md-6">
-          <h2>Kalenderauswahl</h2>
-          <div class="calendar-legend">
-    				<a href="#" class="preferred" prio="3">Bevorzugte Wahl</a>
-    				<a href="#" class="alternative" prio="2">Alternative Wahl</a>
-            <a href="#" class="impossible" prio="1">Grundsätzlich möglich</a>
-            <a href="#" class="no-pref-choice" prio="0">Nicht möglich</a>
-          </div>
+        <div class="col-md-5 calendar-wrapper">
+          <h3 class="headline">Kalenderauswahl</h3>
           <div class="calendar-content" ng-controller="prioController">
             <div class="week-days">
               <div class="week-day">MO</div>
@@ -116,20 +116,26 @@
               <div class="calendar-input" ng-repeat="time in calendar track by $index" ng-click="updateCalendar(calendar, $index);" value="{{$index}}" data-prio="{{time}}"></div>
             </div>
           </div>
+        <div class="calendar-legend">
+            <a href="#" class="preferred" prio="3">Bevorzugte Wahl</a>
+            <a href="#" class="alternative" prio="2">Alternative Wahl</a>
+            <a href="#" class="impossible" prio="1">Grundsätzlich möglich</a>
+            <a href="#" class="no-pref-choice" prio="0">Nicht möglich</a>
+        </div>
         </div>
 
-        <div class="col-md-6">
-          <h2>Sonderwünsche</h2>
+        <div class="col-md-7 priority-wrapper">
+          <h3 class="headline">Sonderwünsche</h3>
           <div class="wishes-section" ng-controller="prioController">
 
-            <p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwünsche hinsichtlich Ihrer Verfügbarkeiten an.
-            Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder einen Sonderwunsch wieder zu entfernen,
-            können Sie diese über den x-Button löschen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten
-            Einschränkungen und Sonderwünsche herangezogen.</p>
+            <%--<p>Bitte geben Sie hier gegebenenfalls spezielle Einschränkungen oder Sonderwünsche hinsichtlich Ihrer Verfügbarkeiten an.--%>
+            <%--Ihre Auswahl im Belegungsplan wird entsprechend dieser Vorgaben angepasst. Um eine Einschränkung oder einen Sonderwunsch wieder zu entfernen,--%>
+            <%--können Sie diese über den x-Button löschen. Als Grundlage zum Erstellen des Stundenplanes wird der Belegungsplan, sowie ggf. die hier definierten--%>
+            <%--Einschränkungen und Sonderwünsche herangezogen.</p>--%>
 
             <div class="priority-select-list">
               <div class="priority-select-list-entry" ng-repeat="option in possiblePriorities" ng-click="selectPrio($index, option)">
-                <div class="title">
+                <div class="title" data-prio={{option.title}} >
                   {{option.title}}
                 </div>
               </div>
@@ -141,14 +147,14 @@
               <ul id="priority-list" ng-repeat="prio in $root.selectedPriorities track by $index" priority>
                 <li class="priority-entry">
                   <div class="priority-label" ng-click="prio.hideContent ? prio.hideContent=false : prio.hideContent=true">{{prio.title}}</div>
-                  <div class="priority-delete" ng-click="removeEntry($index, prio)">x</div>
+                  <div class="priority-delete" ng-click="removeEntry($index, prio)"><img src="/ZhangProjectBackend/resources/img/icn-remove.svg" width="24" /></div>
                   <div class="priority-container" ng-hide="prio.hideContent">
                     <div ng-if="prio.type == 'SingleChoicePrio'" class="priority-content">
                       <span class="priotext">{{prio.text[0]}}</span>
                         <select ng-model="prio.singlechoice" ng-change="change(prio.singlechoice)" required>
                           <option ng-repeat="option in prio.options" value="{{$index}}">{{option}}</option>
                         </select>
-                        <span ng-show="myForm.prio.singlechoice.$touched && myForm.prio.singlechoice.$invalid">The name is required.</span>
+                        <%--<span ng-show="myForm.prio.singlechoice.$touched && myForm.prio.singlechoice.$invalid">The name is required.</span>--%>
                       <span class="priotext">{{prio.text[1]}}</span>
                     </div>
                     <div ng-if="prio.type == 'SimplePrio'" class="priority-content">
@@ -224,7 +230,8 @@
                     </div>
 
                     <div class="prio-course-select" ng-show="prio.showCourses">
-                      <select ng-change="changeCourse(prio.course)" class="select-course" ng-model="prio.course" required>
+                    <label>Kurs auswählen:</label>
+                    <select ng-change="changeCourse(prio.course)" class="select-course" ng-model="prio.course" required>
                         <option value="Alle Kurse">Alle Kurse</option>
                         <option ng-repeat="course in $root.courseList" value="{{course.id}}">{{course.kurzname}}</option>
                       </select>

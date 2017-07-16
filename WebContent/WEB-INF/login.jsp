@@ -40,10 +40,10 @@
 	          <legend></legend>
 	          
 				<label for="name">Mail:</label>
-				<input type="text" th:field="*{mail}" id="name" name="username">
+				<input type="text" th:field="*{mail}" id="name" name="username" required>
 	          
 	          <label for="password">Password:</label>
-	          <input type="password" th:field="*{password}" id="password" name="password">
+	          <input type="password" th:field="*{password}" id="password" name="password" required>
 	              
 	        </fieldset>
 	        <button type="submit" value="Submit">Log in</button>

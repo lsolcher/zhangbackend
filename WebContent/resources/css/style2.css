@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,300,400,700');
+
+:root {
+  --mako: #3e454c;
+  --concrete: #f3f3f3;
+  --cerulean: #0099da;
+}
 
 html, body {
     padding: 0;
@@ -6,22 +13,59 @@ html, body {
 }
 
 body {
-    font-family: 'Source Sans Pro', sans-serif;
+    background: url('../img/bg2.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+    /*font-family: 'Roboto Slab', serif;*/
     font-size: 14px;
 }
 
 header {
-    background: #0099da;
+    background: var(--mako);
     height: 50px;
 }
 
-h1, h2, h3, h4, h5 {
-  color: #0099da;
-  border-left: 3px solid #0099da;
-  padding-left: 7px;
+.content-container {
+  padding: 60px 0;
 }
 
+.row {
+  background: var(--concrete);
+  border-radius: 6px;
+}
 
+.col-md-5, .col-md-6, .col-md-7 {
+  padding: 12px 36px;
+}
+
+.headline {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+}
+
+#priorities-submit-button {
+  position: absolute;
+  right:0;
+  bottom: 0;
+  margin: 12px;
+  background: var(--cerulean);
+  border: none;
+  padding: 9px 18px;
+  color: var(--concrete);
+  box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.2) inset;
+  margin-bottom: 10px;
+}
+
+.navbar-brand > img {
+  display: inline-block;
+  margin-right: 12px;
+}
+.navbar-brand {
+  padding: 6px 0;
+  font-family: 'Roboto Slab', serif;
+}
 /**********************
     OVERLAY OPENER
 **********************/
@@ -88,6 +132,16 @@ h1, h2, h3, h4, h5 {
 /**********************
     PRIORITIES
 **********************/
+.priority-wrapper {
+  background: var(--mako);
+  height: 100%;
+  min-height: 630px;
+  border-radius: 0px 6px 6px 0px;
+  color: #fff;
+}
+.priority-wrapper h3 {
+  color: var(--cerulean);
+}
 .priority-select-list {
   margin: 0 0 30px;
   }
@@ -99,7 +153,52 @@ h1, h2, h3, h4, h5 {
         border: solid 1px #0099da;
         margin: 5px 0;
         padding: 6px;
+        font-weight: 300;
+        text-transform: uppercase;
     }
+    .title:before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      vertical-align: top;
+      background-size: 16px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+      .title[data-prio='Raumbeschaffenheit']:before {
+        background-image: url("../img/icn-room.svg");
+      }
+      .title[data-prio='Uhrzeit ausschließen']:before {
+        background-image: url("../img/icn-time.svg");
+      }
+      .title[data-prio='Tage ausschließen']:before {
+        background-image: url("../img/icn-day.svg");
+      }
+      .title[data-prio='Pausen']:before {
+      background-image: url("../img/icn-break.svg");
+      }
+      .title[data-prio='Tage kombinieren']:before {
+        background-image: url("../img/icn-link.svg");
+      }
+      .title[data-prio='Wöchentliche Veranstaltungen']:before {
+        background-image: url("../img/icn-week.svg");
+      }
+      .title[data-prio='Unterrichtsbeginn']:before {
+        background-image: url("../img/icn-forward.svg");
+      }
+      .title[data-prio='Anzahl Veranstaltungen pro Tag']:before {
+        background-image: url("../img/icn-format.svg");
+      }
+      .title[data-prio='Maximale Lehrtage pro Woche']:before {
+        background-image: url("../img/icn-week.svg");
+      }
+      .title[data-prio='Maximale Anzahl aufeinanderfolgender Lehrtage']:before {
+        background-image: url("../img/icn-linear.svg");
+      }
+      .title[data-prio='Weitere Sonderwünsche - wenn dringend notwendig']:before {
+        background-image: url("../img/icn-text.svg");
+      }
       .priority-select-list-entry .title:hover {
         cursor: pointer;
         background: #0099da;
@@ -108,7 +207,7 @@ h1, h2, h3, h4, h5 {
 
 .selected-priorities {
     float: left;
-    margin: 10px 0px;
+    margin: 12px 0px 42px;
     width: 100%;
   }
   #priority-list {
@@ -124,24 +223,25 @@ h1, h2, h3, h4, h5 {
           cursor: pointer;
           list-style: none;
           padding: 9px;
-          background: #d5e4ea;
-          border-radius: 3px;
+          background: var(--concrete);
+          color: var(--mako);
       }
       .priority-label{
         font-weight: 600;
         margin: 0 30px 0 0;
       }
       .priority-delete {
-        background: #0099da;
-        color: #fff;
         position: absolute;
-        right: 8px;
-        top: 8px;
-        border-radius: 50%;
-        width: 23px;
-        height: 23px;
-        text-align: center;
-        font-size: 14px;
+        right: 7px;
+        top: 7px;
+      }
+      .priority-container {
+        padding: 9px 0 3px;
+      }
+      .prio-course-select {
+        margin: 15px 0 0;
+        border-top: 1px solid #ccc;
+        padding-top: 15px;
       }
       .priority-entry textarea {
           display: block;
@@ -160,7 +260,13 @@ h1, h2, h3, h4, h5 {
 /**********************
     Calendar
 **********************/
+.calendar-wrapper {
+}
+.calendar-wrapper h3 {
+  color: var(--mako);
+}
 .calendar-legend {
+  padding: 15px 0;
   }
    .calendar-legend a {
     color: #000;
@@ -181,7 +287,7 @@ h1, h2, h3, h4, h5 {
     width: 25px;
   }
   .no-pref-choice:before{
-    background: #fff;
+    background: transparent;
     border: 1px dotted #d5e4ea;
   }
   .preferred:before {
@@ -195,10 +301,11 @@ h1, h2, h3, h4, h5 {
 }
 
 .calendar-content {
+  /*text-align: center;*/
   }
   .week-days {
-    margin: 10px 0 10px 82px;
-    width: 100%;
+    margin: 10px 0 10px 62px;
+    width: calc(100% - 56px);
     max-width: 700px;
     display: inline-flex;
   }
@@ -208,20 +315,25 @@ h1, h2, h3, h4, h5 {
     width: 50px;
     display: inline-block;
     text-align: center;
+    border-bottom: 3px solid #0099da;
+    padding: 6px 0;
   }
   .week-day:last-child {
       padding-right: 0;
   }
   .week-times {
-    max-width: 80px;
+    max-width: 53px;
     display: inline-block;
     vertical-align: top;
+    margin-right: 6px;
   }
   .week-time {
     height: 50px;
     display: inline-flex;
     margin: 0 0 6px 0;
     align-items: center;
+    border-right: 3px solid #d9dedf;
+    padding: 0 6px 0 0;
 }
 
 .calendar-body {
@@ -238,31 +350,31 @@ h1, h2, h3, h4, h5 {
     transition: all 300ms;
   }
   .calendar-input[data-prio="0"] {
-    background: #fff;
+    background: transparent;
     border: 1px dotted #d5e4ea;
   }
-  .calendar-input[data-prio="0"]:hover {
-    background: #d5e4ea;
-  }
+  /*.calendar-input[data-prio="0"]:hover {*/
+    /*background: #d5e4ea;*/
+  /*}*/
   .calendar-input[data-prio="1"] {
     background: #d5e4ea;
   }
-  .calendar-input[data-prio="1"]:hover {
-    background: #7dbbd6;
-  }
+  /*.calendar-input[data-prio="1"]:hover {*/
+    /*background: #7dbbd6;*/
+  /*}*/
   .calendar-input[data-prio="2"] {
     background: #7dbbd6;
   }
-  .calendar-input[data-prio="2"]:hover {
-    background: #0099da;
-  }
+  /*.calendar-input[data-prio="2"]:hover {*/
+    /*background: #0099da;*/
+  /*}*/
   .calendar-input[data-prio="3"] {
     background: #0099da;
     }
-  .calendar-input[data-prio="3"]:hover {
-    background: #fff;
-    border: 1px dotted #d5e4ea;
-}
+  /*.calendar-input[data-prio="3"]:hover {*/
+    /*background: #fff;*/
+    /*border: 1px dotted #d5e4ea;*/
+/*}*/
 
 
 
@@ -353,9 +465,9 @@ h1, h2, h3, h4, h5 {
   color: #FFFFFF;
   -webkit-text-shadow: 0 1px 0 #ffffff;
   text-shadow: 0 1px 0 #ffffff;
-  opacity: 0.8;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-  filter: alpha(opacity=80);
+  /*opacity: 0.8;*/
+  /*-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);*/
+  /*filter: alpha(opacity=80);*/
   line-height: 1;
 }
 .toast-close-button:hover,
@@ -363,9 +475,9 @@ h1, h2, h3, h4, h5 {
   color: #000000;
   text-decoration: none;
   cursor: pointer;
-  opacity: 0.4;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
-  filter: alpha(opacity=40);
+  /*opacity: 0.4;*/
+  /*-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);*/
+  /*filter: alpha(opacity=40);*/
 }
 .rtl .toast-close-button {
   left: -0.3em;
