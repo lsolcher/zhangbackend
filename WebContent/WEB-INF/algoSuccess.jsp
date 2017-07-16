@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html ng-app="zhang-app">
   <head>
 	<meta charset="utf-8">
 	<title>LEP-Tool</title>
@@ -25,12 +25,21 @@
 	<script type="text/javascript" src="${courses}"></script>
 	<spring:url var ="priorities" value="/resources/js/priorities.js" />
 	<script type="text/javascript" src="${priorities}"></script>
-	<spring:url var ="layout" value="/resources/js/layout.js" />
-	<script type="text/javascript" src="${layout}"></script>
 	<spring:url var ="bootstrap" value="/resources/js/bootstrap.js" />
 	<script type="text/javascript" src="${bootstrap}"></script>
+	<spring:url var ="layout" value="/resources/js/layout.js" />
+	<script type="text/javascript" src="${layout}"></script>
 	<!-- libs end -->
-
+	<script>
+		var initCourses = '<% String schedules = (String) request.getAttribute("schedules"); out.print(schedules); %>';
+		try {
+			initCourses = JSON.parse(initCourses);
+		console.log(initCourses);
+		} catch(e) {
+			//console.log('NOOO', initCourses);
+			console.log(e.stack);
+		}
+	</script>
   </head>
   <body>
 
@@ -52,16 +61,17 @@
 					</ul>
 				</nav>
 			</div>
-			  <script>
-        	var initCourses = '<% String schedules = (String) request.getAttribute("schedules"); out.print(schedules); %>';
-        	try {
-        		initCourses = JSON.parse(initCourses);
-        		console.log("Success:", initCourses);
-        	} catch(e) {
-        		//console.log('NOOO', initCourses);
-        		console.log(e.stack);
-        	}
-        </script>
     </header>
+	<div ng-controller="renderData">
+		<div ng-repeat="table in data">
+			<h1>{{table.programName}}</h1>
+			<table style="width:100%">
+				<tr ng-repeat="tr in table.schedule track by $index">
+					<th ng-repeat="td in tr track by $index">{{td}}</th>
+				</tr>
+			</table>
+		</div>
+	</div>
+
   </body>
 </html>
