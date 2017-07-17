@@ -14,6 +14,8 @@ public class Room {
 	public static int MacLab=3;
 	public static int PcLab=4;
 	
+	private boolean[][] roomOccupied = new boolean[5][7];
+	
 	public Room() {
 		// TODO Auto-generated constructor stub
 	}
@@ -40,6 +42,20 @@ public class Room {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public boolean isAvailable(int randomDay, int randomTime) {
+		return roomOccupied[randomDay][randomTime];
+	}
+	
+	public void setOccupied(int randomDay, int randomTime) {
+		roomOccupied[randomDay][randomTime]=true;
+	}
+	
+	public void resetOccupied() {
+		for (int index = 0; index < roomOccupied.length; index++)
+			for (int inner = 0; inner < roomOccupied[index].length; inner++)
+				roomOccupied[index][inner] = false;
 	}
 
 }

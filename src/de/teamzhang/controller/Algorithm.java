@@ -49,8 +49,10 @@ public class Algorithm {
 
 	static ArrayList<Course> allCourses = new ArrayList<Course>();
 	static ArrayList<Program> allPrograms = new ArrayList<Program>();
+	static ArrayList<Room> allRooms = new ArrayList<Room>();
 	private List<Teacher> allTeachers = new ArrayList<Teacher>();
 	private List<StudentSettings> allSettings = new ArrayList<StudentSettings>();
+	
 
 	private static Random randomGen = new Random();
 
@@ -70,6 +72,7 @@ public class Algorithm {
 		resetData();
 		setPrograms();
 		setTeachers();
+		setRooms();
 		setStudentPrios();
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses())
@@ -306,6 +309,8 @@ public class Algorithm {
 	}
 
 	private void mockRooms() {
+		// TODO: remove after setRooms() 
+		// is implemented
 		for (Course c : allCourses) {
 			Room r = new Room();
 			r.setName("C441");
@@ -359,6 +364,11 @@ public class Algorithm {
 
 	}
 
+	private void setRooms() {
+		// TODO: read rooms from csv OR
+		// DB
+	}
+	
 	private void setStudentPrios() {
 		DBCollection settingsDB = mongoTemplate.getCollection("settings");
 		DBCursor cursor = settingsDB.find();
@@ -561,9 +571,12 @@ public class Algorithm {
 						randomTime -= 1;
 					int iteration = 0;
                     Room room=null;
+                    // TODO: use Course to determine
+                    // room type preferences
+                    int roomTypeNeeded=-1;
 					while (programTimeOccupiedOrTeacherBelowThreshold(p, c, randomTime, randomDay, threshold, iteration)
-							/*||
-                            (room = findAvailableRoom(randomTime, randomDay))==null*/){
+							||
+                            (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded))==null){
 						iteration++;
 						randomTime = r.nextInt(7);
 						randomDay = r.nextInt(5);
@@ -580,6 +593,8 @@ public class Algorithm {
 						teacher.setFullSlot(randomDay, randomTime + 1);
 						p.setFullSlot(randomDay, randomTime + 1);
 					}
+					room.setOccupied(randomDay, randomTime);
+					c.setRoom(room);
 					c.setSet(true);
 				}
 			}
@@ -608,8 +623,16 @@ public class Algorithm {
 	        return false;
 	    }
 	   
-	    private static Room findAvailableRoom(int randomTime, int randomDay) {
-	       
+	    private static Room findAvailableRoom(int randomTime, int randomDay, int roomTypeNeeded) {
+	    	for( Room r : allRooms ) {
+	    		if( roomTypeNeeded>-1 && r.getType()!=roomTypeNeeded ) {
+	    			break;
+	    		}
+	    		
+	    		if( r.isAvailable(randomTime, randomDay) ){
+	    			return r;
+	    		}
+	    	}
 	        return null;
 	    }
 
@@ -629,6 +652,9 @@ public class Algorithm {
 		for (Program p : allPrograms) {
 			p.resetFullSlots();
 			p.resetMinusPoints();
+		}
+		for( Room r : allRooms ) {
+			r.resetOccupied();
 		}
 	}
 
