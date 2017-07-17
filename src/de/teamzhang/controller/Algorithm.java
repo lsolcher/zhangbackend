@@ -1,7 +1,10 @@
 package de.teamzhang.controller;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -365,9 +368,39 @@ public class Algorithm {
 	}
 
 	private void setRooms() {
-		// TODO: read rooms from csv OR
-		// DB
-	}
+		String csvFile = "/ZhangProjectBackend/WebContent/resources/rooms.csv";
+        BufferedReader br = null;
+        String row = "";
+        String separator = ",";
+
+        try {
+
+            br = new BufferedReader(new FileReader(csvFile));
+            while ((row = br.readLine()) != null) {
+
+                String[] room = row.split(separator);
+                
+                Room r = new Room();
+                r.setName(room[0]);
+                r.setType(room[3]);
+                r.setSeat(Integer.parseInt(room[1]));
+                
+                allRooms.add(r);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }	}
 	
 	private void setStudentPrios() {
 		DBCollection settingsDB = mongoTemplate.getCollection("settings");
@@ -573,7 +606,7 @@ public class Algorithm {
                     Room room=null;
                     // TODO: use Course to determine
                     // room type preferences
-                    int roomTypeNeeded=-1;
+                    String roomTypeNeeded= "none";
 					while (programTimeOccupiedOrTeacherBelowThreshold(p, c, randomTime, randomDay, threshold, iteration)
 							||
                             (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded))==null){
@@ -623,9 +656,9 @@ public class Algorithm {
 	        return false;
 	    }
 	   
-	    private static Room findAvailableRoom(int randomTime, int randomDay, int roomTypeNeeded) {
+	    private static Room findAvailableRoom(int randomTime, int randomDay, String roomTypeNeeded) {
 	    	for( Room r : allRooms ) {
-	    		if( roomTypeNeeded>-1 && r.getType()!=roomTypeNeeded ) {
+	    		if(roomTypeNeeded!="none" && r.getType()!=roomTypeNeeded ) {
 	    			break;
 	    		}
 	    		

@@ -5,14 +5,15 @@ import java.math.BigInteger;
 import org.springframework.data.annotation.Id;
 
 public class Room {	
-	protected int type;
+	protected String type;
 	protected String name;
 	@Id
 	private BigInteger id;
-	public static int WideRoom = 1;
-	public static int LongRoom=2;
-	public static int MacLab=3;
-	public static int PcLab=4;
+	private int seat;
+//	public static int WideRoom = 1;
+//	public static int LongRoom=2;
+//	public static int MacLab=3;
+//	public static int PcLab=4;
 	
 	private boolean[][] roomOccupied = new boolean[5][7];
 	
@@ -36,13 +37,22 @@ public class Room {
 		this.id = id;
 	}
 
-	public int getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(int type) {
+	public void setType(String type) {
 		this.type = type;
 	}
+	
+	public int getSeat() {
+		return seat;
+	}
+
+	public void setSeat(int seat) {
+		this.seat = seat;
+	}
+
 
 	public boolean isAvailable(int randomDay, int randomTime) {
 		return roomOccupied[randomDay][randomTime];
