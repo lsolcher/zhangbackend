@@ -3,6 +3,7 @@ package de.teamzhang.model;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Properties;
 
 import org.springframework.data.annotation.Id;
 
-public class Program {
+public class Program implements Serializable{
 	static int MAX_DAYS = 4;
 	static int MAX_SLOTS_PER_DAY = 4;
 	@Id

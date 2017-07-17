@@ -1,5 +1,6 @@
 package de.teamzhang.model;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,7 +8,7 @@ import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
-public class Teacher {
+public class Teacher implements Serializable{
 
 	protected String firstName;
 	protected String lastName;

@@ -1,5 +1,6 @@
 package de.teamzhang.model;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,7 +10,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "prio")
-public class Prio {
+public class Prio implements Serializable{
 
 	protected String name;
 	@Id

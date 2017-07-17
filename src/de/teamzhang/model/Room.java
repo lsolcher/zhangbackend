@@ -1,10 +1,11 @@
 package de.teamzhang.model;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
 import org.springframework.data.annotation.Id;
 
-public class Room {	
+public class Room implements Serializable{	
 	protected String type;
 	protected String name;
 	@Id
