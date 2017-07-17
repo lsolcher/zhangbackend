@@ -2,11 +2,15 @@ package de.teamzhang.controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -57,10 +61,9 @@ public class Algorithm {
 	private List<StudentSettings> allSettings = new ArrayList<StudentSettings>();
 	
 
-	private static Random randomGen = new Random();
-
 	// private static
-
+    static ArrayList<Program> clonedPrograms;
+	private static Random randomGen = new Random();
 	private static int optimalThreshold = 0;
 	private static List<String> notOccupiedSlots = new ArrayList<String>();
 
@@ -81,7 +84,7 @@ public class Algorithm {
 			for (Course c : t.getCourses())
 				allCourses.add(c);
 		}
-		mockRooms();
+		//mockRooms();
 
 		addTeachersToCourses();
 
@@ -93,6 +96,12 @@ public class Algorithm {
 		do {
 			reset();
 			count++;
+			try {
+                cloneData();
+            } catch (ClassNotFoundException | IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 			calculateRandomSchedule();
 			boolean hillclimbingReached = false;
 			minusPoints = getMinusPoints();
@@ -311,16 +320,16 @@ public class Algorithm {
 		schedules.drop();
 	}
 
-	private void mockRooms() {
-		// TODO: remove after setRooms() 
-		// is implemented
-		for (Course c : allCourses) {
-			Room r = new Room();
-			r.setName("C441");
-			c.setRoom(r);
-		}
-
-	}
+//	private void mockRooms() {
+//		// TODO: remove after setRooms() 
+//		// is implemented
+//		for (Course c : allCourses) {
+//			Room r = new Room();
+//			r.setName("C441");
+//			c.setRoom(r);
+//		}
+//
+//	}
 
 	private void addTeachersToCourses() {
 		for (Teacher t : allTeachers) {
@@ -579,6 +588,51 @@ public class Algorithm {
 			System.out.println(t.getLastName() + " has " + t.getMinusPoints() + " minuspoints.");
 		}
 	}
+	
+	private static void cloneData() throws IOException, ClassNotFoundException {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(bos);
+        oos.writeObject(allPrograms);
+        oos.flush();
+        oos.close();
+        bos.close();
+        byte[] byteData = bos.toByteArray();
+       
+        ByteArrayInputStream bais = new ByteArrayInputStream(byteData);
+        clonedPrograms = (ArrayList<Program>) new ObjectInputStream(bais).readObject();
+    }
+   
+    private void restoreData() throws IOException, ClassNotFoundException {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(bos);
+        oos.writeObject(clonedPrograms);
+        oos.flush();
+        oos.close();
+        bos.close();
+        byte[] byteData = bos.toByteArray();
+       
+        reset();
+       
+        ByteArrayInputStream bais = new ByteArrayInputStream(byteData);
+        allPrograms = (ArrayList<Program>) new ObjectInputStream(bais).readObject();
+       
+        allCourses.clear();
+        for (Program p : allPrograms) {
+            //programs.update(p);
+            for (Course c : p.getCourses()) {
+                allCourses.add(c);
+                //courses.update(c);
+                //rooms.update(c.getRoom());
+                Teacher t = c.getTeacher();
+                Room r = c.getRoom();
+                //teachers.update(t);
+                for( Prio prio : t.getPrios() ) {
+                    //prios.update(prio);
+                	//TODO: write schedule into DB or just return as string?
+                }
+            }
+        }
+    }
 
 	private static void climbHill(int threshold) {
 		for (Program p : allPrograms) {

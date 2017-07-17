@@ -44,6 +44,7 @@ public class ProgramPersistence {
 
 	// create usefull Program Testdata
 	public void generateMockData() {
+		//TODO: delete?
 		Program p1 = new Program();
 		p1.setName("Imibach");
 		create(p1);
