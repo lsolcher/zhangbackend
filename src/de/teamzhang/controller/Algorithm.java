@@ -93,20 +93,34 @@ public class Algorithm {
 			System.out.println(minusPoints);
 			if (minusPoints < RANDOMGENERATIONMINUSPOINTSTHRESHOLD) {
 				hillclimbingReached = true;
+				
 				System.out.println("Minuspoints: " + minusPoints);
 				climbHill(100);
 				minusPoints = getMinusPoints();
-				System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
-				climbHill(10);
-				minusPoints = getMinusPoints();
-				System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
-				climbHill(5);
-				minusPoints = getMinusPoints();
-				System.out.println("Minuspoints after hillclimbing with threshold 5: " + minusPoints);
+                System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
+                if (minusPoints < minusPointsThreshold) {
+                    break;
+                }
+                
+                climbHill(10);
+                minusPoints = getMinusPoints();
+                System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
+                if (minusPoints < minusPointsThreshold) {
+                    break;
+                }
+                
+                climbHill(5);
+                minusPoints = getMinusPoints();
+                System.out.println("Minuspoints after hillclimbing with threshold 5: " + minusPoints);
+                if (minusPoints < minusPointsThreshold) {
+                    break;
+                }
+				
 				for (Program p : allPrograms) {
 					System.out.println("Program " + p.getName() + " has " + p.getProgramMinusPoints() + " minusPoints");
 				}
 			}
+			
 			if (!hillclimbingReached && count % 10000 == 0) {
 				// TODO
 				// inspectTeachers();
@@ -120,8 +134,10 @@ public class Algorithm {
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
 			}
 		} while (minusPoints > minusPointsThreshold);
+		
 		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
 				+ " iterations to create it.");
+		
 		for (Program p : allPrograms) {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = new int[5][7];
@@ -544,10 +560,10 @@ public class Algorithm {
 					if (c.getSlotsNeeded() == 2 && randomTime == 6)
 						randomTime -= 1;
 					int iteration = 0;
-					while ((p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
-							|| c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))))
-							|| (c.getTeacher().getWeightedDayTimeWishes()[randomDay][randomTime] > threshold)
-									&& iteration < 1000) {
+                    Room room=null;
+					while (programTimeOccupiedOrTeacherBelowThreshold(p, c, randomTime, randomDay, threshold, iteration)
+							/*||
+                            (room = findAvailableRoom(randomTime, randomDay))==null*/){
 						iteration++;
 						randomTime = r.nextInt(7);
 						randomDay = r.nextInt(5);
@@ -576,6 +592,26 @@ public class Algorithm {
 		}
 
 	}
+	
+	 private static boolean programTimeOccupiedOrTeacherBelowThreshold(Program p, Course c, int randomTime,
+	            int randomDay, int threshold, int iteration) {
+	       
+	        if(  p.isTimeOccupied(randomTime, randomDay) && c.getSlotsNeeded() == 1 )
+	            return true;
+	       
+	        if( c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))
+	            return true;
+	       
+	        if( iteration<1000 && (c.getTeacher().getWeightedDayTimeWishes()[randomDay][randomTime] > threshold) )
+	            return true;
+	       
+	        return false;
+	    }
+	   
+	    private static Room findAvailableRoom(int randomTime, int randomDay) {
+	       
+	        return null;
+	    }
 
 	private void reset() {
 		for (Teacher t : allTeachers) {
