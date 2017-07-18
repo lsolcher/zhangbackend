@@ -1,5 +1,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="org.json.simple.JSONArray"%>
+
+
+
 <!DOCTYPE html>
 <html ng-app="zhang-app">
   <head>
@@ -31,10 +36,12 @@
 
     <script>
         var initCourses = '<% String veranstaltungen = (String) request.getAttribute("veranstaltungen"); out.print(veranstaltungen); %>';
-        var user = '<% String user = (String) request.getAttribute("user"); out.print(user); %>';
+        var prios = '<% JSONArray prios = (JSONArray) request.getAttribute("prios"); out.print(prios); %>';
+        var courses = '<% JSONArray courses = (JSONArray) request.getAttribute("courses"); out.print(courses); %>';
+        var firstName = '<% String firstName = (String) request.getAttribute("firstName"); out.print(firstName); %>';
+
         try {
             initCourses = JSON.parse(initCourses);
-            user = JSON.parse(user);
         } catch(e) {
         //console.log('NOOO', initCourses);
           console.log(e.stack);
@@ -43,7 +50,7 @@
 
   </head>
   <body>
-    <div class="course-selector-wrapper">
+    <d iv class="course-selector-wrapper">
       <div class="course-selector" ng-controller="courseController">
         <span>Bitte ihre Lehrveranstaltungen auswählen</span>
 

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -75,18 +76,26 @@ public class CalendarController extends AbstractController {
 		whereQuery.put("firstName", user.getFirstName());
 		whereQuery.put("lastName", user.getLastName());
 		DBCursor cursor = teachers.find(whereQuery);
-		while (cursor.hasNext()) {
+		if (cursor.hasNext()) {
 			DBObject resultElement = cursor.next();
 			Map resultElementMap = resultElement.toMap();
 			BasicDBList prios = (BasicDBList) resultElementMap.get("prios");
 			BasicDBList courses = (BasicDBList) resultElementMap.get("courses");
-			Map prioMap = prios.toMap();
-			Map courseMap = courses.toMap();
+			JSONObject prioMap = new JSONObject(prios.toMap());
+			JSONObject courseMap = new JSONObject(courses.toMap());
 
-			modelandview.addAllObjects(prioMap);
-			modelandview.addAllObjects(courseMap);
+			JSONArray prioArray = new JSONArray();
+			prioArray.add(prioMap);
+
+			JSONArray coursesArray = new JSONArray();
+			coursesArray.add(courseMap);
+
+			modelandview.addObject("prios", prioArray);
+			modelandview.addObject("courses", coursesArray);
 
 		}
+
+		modelandview.addObject("firstName", user.getFirstName());
 
 		return modelandview;
 	}
