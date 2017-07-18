@@ -208,8 +208,8 @@ public class CalendarController extends AbstractController {
 						int slotsNeeded = sws / 2;
 						c.setSlotsNeeded(slotsNeeded);
 						c.setGroup((String) course.get("parallelgruppe"));
+						c.setId(Integer.parseInt((String) course.get("id")));
 						addSemesters(c, course);
-
 						courseList.add(c);
 					}
 				} else if (m.get("type").equals("Schedule")) {
