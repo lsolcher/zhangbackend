@@ -255,7 +255,7 @@ public class Algorithm {
 			List<Integer> programs = c.getSemesters();
 			for (int i : programs) {
 				System.out.println(c.getName());
-				allPrograms.get(i).addCourse(c);
+				allPrograms.get(i - 1).addCourse(c);
 			}
 		}
 	}
