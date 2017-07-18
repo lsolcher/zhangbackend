@@ -47,7 +47,6 @@ import de.teamzhang.model.User;
 @Controller
 public class Algorithm {
 
-
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -426,10 +425,6 @@ public class Algorithm {
 
 	}
 
-	public static void main(String[] args) {
-		setRooms();
-	}
-
 	private void inspectTeachers() {
 		System.out.println("Couldn't find a schedule with selected teacher-prios, inspecting teachers...");
 		for (Teacher t : allTeachers) {
@@ -621,7 +616,6 @@ public class Algorithm {
 	}
 
 	private void weightSingleSchedule(Teacher t) {
-		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
 		// 3 = auf keinen fall
 		// 0 = top
 		for (Prio p : t.getPrios()) {
@@ -631,6 +625,8 @@ public class Algorithm {
 
 			}
 		}
+		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
+
 		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
 

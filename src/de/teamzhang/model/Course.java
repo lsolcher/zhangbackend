@@ -1,17 +1,16 @@
 package de.teamzhang.model;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
-public class Course implements Serializable{
+public class Course implements Serializable {
 
 	protected Room room;
 	@Id
-	private BigInteger id;
+	private int id;
 	protected int slotsNeeded;
 	private String group;
 	protected Program program;
@@ -70,11 +69,11 @@ public class Course implements Serializable{
 		this.room = room;
 	}
 
-	public BigInteger getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(BigInteger id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
