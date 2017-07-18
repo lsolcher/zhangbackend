@@ -1,6 +1,7 @@
 package de.teamzhang.model;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class Course implements Serializable {
 
 	protected Room room;
 	@Id
-	private int id;
+	private BigInteger id;
 	protected int slotsNeeded;
 	private String group;
 	protected Program program;
@@ -69,11 +70,11 @@ public class Course implements Serializable {
 		this.room = room;
 	}
 
-	public int getId() {
+	public BigInteger getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
-public class Teacher implements Serializable{
+public class Teacher implements Serializable {
 
 	protected String firstName;
 	protected String lastName;
@@ -122,9 +122,7 @@ public class Teacher implements Serializable{
 
 	}
 
-	public boolean priosDontFit(Slot slot) {
-		int day = slot.getDay();
-		int time = slot.getTime();
+	public boolean priosDontFit(int day, int time) {
 		boolean prioDoesntFit = false;
 		for (Prio p : prios) {
 			if (p instanceof FreeTextInputPrio)

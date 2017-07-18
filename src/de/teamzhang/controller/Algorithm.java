@@ -489,6 +489,10 @@ public class Algorithm {
 					Random r = new Random();
 					int randomTime = r.nextInt(7);
 					int randomDay = r.nextInt(5);
+					while (teacher.priosDontFit(randomDay, randomTime)) {
+						randomTime = r.nextInt(7);
+						randomDay = r.nextInt(5);
+					}
 					teacher.setFreeSlot(c.getDay(), c.getTime());
 					teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[c.getDay()][c.getTime()]);
 					p.setFreeSlot(c.getDay(), c.getTime());
@@ -707,12 +711,16 @@ public class Algorithm {
 
 		for (Program p : allPrograms) {
 			for (Course c : p.getCourses()) {
+				Teacher teacher = c.getTeacher();
 				if (!c.isSet()) {
 
-					Teacher teacher = c.getTeacher();
 					Random r = new Random();
 					int randomTime = r.nextInt(7);
 					int randomDay = r.nextInt(5);
+					while (teacher.priosDontFit(randomDay, randomTime)) {
+						randomTime = r.nextInt(7);
+						randomDay = r.nextInt(5);
+					}
 					if (c.getSlotsNeeded() == 2 && randomTime == 6)
 						randomTime -= 1;
 					while (p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
