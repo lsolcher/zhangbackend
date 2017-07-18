@@ -77,6 +77,7 @@ public class Algorithm {
 		setRooms();
 		setStudentPrios();
 		addTeachersToCourses();
+		addCoursesToPrograms();
 		weightPrios();
 		int minusPoints = 0;
 		int count = 0;
@@ -249,6 +250,16 @@ public class Algorithm {
 		return modelandview;
 	}
 
+	private void addCoursesToPrograms() {
+		for (Course c : allCourses) {
+			List<Integer> programs = c.getSemesters();
+			for (int i : programs) {
+				System.out.println(c.getName());
+				allPrograms.get(i).addCourse(c);
+			}
+		}
+	}
+
 	private void updateMissingData() {
 		List<Teacher> allTeachers = new ArrayList<Teacher>();
 		List<User> allUsers = new ArrayList<User>();
@@ -368,7 +379,7 @@ public class Algorithm {
 
 	}
 
-	private static void setRooms() {
+	private void setRooms() {
 		String csvFile = "../../resources/rooms.csv"; //TODO: right filepath
 		BufferedReader br = null;
 		String row = "";

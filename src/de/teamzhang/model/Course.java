@@ -26,6 +26,10 @@ public class Course implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	public List<Integer> getSemesters() {
+		return semesters;
+	}
+
 	public void addSemester(int semester) {
 		semesters.add(semester);
 	}
