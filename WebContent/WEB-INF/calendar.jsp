@@ -36,12 +36,14 @@
 
     <script>
         var initCourses = '<% String veranstaltungen = (String) request.getAttribute("veranstaltungen"); out.print(veranstaltungen); %>';
-        var prios = '<% JSONArray prios = (JSONArray) request.getAttribute("prios"); out.print(prios); %>';
-        var courses = '<% JSONArray courses = (JSONArray) request.getAttribute("courses"); out.print(courses); %>';
+        var slctPrios = '<% JSONArray prios = (JSONArray) request.getAttribute("prios"); out.print(prios); %>';
+        var slctCourses = '<% JSONArray courses = (JSONArray) request.getAttribute("courses"); out.print(courses); %>';
         var firstName = '<% String firstName = (String) request.getAttribute("firstName"); out.print(firstName); %>';
 
         try {
             initCourses = JSON.parse(initCourses);
+            //slctPrios = JSON.parse(slctPrios);
+            //slctCourses = JSON.parse(slctCourses);
         } catch(e) {
         //console.log('NOOO', initCourses);
           console.log(e.stack);
@@ -88,7 +90,7 @@
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
-                        <li><a href="" th:inline='text'>Herzlich Willkommen,  {{name}} </a></li>
+                        <li><a href="" th:inline='text'>Herzlich Willkommen, {{name}} </a></li>
                         <li><a href="" id="add-course">Kurse bearbeiten</a></li>
 						<li><a href="/ZhangProjectBackend/logout.html" id="logout" >Logout</a></li>
 					</ul>
