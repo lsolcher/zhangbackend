@@ -5,8 +5,18 @@
 
 				$scope.search = ''
 				$rootScope.name= firstName;
+				$scope.getCourses = JSON.parse(slctCourses);
+                $scope.selectedCourses = $scope.getCourses[0];
 
-				$scope.list = []
+                for ( var i in $scope.selectedCourses ) {
+                    if ($scope.selectedCourses[i]) {
+                        $scope.selectedCourses[i].selected = true;
+                    }
+                }
+
+                console.log($scope.selectedCourses);
+
+                $scope.list = []
 				$scope.selectedList = []
 
 				$scope.selectVal = function(event) {
@@ -22,14 +32,14 @@
 						}
 					}
 					// save in localstorage
-					coursesjo = JSON
+                    $scope.selectedCourses = JSON
 							.stringify($rootScope.courseList);
 				}
 
 				$rootScope.courseList = []
 
 				try {
-					$rootScope.courseList = JSON.parse(coursesjo)
+					$rootScope.courseList = $scope.selectedCourses
 				} catch (e) {
 					$rootScope.courseList = []
 				}
@@ -39,7 +49,7 @@
 					temp.id = i
 					// if selected apply
 					for ( var j in $rootScope.courseList) {
-						if ($rootScope.courseList[j].id == temp.id) 
+						if ($rootScope.courseList[j].id == temp.id || $rootScope.courseList[j].courseID == temp.id)
 							temp.selected = true
 					}
 					$scope.list.push(temp)
