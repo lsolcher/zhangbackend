@@ -365,6 +365,10 @@ public class Algorithm {
 		ba5.setName("BachelorIMI5");
 		allPrograms.add(ba5);
 
+		Program ba6 = new Program();
+		ba5.setName("BachelorIMI6");
+		allPrograms.add(ba6);
+
 		Program ma1 = new Program();
 		ma1.setName("MasterIMI1");
 		allPrograms.add(ma1);
@@ -376,6 +380,10 @@ public class Algorithm {
 		Program ma3 = new Program();
 		ma3.setName("MasterIMI3");
 		allPrograms.add(ma3);
+
+		Program ma4 = new Program();
+		ma3.setName("MasterIMI4");
+		allPrograms.add(ma4);
 
 	}
 
