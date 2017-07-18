@@ -279,7 +279,17 @@ public class CalendarController extends AbstractController {
 		}
 		teacher.setCourses(courseList);
 		try {
-			mongoTemplate.insert(teacher, "teachers");
+			DBCollection collection = mongoTemplate.getCollection("teachers");
+			DBCursor cursor = collection.find(new BasicDBObject("user.mail", teacher.getUser().getMail()));
+
+			if (cursor.size() > 0) {
+				DBObject obj = cursor.next();
+				collection.update(obj, (DBObject) mongoTemplate.getConverter().convertToMongoType(teacher));
+
+			}
+
+			else
+				mongoTemplate.insert(teacher, "teachers");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
