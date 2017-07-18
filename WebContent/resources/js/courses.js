@@ -4,6 +4,7 @@
 			function($scope, $rootScope) {
 
 				$scope.search = ''
+				$rootScope.name= firstName;
 
 				$scope.list = []
 				$scope.selectedList = []
@@ -21,14 +22,14 @@
 						}
 					}
 					// save in localstorage
-					localStorage.coursesjo = JSON
+					coursesjo = JSON
 							.stringify($rootScope.courseList);
 				}
 
 				$rootScope.courseList = []
 
 				try {
-					$rootScope.courseList = JSON.parse(localStorage.coursesjo)
+					$rootScope.courseList = JSON.parse(coursesjo)
 				} catch (e) {
 					$rootScope.courseList = []
 				}
@@ -46,6 +47,6 @@
 				//$scope.list = initCourses
 				//$scope.$apply()
 
-				localStorage.setItem("courselistlength", $rootScope.courseList.length);	// give list length to be able to set number of prios to be selected in priorities.js
+				//localStorage.setItem("courselistlength", $rootScope.courseList.length);	// give list length to be able to set number of prios to be selected in priorities.js
 			})
 })()
