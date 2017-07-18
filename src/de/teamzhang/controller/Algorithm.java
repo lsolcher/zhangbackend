@@ -47,8 +47,6 @@ import de.teamzhang.model.User;
 @Controller
 public class Algorithm {
 
-	@Autowired
-	private MongoTemplate mongoTemplate;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -182,13 +180,13 @@ public class Algorithm {
 										// row
 			}
 			try {
-				if (!mongoTemplate.collectionExists("schedules")) {
-					mongoTemplate.createCollection("schedules");
+				if (!mongoTemplate().collectionExists("schedules")) {
+					mongoTemplate().createCollection("schedules");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			mongoTemplate.insert(cs, "schedules");
+			mongoTemplate().insert(cs, "schedules");
 			BufferedWriter writer;
 			try {
 				// File file = new File("\\WebContent\\resources\\" +
@@ -242,7 +240,7 @@ public class Algorithm {
 		// printMap(slots.getSlots());
 
 		optimalThreshold = 700;
-		DBCollection schedules = mongoTemplate.getCollection("schedules");
+		DBCollection schedules = mongoTemplate().getCollection("schedules");
 		DBCursor cursor = schedules.find();
 		JSON json = new JSON();
 		String serialize = json.serialize(cursor);
@@ -255,11 +253,11 @@ public class Algorithm {
 	private void updateMissingData() {
 		List<Teacher> allTeachers = new ArrayList<Teacher>();
 		List<User> allUsers = new ArrayList<User>();
-		DBCollection teachersDB = mongoTemplate.getCollection("teachers");
+		DBCollection teachersDB = mongoTemplate().getCollection("teachers");
 		DBCursor cursor = teachersDB.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
-			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
+			Teacher t = mongoTemplate().getConverter().read(Teacher.class, obj);
 			allTeachers.add(t);
 		}
 		teachersDB.drop();
@@ -279,23 +277,23 @@ public class Algorithm {
 			t.setUser(user);
 			allUsers.add(user);
 		}
-		DBCollection users = mongoTemplate.getCollection("user");
+		DBCollection users = mongoTemplate().getCollection("user");
 		users.drop();
 		try {
-			if (!mongoTemplate.collectionExists("teachers")) {
-				mongoTemplate.createCollection("teachers");
+			if (!mongoTemplate().collectionExists("teachers")) {
+				mongoTemplate().createCollection("teachers");
 			}
-			if (!mongoTemplate.collectionExists("user")) {
-				mongoTemplate.createCollection("user");
+			if (!mongoTemplate().collectionExists("user")) {
+				mongoTemplate().createCollection("user");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		for (Teacher t : allTeachers) {
-			mongoTemplate.insert(t, "teachers");
+			mongoTemplate().insert(t, "teachers");
 		}
 		for (User t : allUsers) {
-			mongoTemplate.insert(t, "user");
+			mongoTemplate().insert(t, "user");
 		}
 	}
 
@@ -408,21 +406,21 @@ public class Algorithm {
 	}
 
 	private void setStudentPrios() {
-		DBCollection settingsDB = mongoTemplate.getCollection("settings");
+		DBCollection settingsDB = mongoTemplate().getCollection("settings");
 		DBCursor cursor = settingsDB.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
-			StudentSettings s = mongoTemplate.getConverter().read(StudentSettings.class, obj);
+			StudentSettings s = mongoTemplate().getConverter().read(StudentSettings.class, obj);
 			allSettings.add(s);
 		}
 	}
 
 	private void setTeachers() {
-		DBCollection teachersDB = mongoTemplate.getCollection("teachers");
+		DBCollection teachersDB = mongoTemplate().getCollection("teachers");
 		DBCursor cursor = teachersDB.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
-			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
+			Teacher t = mongoTemplate().getConverter().read(Teacher.class, obj);
 			allTeachers.add(t);
 		}
 
