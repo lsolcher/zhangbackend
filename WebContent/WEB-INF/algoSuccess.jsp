@@ -52,24 +52,36 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="" class="navbar-brand">HTW FB4 Lehreinsatzplanung</a>
+				<a href="" class="navbar-brand"><img src="/ZhangProjectBackend/resources/img/logo.png" width="39" />Lehreinsatzplanung</a>
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
-						<li><a href="/ZhangProjectBackend/logout.html" id="logout" >Logout</a></li>
-						<li><a href="/ZhangProjectBackend/signup.html" id="signup" >Signup</a></li>
+						<li><a href="/ZhangProjectBackend/controlpanel.html" id="controlpanel" >Zurück zu den Einstellungen</a></li>
 					</ul>
 				</nav>
 			</div>
     </header>
-	<div ng-controller="renderData">
-		<div ng-repeat="table in data">
-			<h1>{{table.programName}}</h1>
-			<table style="width:100%">
-				<tr ng-repeat="tr in table.schedule track by $index">
-					<th ng-repeat="td in tr track by $index">{{td}}</th>
-				</tr>
-			</table>
+	<div class="container content-container">
+		<div class="row">
+			<div class="col-md-12 prop-wrapper">
+				<div ng-controller="renderData">
+					<div ng-repeat="table in data">
+						<h4>{{table.programName}}</h4>
+						<table style="width:100%">
+							<tr>
+								<th>Montag</th>
+								<th>Dienstag</th>
+								<th>Mittwoch</th>
+								<th>Donnerstag</th>
+								<th>Freitag</th>
+							</tr>
+							<tr ng-repeat="tr in table.schedule track by $index">
+								<td ng-repeat="td in tr track by $index">{{td}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
