@@ -242,7 +242,7 @@
                     <label>Kurs auswählen:</label>
                     <select ng-change="changeCourse(prio.course)" class="select-course" ng-model="prio.course" required>
                         <option value="Alle Kurse">Alle Kurse</option>
-                        <option ng-repeat="course in $root.courseList" value="{{course.id}}">{{course.kurzname}}</option>
+                        <option ng-repeat="course in $root.courseList" value="{{course.id}}">{{course.name}}</option>
                       </select>
                     </div>
                   </div>

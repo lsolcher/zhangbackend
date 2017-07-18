@@ -49,7 +49,7 @@
 					temp.id = i
 					// if selected apply
 					for ( var j in $rootScope.courseList) {
-						if ($rootScope.courseList[j].id == temp.id) 
+						if ($rootScope.courseList[j].id == temp.id || $rootScope.courseList[j].courseID == temp.id)
 							temp.selected = true
 					}
 					$scope.list.push(temp)
