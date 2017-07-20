@@ -81,7 +81,7 @@ public class Algorithm {
 		weightPrios();
 		int minusPoints = 0;
 		int count = 0;
-		int minusPointsThreshold = 500;
+		int minusPointsThreshold = 500000;
 		do {
 			reset();
 			count++;
@@ -158,12 +158,12 @@ public class Algorithm {
 					boolean isCourse = false;
 					for (Course c : p.getCourses()) {
 						if (c.getTime() == j && c.getDay() == i) {
-							builder.append(c.getName() + ", " + c.getTeacher().getLastName() + ", "
-									+ c.getRoom().getName() + ", " + c.getSlotsNeeded() + " Doppelstunden"
-									+ ", Minuspunkte: " + c.getTeacher().getWeightedDayTimeWishes()[i][j]);
+							builder.append(c.getName() + ", " + c.getTeacher().getLastName() + ", " + "Raum xy" + ", "
+									+ c.getSlotsNeeded() + " Doppelstunden" + ", Minuspunkte: "
+									+ c.getTeacher().getWeightedDayTimeWishes()[i][j]);
 							cs.setFullSlot(c.getDay(), c.getTime(),
-									c.getName() + ", " + c.getTeacher().getLastName() + ", " + c.getRoom().getName()
-											+ ", " + c.getSlotsNeeded() + " Doppelstunden" + ", Minuspunkte: "
+									c.getName() + ", " + c.getTeacher().getLastName() + ", " + "Raum xy" + ", "
+											+ c.getSlotsNeeded() + " Doppelstunden" + ", Minuspunkte: "
 											+ c.getTeacher().getWeightedDayTimeWishes()[i][j]);
 						}
 						isCourse = true;
