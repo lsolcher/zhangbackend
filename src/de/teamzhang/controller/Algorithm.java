@@ -28,6 +28,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.util.JSON;
 
 import de.teamzhang.model.CalculatedSchedule;
@@ -49,6 +52,32 @@ public class Algorithm {
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
+	
+	public MongoTemplate mongoTemplate() {
+		return mongoTemplate;
+	}	
+	
+//	public Mongo mongo() throws Exception {
+//		MongoClientURI mcu = new MongoClientURI("mongodb://test:test@localhost/test");
+//		return new MongoClient(mcu);
+//	}
+//
+//	public MongoTemplate mongoTemplate() {
+//		MongoTemplate mt = null;
+//		try {
+//			mt = new MongoTemplate(mongo(), "test");
+//		} catch (Exception e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		try {
+//			mongo().getUsedDatabases();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return mt;
+//	}
 
 	private static int MINUSPOINTTHRESHOLD = 10;
 
@@ -180,13 +209,13 @@ public class Algorithm {
 										// row
 			}
 			try {
-				if (!mongoTemplate.collectionExists("schedules")) {
-					mongoTemplate.createCollection("schedules");
+				if (!mongoTemplate().collectionExists("schedules")) {
+					mongoTemplate().createCollection("schedules");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			mongoTemplate.insert(cs, "schedules");
+			mongoTemplate().insert(cs, "schedules");
 			BufferedWriter writer;
 			try {
 				// File file = new File("\\WebContent\\resources\\" +
@@ -240,7 +269,7 @@ public class Algorithm {
 		// printMap(slots.getSlots());
 
 		optimalThreshold = 700;
-		DBCollection schedules = mongoTemplate.getCollection("schedules");
+		DBCollection schedules = mongoTemplate().getCollection("schedules");
 		DBCursor cursor = schedules.find();
 		JSON json = new JSON();
 		String serialize = json.serialize(cursor);
@@ -267,11 +296,11 @@ public class Algorithm {
 	private void updateMissingData() {
 		List<Teacher> allTeachers = new ArrayList<Teacher>();
 		List<User> allUsers = new ArrayList<User>();
-		DBCollection teachersDB = mongoTemplate.getCollection("teachers");
+		DBCollection teachersDB = mongoTemplate().getCollection("teachers");
 		DBCursor cursor = teachersDB.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
-			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
+			Teacher t = mongoTemplate().getConverter().read(Teacher.class, obj);
 			allTeachers.add(t);
 		}
 		teachersDB.drop();
@@ -291,23 +320,23 @@ public class Algorithm {
 			t.setUser(user);
 			allUsers.add(user);
 		}
-		DBCollection users = mongoTemplate.getCollection("user");
+		DBCollection users = mongoTemplate().getCollection("user");
 		users.drop();
 		try {
-			if (!mongoTemplate.collectionExists("teachers")) {
-				mongoTemplate.createCollection("teachers");
+			if (!mongoTemplate().collectionExists("teachers")) {
+				mongoTemplate().createCollection("teachers");
 			}
-			if (!mongoTemplate.collectionExists("user")) {
-				mongoTemplate.createCollection("user");
+			if (!mongoTemplate().collectionExists("user")) {
+				mongoTemplate().createCollection("user");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		for (Teacher t : allTeachers) {
-			mongoTemplate.insert(t, "teachers");
+			mongoTemplate().insert(t, "teachers");
 		}
 		for (User t : allUsers) {
-			mongoTemplate.insert(t, "user");
+			mongoTemplate().insert(t, "user");
 		}
 	}
 
@@ -319,7 +348,7 @@ public class Algorithm {
 	}
 
 	private void dropExistingSchedules() {
-		DBCollection schedules = mongoTemplate.getCollection("schedules");
+		DBCollection schedules = mongoTemplate().getCollection("schedules");
 		schedules.drop();
 	}
 
@@ -392,6 +421,7 @@ public class Algorithm {
 	}
 
 	private void setRooms() {
+		// String csvFile = "/Users/krawallmieze/code/TeamZhang/zhangbackend/WebContent/resources/data/rooms.csv"; //TODO: right filepath
 		String csvFile = "../../resources/rooms.csv"; //TODO: right filepath
 		BufferedReader br = null;
 		String row = "";
@@ -407,8 +437,11 @@ public class Algorithm {
 				Room r = new Room();
 				r.setName(room[0]);
 				r.setType(room[3]);
-				r.setSeat(Integer.parseInt(room[1]));
-
+				try {
+					r.setSeat(Integer.parseInt(room[1]));
+				} catch (NumberFormatException e) {
+					r.setSeat(20);
+				}
 				allRooms.add(r);
 			}
 
@@ -428,21 +461,21 @@ public class Algorithm {
 	}
 
 	private void setStudentPrios() {
-		DBCollection settingsDB = mongoTemplate.getCollection("settings");
+		DBCollection settingsDB = mongoTemplate().getCollection("settings");
 		DBCursor cursor = settingsDB.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
-			StudentSettings s = mongoTemplate.getConverter().read(StudentSettings.class, obj);
+			StudentSettings s = mongoTemplate().getConverter().read(StudentSettings.class, obj);
 			allSettings.add(s);
 		}
 	}
 
 	private void setTeachers() {
-		DBCollection teachersDB = mongoTemplate.getCollection("teachers");
+		DBCollection teachersDB = mongoTemplate().getCollection("teachers");
 		DBCursor cursor = teachersDB.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
-			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
+			Teacher t = mongoTemplate().getConverter().read(Teacher.class, obj);
 			allTeachers.add(t);
 		}
 
