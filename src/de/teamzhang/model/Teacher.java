@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
-public class Teacher implements Serializable{
+public class Teacher implements Serializable {
 
 	protected String firstName;
 	protected String lastName;
@@ -122,9 +122,7 @@ public class Teacher implements Serializable{
 
 	}
 
-	public boolean priosDontFit(Slot slot) {
-		int day = slot.getDay();
-		int time = slot.getTime();
+	public boolean priosDontFit(int day, int time) {
 		boolean prioDoesntFit = false;
 		for (Prio p : prios) {
 			if (p instanceof FreeTextInputPrio)
@@ -159,7 +157,7 @@ public class Teacher implements Serializable{
 		boolean[] daysOccupied = new boolean[5];
 		int maxDays = p.getOption();
 		fullSlots[day][checkTime] = true;
-		int[][] weightedDayTimeWishes = p.getTeacher().getWeightedDayTimeWishes();
+		int[][] weightedDayTimeWishes = getWeightedDayTimeWishes();
 		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
 				if (fullSlots[day][time] == true)
@@ -190,7 +188,7 @@ public class Teacher implements Serializable{
 		int count = 0;
 		int maxDays = p.getOption();
 		fullSlots[day][checkTime] = true;
-		int[][] weightedDayTimeWishes = p.getTeacher().getWeightedDayTimeWishes();
+		int[][] weightedDayTimeWishes = getWeightedDayTimeWishes();
 		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
 				if (fullSlots[day][time] == true)
@@ -209,7 +207,7 @@ public class Teacher implements Serializable{
 		boolean prioDoesntFit = false;
 		int breakTime = p.getOption();
 		fullSlots[day][checkTime] = true;
-		int[][] weightedDayTimeWishes = p.getTeacher().getWeightedDayTimeWishes();
+		int[][] weightedDayTimeWishes = getWeightedDayTimeWishes();
 		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 			int count = 0;
 			for (int time = 0; time < checkTime; time++) {
@@ -233,7 +231,7 @@ public class Teacher implements Serializable{
 		fullSlots[day][checkTime] = true;
 		if (p.getOption() == 1)
 			moreClassesPerDayPreferred = false;
-		int[][] weightedDayTimeWishes = p.getTeacher().getWeightedDayTimeWishes();
+		int[][] weightedDayTimeWishes = getWeightedDayTimeWishes();
 		int count = 0;
 		for (int time = 0; time < weightedDayTimeWishes[day].length; time++) {
 			if (fullSlots[day][time] == true)

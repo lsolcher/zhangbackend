@@ -119,4 +119,8 @@ public class Course implements Serializable {
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
+
+	public List<Integer> getSemesters() {
+		return semesters;
+	}
 }

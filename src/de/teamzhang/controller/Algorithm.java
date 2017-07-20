@@ -45,34 +45,30 @@ import de.teamzhang.model.User;
 public class Algorithm {
 
 	@Autowired
-	private MongoTemplate mongoTemplate;
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private MongoTemplate mongoTemplate;
 
 	private static int MINUSPOINTTHRESHOLD = 10;
 
-	private static int RANDOMGENERATIONMINUSPOINTSTHRESHOLD = 150000;
+	private static int RANDOMGENERATIONMINUSPOINTSTHRESHOLD = 200000;
 
 	static ArrayList<Course> allCourses = new ArrayList<Course>();
 	static ArrayList<Program> allPrograms = new ArrayList<Program>();
 	static ArrayList<Room> allRooms = new ArrayList<Room>();
 	private List<Teacher> allTeachers = new ArrayList<Teacher>();
 	private List<StudentSettings> allSettings = new ArrayList<StudentSettings>();
-	
 
 	// private static
-    static ArrayList<Program> clonedPrograms;
+	static ArrayList<Program> clonedPrograms;
 	private static Random randomGen = new Random();
 	private static int optimalThreshold = 0;
 	private static List<String> notOccupiedSlots = new ArrayList<String>();
 
 	// 1. generate some testdata
 	@RequestMapping(value = "/algorithm", method = RequestMethod.GET)
-	private ModelAndView generateCalendar() {
-
-		//updateMissingData();
-		//weightPrios();
+	public ModelAndView generateCalendar() {
 
 		dropExistingSchedules();
 		resetData();
@@ -80,67 +76,60 @@ public class Algorithm {
 		setTeachers();
 		setRooms();
 		setStudentPrios();
-		for (Teacher t : allTeachers) {
-			for (Course c : t.getCourses())
-				allCourses.add(c);
-		}
-		//mockRooms();
-
 		addTeachersToCourses();
-
+		addCoursesToPrograms();
 		weightPrios();
-
 		int minusPoints = 0;
 		int count = 0;
-		int minusPointsThreshold = 400000;
+		int minusPointsThreshold = 500;
 		do {
 			reset();
 			count++;
 			try {
-                cloneData();
-            } catch (ClassNotFoundException | IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+				cloneData();
+			} catch (ClassNotFoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			calculateRandomSchedule();
 			boolean hillclimbingReached = false;
 			minusPoints = getMinusPoints();
 			System.out.println(minusPoints);
 			if (minusPoints < RANDOMGENERATIONMINUSPOINTSTHRESHOLD) {
 				hillclimbingReached = true;
-				
+
 				System.out.println("Minuspoints: " + minusPoints);
 				climbHill(100);
 				minusPoints = getMinusPoints();
-                System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
-                if (minusPoints < minusPointsThreshold) {
-                    break;
-                }
-                
-                climbHill(10);
-                minusPoints = getMinusPoints();
-                System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
-                if (minusPoints < minusPointsThreshold) {
-                    break;
-                }
-                
-                climbHill(5);
-                minusPoints = getMinusPoints();
-                System.out.println("Minuspoints after hillclimbing with threshold 5: " + minusPoints);
-                if (minusPoints < minusPointsThreshold) {
-                    break;
-                }
-				
+				System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
+				if (minusPoints < minusPointsThreshold) {
+					break;
+				}
+
+				climbHill(10);
+				minusPoints = getMinusPoints();
+				System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
+				if (minusPoints < minusPointsThreshold) {
+					break;
+				}
+
+				climbHill(5);
+				minusPoints = getMinusPoints();
+				System.out.println("Minuspoints after hillclimbing with threshold 5: " + minusPoints);
+				if (minusPoints < minusPointsThreshold) {
+					break;
+				}
+
 				for (Program p : allPrograms) {
 					System.out.println("Program " + p.getName() + " has " + p.getProgramMinusPoints() + " minusPoints");
 				}
 			}
-			
+
 			if (!hillclimbingReached && count % 10000 == 0) {
 				// TODO
 				// inspectTeachers();
 				// inspectStudentPrios();
-				RANDOMGENERATIONMINUSPOINTSTHRESHOLD += 100;
+				RANDOMGENERATIONMINUSPOINTSTHRESHOLD += 1000;
 				System.out.println("Iteration " + count + ", new threshold for random generation: "
 						+ RANDOMGENERATIONMINUSPOINTSTHRESHOLD);
 			}
@@ -149,10 +138,10 @@ public class Algorithm {
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
 			}
 		} while (minusPoints > minusPointsThreshold);
-		
+
 		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
 				+ " iterations to create it.");
-		
+
 		for (Program p : allPrograms) {
 			StringBuilder builder = new StringBuilder();
 			int[][] board = new int[5][7];
@@ -261,6 +250,20 @@ public class Algorithm {
 		return modelandview;
 	}
 
+	private void addCoursesToPrograms() {
+		for (Course c : allCourses) {
+			List<Integer> programs = c.getSemesters();
+			for (int i : programs) {
+				try {
+					System.out.println(c.getName());
+					allPrograms.get(i - 1).addCourse(c);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
 	private void updateMissingData() {
 		List<Teacher> allTeachers = new ArrayList<Teacher>();
 		List<User> allUsers = new ArrayList<User>();
@@ -320,18 +323,22 @@ public class Algorithm {
 		schedules.drop();
 	}
 
-//	private void mockRooms() {
-//		// TODO: remove after setRooms() 
-//		// is implemented
-//		for (Course c : allCourses) {
-//			Room r = new Room();
-//			r.setName("C441");
-//			c.setRoom(r);
-//		}
-//
-//	}
+	//	private void mockRooms() {
+	//		// TODO: remove after setRooms() 
+	//		// is implemented
+	//		for (Course c : allCourses) {
+	//			Room r = new Room();
+	//			r.setName("C441");
+	//			c.setRoom(r);
+	//		}
+	//
+	//	}
 
 	private void addTeachersToCourses() {
+		for (Teacher t : allTeachers) {
+			for (Course c : t.getCourses())
+				allCourses.add(c);
+		}
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses()) {
 				c.setTeacher(t);
@@ -362,6 +369,10 @@ public class Algorithm {
 		ba5.setName("BachelorIMI5");
 		allPrograms.add(ba5);
 
+		Program ba6 = new Program();
+		ba5.setName("BachelorIMI6");
+		allPrograms.add(ba6);
+
 		Program ma1 = new Program();
 		ma1.setName("MasterIMI1");
 		allPrograms.add(ma1);
@@ -374,43 +385,48 @@ public class Algorithm {
 		ma3.setName("MasterIMI3");
 		allPrograms.add(ma3);
 
+		Program ma4 = new Program();
+		ma3.setName("MasterIMI4");
+		allPrograms.add(ma4);
+
 	}
 
-	private static void setRooms() {
+	private void setRooms() {
 		String csvFile = "../../resources/rooms.csv"; //TODO: right filepath
-        BufferedReader br = null;
-        String row = "";
-        String separator = ",";
+		BufferedReader br = null;
+		String row = "";
+		String separator = ",";
 
-        try {
+		try {
 
-            br = new BufferedReader(new FileReader(csvFile));
-            while ((row = br.readLine()) != null) {
+			br = new BufferedReader(new FileReader(csvFile));
+			while ((row = br.readLine()) != null) {
 
-                String[] room = row.split(separator);
-                
-                Room r = new Room();
-                r.setName(room[0]);
-                r.setType(room[3]);
-                r.setSeat(Integer.parseInt(room[1]));
-                
-                allRooms.add(r);
-            }
+				String[] room = row.split(separator);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }	}
-	
+				Room r = new Room();
+				r.setName(room[0]);
+				r.setType(room[3]);
+				r.setSeat(Integer.parseInt(room[1]));
+
+				allRooms.add(r);
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
 	private void setStudentPrios() {
 		DBCollection settingsDB = mongoTemplate.getCollection("settings");
 		DBCursor cursor = settingsDB.find();
@@ -432,74 +448,91 @@ public class Algorithm {
 
 	}
 
-	public static void main(String[] args) {
-		setRooms();
-	}
-
 	private void inspectTeachers() {
 		System.out.println("Couldn't find a schedule with selected teacher-prios, inspecting teachers...");
 		for (Teacher t : allTeachers) {
 			System.out.println(t.getLastName() + " has " + t.getMinusPoints() + " minuspoints.");
 		}
 	}
-	
+
 	private static void cloneData() throws IOException, ClassNotFoundException {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(bos);
-        oos.writeObject(allPrograms);
-        oos.flush();
-        oos.close();
-        bos.close();
-        byte[] byteData = bos.toByteArray();
-       
-        ByteArrayInputStream bais = new ByteArrayInputStream(byteData);
-        clonedPrograms = (ArrayList<Program>) new ObjectInputStream(bais).readObject();
-    }
-   
-    private void restoreData() throws IOException, ClassNotFoundException {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(bos);
-        oos.writeObject(clonedPrograms);
-        oos.flush();
-        oos.close();
-        bos.close();
-        byte[] byteData = bos.toByteArray();
-       
-        reset();
-       
-        ByteArrayInputStream bais = new ByteArrayInputStream(byteData);
-        allPrograms = (ArrayList<Program>) new ObjectInputStream(bais).readObject();
-       
-        allCourses.clear();
-        for (Program p : allPrograms) {
-            //programs.update(p);
-            for (Course c : p.getCourses()) {
-                allCourses.add(c);
-                //courses.update(c);
-                //rooms.update(c.getRoom());
-                Teacher t = c.getTeacher();
-                Room r = c.getRoom();
-                //teachers.update(t);
-                for( Prio prio : t.getPrios() ) {
-                    //prios.update(prio);
-                	//TODO: write schedule into DB or just return as string?
-                }
-            }
-        }
-    }
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		ObjectOutputStream oos = new ObjectOutputStream(bos);
+		oos.writeObject(allPrograms);
+		oos.flush();
+		oos.close();
+		bos.close();
+		byte[] byteData = bos.toByteArray();
+
+		ByteArrayInputStream bais = new ByteArrayInputStream(byteData);
+		clonedPrograms = (ArrayList<Program>) new ObjectInputStream(bais).readObject();
+	}
+
+	private void restoreData() throws IOException, ClassNotFoundException {
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		ObjectOutputStream oos = new ObjectOutputStream(bos);
+		oos.writeObject(clonedPrograms);
+		oos.flush();
+		oos.close();
+		bos.close();
+		byte[] byteData = bos.toByteArray();
+
+		reset();
+
+		ByteArrayInputStream bais = new ByteArrayInputStream(byteData);
+		allPrograms = (ArrayList<Program>) new ObjectInputStream(bais).readObject();
+
+		allCourses.clear();
+		for (Program p : allPrograms) {
+			//programs.update(p);
+			for (Course c : p.getCourses()) {
+				allCourses.add(c);
+				//courses.update(c);
+				//rooms.update(c.getRoom());
+				Teacher t = c.getTeacher();
+				Room r = c.getRoom();
+				//teachers.update(t);
+				for (Prio prio : t.getPrios()) {
+					//prios.update(prio);
+					//TODO: write schedule into DB or just return as string?
+				}
+			}
+		}
+	}
 
 	private static void climbHill(int threshold) {
 		for (Program p : allPrograms) {
 			for (Course c : p.getCourses()) {
 				// if minusPoints are
 				if (c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()] > threshold) {
-
+					System.out.println(c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()]);
 					Teacher teacher = c.getTeacher();
 
 					// Slot slot = new Slot();
 					Random r = new Random();
-					int randomTime = r.nextInt(7);
+					int randomTime = 0;
+					if (c.getSlotsNeeded() == 2)
+						randomTime = r.nextInt(6);
+					else
+						randomTime = r.nextInt(7);
 					int randomDay = r.nextInt(5);
+
+					int iteration = 0;
+					String roomTypeNeeded = "none";
+					Room room = null;
+
+					while (programTimeOccupiedOrTeacherBelowThreshold(p, c, randomTime, randomDay, threshold, iteration)
+							//|| (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded)) == null
+							|| (teacher.priosDontFit(randomDay, randomTime) && iteration < 1000)) {
+						iteration++;
+						if (iteration == 999)
+							System.out
+									.println(p.getName() + " cannot be satisfied for teacher " + teacher.getLastName());
+						randomTime = r.nextInt(7);
+						randomDay = r.nextInt(5);
+						if (c.getSlotsNeeded() == 2 && randomTime == 6)
+							randomTime -= 1;
+					}
 					teacher.setFreeSlot(c.getDay(), c.getTime());
 					teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[c.getDay()][c.getTime()]);
 					p.setFreeSlot(c.getDay(), c.getTime());
@@ -510,20 +543,9 @@ public class Algorithm {
 					}
 					if (c.getSlotsNeeded() == 2 && randomTime == 6)
 						randomTime -= 1;
-					int iteration = 0;
-                    Room room=null;
-                    // TODO: use Course to determine
-                    // room type preferences
-                    String roomTypeNeeded= "none";
-					while (programTimeOccupiedOrTeacherBelowThreshold(p, c, randomTime, randomDay, threshold, iteration)
-							||
-                            (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded))==null){
-						iteration++;
-						randomTime = r.nextInt(7);
-						randomDay = r.nextInt(5);
-						if (c.getSlotsNeeded() == 2 && randomTime == 6)
-							randomTime -= 1;
-					}
+					// TODO: use Course to determine
+					// room type preferences
+
 					p.setFullSlot(randomDay, randomTime);
 					c.setDay(randomDay);
 					c.setTime(randomTime);
@@ -534,7 +556,7 @@ public class Algorithm {
 						teacher.setFullSlot(randomDay, randomTime + 1);
 						p.setFullSlot(randomDay, randomTime + 1);
 					}
-					room.setOccupied(randomDay, randomTime);
+					//room.setOccupied(randomDay, randomTime);
 					c.setRoom(room);
 					c.setSet(true);
 				}
@@ -548,34 +570,34 @@ public class Algorithm {
 		}
 
 	}
-	
-	 private static boolean programTimeOccupiedOrTeacherBelowThreshold(Program p, Course c, int randomTime,
-	            int randomDay, int threshold, int iteration) {
-	       
-	        if(  p.isTimeOccupied(randomTime, randomDay) && c.getSlotsNeeded() == 1 )
-	            return true;
-	       
-	        if( c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))
-	            return true;
-	       
-	        if( iteration<1000 && (c.getTeacher().getWeightedDayTimeWishes()[randomDay][randomTime] > threshold) )
-	            return true;
-	       
-	        return false;
-	    }
-	   
-	    private static Room findAvailableRoom(int randomTime, int randomDay, String roomTypeNeeded) {
-	    	for( Room r : allRooms ) {
-	    		if(roomTypeNeeded!="none" && r.getType()!=roomTypeNeeded ) {
-	    			break;
-	    		}
-	    		
-	    		if( r.isAvailable(randomTime, randomDay) ){
-	    			return r;
-	    		}
-	    	}
-	        return null;
-	    }
+
+	private static boolean programTimeOccupiedOrTeacherBelowThreshold(Program p, Course c, int randomTime,
+			int randomDay, int threshold, int iteration) {
+
+		if (p.isTimeOccupied(randomTime, randomDay) && c.getSlotsNeeded() == 1)
+			return true;
+
+		if (c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))
+			return true;
+
+		if (iteration < 1000 && (c.getTeacher().getWeightedDayTimeWishes()[randomDay][randomTime] > threshold))
+			return true;
+
+		return false;
+	}
+
+	private static Room findAvailableRoom(int randomTime, int randomDay, String roomTypeNeeded) {
+		for (Room r : allRooms) {
+			if (roomTypeNeeded != "none" && r.getType() != roomTypeNeeded) {
+				break;
+			}
+
+			if (r.isAvailable(randomTime, randomDay)) {
+				return r;
+			}
+		}
+		return null;
+	}
 
 	private void reset() {
 		for (Teacher t : allTeachers) {
@@ -594,7 +616,7 @@ public class Algorithm {
 			p.resetFullSlots();
 			p.resetMinusPoints();
 		}
-		for( Room r : allRooms ) {
+		for (Room r : allRooms) {
 			r.resetOccupied();
 		}
 	}
@@ -628,7 +650,6 @@ public class Algorithm {
 	}
 
 	private void weightSingleSchedule(Teacher t) {
-		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
 		// 3 = auf keinen fall
 		// 0 = top
 		for (Prio p : t.getPrios()) {
@@ -638,6 +659,8 @@ public class Algorithm {
 
 			}
 		}
+		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
+
 		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
 
@@ -718,16 +741,22 @@ public class Algorithm {
 
 		for (Program p : allPrograms) {
 			for (Course c : p.getCourses()) {
+				Teacher teacher = c.getTeacher();
 				if (!c.isSet()) {
 
-					Teacher teacher = c.getTeacher();
 					Random r = new Random();
 					int randomTime = r.nextInt(7);
 					int randomDay = r.nextInt(5);
 					if (c.getSlotsNeeded() == 2 && randomTime == 6)
 						randomTime -= 1;
-					while (p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
-							|| c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay)))) {
+					int iteration = 0;
+					while ((p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
+							|| c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))))
+							|| (teacher.priosDontFit(randomDay, randomTime) && iteration < 1000)) {
+						if (iteration == 9999)
+							System.out
+									.println(p.getName() + " cannot be satisfied for teacher " + teacher.getLastName());
+						iteration++;
 						randomTime = r.nextInt(7);
 						randomDay = r.nextInt(5);
 						if (c.getSlotsNeeded() == 2 && randomTime == 6)
@@ -751,32 +780,14 @@ public class Algorithm {
 		}
 		for (Program p : allPrograms)
 			addStudentMinusPoints(p);
-		// for()
-		/*
-		 * for (Slot slot : slots.getSlots().values()) { Object[] teacherObjs =
-		 * teachers.getTeachers().values().toArray(); Teacher randomTeacher =
-		 * (Teacher) teacherObjs[randomGen.nextInt(teacherObjs.length)]; //TODO:
-		 * exit condition if all teachers are busy at that time int iteration =
-		 * 0; while (randomTeacher.getFullSlots()[slot.getDay()][slot.getTime()]
-		 * == true || randomTeacher.isBusy() || randomTeacher.priosDontFit(slot)
-		 * && iteration < 10000) { randomTeacher = (Teacher)
-		 * teacherObjs[randomGen.nextInt(teacherObjs.length)]; iteration++; } if
-		 * (iteration < 10000) randomTeacher.setFullSlot(slot.getDay(),
-		 * slot.getTime()); else { countNotOccupied++;
-		 * notOccupiedSlots.add("Day: " + slot.getDay() + ", Time: " +
-		 * slot.getTime()); } for (Room room : rooms.getRooms().values()) {
-		 * 
-		 * } }
-		 */
-		// return countNotOccupied;
 		return 0;
 
 	}
 
 	private static void addStudentMinusPoints(Program p) {
-		addMaxHoursMinusPoints(p);
-		addMaxDaysMinusPoints(p);
-		addMaxBreakLengthMinusPoints(p);
+		//addMaxHoursMinusPoints(p);
+		//addMaxDaysMinusPoints(p);
+		//addMaxBreakLengthMinusPoints(p);
 	}
 
 	private static void addMaxBreakLengthMinusPoints(Program p) {
@@ -835,6 +846,7 @@ public class Algorithm {
 	}
 
 	private static void addMaxHoursMinusPoints(Program p) {
+		/*
 		try {
 			int studentMaxHoursValue = Integer.parseInt(p.getProp().getProperty("studentMaxHoursValue"));
 			int studentMaxHoursMinusPoints = Integer.parseInt(p.getProp().getProperty("studentMaxHoursMinusPoints"));
@@ -855,13 +867,13 @@ public class Algorithm {
 								break;
 							}
 						}
-
+		
 					}
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	// 2. function to generate a simple Ur-Plan
