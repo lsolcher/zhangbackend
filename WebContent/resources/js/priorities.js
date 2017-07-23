@@ -1,66 +1,36 @@
 (function() {
   var app = angular.module("zhang-app").controller('prioController', function($scope, $rootScope) {
 
-	var numberOfPriosSelected = 0;
-	var maxNumberOfPriosSelected = 10;
-	var numberOfSelectedRooms = 0;
-	var numberOfSelectedWeeklyLections = 0;
-	var notSelectedBefore = true;
 
-  $scope.updateCalendar = function(calendar, index){
-    calendar[index] = (parseInt(calendar[index], 10) + 1);
-    if (calendar[index] === 4) {
-      calendar[index] = 0;
+    if ( slctPrios !== null ) {
+        $rootScope.slctPrios = slctPrios[0];
     }
-  };
+	console.log('Prios from Mongo: ', $rootScope.slctPrios );
+    console.log('Selected Prios: ', $rootScope.selectedPriorities );
+
+    $scope.updateCalendar = function(calendar, index){
+        calendar[index] = (parseInt(calendar[index], 10) + 1);
+        if (calendar[index] === 4) {
+          calendar[index] = 0;
+        }
+    };
 
 	$scope.selectPrio = function(index, prio) {
 
-		notSelectedBefore = true;
+        for(var i in $rootScope.selectedPriorities) {
+            $rootScope.selectedPriorities[i].hideContent = true;
+        }
 
-    	// check if priority was added already
-		for (var i in $rootScope.selectedPriorities) {
-			if (prio.title == $rootScope.selectedPriorities[i].title) {
-				notSelectedBefore = false;
-			}
-		}
+        var newPrio = jQuery.extend(true, {}, prio);
+        newPrio.origin = index;
 
-    	for(var i in $rootScope.selectedPriorities) {
-    		$rootScope.selectedPriorities[i].hideContent = true;
-	    }
+        $rootScope.selectedPriorities.unshift(newPrio);
+        toastr.info('Die Prios wurde zur Liste hinzugefügt!');
 
-    	var numberOfCourses = localStorage.getItem("courselistlength");
-    	console.log(numberOfCourses);
-
-    	var newPrio = jQuery.extend(true, {}, prio);
-	    newPrio.origin = index;
-	    if ((numberOfPriosSelected < maxNumberOfPriosSelected) && (newPrio.showCourses == false) && (notSelectedBefore)) { // if showCourses == false -> nur 1x auswählbar
-
-    		$rootScope.selectedPriorities.unshift(newPrio);
-	    	numberOfPriosSelected++;
-	    }
-	    else if ((numberOfPriosSelected < maxNumberOfPriosSelected) && (newPrio.showCourses == true)) { // if showCourses == true -> nur (numberOfCourses)x auswählbar
-
-	    	if ((newPrio.title == "Raumbeschaffenheit") && (numberOfSelectedRooms < numberOfCourses)) {
-	    		$rootScope.selectedPriorities.unshift(newPrio);
-                toastr.info('Die Prios wurde zur Liste hinzugefügt!');
-	    		numberOfSelectedRooms++;
-	    		numberOfPriosSelected++;
-	    	}
-	    	else if ((newPrio.title == "Wöchentliche Veranstaltungen") && (numberOfSelectedWeeklyLections < numberOfCourses)) {
-    			$rootScope.selectedPriorities.unshift(newPrio);
-                toastr.info('Die Prios wurde zur Liste hinzugefügt!');
-    			numberOfSelectedWeeklyLections++;
-    			numberOfPriosSelected++;
-    		}
-		}
-    	else {
-    		// TODO: show error massage on website
-    		console.log("You can only select 10 contraints all in all - one of each category that is not course specific; the course specific constraints each per course")
-    	}
     }
 
     $scope.removeEntry = function(index, prio) {
+
       var newPrios = [];
       for(var i in $rootScope.selectedPriorities) {
         if(i == index) continue;
@@ -69,155 +39,30 @@
       $rootScope.selectedPriorities = newPrios;
       toastr.info('Die Prios wurde aus der Liste entfernt!');
 
-      numberOfPriosSelected--;
-      if (newPrio.title == "Raumbeschaffenheit") numberOfSelectedRooms--;
-  	  else if (newPrio.title == "Wöchentliche Veranstaltungen") numberOfSelectedWeeklyLections--;
     }
 
     $rootScope.selectedPriorities = [ { type: 'Courses', courses: $rootScope.courseList}, { type: 'Schedule', calendar: $scope.calendar} ];
     $rootScope.calendar = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-//    $rootScope.acceptedPriorities = [];			//TODO
 
     $scope.save = function() {
 
-    	// check all the selected constraints (prios) for validating issues
-    	// validating selected constraints -> only save prios/constraints when validated and okay
-     	var noEmptyInputElements = true;
-    	var noImpossibleCombinations = true;
-    	var noDublication = true;
-    	var calendarIsNotEmpty = true;
+        var lastElement = $rootScope.selectedPriorities.length - 1;
 
-//     	for (var i in $rootScope.selectedPriorities) {
-//
-// 	    	// check if any priority text areas or constraint selects are empty
-//     		// check if any priority text area is empty
-// 	   	  if ($rootScope.selectedPriorities[i].type == "FreeTextInput") {
-// 	    		if (document.getElementById("freeTextWish").value == "")
-// 	    			noEmptyInputElements = false;
-// 	    	}
-// 	   	    else if (($rootScope.selectedPriorities[i].type == "ExcludeDayCombinationPrio") && ($rootScope.selectedPriorities[i].title == "Uhrzeit ausschließen")) {
-// 	   	    	// check if any constraint selects are empty
-// 	   	    	if (($rootScope.selectedPriorities[i].timeOne == undefined) || ($rootScope.selectedPriorities[i].timeTwo == undefined)
-// 		   	    		|| ($rootScope.selectedPriorities[i].dayOne == undefined) || ($rootScope.selectedPriorities[i].dayTwo == undefined)) {
-// 		   	    	noEmptyInputElements = false;
-// 		   	    }
-// 	   	    }
-// 	   	    else if ($rootScope.selectedPriorities[i].type == "ExcludeDayCombinationPrio") {
-// 	   	    	// check if any constraint selects are empty
-// 	   	    	if (($rootScope.selectedPriorities[i].dayOne == undefined) || ($rootScope.selectedPriorities[i].dayTwo == undefined)) {
-// 		   	    	noEmptyInputElements = false;
-// 		   	    }
-// 	   	    }
-// 	   	    // check for empty selects, duplications and impossible combination in "raumbeschaffenheit" and "wöchentliche veranstaltungen"
-// 	   	    else if (($rootScope.selectedPriorities[i].title == "Raumbeschaffenheit") || ($rootScope.selectedPriorities[i].title == "Wöchentliche Veranstaltungen")) {
-// 	   	    	// check if any constraint selects are empty
-// 	   	    	if (($rootScope.selectedPriorities[i].option == undefined) || ($rootScope.selectedPriorities[i].course == undefined)) {
-// 		   	    	noEmptyInputElements = false;
-// 		   	    }
-// 		   	    // check for duplication
-// 				for (var j in $rootScope.selectedPriorities) {
-//
-// 					// check if same options were selected (for all courses)
-// 					// if (($rootScope.selectedPriorities[i].option == $rootScope.selectedPriorities[j].option) && ($rootScope.selectedPriorities[i].course == $rootScope.selectedPriorities[j].course)) {
-//           //   console.log($rootScope.selectedPriorities[j].option);
-//           //
-//           //   noDublication = false;
-// 					// }
-//
-// 			    	// check if some of the inputs are impossible to combine: check if a course was selected with different options
-// 					if ($rootScope.selectedPriorities[i].course == $rootScope.selectedPriorities[j].course) {
-// 						if ($rootScope.selectedPriorities[i].option != $rootScope.selectedPriorities[j].option)
-// 							noImpossibleCombinations = false
-// 					}
-// 				}
-// 	   	    }
-// 	   	    else { // alle singleChoicePrios, deren titel nicht "Raumbeschaffenheit" ist ( = die keine kursauswahl haben) {
-// 	   	    	// check if any constraint selects are empty
-// 	   	    	if (($rootScope.selectedPriorities[i].option == undefined)) {
-// 		   	    	noEmptyInputElements = false;
-// 		   	    }
-// 	   	    }
-//
-// 	   	    if (($rootScope.selectedPriorities[i].type == "ExcludeDayCombinationPrio")) {
-//
-// 	   	    	// check for duplication on "ExcludeDayCombinationPrio"
-// 	   	    	// ExcludeDayCombinationPrio: wenn an tag X , <-> dann AUCH an tag X
-// 	   	    	if ($rootScope.selectedPriorities[i].title == "Tage kombinieren") {
-// 	   	    		if ($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[i].dayTwo) {
-// 	   	    			noDublication = false;
-// 	   	    		}
-// 	   	    	}
-//
-// 		   	    for (var j in $rootScope.selectedPriorities) {
-//
-// 		   	    	// check for duplication on "ExcludeDayCombinationPrio"
-// 		   	    	// ExcludeDayCombinationPrio: wenn an tag X , dann NICHT an tag Y <-> wenn an tag X um ... , dann NICHT an tag Y um ...
-// 		   	    	if ((($rootScope.selectedPriorities[i].title == "Uhrzeit ausschließen") && ($rootScope.selectedPriorities[j].title == "Tage ausschließen"))) {
-//
-// 		   	    		if ((($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[j].dayOne) && ($rootScope.selectedPriorities[i].dayTwo == $rootScope.selectedPriorities[j].dayTwo))) {
-// //		   	    				|| (($rootScope.selectedPriorities[j].dayOne == $rootScope.selectedPriorities[i].dayOne) && ($rootScope.selectedPriorities[j].dayTwo == $rootScope.selectedPriorities[i].dayTwo))) {
-// 			   	    		noDublication = false;
-// 			   	    	}//todo: to be verified
-// 		   	    	}
-//
-// 			   	    // check if some of the inputs are impossible to combine that are "ExcludeDayCombinationPrio"
-//
-// 		   	    	// ExcludeDayCombinationPrio: wenn an tag X , <-> dann NICHT an tag X
-// 		   	    	if ($rootScope.selectedPriorities[i].title == "Tage ausschließen") {
-// 		   	    		if ($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[i].dayTwo) {
-// 		   	    			noImpossibleCombinations = false;
-// 		   	    		}
-// 		   	    	}
-//
-// 			   	    // ExcludeDayCombinationPrio: wenn an tag X , dann AUCH an tag Y <-> wenn an tag X , dann NICHT an tag Y
-// 		   	    	if ((($rootScope.selectedPriorities[i].title == "Tage kombinieren") && ($rootScope.selectedPriorities[j].title == "Tage ausschließen"))) {
-//
-// 		   	    		if ((($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[j].dayOne) && ($rootScope.selectedPriorities[i].dayTwo == $rootScope.selectedPriorities[j].dayTwo))) {
-// 		   	    				noImpossibleCombinations = false;
-// 			   	    	}
-// 		   	    	}
-// 		   	    	// ExcludeDayCombinationPrio: wenn an tag X um Zeit Y , dann NICHT an tag X um Zeit Y
-// 		   	    	if ($rootScope.selectedPriorities[i].title == "Uhrzeit ausschließen") {
-// 		   	    		if (($rootScope.selectedPriorities[i].dayOne == $rootScope.selectedPriorities[i].dayTwo) && ($rootScope.selectedPriorities[i].timeOne == $rootScope.selectedPriorities[i].timeTwo)) {
-// 		   	    			noImpossibleCombinations = false;
-// 		   	    		}//todo: to be verified
-// 		   	    	}
-// 		   	    }
-// 		   	 }
-//     	}
-
-    	// check if calendar is Selected at all 		// TODO: check if calendar is Selected: at least = min, at most = max
-    	var calendarInput = $('.calendar-input');
-    	var numberOfValuesInCalendarOtherThan1 = 0;
-
-		for (var i = 0; i < calendarInput.length; i++) {
-			if (!(calendarInput[i].value == 1)) {	// if all input has prio=="1" -> no (other) prio is selected
-				calendarIsNotEmpty = false;
-				numberOfValuesInCalendarOtherThan1++;
-		    }
-		}
-
-	    // if all fine -> save
-    	// if (noEmptyInputElements && noImpossibleCombinations && noDublication && calendarIsNotEmpty) {
-
-	      //console.log('Save:', $rootScope.selectedPriorities);	// TODO: change to acceptedPriorities
-        // console.log(JSON.stringify($rootScope.selectedPriorities), JSON.stringify($scope.calendar));
-          var lastElement = $rootScope.selectedPriorities.length - 1;
-          if ($rootScope.selectedPriorities[lastElement].type != 'Schedule') {
+        if ($rootScope.selectedPriorities[lastElement].type != 'Schedule') {
             $rootScope.selectedPriorities.push( { type: 'Schedule', calendar: $scope.calendar} );
-          } else if ($rootScope.selectedPriorities[lastElement-1].type != 'Courses') {
+        } else if ($rootScope.selectedPriorities[lastElement-1].type != 'Courses') {
             $rootScope.selectedPriorities.push( { type: 'Courses', courses: $rootScope.courseList} );
-          } else {
+        } else {
             $rootScope.selectedPriorities[lastElement] = { type: 'Schedule', calendar: $scope.calendar};
             $rootScope.selectedPriorities[lastElement-1] = { type: 'Courses', courses: $rootScope.courseList};
-          }
+        }
 
-        console.log($rootScope.selectedPriorities);
+        console.log('Before Submit: ', $rootScope.selectedPriorities);
 	      $.ajax({
 	        type: 'POST',
 	        contentType : 'application/json; charset=utf-8',
 	        url: '/ZhangProjectBackend/post.json',
-	        data: JSON.stringify($rootScope.selectedPriorities),	// TODO: change to acceptedPriorities
+	        data: JSON.stringify($rootScope.selectedPriorities),
 	        success: function(response) {
 	          console.log('Response', response);
               toastr.success('Die Prios wurden erfolgreich gespeichert!');
@@ -227,23 +72,7 @@
               toastr.error('Die Prios wurden leider nicht gespeichert!');
 	        }
 	      });
-    	// }
-    	// else if (noEmptyInputElements == false) {
-    	// 	// TODO: show error message telling the user what needs to be changed
-    	// 	console.log ("Please make sure that you chose any information in all of the selected constraints! ");
-    	// }
-    	// else if (noImpossibleCombinations == false) {
-    	// 	// TODO: show error message
-   	// 	 	console.log ("Please make sure that you didn't enter options that are impossible to combine! ");
-    	// }
-    	// else if (noDublication == false) {
-    	// 	// TODO: show error message
-      // 		console.log ("Please make sure that you didn't enter duplicate information! ");
-      //  	}
-    	// else { //if (calendarIsNotEmpty == false) {
-    	// 	// TODO: show error message
-      // 		console.log ("Please make sure that you chose at least ... of the preferred time slots in the calendar! ");
-      // 	}
+
     }
 
     $scope.possiblePriorities = [
@@ -331,9 +160,7 @@
       scope.prio.timeTwo = "0";
       scope.prio.course = "Alle Kurse";
 
-      scope.change = function(selected) {
-        scope.prio.option = selected;
-      }
+      scope.change = function(selected){}
       scope.changeCourse = function(selected) {
         scope.prio.course = selected;
       }

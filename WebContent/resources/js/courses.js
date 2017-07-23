@@ -72,7 +72,6 @@
 					}
 					$scope.list.push(temp)
 				}
-				console.log($rootScope.courseList);
 				//$scope.list = initCourses
 				//$scope.$apply()
 

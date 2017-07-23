@@ -160,7 +160,7 @@
                   <div class="priority-container" ng-hide="prio.hideContent">
                     <div ng-if="prio.type == 'SingleChoicePrio'" class="priority-content">
                       <span class="priotext">{{prio.text[0]}}</span>
-                        <select ng-model="prio.singlechoice" ng-change="change(prio.singlechoice)" required>
+                        <select ng-model="prio.option" ng-change="change(prio.option)" required>
                           <option ng-repeat="option in prio.options" value="{{$index}}">{{option}}</option>
                         </select>
                         <%--<span ng-show="myForm.prio.singlechoice.$touched && myForm.prio.singlechoice.$invalid">The name is required.</span>--%>
@@ -171,7 +171,7 @@
                     </div>
                     <div ng-if="prio.type == 'ExcludeDayCombinationPrio' && prio.text.length <= 3" class="priority-content">
                       <span class="priotext">{{prio.text[0]}}</span>
-                      <select name="day" ng-change="change(prio.dayOne[0])" ng-model="prio.dayOne[0]" required>
+                      <select name="day" ng-change="change(prio.dayOne)" ng-model="prio.dayOne" required>
                           <option value="Ersten Tag wählen">Ersten Tag wählen</option>
                           <option value="0">Montag</option>
                           <option value="1">Dienstag</option>
@@ -240,9 +240,9 @@
 
                     <div class="prio-course-select" ng-show="prio.showCourses">
                     <label>Kurs auswählen:</label>
-                    <select ng-change="changeCourse(prio.course)" class="select-course" ng-model="prio.course" required>
+                    <select ng-change="change(prio.course)" class="select-course" ng-model="prio.course" required>
                         <option value="Alle Kurse">Alle Kurse</option>
-                        <option ng-repeat="course in $root.courseList" value="{{course.id}}">{{course.kurzname}}</option>
+                        <option ng-repeat="course in $root.courseList" value="{{course.courseID}}">{{course.kurzname}}</option>
                       </select>
                     </div>
                   </div>
