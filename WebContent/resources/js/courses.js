@@ -5,16 +5,33 @@
 
 				$scope.search = ''
 				$rootScope.name= firstName;
-				$scope.getCourses = JSON.parse(slctCourses);
-                $scope.selectedCourses = $scope.getCourses[0];
+                $scope.getCourses = JSON.parse(slctCourses);
+                $scope.initCourses = initCourses;
+
+				if ( $scope.getCourses !== null ) {
+                    $scope.selectedCourses = $scope.getCourses[0];
+                    $scope.selectedCourses = $.map($scope.selectedCourses, function(el) { return el });
+                } else {
+                    $scope.selectedCourses = [];
+				}
 
                 for ( var i in $scope.selectedCourses ) {
+
                     if ($scope.selectedCourses[i]) {
                         $scope.selectedCourses[i].selected = true;
                     }
+
+                    for( var j in $scope.initCourses) {
+                    	if ( $scope.selectedCourses[i].name == $scope.initCourses[j].kurzname ) {
+                            $scope.selectedCourses[i].sws = $scope.initCourses[j].sws;
+                            $scope.selectedCourses[i].semester = $scope.initCourses[j].semester;
+                            $scope.selectedCourses[i].kurzname = $scope.initCourses[j].kurzname;
+						}
+					}
                 }
 
-                console.log($scope.selectedCourses);
+                //console.log('Selected Courses: ', $scope.selectedCourses);
+                //console.log('Init Courses: ', $scope.initCourses);
 
                 $scope.list = []
 				$scope.selectedList = []
@@ -51,9 +68,11 @@
 					for ( var j in $rootScope.courseList) {
 						if ($rootScope.courseList[j].id == temp.id || $rootScope.courseList[j].courseID == temp.id)
 							temp.selected = true
+							temp.courseID = temp.id;
 					}
 					$scope.list.push(temp)
 				}
+				console.log($rootScope.courseList);
 				//$scope.list = initCourses
 				//$scope.$apply()
 

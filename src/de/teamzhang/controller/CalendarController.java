@@ -198,6 +198,7 @@ public class CalendarController extends AbstractController {
 						c.setName((String) course.get("kurzname"));
 						int sws = 0;
 						try {
+							if (sws != 0)
 							sws = (Integer) course.get("sws");
 						} catch (ClassCastException cce) {
 							cce.printStackTrace();
@@ -208,7 +209,7 @@ public class CalendarController extends AbstractController {
 						int slotsNeeded = sws / 2;
 						c.setSlotsNeeded(slotsNeeded);
 						c.setGroup((String) course.get("parallelgruppe"));
-						c.setCourseID(Integer.parseInt((String) course.get("id")));
+						c.setCourseID(Integer.parseInt((String) course.get("courseID")));
 						addSemesters(c, course);
 						courseList.add(c);
 					}

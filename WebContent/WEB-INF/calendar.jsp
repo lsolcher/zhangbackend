@@ -42,7 +42,7 @@
 
         try {
             initCourses = JSON.parse(initCourses);
-            //slctPrios = JSON.parse(slctPrios);
+            slctPrios = JSON.parse(slctPrios);
             //slctCourses = JSON.parse(slctCourses);
         } catch(e) {
         //console.log('NOOO', initCourses);
@@ -242,7 +242,7 @@
                     <label>Kurs auswählen:</label>
                     <select ng-change="changeCourse(prio.course)" class="select-course" ng-model="prio.course" required>
                         <option value="Alle Kurse">Alle Kurse</option>
-                        <option ng-repeat="course in $root.courseList" value="{{course.id}}">{{course.name}}</option>
+                        <option ng-repeat="course in $root.courseList" value="{{course.id}}">{{course.kurzname}}</option>
                       </select>
                     </div>
                   </div>
