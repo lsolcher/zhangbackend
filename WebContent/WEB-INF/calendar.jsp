@@ -201,7 +201,7 @@
                           <option value="4">Freitag</option>
                       </select>
                       <span class="priotext">{{prio.text[1]}}</span>
-                      <select ng-change="change(prio.dayOne[1])" ng-model="prio.dayOne[1]" required>
+                      <select ng-change="change(prio.timeOne)" ng-model="prio.timeOne" required>
                           <option value="Uhrzeit wählen">Uhrzeit wählen</option>
                           <option value="0">08:00-09:30</option>
                           <option value="1">09:45-11:15</option>
