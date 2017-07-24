@@ -307,6 +307,8 @@ public class Teacher implements Serializable {
 	}
 
 	public void addMinusPoints(int i) {
+		if (isProf)
+			i++;
 		minusPoints += i;
 	}
 

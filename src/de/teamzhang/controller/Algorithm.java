@@ -28,9 +28,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
 import com.mongodb.util.JSON;
 
 import de.teamzhang.model.CalculatedSchedule;
@@ -52,36 +49,36 @@ public class Algorithm {
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
-	
+
 	public MongoTemplate mongoTemplate() {
 		return mongoTemplate;
-	}	
-	
-//	public Mongo mongo() throws Exception {
-//		MongoClientURI mcu = new MongoClientURI("mongodb://test:test@localhost/test");
-//		return new MongoClient(mcu);
-//	}
-//
-//	public MongoTemplate mongoTemplate() {
-//		MongoTemplate mt = null;
-//		try {
-//			mt = new MongoTemplate(mongo(), "test");
-//		} catch (Exception e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//		try {
-//			mongo().getUsedDatabases();
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return mt;
-//	}
+	}
+
+	//	public Mongo mongo() throws Exception {
+	//		MongoClientURI mcu = new MongoClientURI("mongodb://test:test@localhost/test");
+	//		return new MongoClient(mcu);
+	//	}
+	//
+	//	public MongoTemplate mongoTemplate() {
+	//		MongoTemplate mt = null;
+	//		try {
+	//			mt = new MongoTemplate(mongo(), "test");
+	//		} catch (Exception e1) {
+	//			// TODO Auto-generated catch block
+	//			e1.printStackTrace();
+	//		}
+	//		try {
+	//			mongo().getUsedDatabases();
+	//		} catch (Exception e) {
+	//			// TODO Auto-generated catch block
+	//			e.printStackTrace();
+	//		}
+	//		return mt;
+	//	}
 
 	private static int MINUSPOINTTHRESHOLD = 10;
 
-	private static int RANDOMGENERATIONMINUSPOINTSTHRESHOLD = 200000;
+	private static int RANDOMGENERATIONMINUSPOINTSTHRESHOLD = 20000000;
 
 	static ArrayList<Course> allCourses = new ArrayList<Course>();
 	static ArrayList<Program> allPrograms = new ArrayList<Program>();
@@ -110,10 +107,9 @@ public class Algorithm {
 		weightPrios();
 		int minusPoints = 0;
 		int count = 0;
-		int minusPointsThreshold = 500000;
+		int minusPointsThreshold = 1000;
 		do {
 			reset();
-			count++;
 			try {
 				cloneData();
 			} catch (ClassNotFoundException | IOException e) {
@@ -123,34 +119,36 @@ public class Algorithm {
 			calculateRandomSchedule();
 			boolean hillclimbingReached = false;
 			minusPoints = getMinusPoints();
-			System.out.println(minusPoints);
+			//System.out.println(minusPoints);
 			if (minusPoints < RANDOMGENERATIONMINUSPOINTSTHRESHOLD) {
+				count++;
+
 				hillclimbingReached = true;
 
-				System.out.println("Minuspoints: " + minusPoints);
+				//System.out.println("Minuspoints: " + minusPoints);
 				climbHill(100);
 				minusPoints = getMinusPoints();
-				System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
+				//System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
 				if (minusPoints < minusPointsThreshold) {
 					break;
 				}
 
 				climbHill(10);
 				minusPoints = getMinusPoints();
-				System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
+				//System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
 				if (minusPoints < minusPointsThreshold) {
 					break;
 				}
 
 				climbHill(5);
 				minusPoints = getMinusPoints();
-				System.out.println("Minuspoints after hillclimbing with threshold 5: " + minusPoints);
+				//System.out.println("Minuspoints after hillclimbing with threshold 5: " + minusPoints);
 				if (minusPoints < minusPointsThreshold) {
 					break;
 				}
 
 				for (Program p : allPrograms) {
-					System.out.println("Program " + p.getName() + " has " + p.getProgramMinusPoints() + " minusPoints");
+					//System.out.println("Program " + p.getName() + " has " + p.getProgramMinusPoints() + " minusPoints");
 				}
 			}
 
@@ -162,8 +160,8 @@ public class Algorithm {
 				System.out.println("Iteration " + count + ", new threshold for random generation: "
 						+ RANDOMGENERATIONMINUSPOINTSTHRESHOLD);
 			}
-			if (count % 1000000 == 0) {
-				minusPointsThreshold += 25;
+			if (count % 10000 == 0) {
+				minusPointsThreshold += 100;
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
 			}
 		} while (minusPoints > minusPointsThreshold);
@@ -284,7 +282,7 @@ public class Algorithm {
 			List<Integer> programs = c.getSemesters();
 			for (int i : programs) {
 				try {
-					System.out.println(c.getName());
+					//System.out.println(c.getName());
 					allPrograms.get(i - 1).addCourse(c);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -538,7 +536,7 @@ public class Algorithm {
 			for (Course c : p.getCourses()) {
 				// if minusPoints are
 				if (c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()] > threshold) {
-					System.out.println(c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()]);
+					//System.out.println(c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()]);
 					Teacher teacher = c.getTeacher();
 
 					// Slot slot = new Slot();
@@ -558,9 +556,8 @@ public class Algorithm {
 							//|| (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded)) == null
 							|| (teacher.priosDontFit(randomDay, randomTime) && iteration < 1000)) {
 						iteration++;
-						if (iteration == 999)
-							System.out
-									.println(p.getName() + " cannot be satisfied for teacher " + teacher.getLastName());
+						//if (iteration == 999)
+						//System.out.println("Prios cannot be satisfied for teacher " + teacher.getLastName());
 						randomTime = r.nextInt(7);
 						randomDay = r.nextInt(5);
 						if (c.getSlotsNeeded() == 2 && randomTime == 6)
@@ -585,7 +582,7 @@ public class Algorithm {
 					teacher.setFullSlot(randomDay, randomTime);
 					teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
 					if (c.getSlotsNeeded() == 2) {
-						teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
+						teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
 						teacher.setFullSlot(randomDay, randomTime + 1);
 						p.setFullSlot(randomDay, randomTime + 1);
 					}
@@ -786,9 +783,8 @@ public class Algorithm {
 					while ((p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
 							|| c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))))
 							|| (teacher.priosDontFit(randomDay, randomTime) && iteration < 1000)) {
-						if (iteration == 9999)
-							System.out
-									.println(p.getName() + " cannot be satisfied for teacher " + teacher.getLastName());
+						//if (iteration == 9999)
+						//System.out.println("Prios cannot be satisfied for teacher " + teacher.getLastName());
 						iteration++;
 						randomTime = r.nextInt(7);
 						randomDay = r.nextInt(5);
