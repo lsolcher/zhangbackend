@@ -89,33 +89,40 @@
 								<td>{{table.schedule[3][1]}}</td>
 								<td>{{table.schedule[4][1]}}</td>
 							</tr>
-								<tr>
+							<tr>
 								<td>{{table.schedule[0][2]}}</td>
 								<td>{{table.schedule[1][2]}}</td>
 								<td>{{table.schedule[2][2]}}</td>
 								<td>{{table.schedule[3][2]}}</td>
 								<td>{{table.schedule[4][2]}}</td>
 							</tr>
-								<tr>
+							<tr>
 								<td>{{table.schedule[0][3]}}</td>
 								<td>{{table.schedule[1][3]}}</td>
 								<td>{{table.schedule[2][3]}}</td>
 								<td>{{table.schedule[3][3]}}</td>
 								<td>{{table.schedule[4][3]}}</td>
 							</tr>
-								<tr>
+							<tr>
 								<td>{{table.schedule[0][4]}}</td>
 								<td>{{table.schedule[1][4]}}</td>
 								<td>{{table.schedule[2][4]}}</td>
 								<td>{{table.schedule[3][4]}}</td>
 								<td>{{table.schedule[4][4]}}</td>
 							</tr>
-								<tr>
+							<tr>
 								<td>{{table.schedule[0][5]}}</td>
 								<td>{{table.schedule[1][5]}}</td>
 								<td>{{table.schedule[2][5]}}</td>
 								<td>{{table.schedule[3][5]}}</td>
 								<td>{{table.schedule[4][5]}}</td>
+							</tr>
+							<tr>
+								<td>{{table.schedule[0][6]}}</td>
+								<td>{{table.schedule[1][6]}}</td>
+								<td>{{table.schedule[2][6]}}</td>
+								<td>{{table.schedule[3][6]}}</td>
+								<td>{{table.schedule[4][6]}}</td>
 							</tr>
 						</table>
 					</div>
