@@ -1,7 +1,84 @@
 (function() {
   var app = angular.module("zhang-app").controller('prioController', function($scope, $rootScope) {
 
+    $scope.possiblePriorities = [
+          {
+              type: 'SingleChoicePrio',
+              title: 'Raumbeschaffenheit',
+              options: ['breite','lange'],
+              text: ['Ich bevorzuge ', ' Räume'],		// mehrfachauswahl - kursabhängig <-> kursunabhängige: nur einfachauswahl erlauben
+              showCourses: true
+          },
+          {
+              type: 'SingleChoicePrio',				// einfachauswahl
+              title: 'Unterrichtsbeginn',
+              options: ['früher','später'],
+              text: ['Innerhalb der von mir angegebenen Belegzeiten bevorzuge ich den Unterrichtsbeginn je', 'desto besser.'],
+              showCourses: false
+          },
+          {
+              type: 'ExcludeDayCombinationPrio',		// einfachauswahl
+              title: 'Tage kombinieren',
+              text: ['Wenn ich am ',' unterrichte, möchte ich auch am ',' unterrichten.'],
+              showCourses: false
+          },
+          {
+              type: 'SingleChoicePrio',				// einfachauswahl
+              title: 'Anzahl Veranstaltungen pro Tag',
+              options: ['mehr Veranstaltungen pro Tag, weniger Tage die Woche','weniger Veranstaltungen pro Tag, mehr Tage die Woche'],
+              text: ['Ich bevorzuge ', '.'],
+              showCourses: false
+          },
+          {
+              type: 'SimplePrio',						// mehrfachauswahl
+              title: 'Wöchentliche Veranstaltungen',
+              text: 'Ich ziehe es vor die vierzehntägigen 4SWS meines Unterrichts in zwei wöchentliche Einzelveranstaltungen mit je 2SWS aufzuteilen.',
+              showCourses: true
+          },
+          {
+              type: 'SingleChoicePrio',				// einfachauswahl
+              title: 'Maximale Anzahl aufeinanderfolgender Lehrtage',
+              options: ['1','2','3','4','5'],
+              text: ['Ich möchte pro Woche nicht mehr als ', ' Tage am Stück unterrichten.'],
+              showCourses: false
+          },
+          {
+              type: 'ExcludeDayCombinationPrio',		// einfachauswahl
+              title: 'Tage ausschließen',
+              text: ['Wenn ich am ',' unterrichte, möchte ich nicht am ',' unterrichten.'],
+              showCourses: false
+          },
+          {
+              type: 'ExcludeDayCombinationPrio',		// einfachauswahl
+              title: 'Uhrzeit ausschließen',
+              text: ['Wenn ich am ',' um ',' unterrichte, möchte ich nicht am ',' um ',' unterrichten.'],
+              showCourses: false
+          },
+          {
+              type: 'SingleChoicePrio',				// einfachauswahl
+              title: 'Pausen',
+              options: ['1','2','3','4','5'],
+              text: ['Ich möchte nach spätestens ',' aufeinanderfolgenden Vorlesungen eine längere Pause. Die Mittagspause zwischen 11:15 und 12:15 wird als längere Pause gezählt.'],
+              showCourses: false
+          },
+          {
+              type: 'SingleChoicePrio',				// einfachauswahl
+              title: 'Maximale Lehrtage pro Woche',
+              options: ['1','2','3','4','5'],
+              text: ['Ich möchte nicht mehr als ', ' Tage pro Woche an der Hochschule unterrichten.'],
+              showCourses: false
+          },
+          {
+              type: 'FreeTextInput',					// einfachauswahl
+              title: 'Weitere Sonderwünsche - wenn dringend notwendig',
+              text: 'Ich hätte gerne noch: ',
+              showCourses: false
+          }
+      ];
+
     $rootScope.calendar = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+    $rootScope.selectedPriorities = [ { type: 'Courses', courses: $rootScope.courseList}, { type: 'Schedule', calendar: $scope.calendar} ];
+
     slctPrios = slctPrios.replace(/\t+/g, "");
 
     var lala = JSON.parse(slctPrios);
@@ -12,10 +89,28 @@
         for( i in $rootScope.slctPrios) {
             if ( $rootScope.slctPrios[i].schedule ) {
                 $rootScope.calendar = $rootScope.slctPrios[i].schedule;
+            } else {
+                for( j in $scope.possiblePriorities ) {
+                    if ( $rootScope.slctPrios[i].name == $scope.possiblePriorities[j].title ) {
+
+                        $rootScope.slctPrios[i].option += "";
+                        $rootScope.slctPrios[i].type = $scope.possiblePriorities[j].type;
+                        $rootScope.slctPrios[i].text = $scope.possiblePriorities[j].text;
+                        $rootScope.slctPrios[i].showCourses = $scope.possiblePriorities[j].showCourses;
+                        $rootScope.slctPrios[i].title = $scope.possiblePriorities[j].title;
+                        $rootScope.slctPrios[i].options = $scope.possiblePriorities[j].options;
+
+                    }
+                }
+
+                $rootScope.selectedPriorities.unshift($rootScope.slctPrios[i])
             }
         }
 
     }
+
+
+
 	console.log('Prios from Mongo: ', $rootScope.slctPrios );
     console.log('Selected Prios: ', $rootScope.selectedPriorities );
 
@@ -52,8 +147,6 @@
 
     }
 
-    $rootScope.selectedPriorities = [ { type: 'Courses', courses: $rootScope.courseList}, { type: 'Schedule', calendar: $scope.calendar} ];
-
     $scope.save = function() {
 
         var lastElement = $rootScope.selectedPriorities.length - 1;
@@ -85,80 +178,6 @@
 
     }
 
-    $scope.possiblePriorities = [
-      {
-        type: 'SingleChoicePrio',
-        title: 'Raumbeschaffenheit',
-        options: ['breite','lange'],
-        text: ['Ich bevorzuge ', ' Räume'],		// mehrfachauswahl - kursabhängig <-> kursunabhängige: nur einfachauswahl erlauben
-        showCourses: true
-      },
-      {
-        type: 'SingleChoicePrio',				// einfachauswahl
-        title: 'Unterrichtsbeginn',
-        options: ['früher','später'],
-        text: ['Innerhalb der von mir angegebenen Belegzeiten bevorzuge ich den Unterrichtsbeginn je', 'desto besser.'],
-        showCourses: false
-      },
-      {
-        type: 'ExcludeDayCombinationPrio',		// einfachauswahl
-        title: 'Tage kombinieren',
-        text: ['Wenn ich am ',' unterrichte, möchte ich auch am ',' unterrichten.'],
-        showCourses: false
-      },
-      {
-        type: 'SingleChoicePrio',				// einfachauswahl
-        title: 'Anzahl Veranstaltungen pro Tag',
-        options: ['mehr Veranstaltungen pro Tag, weniger Tage die Woche','weniger Veranstaltungen pro Tag, mehr Tage die Woche'],
-        text: ['Ich bevorzuge ', '.'],
-        showCourses: false
-      },
-      {
-        type: 'SimplePrio',						// mehrfachauswahl
-        title: 'Wöchentliche Veranstaltungen',
-        text: 'Ich ziehe es vor die vierzehntägigen 4SWS meines Unterrichts in zwei wöchentliche Einzelveranstaltungen mit je 2SWS aufzuteilen.',
-        showCourses: true
-      },
-    {
-        type: 'SingleChoicePrio',				// einfachauswahl
-        title: 'Maximale Anzahl aufeinanderfolgender Lehrtage',
-        options: ['1','2','3','4','5'],
-        text: ['Ich möchte pro Woche nicht mehr als ', ' Tage am Stück unterrichten.'],
-        showCourses: false
-    },
-      {
-        type: 'ExcludeDayCombinationPrio',		// einfachauswahl
-        title: 'Tage ausschließen',
-        text: ['Wenn ich am ',' unterrichte, möchte ich nicht am ',' unterrichten.'],
-        showCourses: false
-      },
-      {
-        type: 'ExcludeDayCombinationPrio',		// einfachauswahl
-        title: 'Uhrzeit ausschließen',
-        text: ['Wenn ich am ',' um ',' unterrichte, möchte ich nicht am ',' um ',' unterrichten.'],
-        showCourses: false
-      },
-      {
-        type: 'SingleChoicePrio',				// einfachauswahl
-        title: 'Pausen',
-        options: ['1','2','3','4','5'],
-        text: ['Ich möchte nach spätestens ',' aufeinanderfolgenden Vorlesungen eine längere Pause. Die Mittagspause zwischen 11:15 und 12:15 wird als längere Pause gezählt.'],
-        showCourses: false
-      },
-      {
-        type: 'SingleChoicePrio',				// einfachauswahl
-        title: 'Maximale Lehrtage pro Woche',
-        options: ['1','2','3','4','5'],
-        text: ['Ich möchte nicht mehr als ', ' Tage pro Woche an der Hochschule unterrichten.'],
-        showCourses: false
-      },
-      {
-        type: 'FreeTextInput',					// einfachauswahl
-        title: 'Weitere Sonderwünsche - wenn dringend notwendig',
-        text: 'Ich hätte gerne noch: ',
-        showCourses: false
-      }
-    ];
   });
 
   angular.module("zhang-app").directive('priority', function($rootScope) {
