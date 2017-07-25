@@ -107,14 +107,14 @@ public class Algorithm {
 		weightPrios();
 		int minusPoints = 0;
 		int count = 0;
-		int minusPointsThreshold = 10000;
-		/*long startTime = System.currentTimeMillis();
+		int minusPointsThreshold = 2000;
+		long startTime = System.currentTimeMillis();
 		int totalHits = 0;
 		int bestPoints = 1000000;
 		long avgTime;
 		long totalTime;
 		int totalCount = 0;
-		int totalPoints = 0;*/
+		//int totalPoints = 0;*/
 		//do {
 		do {
 			reset();
@@ -165,12 +165,12 @@ public class Algorithm {
 						+ RANDOMGENERATIONMINUSPOINTSTHRESHOLD);
 			}
 			if (count % 1000 == 0) {
-				minusPointsThreshold += 500;
+				minusPointsThreshold += 100;
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
 			}
 		} while (minusPoints > minusPointsThreshold);
 		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
-				+ " iterations to create it.");
+				+ " iterations and " + ((System.currentTimeMillis() - startTime) / 1000.0) + " seconds to create it.");
 		for (Program p : allPrograms) {
 			System.out.println(p.getName() + " has " + p.getProgramMinusPoints() + " points.");
 		}
@@ -180,10 +180,10 @@ public class Algorithm {
 		count = 0;
 		//if (minusPoints < bestPoints)
 		//bestPoints = minusPoints;
-		/*} while (totalHits < 100);
+		//} while (totalHits < 100);
 		totalTime = System.currentTimeMillis() - startTime;
-		avgTime = totalTime / 100;
-		System.out.println("100 creations took with an average amount of " + totalPoints / 100 + " points took "
+		//avgTime = totalTime / 100;
+		/*System.out.println("100 creations took with an average amount of " + totalPoints / 100 + " points took "
 				+ totalTime / 1000.0 + " seconds and " + totalCount + " total tries.\n Average time was "
 				+ avgTime / 1000.0 + ", average tries per hit " + totalCount / 100 + "." + " Best hit was " + bestPoints
 				+ ".");*/
@@ -205,12 +205,22 @@ public class Algorithm {
 					for (Course c : p.getCourses()) {
 						if (c.getTime() == j && c.getDay() == i) {
 							builder.append(c.getName() + ", " + c.getTeacher().getLastName() + ", " + "Raum xy" + ", "
-									+ c.getSlotsNeeded() + " Doppelstunden" + ", Minuspunkte: "
+									+ c.getSlotsNeeded() + " Doppelstunde(n)" + ", Minuspunkte: "
 									+ c.getTeacher().getWeightedDayTimeWishes()[i][j]);
 							cs.setFullSlot(c.getDay(), c.getTime(),
 									c.getName() + ", " + c.getTeacher().getLastName() + ", " + "Raum xy" + ", "
-											+ c.getSlotsNeeded() + " Doppelstunden" + ", Minuspunkte: "
+											+ c.getSlotsNeeded() + " Doppelstunde(n)" + ", Minuspunkte: "
 											+ c.getTeacher().getWeightedDayTimeWishes()[i][j]);
+							if (c.getSlotsNeeded() == 2) {
+								builder.append(c.getName() + ", " + c.getTeacher().getLastName() + ", " + "Raum xy"
+										+ ", " + c.getSlotsNeeded() + " Doppelstunde(n)" + ", Minuspunkte: "
+										+ c.getTeacher().getWeightedDayTimeWishes()[i][j + 1]);
+								cs.setFullSlot(c.getDay(), c.getTime() + 1,
+										c.getName() + ", " + c.getTeacher().getLastName() + ", " + "Raum xy" + ", "
+												+ c.getSlotsNeeded() + " Doppelstunde(n)" + ", Minuspunkte: "
+												+ c.getTeacher().getWeightedDayTimeWishes()[i][j + 1]);
+								j++;
+							}
 						}
 						isCourse = true;
 					}
@@ -402,50 +412,60 @@ public class Algorithm {
 		Program ba1 = new Program();
 		ba1.setName("BachelorIMI1");
 		ba1.setType(0);
+		ba1.setSemester(1);
 		allPrograms.add(ba1);
 
 		Program ba2 = new Program();
 		ba2.setName("BachelorIMI2");
-		ba1.setType(0);
+		ba2.setType(0);
+		ba2.setSemester(2);
 		allPrograms.add(ba2);
 
 		Program ba3 = new Program();
 		ba3.setName("BachelorIMI3");
-		ba2.setType(0);
+		ba3.setType(0);
+		ba3.setSemester(3);
 		allPrograms.add(ba3);
 
 		Program ba4 = new Program();
 		ba4.setName("BachelorIMI4");
-		ba3.setType(0);
+		ba4.setType(0);
+		ba4.setSemester(4);
 		allPrograms.add(ba4);
 
 		Program ba5 = new Program();
 		ba5.setName("BachelorIMI5");
 		ba5.setType(0);
+		ba5.setSemester(5);
 		allPrograms.add(ba5);
 
 		Program ba6 = new Program();
 		ba6.setName("BachelorIMI6");
 		ba6.setType(0);
+		ba6.setSemester(6);
 		allPrograms.add(ba6);
 
 		Program ma1 = new Program();
 		ma1.setType(1);
+		ma1.setSemester(7);
 		ma1.setName("MasterIMI1");
 		allPrograms.add(ma1);
 
 		Program ma2 = new Program();
 		ma2.setType(1);
+		ma2.setSemester(8);
 		ma2.setName("MasterIMI2");
 		allPrograms.add(ma2);
 
 		Program ma3 = new Program();
 		ma3.setType(1);
+		ma3.setSemester(9);
 		ma3.setName("MasterIMI3");
 		allPrograms.add(ma3);
 
 		Program ma4 = new Program();
 		ma4.setType(1);
+		ma4.setSemester(10);
 		ma4.setName("MasterIMI4");
 		allPrograms.add(ma4);
 
@@ -589,7 +609,10 @@ public class Algorithm {
 							//|| (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded)) == null
 							|| (teacher.priosDontFit(randomDay, randomTime) && iteration < 1000)
 							|| settingsViolated(p, randomDay, randomTime)
-							|| getNewProgramMinusPoints(p, randomDay, randomTime) > threshold * 2 && iteration < 1000) {
+							|| getNewProgramMinusPoints(p, randomDay, randomTime) > threshold * 2 && iteration < 1000
+									&& (c.getSlotsNeeded() == 2 && (
+									//|| (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded)) == null
+									(teacher.priosDontFit(randomDay, randomTime + 1) && iteration < 1000) || settingsViolated(p, randomDay, randomTime + 1) || getNewProgramMinusPoints(p, randomDay, randomTime + 1) > threshold * 2 && iteration < 1000))) {
 						iteration++;
 						//if (iteration == 999)
 						//System.out.println("Prios cannot be satisfied for teacher " + teacher.getLastName());
@@ -600,26 +623,31 @@ public class Algorithm {
 					}
 					teacher.setFreeSlot(c.getDay(), c.getTime());
 					teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[c.getDay()][c.getTime()]);
-					p.setFreeSlot(c.getDay(), c.getTime());
+					//p.setFreeSlot(c.getDay(), c.getTime());
+					setProgramsFreeSlot(c, c.getDay(), c.getTime());
 					if (c.getSlotsNeeded() == 2) {
 						teacher.setFreeSlot(c.getDay(), c.getTime() + 1);
-						p.setFreeSlot(c.getDay(), c.getTime() + 1);
+						//p.setFreeSlot(c.getDay(), c.getTime() + 1);
+						setProgramsFreeSlot(c, c.getDay(), c.getTime() + 1);
 						teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[c.getDay()][c.getTime() + 1]);
 					}
-					if (c.getSlotsNeeded() == 2 && randomTime == 6)
-						randomTime -= 1;
+					//if (c.getSlotsNeeded() == 2 && randomTime == 6)
+					//	randomTime -= 1;
 					// TODO: use Course to determine
 					// room type preferences
 
-					p.setFullSlot(randomDay, randomTime);
+					//p.setFullSlot(randomDay, randomTime);
+					setProgramsFullSlot(c, randomDay, randomTime);
+
 					c.setDay(randomDay);
 					c.setTime(randomTime);
 					teacher.setFullSlot(randomDay, randomTime);
 					teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
 					if (c.getSlotsNeeded() == 2) {
-						teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
+						teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime + 1]);
 						teacher.setFullSlot(randomDay, randomTime + 1);
-						p.setFullSlot(randomDay, randomTime + 1);
+						//p.setFullSlot(randomDay, randomTime + 1);
+						setProgramsFullSlot(c, randomDay, randomTime + 1);
 					}
 					//room.setOccupied(randomDay, randomTime);
 					c.setRoom(room);
@@ -912,8 +940,11 @@ public class Algorithm {
 					int iteration = 0;
 					while ((p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
 							|| c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))))
-							|| (teacher.priosDontFit(randomDay, randomTime) && iteration < 1000)
-							|| settingsViolated(p, randomDay, randomTime)) {
+							|| (teacher.priosDontFit(randomDay, randomTime) && iteration < 1000
+									&& ((c.getSlotsNeeded() == 1 || c.getSlotsNeeded() == 2
+											&& teacher.priosDontFit(randomDay, randomTime + 1))))
+							|| (settingsViolated(p, randomDay, randomTime) && ((c.getSlotsNeeded() == 1
+									|| c.getSlotsNeeded() == 2 && settingsViolated(p, randomDay, randomTime + 1))))) {
 						//if (iteration == 9999)
 						//System.out.println("Prios cannot be satisfied for teacher " + teacher.getLastName());
 						iteration++;
@@ -922,15 +953,16 @@ public class Algorithm {
 						if (c.getSlotsNeeded() == 2 && randomTime == 6)
 							randomTime -= 1;
 					}
-					p.setFullSlot(randomDay, randomTime);
-
+					setProgramsFullSlot(c, randomDay, randomTime);
+					//p.setFullSlot(randomDay, randomTime);
 					teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
 					c.setDay(randomDay);
 					c.setTime(randomTime);
 					teacher.setFullSlot(randomDay, randomTime);
 					if (c.getSlotsNeeded() == 2) {
 						teacher.setFullSlot(randomDay, randomTime + 1);
-						p.setFullSlot(randomDay, randomTime + 1);
+						//p.setFullSlot(randomDay, randomTime + 1);
+						setProgramsFullSlot(c, randomDay, randomTime + 1);
 						teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime + 1]);
 					}
 					c.setSet(true);
@@ -942,6 +974,26 @@ public class Algorithm {
 			addStudentMinusPoints(p);
 		return 0;
 
+	}
+
+	private static void setProgramsFullSlot(Course c, int day, int time) {
+		List<Integer> semesters = c.getSemesters();
+		for (int sem : semesters) {
+			for (Program p : allPrograms) {
+				if (p.getSemester() == sem)
+					p.setFullSlot(day, time);
+			}
+		}
+	}
+
+	private static void setProgramsFreeSlot(Course c, int day, int time) {
+		List<Integer> semesters = c.getSemesters();
+		for (int sem : semesters) {
+			for (Program p : allPrograms) {
+				if (p.getSemester() == sem)
+					p.setFreeSlot(day, time);
+			}
+		}
 	}
 
 	private static void addStudentMinusPoints(Program p) {

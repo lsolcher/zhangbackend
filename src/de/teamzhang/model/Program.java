@@ -21,6 +21,7 @@ public class Program implements Serializable {
 	List<Slot> assignedSlots;
 	List<Course> courseList = new ArrayList<Course>();
 	private boolean[][] fullSlots = new boolean[5][7];
+	private int semester;
 
 	private int programMinusPoints;
 
@@ -151,4 +152,11 @@ public class Program implements Serializable {
 		this.type = type;
 	}
 
+	public void setSemester(int i) {
+		semester = i;
+	}
+
+	public int getSemester() {
+		return semester;
+	}
 }
