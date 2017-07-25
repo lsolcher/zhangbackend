@@ -44,20 +44,20 @@
                 title: 'MaxStunden',
                 options: ['1','2', '3', '4', '5', '6', '7'],
                 text: 'Maximale Stunden pro Tag: ',
-                prios: ['hoch', 'mittel', 'niedrig'],
+                prios: ['hoch', 'mittel', 'niedrig']
               },
               {
-                title: 'MaxMinuspunkte',
-                options: ['-3','-2', '-1'],
-                text: 'Maximale Minuspunkte: ',
-                prios: ['hoch', 'mittel', 'niedrig'],
+                title: 'MaxTage',
+                options: ['3','4'],
+                text: 'Maximale Lehrtage pro Woche: ',
+                prios: ['hoch', 'mittel', 'niedrig']
 
               },
               {
                 title: 'MaxPausen',
                 options: ['1','2', '3', '4'],
-                text: 'Maximale Pausen pro Tag: ',
-                prios: ['hoch', 'mittel', 'niedrig'],
+                text: 'Maximale zusammenhängende Pausen pro Tag: ',
+                prios: ['hoch', 'mittel', 'niedrig']
               }
             ]
         },
@@ -69,20 +69,20 @@
                     title: 'MaxStunden',
                     options: ['1','2', '3', '4', '5', '6', '7'],
                     text: 'Maximale Stunden pro Tag: ',
-                    prios: ['hoch', 'mittel', 'niedrig'],
+                    prios: ['hoch', 'mittel', 'niedrig']
                 },
                 {
-                    title: 'MaxMinuspunkte',
-                    options: ['-3','-2', '-1'],
-                    text: 'Maximale Minuspunkte: ',
-                    prios: ['hoch', 'mittel', 'niedrig'],
+                    title: 'MaxTage',
+                    options: ['3','4'],
+                    text: 'Maximale Lehrtage pro Woche: ',
+                    prios: ['hoch', 'mittel', 'niedrig']
 
                 },
                 {
                     title: 'MaxPausen',
                     options: ['1','2', '3', '4'],
-                    text: 'Maximale Pausen pro Tag: ',
-                    prios: ['hoch', 'mittel', 'niedrig'],
+                    text: 'Maximale zusammenhängende Pausen pro Tag: ',
+                    prios: ['hoch', 'mittel', 'niedrig']
                 }
             ]
         }
