@@ -382,11 +382,15 @@ public class Algorithm {
 
 	private void addTeachersToCourses() {
 		for (Teacher t : allTeachers) {
-			for (Course c : t.getCourses())
+			for (Course c : t.getCourses()) {
+				//replace no valid characters
+				c.setName(c.getName().replace("\\uFFFD", "Ü"));
 				allCourses.add(c);
+			}
 		}
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses()) {
+				c.setName(c.getName().replace("\\uFFFD", "Ü"));
 				c.setTeacher(t);
 			}
 		}

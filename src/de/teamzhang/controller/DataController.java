@@ -88,29 +88,6 @@ public class DataController {
 		return modelandview;
 	}
 
-	/*@PostMapping(value = "/login")
-	public ModelAndView loginVerification(Model model, @ModelAttribute("user") User user) {
-	
-		user.getPassword();
-		user.getLastName();
-	
-		DB db = mongoTemplate.getDb();
-		// db.get
-		// db.command()
-	
-		// mongoTemplate.getDb().
-	
-		// boolean auth = db.authenticate("user", "password".toCharArray());
-		//
-		// if (success)
-		// if (auth) {
-		// return new ModelAndView("loginSuccess");
-		// } else {
-		// return new ModelAndView("loginFail");
-		return null;
-		// }
-	}*/
-
 	@GetMapping(value = "/controlpanel")
 	protected ModelAndView controlpanelPage(HttpServletRequest request, HttpServletResponse arg1) {
 		ModelAndView modelandview = new ModelAndView("controlpanel");
