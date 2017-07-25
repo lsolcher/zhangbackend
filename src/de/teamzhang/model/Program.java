@@ -11,7 +11,7 @@ import java.util.Properties;
 
 import org.springframework.data.annotation.Id;
 
-public class Program implements Serializable{
+public class Program implements Serializable {
 	static int MAX_DAYS = 4;
 	static int MAX_SLOTS_PER_DAY = 4;
 	@Id
@@ -23,6 +23,8 @@ public class Program implements Serializable{
 	private boolean[][] fullSlots = new boolean[5][7];
 
 	private int programMinusPoints;
+
+	private int type; // 0 = bachelor, 1 = master
 
 	private Properties prop = new Properties();
 
@@ -140,4 +142,13 @@ public class Program implements Serializable{
 	public void resetMinusPoints() {
 		programMinusPoints = 0;
 	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 }

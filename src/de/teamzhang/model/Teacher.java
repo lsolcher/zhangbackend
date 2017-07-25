@@ -307,8 +307,6 @@ public class Teacher implements Serializable {
 	}
 
 	public void addMinusPoints(int i) {
-		if (isProf)
-			i++;
 		minusPoints += i;
 	}
 
@@ -352,6 +350,8 @@ public class Teacher implements Serializable {
 				points = 10000;
 			else
 				points *= 10;
+			if (isProf)
+				points += 1;
 			weightedDayTimeWishes[i % 5][i / 5] = points;
 		}
 	}

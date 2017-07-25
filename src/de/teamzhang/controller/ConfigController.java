@@ -17,7 +17,6 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.teamzhang.model.Course;
 import de.teamzhang.model.StudentSettings;
 
 @Controller
@@ -42,15 +41,15 @@ public class ConfigController {
 						try {
 							switch ((String) prop.get("prio")) {
 							case "hoch":
-								setting.setMinusPoints(100);
+								setting.setMinusPoints(10000);
 								break;
 							case "mittel":
-								setting.setMinusPoints(30);
+								setting.setMinusPoints(100);
 								break;
 							case "niedrig":
-								setting.setMinusPoints(10);
+								setting.setMinusPoints(30);
 								break;
-							}	
+							}
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

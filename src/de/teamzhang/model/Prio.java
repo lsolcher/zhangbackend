@@ -10,7 +10,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "prio")
-public class Prio implements Serializable{
+public class Prio implements Serializable {
 
 	protected String name;
 	@Id

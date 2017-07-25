@@ -44,7 +44,7 @@
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav pull-right">
-                        <li><a href="#" th:inline='text'>Herzlich Willkommen,  ${user.lastName} </a></li>
+                        <li><a href="#" th:inline='text'>Herzlich Willkommen, Admin </a></li>
 						<li><a href="/ZhangProjectBackend/logout.html" id="logout" >Logout</a></li>
 					</ul>
 				</nav>

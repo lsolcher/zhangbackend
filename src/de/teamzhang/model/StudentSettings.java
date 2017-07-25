@@ -2,7 +2,7 @@ package de.teamzhang.model;
 
 public class StudentSettings {
 
-	private String type = "";
+	private int type; // 0 = maxhours, 1 = maxBreaks, 2 = maxday
 	private boolean isSet = false;
 	private int value = 0;
 	private int minusPoints = 0;
@@ -32,12 +32,22 @@ public class StudentSettings {
 		this.minusPoints = minusPoints;
 	}
 
-	public String getType() {
+	/**
+	 * 
+	 * @return 0 = maxHours, 1 = maxBreak, 2 = maxDays
+	 */
+	public int getType() {
 		return type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setType(String theType) {
+		if (theType.equals("MaxStunden"))
+			type = 0;
+		if (theType.equals("MaxPausen"))
+			type = 1;
+		if (theType.equals("MaxTage"))
+			type = 2;
+
 	}
 
 	public void setProgram(String program) {
