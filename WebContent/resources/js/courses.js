@@ -3,7 +3,7 @@
 			'courseController',
 			function($scope, $rootScope) {
 
-				$scope.search = ''
+				$scope.search = '';
 				$rootScope.name= firstName;
                 $scope.getCourses = JSON.parse(slctCourses);
                 $scope.initCourses = initCourses;
@@ -19,6 +19,7 @@
 
                     if ($scope.selectedCourses[i]) {
                         $scope.selectedCourses[i].selected = true;
+                        $scope.selectedCourses[i].courseID = $scope.selectedCourses[i].courseID.toString();
                     }
 
                     for( var j in $scope.initCourses) {
@@ -62,13 +63,13 @@
 				}
 
 				for ( var i in initCourses) {
-					var temp = initCourses[i]
-					temp.id = i
+					var temp = initCourses[i];
+					temp.id = i;
+					temp.courseID = i;
 					// if selected apply
 					for ( var j in $rootScope.courseList) {
 						if ($rootScope.courseList[j].id == temp.id || $rootScope.courseList[j].courseID == temp.id)
-							temp.selected = true
-							temp.courseID = temp.id;
+							temp.selected = true;
 					}
 					$scope.list.push(temp)
 				}

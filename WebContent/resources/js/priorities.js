@@ -1,10 +1,20 @@
 (function() {
   var app = angular.module("zhang-app").controller('prioController', function($scope, $rootScope) {
 
+    $rootScope.calendar = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+      console.log(JSON.parse(slctPrios))
 
     if ( slctPrios !== null ) {
-        $rootScope.slctPrios = slctPrios[0];
+        $rootScope.slctPrios = slctPrios;
+
+        for( i in $rootScope.slctPrios) {
+            if ( $rootScope.slctPrios[i].schedule ) {
+                $rootScope.calendar = $rootScope.slctPrios[i].schedule;
+            }
+        }
+
     }
+
 	console.log('Prios from Mongo: ', $rootScope.slctPrios );
     console.log('Selected Prios: ', $rootScope.selectedPriorities );
 
@@ -42,7 +52,6 @@
     }
 
     $rootScope.selectedPriorities = [ { type: 'Courses', courses: $rootScope.courseList}, { type: 'Schedule', calendar: $scope.calendar} ];
-    $rootScope.calendar = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
     $scope.save = function() {
 

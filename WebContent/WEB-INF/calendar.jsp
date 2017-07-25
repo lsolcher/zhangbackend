@@ -42,11 +42,9 @@
 
         try {
             initCourses = JSON.parse(initCourses);
-            slctPrios = JSON.parse(slctPrios);
-            //slctCourses = JSON.parse(slctCourses);
+            //slctPrios = JSON.parse(slctPrios);
         } catch(e) {
-        //console.log('NOOO', initCourses);
-          console.log(e.stack);
+            console.log(e.stack);
         }
     </script>
 
