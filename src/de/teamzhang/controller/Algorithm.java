@@ -107,7 +107,7 @@ public class Algorithm {
 		weightPrios();
 		int minusPoints = 0;
 		int count = 0;
-		int minusPointsThreshold = 1000;
+		int minusPointsThreshold = 10000;
 		/*long startTime = System.currentTimeMillis();
 		int totalHits = 0;
 		int bestPoints = 1000000;
