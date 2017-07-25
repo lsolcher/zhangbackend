@@ -2,10 +2,12 @@
   var app = angular.module("zhang-app").controller('prioController', function($scope, $rootScope) {
 
     $rootScope.calendar = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-      console.log(JSON.parse(slctPrios))
+    slctPrios = slctPrios.replace(/\t+/g, "");
 
-    if ( slctPrios !== null ) {
-        $rootScope.slctPrios = slctPrios;
+    var lala = JSON.parse(slctPrios);
+
+    if ( lala !== null ) {
+        $rootScope.slctPrios = lala[0];
 
         for( i in $rootScope.slctPrios) {
             if ( $rootScope.slctPrios[i].schedule ) {
@@ -14,7 +16,6 @@
         }
 
     }
-
 	console.log('Prios from Mongo: ', $rootScope.slctPrios );
     console.log('Selected Prios: ', $rootScope.selectedPriorities );
 
