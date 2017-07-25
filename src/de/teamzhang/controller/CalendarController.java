@@ -199,7 +199,7 @@ public class CalendarController extends AbstractController {
 						int sws = 0;
 						try {
 							if (sws != 0)
-							sws = (Integer) course.get("sws");
+								sws = (Integer) course.get("sws");
 						} catch (ClassCastException cce) {
 							cce.printStackTrace();
 							sws = Integer.parseInt((String) m.get("sws"));
@@ -218,6 +218,7 @@ public class CalendarController extends AbstractController {
 					ArrayList<Integer> calendar = (ArrayList<Integer>) m.get("calendar");
 					((Schedule) prio).setSchedule(calendar);
 					teacher.setWeightedDayTimeWishes(calendar);
+					teacher.addPrio(prio);
 
 				} else {
 					Prio prio = new Prio();
