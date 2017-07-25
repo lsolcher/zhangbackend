@@ -87,6 +87,27 @@ header {
   padding: 6px 0;
   font-family: 'Roboto Slab', serif;
 }
+
+.table-wrapper {
+  margin-bottom: 60px;
+}
+
+.table-wrapper h4 {
+  color: var(--cerulean);
+}
+
+th, td {
+  width: 20%;
+  padding: 9px;
+}
+
+table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+table tr:nth-child(odd) {
+  background: #fff;
+}
+
 /**********************
     OVERLAY OPENER
 **********************/

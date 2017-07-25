@@ -65,9 +65,9 @@
 		<div class="row">
 			<div class="col-md-12 prop-wrapper">
 				<div ng-controller="renderData">
-					<div ng-repeat="table in data">
+					<div ng-repeat="table in data" class="table-wrapper">
 						<h4>{{table.programName}}</h4>
-						<table style="width:100%">
+						<table>
 							<tr>
 								<th>Montag</th>
 								<th>Dienstag</th>
@@ -75,8 +75,47 @@
 								<th>Donnerstag</th>
 								<th>Freitag</th>
 							</tr>
-							<tr ng-repeat="tr in table.schedule track by $index">
-								<td ng-repeat="td in tr track by $index">{{td}}</td>
+							<tr>
+								<td>{{table.schedule[0][0]}}</td>
+								<td>{{table.schedule[1][0]}}</td>
+								<td>{{table.schedule[2][0]}}</td>
+								<td>{{table.schedule[3][0]}}</td>
+								<td>{{table.schedule[4][0]}}</td>
+							</tr>
+							<tr>
+								<td>{{table.schedule[0][1]}}</td>
+								<td>{{table.schedule[1][1]}}</td>
+								<td>{{table.schedule[2][1]}}</td>
+								<td>{{table.schedule[3][1]}}</td>
+								<td>{{table.schedule[4][1]}}</td>
+							</tr>
+								<tr>
+								<td>{{table.schedule[0][2]}}</td>
+								<td>{{table.schedule[1][2]}}</td>
+								<td>{{table.schedule[2][2]}}</td>
+								<td>{{table.schedule[3][2]}}</td>
+								<td>{{table.schedule[4][2]}}</td>
+							</tr>
+								<tr>
+								<td>{{table.schedule[0][3]}}</td>
+								<td>{{table.schedule[1][3]}}</td>
+								<td>{{table.schedule[2][3]}}</td>
+								<td>{{table.schedule[3][3]}}</td>
+								<td>{{table.schedule[4][3]}}</td>
+							</tr>
+								<tr>
+								<td>{{table.schedule[0][4]}}</td>
+								<td>{{table.schedule[1][4]}}</td>
+								<td>{{table.schedule[2][4]}}</td>
+								<td>{{table.schedule[3][4]}}</td>
+								<td>{{table.schedule[4][4]}}</td>
+							</tr>
+								<tr>
+								<td>{{table.schedule[0][5]}}</td>
+								<td>{{table.schedule[1][5]}}</td>
+								<td>{{table.schedule[2][5]}}</td>
+								<td>{{table.schedule[3][5]}}</td>
+								<td>{{table.schedule[4][5]}}</td>
 							</tr>
 						</table>
 					</div>
