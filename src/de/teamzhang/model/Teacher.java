@@ -23,6 +23,7 @@ public class Teacher implements Serializable {
 	private List<Prio> prios = new ArrayList<Prio>();
 	private int minusPoints = 0;
 	private User user;
+	private List<String> violatedConditions = new ArrayList<String>();
 
 	public Teacher() {
 	}
@@ -124,17 +125,25 @@ public class Teacher implements Serializable {
 
 	public boolean priosDontFit(int day, int time) {
 		boolean prioDoesntFit = false;
+		violatedConditions.clear();
 		for (Prio p : prios) {
 			if (p instanceof FreeTextInputPrio)
 				;
-			else if (p instanceof SingleChoicePrio)
+			else if (p instanceof SingleChoicePrio) {
 				prioDoesntFit = checkIfSingleChoicePrioFits((SingleChoicePrio) p, day, time);
-			else if (p instanceof SimplePrio) // no need to check, simplePrio is
+				if (prioDoesntFit == true) {
+					violatedConditions.add(p.getName() + " violated.");
+				}
+			} else if (p instanceof SimplePrio) // no need to check, simplePrio is
 													// weighted in schedule and not
 												// excluding
 				;
-			else if (p instanceof ExcludeDayCombinationPrio)
+			else if (p instanceof ExcludeDayCombinationPrio) {
 				prioDoesntFit = checkIfExcludeDayCombinationPrioFits((ExcludeDayCombinationPrio) p, day, time);
+				if (prioDoesntFit == true) {
+					violatedConditions.add(p.getName() + " violated.");
+				}
+			}
 		}
 		return prioDoesntFit;
 	}
@@ -347,7 +356,7 @@ public class Teacher implements Serializable {
 			System.out.println(i % 7);
 			int points = calendar[i];
 			if (points == 3)
-				points = 10000;
+				points = 1000;
 			else
 				points *= 10;
 			if (isProf)
@@ -355,4 +364,9 @@ public class Teacher implements Serializable {
 			weightedDayTimeWishes[i % 5][i / 5] = points;
 		}
 	}
+
+	public List<String> getViolatedConditions() {
+		return violatedConditions;
+	}
+
 }

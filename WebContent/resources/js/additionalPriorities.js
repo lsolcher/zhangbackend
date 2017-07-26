@@ -40,12 +40,12 @@
             program: 'IMI-B',
             type: 'additionalPrio',
             props: [
-              {
+             /* {
                 title: 'MaxStunden',
                 options: ['1','2', '3', '4', '5', '6', '7'],
                 text: 'Maximale Stunden pro Tag: ',
                 prios: ['hoch', 'mittel', 'niedrig']
-              },
+              },*/
               {
                 title: 'MaxTage',
                 options: ['3','4'],
@@ -55,7 +55,7 @@
               },
               {
                 title: 'MaxPausen',
-                options: ['1','2', '3', '4'],
+                options: [ '1','2', '3', '4'],
                 text: 'Maximale zusammenhängende Pausen pro Tag: ',
                 prios: ['hoch', 'mittel', 'niedrig']
               }
@@ -65,13 +65,13 @@
             program: 'IMI-M',
             type: 'additionalPrio',
             props: [
-                {
+               /* {
                     title: 'MaxStunden',
                     options: ['1','2', '3', '4', '5', '6', '7'],
                     text: 'Maximale Stunden pro Tag: ',
                     prios: ['hoch', 'mittel', 'niedrig']
-                },
-                {
+                },*/
+            	{
                     title: 'MaxTage',
                     options: ['3','4'],
                     text: 'Maximale Lehrtage pro Woche: ',
@@ -80,7 +80,7 @@
                 },
                 {
                     title: 'MaxPausen',
-                    options: ['1','2', '3', '4'],
+                    options: [ '1','2', '3', '4'],
                     text: 'Maximale zusammenhängende Pausen pro Tag: ',
                     prios: ['hoch', 'mittel', 'niedrig']
                 }
