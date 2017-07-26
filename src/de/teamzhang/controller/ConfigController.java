@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 
 import de.teamzhang.model.StudentSettings;
 
@@ -66,7 +70,19 @@ public class ConfigController {
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-						mongoTemplate.insert(setting, "settings");
+						DBCollection collection = mongoTemplate.getCollection("settings");
+						BasicDBObject query = new BasicDBObject();
+						query.put("type", setting.getType());
+						query.put("program", setting.getProgram());
+						//DBCursor cursor = collection.find(new BasicDBObject("user.mail", setting.getProgram(), setting.getType()));
+						DBCursor cursor = collection.find(query);
+						if (cursor.size() > 0) {
+							DBObject obj = cursor.next();
+							collection.update(obj, (DBObject) mongoTemplate.getConverter().convertToMongoType(setting));
+						}
+
+						else
+							mongoTemplate.insert(setting, "settings");
 					}
 				}
 
