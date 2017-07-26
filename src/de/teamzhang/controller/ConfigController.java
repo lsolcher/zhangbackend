@@ -41,10 +41,10 @@ public class ConfigController {
 						try {
 							switch ((String) prop.get("prio")) {
 							case "hoch":
-								setting.setMinusPoints(10000);
+								setting.setMinusPoints(100);
 								break;
 							case "mittel":
-								setting.setMinusPoints(100);
+								setting.setMinusPoints(50);
 								break;
 							case "niedrig":
 								setting.setMinusPoints(30);
