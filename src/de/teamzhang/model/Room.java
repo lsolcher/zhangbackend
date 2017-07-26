@@ -5,19 +5,19 @@ import java.math.BigInteger;
 
 import org.springframework.data.annotation.Id;
 
-public class Room implements Serializable{	
+public class Room implements Serializable {
 	protected String type;
 	protected String name;
 	@Id
 	private BigInteger id;
 	private int seat;
-//	public static int WideRoom = 1;
-//	public static int LongRoom=2;
-//	public static int MacLab=3;
-//	public static int PcLab=4;
-	
+	//	public static int WideRoom = 1;
+	//	public static int LongRoom=2;
+	//	public static int MacLab=3;
+	//	public static int PcLab=4;
+
 	private boolean[][] roomOccupied = new boolean[5][7];
-	
+
 	public Room() {
 		// TODO Auto-generated constructor stub
 	}
@@ -45,7 +45,7 @@ public class Room implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	public int getSeat() {
 		return seat;
 	}
@@ -54,15 +54,14 @@ public class Room implements Serializable{
 		this.seat = seat;
 	}
 
-
 	public boolean isAvailable(int randomDay, int randomTime) {
-		return roomOccupied[randomDay][randomTime];
+		return !roomOccupied[randomDay][randomTime];
 	}
-	
+
 	public void setOccupied(int randomDay, int randomTime) {
-		roomOccupied[randomDay][randomTime]=true;
+		roomOccupied[randomDay][randomTime] = true;
 	}
-	
+
 	public void resetOccupied() {
 		for (int index = 0; index < roomOccupied.length; index++)
 			for (int inner = 0; inner < roomOccupied[index].length; inner++)

@@ -4,6 +4,6 @@ public class AlgoStart {
 
 	public static void main(String[] args) {
 		Algorithm algo = new Algorithm();
-		algo.generateCalendar();
+		algo.generateCalendar(null);
 	}
 }
