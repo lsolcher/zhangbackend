@@ -170,7 +170,7 @@ public class Algorithm {
 						+ RANDOMGENERATIONMINUSPOINTSTHRESHOLD);
 			}
 			if (count % 1000 == 0) {
-				minusPointsThreshold += (0.5 * minusPointsThreshold);
+				minusPointsThreshold += 100;
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
 			}
 		} while (minusPoints > minusPointsThreshold);
@@ -621,17 +621,17 @@ public class Algorithm {
 					while (programTimeOccupiedOrTeacherBelowThreshold(p, c, randomTime, randomDay, threshold, iteration)
 							|| (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded)) == null
 							|| (teacher.priosDontFit(randomDay, randomTime) && iteration < 300)
-							|| (settingsViolated(p, randomDay, randomTime) && iteration < 2000)
+							|| (settingsViolated(p, randomDay, randomTime))
 							|| getNewProgramMinusPoints(p, randomDay, randomTime) > threshold * 2 && iteration < 300) {
 						iteration++;
 						if (iteration == 999 && !teacher.getViolatedConditions().isEmpty())
 							teacher.addMinusPoints(10);
-						if (iteration > 1900)
-							System.out.println(iteration);
 						randomTime = r.nextInt(7);
 						randomDay = r.nextInt(5);
 						if (c.getSlotsNeeded() == 2 && randomTime == 6)
 							randomTime -= 1;
+						if (iteration > 2000)
+							return;
 					}
 					teacher.setFreeSlot(c.getDay(), c.getTime());
 					teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[c.getDay()][c.getTime()]);
@@ -724,31 +724,6 @@ public class Algorithm {
 			return true;
 		}
 		fullSlots[day][theTime] = false;
-		return false;
-	}
-
-	private boolean checkIfMaxBreakSettingIsViolated(Program p, int day, int theTime, StudentSettings s) {
-		int studentMaxBreakValue = s.getValue();
-		boolean[][] fullSlots = p.getFullSlots();
-		fullSlots[day][theTime] = true;
-		int count = 0;
-		int max = 0;
-		for (int time = 1; time < fullSlots[day].length; time++) {
-			count = 0;
-			if (fullSlots[day][time] == false && fullSlots[day][time - 1] == true)
-				while (time < fullSlots[day].length - 1 && fullSlots[day][time] == false) {
-					count++;
-					time++;
-				}
-			if (time >= 6)
-				count = 0;
-			if (max < count)
-				max = count;
-
-		}
-		fullSlots[day][theTime] = false;
-		if (max >= studentMaxBreakValue)
-			return true;
 		return false;
 	}
 
@@ -1064,15 +1039,16 @@ public class Algorithm {
 		for (int days = 0; days < fullSlots.length; days++) {
 			for (int time = 1; time < fullSlots[days].length; time++) {
 				count = 0;
-				if (fullSlots[days][time] == false && fullSlots[days][time - 1] == true)
+				if (fullSlots[days][time] == false && fullSlots[days][time - 1] == true) {
 					while (time < fullSlots[days].length - 1 && fullSlots[days][time] == false) {
 						count++;
 						time++;
 					}
-				if (time >= 6)
-					count = 0;
-				if (max < count)
-					max = count;
+					if (time >= 6 && fullSlots[days][6] == false)
+						count = 0;
+					if (max < count)
+						max = count;
+				}
 			}
 			if (max > studentMaxBreakValue) {
 				totalMinusPoints += minusPointsToAdd;
@@ -1080,6 +1056,31 @@ public class Algorithm {
 			}
 		}
 		p.addMinusPoints(totalMinusPoints);
+	}
+
+	private boolean checkIfMaxBreakSettingIsViolated(Program p, int day, int theTime, StudentSettings s) {
+		int studentMaxBreakValue = s.getValue();
+		boolean[][] fullSlots = p.getFullSlots();
+		fullSlots[day][theTime] = true;
+		int count = 0;
+		int max = 0;
+		for (int time = 1; time < fullSlots[day].length; time++) {
+			count = 0;
+			if (fullSlots[day][time] == false && fullSlots[day][time - 1] == true) {
+				while (time < fullSlots[day].length - 1 && fullSlots[day][time] == false) {
+					count++;
+					time++;
+				}
+				if (time >= 6 && fullSlots[day][time] == false)
+					count = 0;
+				if (max < count)
+					max = count;
+			}
+		}
+		fullSlots[day][theTime] = false;
+		if (max > studentMaxBreakValue)
+			return true;
+		return false;
 	}
 
 	private void addMaxHoursMinusPoints(Program p, StudentSettings s) {
