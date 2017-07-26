@@ -397,13 +397,13 @@ public class Algorithm {
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses()) {
 				//replace no valid characters
-				c.setName(c.getName().replace("\\uFFFD", "Ü"));
+				c.setName(c.getName().replace("\\uFFFD", "ï¿½"));
 				allCourses.add(c);
 			}
 		}
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses()) {
-				c.setName(c.getName().replace("\\uFFFD", "Ü"));
+				c.setName(c.getName().replace("\\uFFFD", "ï¿½"));
 				c.setTeacher(t);
 			}
 		}
@@ -786,7 +786,7 @@ public class Algorithm {
 	private static Room findAvailableRoom(int randomDay, int randomTime, String roomTypeNeeded) {
 		for (Room r : allRooms) {
 			if (!roomTypeNeeded.equals("none") && !r.getType().equals(roomTypeNeeded)) {
-				break;
+				continue;
 			}
 
 			if (r.isAvailable(randomDay, randomTime)) {
