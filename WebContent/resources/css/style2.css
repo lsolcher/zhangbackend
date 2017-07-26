@@ -97,8 +97,24 @@ header {
 }
 
 th, td {
-  width: 20%;
+  width: 19%;
   padding: 9px;
+}
+
+th {
+  background: #0099da;
+  color: #fff;
+}
+
+table .table-space {
+  width: 5%;
+}
+
+table .table-time {
+  width: 5%;
+  text-align: center;
+  background: #f9f9f9;
+  font-weight: 600;
 }
 
 table tr:nth-child(even) {

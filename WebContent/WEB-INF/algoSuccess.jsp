@@ -69,6 +69,7 @@
 						<h4>{{table.programName}}</h4>
 						<table>
 							<tr>
+								<th class="table-space"></th>
 								<th>Montag</th>
 								<th>Dienstag</th>
 								<th>Mittwoch</th>
@@ -76,6 +77,7 @@
 								<th>Freitag</th>
 							</tr>
 							<tr>
+								<td class="table-time">08:00 - 09:30</td>
 								<td>{{table.schedule[0][0]}}</td>
 								<td>{{table.schedule[1][0]}}</td>
 								<td>{{table.schedule[2][0]}}</td>
@@ -83,6 +85,7 @@
 								<td>{{table.schedule[4][0]}}</td>
 							</tr>
 							<tr>
+								<td class="table-time">09:45 - 11:15</td>
 								<td>{{table.schedule[0][1]}}</td>
 								<td>{{table.schedule[1][1]}}</td>
 								<td>{{table.schedule[2][1]}}</td>
@@ -90,6 +93,7 @@
 								<td>{{table.schedule[4][1]}}</td>
 							</tr>
 							<tr>
+								<td class="table-time">12:15 - 13:45</td>
 								<td>{{table.schedule[0][2]}}</td>
 								<td>{{table.schedule[1][2]}}</td>
 								<td>{{table.schedule[2][2]}}</td>
@@ -97,6 +101,7 @@
 								<td>{{table.schedule[4][2]}}</td>
 							</tr>
 							<tr>
+								<td class="table-time">14:00 - 15:30</td>
 								<td>{{table.schedule[0][3]}}</td>
 								<td>{{table.schedule[1][3]}}</td>
 								<td>{{table.schedule[2][3]}}</td>
@@ -104,6 +109,7 @@
 								<td>{{table.schedule[4][3]}}</td>
 							</tr>
 							<tr>
+								<td class="table-time">15:45 - 17:15</td>
 								<td>{{table.schedule[0][4]}}</td>
 								<td>{{table.schedule[1][4]}}</td>
 								<td>{{table.schedule[2][4]}}</td>
@@ -111,6 +117,7 @@
 								<td>{{table.schedule[4][4]}}</td>
 							</tr>
 							<tr>
+								<td class="table-time">17:30 - 19:00</td>
 								<td>{{table.schedule[0][5]}}</td>
 								<td>{{table.schedule[1][5]}}</td>
 								<td>{{table.schedule[2][5]}}</td>
@@ -118,6 +125,7 @@
 								<td>{{table.schedule[4][5]}}</td>
 							</tr>
 							<tr>
+								<td class="table-time">19:15 - 20:45</td>
 								<td>{{table.schedule[0][6]}}</td>
 								<td>{{table.schedule[1][6]}}</td>
 								<td>{{table.schedule[2][6]}}</td>
