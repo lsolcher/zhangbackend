@@ -112,7 +112,7 @@ public class Algorithm {
 		weightPrios();
 		int minusPoints = 0;
 		int count = 0;
-		int minusPointsThreshold = 2500;
+		int minusPointsThreshold = 1300;
 		long startTime = System.currentTimeMillis();
 		int totalHits = 0;
 		int bestPoints = 1000000;
@@ -169,7 +169,7 @@ public class Algorithm {
 				System.out.println("Iteration " + count + ", new threshold for random generation: "
 						+ RANDOMGENERATIONMINUSPOINTSTHRESHOLD);
 			}
-			if (count % 1000 == 0) {
+			if (count % 3000 == 0) {
 				minusPointsThreshold += 100;
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
 			}
