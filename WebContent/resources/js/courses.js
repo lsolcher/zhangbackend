@@ -19,7 +19,7 @@
 
                     if ($scope.selectedCourses[i]) {
                         $scope.selectedCourses[i].selected = true;
-                        $scope.selectedCourses[i].courseID = $scope.selectedCourses[i].courseID.toString();
+                        $scope.selectedCourses[i].courseID = $scope.selectedCourses[i].courseID += "";
                     }
 
                     for( var j in $scope.initCourses) {
