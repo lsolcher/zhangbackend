@@ -5,7 +5,7 @@
           {
               type: 'SingleChoicePrio',
               title: 'Raumbeschaffenheit',
-              options: ['breite','lange'],
+              options: ['Seminarraum','IT-Labor'],
               text: ['Ich bevorzuge ', ' Räume'],		// mehrfachauswahl - kursabhängig <-> kursunabhängige: nur einfachauswahl erlauben
               showCourses: true
           },
@@ -92,7 +92,7 @@
             } else {
                 for( j in $scope.possiblePriorities ) {
                     if ( $rootScope.slctPrios[i].name == $scope.possiblePriorities[j].title ) {
-
+                        
                         $rootScope.slctPrios[i].option += "";
                         $rootScope.slctPrios[i].type = $scope.possiblePriorities[j].type;
                         $rootScope.slctPrios[i].text = $scope.possiblePriorities[j].text;
