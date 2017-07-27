@@ -37,7 +37,6 @@ import de.teamzhang.model.Course;
 import de.teamzhang.model.Prio;
 import de.teamzhang.model.Program;
 import de.teamzhang.model.Room;
-import de.teamzhang.model.Schedule;
 import de.teamzhang.model.SingleChoicePrio;
 import de.teamzhang.model.StudentSettings;
 import de.teamzhang.model.Teacher;
@@ -330,6 +329,8 @@ public class Algorithm {
 
 	private void addCoursesToPrograms() {
 		for (Course c : allCourses) {
+			if (c.getSlotsNeeded() == 3)
+				c.setSlotsNeeded(2);
 			List<Integer> programs = c.getSemesters();
 			for (int i : programs) {
 				try {
@@ -618,8 +619,11 @@ public class Algorithm {
 		resetMinusPointsFromViolatedPrios();
 		for (Program p : allPrograms) {
 			for (Course c : p.getCourses()) {
+				if (c.getTeacher().getLastName().equals("Lenz"))
+					System.out.println("");
 				if (c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()] > threshold) {
 					Teacher teacher = c.getTeacher();
+
 					Random r = new Random();
 					int randomTime = 0;
 					if (c.getSlotsNeeded() == 2)
@@ -876,59 +880,28 @@ public class Algorithm {
 	private void weightSingleSchedule(Teacher t) {
 		// 3 = auf keinen fall
 		// 0 = top
-		if (t.getFirstName().equals("1"))
-			System.out.println("x");
-		for (Prio p : t.getPrios()) {
+		/*for (Prio p : t.getPrios()) {
 			if (p instanceof Schedule) {
 				int[] test = ((Schedule) p).getSchedule();
 				t.setWeightedDayTimeWishes(test);
 			}
-		}
+		}*/
+		t.calculateWeightedDayTimeWishes();
 		int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
 
-		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
-			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
+		//for (int days = 0; days < weightedDayTimeWishes.length; days++) {
+		//for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
 
-				for (Prio p : t.getPrios()) {
+		for (Prio p : t.getPrios()) {
 
-					if (p instanceof SingleChoicePrio) {
-						if (p.getName().equals("Unterrichtsbeginn"))
-							weightClassStart(t, (SingleChoicePrio) p);
-					}
-				}
+			if (p instanceof SingleChoicePrio) {
+				if (p.getName().equals("Unterrichtsbeginn"))
+					weightClassStart(t, (SingleChoicePrio) p);
 			}
 		}
+		//}
+		//}
 		t.setWeightedDayTimeWishes(weightedDayTimeWishes);
-
-	}
-
-	private void mockWeightedDayTimeWishes(Teacher t) {
-		/*int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
-		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
-		    for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
-		        int random = randomGen.nextInt(4);
-		        if (random == 3)
-		            random = 9999;
-		        // add minus point if teacher is extern
-		        if (!t.isProf())
-		            random++;
-		        weightedDayTimeWishes[days][time] = random;
-		        /*for (Prio p : t.getPrios()) {
-		            if (p instanceof SingleChoicePrio) {
-		                if (p.getName().equals("Unterrichtsbeginn"))
-		                    weightClassStart(t, (SingleChoicePrio) p);
-		            }
-		        }
-		    }
-		}*/
-		ArrayList<Integer> sche = new ArrayList<Integer>();
-		for (int i = 0; i < 35; i++) {
-			int random = randomGen.nextInt(4);
-			sche.add(random);
-		}
-		Schedule s = new Schedule();
-		s.setSchedule(sche);
-		t.addPrio(s);
 
 	}
 
@@ -961,7 +934,6 @@ public class Algorithm {
 	}
 
 	private int calculateRandomSchedule() {
-
 		notOccupiedSlots.clear();
 
 		for (Program p : allPrograms) {
@@ -1217,6 +1189,7 @@ public class Algorithm {
 	}
 	
 	private  void addMaxHoursMinusPoints(Program p) {
+	
 	
 	    try {
 	        int studentMaxHoursValue = Integer.parseInt(p.getProp().getProperty("studentMaxHoursValue"));

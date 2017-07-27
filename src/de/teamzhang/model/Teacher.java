@@ -326,23 +326,24 @@ public class Teacher implements Serializable {
 			System.out.println(i % 7);
 			weightedDayTimeWishes[i % 5][i / 5] = calendar.get(i);
 		}
-		System.out.println();
-
 	}
 
-	public void setWeightedDayTimeWishes(int[] calendar) {
-		for (int i = 0; i < calendar.length; i++) {
-			System.out.println(i / 7);
-			System.out.println(i % 7);
-			int points = calendar[i];
-			if (points == 3)
-				points = 1000;
-			else
-				points *= 10;
-			if (isProf)
-				points += 1;
-			weightedDayTimeWishes[i % 5][i / 5] = points;
+	public void calculateWeightedDayTimeWishes() {
+		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
+			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
+				if (weightedDayTimeWishes[days][time] == 0)
+					weightedDayTimeWishes[days][time] = 10000;
+				if (weightedDayTimeWishes[days][time] == 1)
+					weightedDayTimeWishes[days][time] = 20;
+				if (weightedDayTimeWishes[days][time] == 2)
+					weightedDayTimeWishes[days][time] = 10;
+				if (weightedDayTimeWishes[days][time] == 3)
+					weightedDayTimeWishes[days][time] = 0;
+				if (isProf)
+					weightedDayTimeWishes[days][time] += 1;
+			}
 		}
+
 	}
 
 	public List<String> getViolatedConditions() {
