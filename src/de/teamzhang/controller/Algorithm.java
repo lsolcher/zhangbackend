@@ -139,7 +139,7 @@ public class Algorithm {
 
 				//System.out.println("Minuspoints: " + minusPoints);
 				for (int i = 100; i >= 0; i -= 25) {
-					climbHill(100);
+					climbHill(i);
 					minusPoints = getMinusPoints();
 				}
 				minusPoints = getMinusPoints();
@@ -619,8 +619,6 @@ public class Algorithm {
 		resetMinusPointsFromViolatedPrios();
 		for (Program p : allPrograms) {
 			for (Course c : p.getCourses()) {
-				if (c.getTeacher().getLastName().equals("Lenz"))
-					System.out.println("");
 				if (c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()] > threshold) {
 					Teacher teacher = c.getTeacher();
 
@@ -637,7 +635,7 @@ public class Algorithm {
 					String roomTypeNeeded = "none";
 					Room room = null;
 					boolean setNew = true;
-					while (programTimeOccupiedOrTeacherBelowThreshold(p, c, randomTime, randomDay, threshold, iteration,
+					while (programTimeOccupiedOrTeacherBelowThreshold(c, randomTime, randomDay, threshold, iteration,
 							teacher) || (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded)) == null
 							|| (teacher.priosDontFit(randomDay, randomTime, false) && iteration < 300)
 							|| (settingsViolated(c, randomDay, randomTime) && iteration < 1000)
@@ -796,22 +794,31 @@ public class Algorithm {
 		return false;
 	}
 
-	private boolean programTimeOccupiedOrTeacherBelowThreshold(Program p, Course c, int randomTime, int randomDay,
-			int threshold, int iteration, Teacher teacher) {
+	private boolean programTimeOccupiedOrTeacherBelowThreshold(Course c, int randomTime, int randomDay, int threshold,
+			int iteration, Teacher teacher) {
 
 		if (teacher.getFullSlots()[randomDay][randomTime] == true)
 			return true;
+
 		if (c.getSlotsNeeded() == 2 && teacher.getFullSlots()[randomDay][randomTime + 1] == true)
-			return true;
-
-		if (p.isTimeOccupied(randomTime, randomDay) && c.getSlotsNeeded() == 1)
-			return true;
-
-		if (c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))
 			return true;
 
 		if (c.getTeacher().getWeightedDayTimeWishes()[randomDay][randomTime] > threshold)
 			return true;
+
+		List<Integer> semesters = c.getSemesters();
+		for (int sem : semesters) {
+			for (Program p : allPrograms) {
+				if (p.getSemester() == sem) {
+					if (p.isTimeOccupied(randomTime, randomDay) && c.getSlotsNeeded() == 1)
+						return true;
+
+					if (c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))
+						return true;
+				}
+			}
+
+		}
 
 		return false;
 	}
