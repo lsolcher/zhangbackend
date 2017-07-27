@@ -123,4 +123,8 @@ public class Course implements Serializable {
 	public List<Integer> getSemesters() {
 		return semesters;
 	}
+
+	public void setSemester(List<Integer> semesters2) {
+		semesters = semesters2;
+	}
 }

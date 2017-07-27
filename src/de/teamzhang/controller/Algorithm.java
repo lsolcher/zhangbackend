@@ -37,6 +37,7 @@ import de.teamzhang.model.Course;
 import de.teamzhang.model.Prio;
 import de.teamzhang.model.Program;
 import de.teamzhang.model.Room;
+import de.teamzhang.model.SimplePrio;
 import de.teamzhang.model.SingleChoicePrio;
 import de.teamzhang.model.StudentSettings;
 import de.teamzhang.model.Teacher;
@@ -104,6 +105,7 @@ public class Algorithm {
 		resetData();
 		setPrograms();
 		setTeachers();
+		checkCourseSplit();
 		setRooms();
 		setStudentPrios();
 		addTeachersToCourses();
@@ -331,6 +333,29 @@ public class Algorithm {
 		modelandview.addObject("schedules", serialize);
 		modelandview.addObject("info", sb.toString());
 		return modelandview;
+	}
+
+	private void checkCourseSplit() {
+		for (Teacher t : allTeachers) {
+			for (Prio p : t.getPrios()) {
+				if (p instanceof SimplePrio) {
+					for (Course c : allCourses) {
+						if ((p.isValidForAllCourses() || c.getCourseID() == p.getCourse()) && c.getSlotsNeeded() == 2) {
+							c.setSlotsNeeded(1);
+							Course newCourse = new Course();
+							newCourse.setCourseID(c.getCourseID());
+							newCourse.setName(c.getName());
+							newCourse.setSlotsNeeded(1);
+							newCourse.setTeacher(t);
+							newCourse.setProgram(c.getProgram());
+							newCourse.setSemester(c.getSemesters());
+							newCourse.setSet(false);
+						}
+					}
+				}
+			}
+		}
+
 	}
 
 	private void addCoursesToPrograms() {

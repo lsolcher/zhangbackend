@@ -236,7 +236,13 @@ public class CalendarController extends AbstractController {
 						}
 					} else if (m.get("type").equals("SimplePrio")) {
 						prio = new SimplePrio();
-						((SimplePrio) prio).setCourse(Integer.parseInt((String) m.get("course")));
+						try {
+							((SimplePrio) prio).setCourse(Integer.parseInt((String) m.get("course")));
+							((SimplePrio) prio).setValidForAllCourses(false);
+						} catch (Exception e) {
+							((SimplePrio) prio).setValidForAllCourses(true);
+						}
+
 					} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
 						prio = new ExcludeDayCombinationPrio();
 						// if (!m.get("title").equals("Tage ausschlieÃŸen")) {
