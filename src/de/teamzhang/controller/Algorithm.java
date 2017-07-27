@@ -121,6 +121,7 @@ public class Algorithm {
 		int totalCount = 0;
 		//int totalPoints = 0;*/
 		//do {
+		StringBuilder sb = new StringBuilder();
 		do {
 			reset();
 			/*try {
@@ -177,16 +178,22 @@ public class Algorithm {
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
 			}
 		} while (minusPoints > minusPointsThreshold);
+		sb.append("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
+				+ " iterations and " + ((System.currentTimeMillis() - startTime) / 1000.0) + " seconds to create it.");
 		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
 				+ " iterations and " + ((System.currentTimeMillis() - startTime) / 1000.0) + " seconds to create it.");
 		for (Program p : allPrograms) {
 			System.out.println(p.getName() + " has " + p.getProgramMinusPoints() + " points.");
+			sb.append(p.getName() + " has " + p.getProgramMinusPoints() + " points.");
 		}
 		System.out.println("The following teacher wishes had to be violated to create this schedule:");
+		sb.append("The following teacher wishes had to be violated to create this schedule:");
 		for (Teacher t : allTeachers) {
 			if (!t.getViolatedConditions().isEmpty())
-				for (String s : t.getViolatedConditions())
+				for (String s : t.getViolatedConditions()) {
 					System.out.println(s + " for teacher " + t.getFirstName() + " " + t.getLastName());
+					sb.append(s + " for teacher " + t.getFirstName() + " " + t.getLastName());
+				}
 		}
 		minusPointsThreshold = 1000;
 		//totalCount += count;
@@ -317,6 +324,7 @@ public class Algorithm {
 		System.out.println(serialize);
 		ModelAndView modelandview = new ModelAndView("algoSuccess");
 		modelandview.addObject("schedules", serialize);
+		modelandview.addObject("info", sb.toString());
 		return modelandview;
 	}
 
