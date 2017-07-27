@@ -15,6 +15,8 @@ $(document).ready(function() {
       $(".menu").removeAttr('style');
     });
 
+    $("select option[data-select='true']").attr("selected","selected");
+
 });
 
 

@@ -159,7 +159,7 @@
                     <div ng-if="prio.type == 'SingleChoicePrio'" class="priority-content">
                       <span class="priotext">{{prio.text[0]}}</span>
                         <select ng-model="prio.option" ng-change="change(prio.option)" required>
-                          <option ng-repeat="option in prio.options" value="{{$index}}">{{option}}</option>
+                          <option ng-repeat="option in prio.options" value="{{$index}}" data-select="{{prio.option == $index ? 'true' : 'false'}}">{{option}}</option>
                         </select>
                         <%--<span ng-show="myForm.prio.singlechoice.$touched && myForm.prio.singlechoice.$invalid">The name is required.</span>--%>
                       <span class="priotext">{{prio.text[1]}}</span>
@@ -171,20 +171,20 @@
                       <span class="priotext">{{prio.text[0]}}</span>
                       <select name="day" ng-change="change(prio.dayOne)" ng-model="prio.dayOne" required>
                           <option value="Ersten Tag wählen">Ersten Tag wählen</option>
-                          <option value="0">Montag</option>
-                          <option value="1">Dienstag</option>
-                          <option value="2">Mittwoch</option>
-                          <option value="3">Donnerstag</option>
-                          <option value="4">Freitag</option>
+                          <option value="0" data-select="{{prio.dayOne == '0' ? 'true' : 'false'}}">Montag</option>
+                          <option value="1" data-select="{{prio.dayOne == '1' ? 'true' : 'false'}}">Dienstag</option>
+                          <option value="2" data-select="{{prio.dayOne == '2' ? 'true' : 'false'}}">Mittwoch</option>
+                          <option value="3" data-select="{{prio.dayOne == '3' ? 'true' : 'false'}}">Donnerstag</option>
+                          <option value="4" data-select="{{prio.dayOne == '4' ? 'true' : 'false'}}">Freitag</option>
                       </select>
                       <span class="priotext">{{prio.text[1]}}</span>
                       <select name="day" ng-change="change(prio.dayTwo)" ng-model="prio.dayTwo" required>
                           <option value="Zweiten Tag wählen">Zweiten Tag wählen</option>
-                          <option value="0">Montag</option>
-                          <option value="1">Dienstag</option>
-                          <option value="2">Mittwoch</option>
-                          <option value="3">Donnerstag</option>
-                          <option value="4">Freitag</option>
+                          <option value="0" data-select="{{prio.dayTwo == '0' ? 'true' : 'false'}}">Montag</option>
+                          <option value="1" data-select="{{prio.dayTwo == '1' ? 'true' : 'false'}}">Dienstag</option>
+                          <option value="2" data-select="{{prio.dayTwo == '2' ? 'true' : 'false'}}">Mittwoch</option>
+                          <option value="3" data-select="{{prio.dayTwo == '3' ? 'true' : 'false'}}">Donnerstag</option>
+                          <option value="4" data-select="{{prio.dayTwo == '4' ? 'true' : 'false'}}">Freitag</option>
                       </select>
                       <span class="priotext">{{prio.text[2]}}</span>
                     </div>
@@ -192,42 +192,42 @@
                       <span class="priotext">{{prio.text[0]}}</span>
                       <select ng-change="change(prio.dayOne)" ng-model="prio.dayOne" required>
                           <option value="Ersten Tag wählen">Ersten Tag wählen</option>
-                          <option value="0">Montag</option>
-                          <option value="1">Dienstag</option>
-                          <option value="2">Mittwoch</option>
-                          <option value="3">Donnerstag</option>
-                          <option value="4">Freitag</option>
+                          <option value="0" data-select="{{prio.dayOne == '0' ? 'true' : 'false'}}">Montag</option>
+                          <option value="1" data-select="{{prio.dayOne == '1' ? 'true' : 'false'}}">Dienstag</option>
+                          <option value="2" data-select="{{prio.dayOne == '2' ? 'true' : 'false'}}">Mittwoch</option>
+                          <option value="3" data-select="{{prio.dayOne == '3' ? 'true' : 'false'}}">Donnerstag</option>
+                          <option value="4" data-select="{{prio.dayOne == '4' ? 'true' : 'false'}}">Freitag</option>
                       </select>
                       <span class="priotext">{{prio.text[1]}}</span>
                       <select ng-change="change(prio.timeOne)" ng-model="prio.timeOne" required>
                           <option value="Uhrzeit wählen">Uhrzeit wählen</option>
-                          <option value="0">08:00-09:30</option>
-                          <option value="1">09:45-11:15</option>
-                          <option value="2">12:15-13:45</option>
-                          <option value="3">14:00-15:30</option>
-                          <option value="4">15:45-17:15</option>
-                          <option value="5">17:30-19:00</option>
-                          <option value="6">19:15-20:45</option>
+                          <option value="0" data-select="{{prio.timeOne == '0' ? 'true' : 'false'}}">08:00-09:30</option>
+                          <option value="1" data-select="{{prio.timeOne == '1' ? 'true' : 'false'}}">09:45-11:15</option>
+                          <option value="2" data-select="{{prio.timeOne == '2' ? 'true' : 'false'}}">12:15-13:45</option>
+                          <option value="3" data-select="{{prio.timeOne == '3' ? 'true' : 'false'}}">14:00-15:30</option>
+                          <option value="4" data-select="{{prio.timeOne == '4' ? 'true' : 'false'}}">15:45-17:15</option>
+                          <option value="5" data-select="{{prio.timeOne == '5' ? 'true' : 'false'}}">17:30-19:00</option>
+                          <option value="6" data-select="{{prio.timeOne == '6' ? 'true' : 'false'}}">19:15-20:45</option>
                       </select>
                       <span class="priotext">{{prio.text[2]}}</span>
                       <select ng-change="change(prio.dayTwo)" ng-model="prio.dayTwo" required>
                           <option value="Zweiten Tag wählen">Zweiten Tag wählen</option>
-                          <option value="0">Montag</option>
-                          <option value="1">Dienstag</option>
-                          <option value="2">Mittwoch</option>
-                          <option value="3">Donnerstag</option>
-                          <option value="4">Freitag</option>
+                          <option value="0" data-select="{{prio.dayTwo == '0' ? 'true' : 'false'}}">Montag</option>
+                          <option value="1" data-select="{{prio.dayTwo == '1' ? 'true' : 'false'}}">Dienstag</option>
+                          <option value="2" data-select="{{prio.dayTwo == '2' ? 'true' : 'false'}}">Mittwoch</option>
+                          <option value="3" data-select="{{prio.dayTwo == '3' ? 'true' : 'false'}}">Donnerstag</option>
+                          <option value="4" data-select="{{prio.dayTwo == '4' ? 'true' : 'false'}}">Freitag</option>
                       </select>
                       <span class="priotext">{{prio.text[3]}}</span>
                       <select ng-change="change(prio.timeTwo)" class="time second-time" ng-model="prio.timeTwo" required>
                           <option value="Uhrzeit wählen">Uhrzeit wählen</option>
-                          <option value="0">08:00-09:30</option>
-                          <option value="1">09:45-11:15</option>
-                          <option value="2">12:15-13:45</option>
-                          <option value="3">14:00-15:30</option>
-                          <option value="4">15:45-17:15</option>
-                          <option value="5">17:30-19:00</option>
-                          <option value="6">19:15-20:45</option>
+                          <option value="0" data-select="{{prio.timeTwo == '0' ? 'true' : 'false'}}">08:00-09:30</option>
+                          <option value="1" data-select="{{prio.timeTwo == '1' ? 'true' : 'false'}}">09:45-11:15</option>
+                          <option value="2" data-select="{{prio.timeTwo == '2' ? 'true' : 'false'}}">12:15-13:45</option>
+                          <option value="3" data-select="{{prio.timeTwo == '3' ? 'true' : 'false'}}">14:00-15:30</option>
+                          <option value="4" data-select="{{prio.timeTwo == '4' ? 'true' : 'false'}}">15:45-17:15</option>
+                          <option value="5" data-select="{{prio.timeTwo == '5' ? 'true' : 'false'}}">17:30-19:00</option>
+                          <option value="6" data-select="{{prio.timeTwo == '6' ? 'true' : 'false'}}">19:15-20:45</option>
                       </select>
                       <span class="priotext">{{prio.text[4]}}</span>
                     </div>
@@ -239,9 +239,8 @@
                     <div class="prio-course-select" ng-show="prio.showCourses">
                     <label>Kurs auswählen:</label>
                     <select ng-change="change(prio.course)" class="select-course" ng-model="prio.course" required>
-                        <option value="Alle Kurse">Alle Kurse</option>
-                        <option ng-repeat="course in $root.courseList" value="{{course.courseID}}">{{course.kurzname}}</option>
-                      </select>
+                            <option ng-repeat="course in $root.courseList" value="{{course.courseID}}" data-select="{{prio.course == course.courseID ? 'true' : 'false'}}">{{course.kurzname}}</option>
+                        </select>
                     </div>
                   </div>
 

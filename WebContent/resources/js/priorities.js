@@ -80,6 +80,7 @@
     $rootScope.selectedPriorities = [ { type: 'Courses', courses: $rootScope.courseList}, { type: 'Schedule', calendar: $scope.calendar} ];
 
     slctPrios = slctPrios.replace(/\t+/g, "");
+    $("select option[data-select='true']").attr("selected","selected");
 
     var lala = JSON.parse(slctPrios);
 
@@ -92,8 +93,13 @@
             } else {
                 for( j in $scope.possiblePriorities ) {
                     if ( $rootScope.slctPrios[i].name == $scope.possiblePriorities[j].title ) {
-                        
+
                         $rootScope.slctPrios[i].option += "";
+                        $rootScope.slctPrios[i].course += "";
+                        $rootScope.slctPrios[i].dayOne += "";
+                        $rootScope.slctPrios[i].dayTwo += "";
+                        $rootScope.slctPrios[i].timeOne += "";
+                        $rootScope.slctPrios[i].timeTwo += "";
                         $rootScope.slctPrios[i].type = $scope.possiblePriorities[j].type;
                         $rootScope.slctPrios[i].text = $scope.possiblePriorities[j].text;
                         $rootScope.slctPrios[i].showCourses = $scope.possiblePriorities[j].showCourses;
@@ -182,12 +188,6 @@
 
   angular.module("zhang-app").directive('priority', function($rootScope) {
     return function(scope, element, attrs) {
-
-      scope.prio.dayOne = "0";
-      scope.prio.dayTwo = "0";
-      scope.prio.timeOne = "0";
-      scope.prio.timeTwo = "0";
-      scope.prio.course = "Alle Kurse";
 
       scope.change = function(selected){}
       scope.changeCourse = function(selected) {
