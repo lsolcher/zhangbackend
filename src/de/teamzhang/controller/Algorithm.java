@@ -111,7 +111,7 @@ public class Algorithm {
 		weightPrios();
 		int minusPoints = 0;
 		int count = 0;
-		int minusPointsThreshold = 500;
+		int minusPointsThreshold = 800;
 		long startTime = System.currentTimeMillis();
 		int totalHits = 0;
 		int bestPoints = 1000000;
@@ -414,7 +414,7 @@ public class Algorithm {
 				//replace non valid characters
 				try {
 
-					c.setName(c.getName().replace("\\uFFFD", "�"));
+					c.setName(c.getName().replace("\\uFFFD", ""));
 					allCourses.add(c);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -423,7 +423,7 @@ public class Algorithm {
 		}
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses()) {
-				c.setName(c.getName().replace("\\uFFFD", "�"));
+				c.setName(c.getName().replace("\\uFFFD", ""));
 				c.setTeacher(t);
 			}
 		}
@@ -909,7 +909,7 @@ public class Algorithm {
 
 	}
 
-	// 1 minuspunkt wenn der teacher um 9 anfängt und early start gew�hlt
+	// 1 minuspunkt wenn der teacher um 9 anfaengt und early start gewaehlt
 	// hat, 2 bei 12 etc
 	// genau anders bei later
 	private void weightClassStart(Teacher t, SingleChoicePrio p) {
