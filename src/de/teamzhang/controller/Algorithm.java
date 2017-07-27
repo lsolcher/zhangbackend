@@ -52,16 +52,16 @@ public class Algorithm {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
-	public MongoTemplate mongoTemplate() {
-		return mongoTemplate;
-	}
+	//public MongoTemplate mongoTemplate {
+	//	return mongoTemplate;
+	//}
 
 	//  public Mongo mongo() throws Exception {
 	//      MongoClientURI mcu = new MongoClientURI("mongodb://test:test@localhost/test");
 	//      return new MongoClient(mcu);
 	//  }
 	//
-	//  public MongoTemplate mongoTemplate() {
+	//  public MongoTemplate mongoTemplate {
 	//      MongoTemplate mt = null;
 	//      try {
 	//          mt = new MongoTemplate(mongo(), "test");
@@ -112,7 +112,7 @@ public class Algorithm {
 		weightPrios();
 		int minusPoints = 0;
 		int count = 0;
-		int minusPointsThreshold = 1300;
+		int minusPointsThreshold = 500;
 		long startTime = System.currentTimeMillis();
 		int totalHits = 0;
 		int bestPoints = 1000000;
@@ -123,42 +123,45 @@ public class Algorithm {
 		//do {
 		do {
 			reset();
-			try {
+			/*try {
 				cloneData();
 			} catch (ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			calculateRandomSchedule();
 			boolean hillclimbingReached = false;
 			minusPoints = getMinusPoints();
-			//System.out.println(minusPoints);
 			if (minusPoints < RANDOMGENERATIONMINUSPOINTSTHRESHOLD) {
 				count++;
 
 				hillclimbingReached = true;
 
 				//System.out.println("Minuspoints: " + minusPoints);
-				climbHill(100);
+				for (int i = 100; i >= 0; i -= 25) {
+					climbHill(100);
+					minusPoints = getMinusPoints();
+				}
 				minusPoints = getMinusPoints();
-				//System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
+				System.out.println(minusPoints);
+				/*//System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
 				if (minusPoints < minusPointsThreshold) {
 					break;
 				}
-
+				
 				climbHill(10);
 				minusPoints = getMinusPoints();
 				//System.out.println("Minuspoints after hillclimbing with threshold 10: " + minusPoints);
 				if (minusPoints < minusPointsThreshold) {
 					break;
 				}
-
+				
 				climbHill(5);
 				minusPoints = getMinusPoints();
 				//System.out.println("Minuspoints after hillclimbing with threshold 5: " + minusPoints);
 				if (minusPoints < minusPointsThreshold) {
 					break;
-				}
+				}*/
 			}
 
 			if (!hillclimbingReached && count % 10000 == 0) {
@@ -169,8 +172,8 @@ public class Algorithm {
 				System.out.println("Iteration " + count + ", new threshold for random generation: "
 						+ RANDOMGENERATIONMINUSPOINTSTHRESHOLD);
 			}
-			if (count % 3000 == 0) {
-				minusPointsThreshold += 100;
+			if (count % 200 == 0) {
+				minusPointsThreshold += 250;
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
 			}
 		} while (minusPoints > minusPointsThreshold);
@@ -247,13 +250,13 @@ public class Algorithm {
 										// row
 			}
 			try {
-				if (!mongoTemplate().collectionExists("schedules")) {
-					mongoTemplate().createCollection("schedules");
+				if (!mongoTemplate.collectionExists("schedules")) {
+					mongoTemplate.createCollection("schedules");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			mongoTemplate().insert(cs, "schedules");
+			mongoTemplate.insert(cs, "schedules");
 			BufferedWriter writer;
 			try {
 				// File file = new File("\\WebContent\\resources\\" +
@@ -307,7 +310,7 @@ public class Algorithm {
 		// printMap(slots.getSlots());
 
 		optimalThreshold = 700;
-		DBCollection schedules = mongoTemplate().getCollection("schedules");
+		DBCollection schedules = mongoTemplate.getCollection("schedules");
 		DBCursor cursor = schedules.find();
 		JSON json = new JSON();
 		String serialize = json.serialize(cursor);
@@ -334,11 +337,11 @@ public class Algorithm {
 	private void updateMissingData() {
 		List<Teacher> allTeachers = new ArrayList<Teacher>();
 		List<User> allUsers = new ArrayList<User>();
-		DBCollection teachersDB = mongoTemplate().getCollection("teachers");
+		DBCollection teachersDB = mongoTemplate.getCollection("teachers");
 		DBCursor cursor = teachersDB.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
-			Teacher t = mongoTemplate().getConverter().read(Teacher.class, obj);
+			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
 			allTeachers.add(t);
 		}
 		teachersDB.drop();
@@ -358,23 +361,23 @@ public class Algorithm {
 			t.setUser(user);
 			allUsers.add(user);
 		}
-		DBCollection users = mongoTemplate().getCollection("user");
+		DBCollection users = mongoTemplate.getCollection("user");
 		users.drop();
 		try {
-			if (!mongoTemplate().collectionExists("teachers")) {
-				mongoTemplate().createCollection("teachers");
+			if (!mongoTemplate.collectionExists("teachers")) {
+				mongoTemplate.createCollection("teachers");
 			}
-			if (!mongoTemplate().collectionExists("user")) {
-				mongoTemplate().createCollection("user");
+			if (!mongoTemplate.collectionExists("user")) {
+				mongoTemplate.createCollection("user");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		for (Teacher t : allTeachers) {
-			mongoTemplate().insert(t, "teachers");
+			mongoTemplate.insert(t, "teachers");
 		}
 		for (User t : allUsers) {
-			mongoTemplate().insert(t, "user");
+			mongoTemplate.insert(t, "user");
 		}
 	}
 
@@ -386,7 +389,7 @@ public class Algorithm {
 	}
 
 	private void dropExistingSchedules() {
-		DBCollection schedules = mongoTemplate().getCollection("schedules");
+		DBCollection schedules = mongoTemplate.getCollection("schedules");
 		schedules.drop();
 	}
 
@@ -404,9 +407,14 @@ public class Algorithm {
 	private void addTeachersToCourses() {
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses()) {
-				//replace no valid characters
-				c.setName(c.getName().replace("\\uFFFD", "�"));
-				allCourses.add(c);
+				//replace non valid characters
+				try {
+
+					c.setName(c.getName().replace("\\uFFFD", "�"));
+					allCourses.add(c);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		for (Teacher t : allTeachers) {
@@ -526,21 +534,21 @@ public class Algorithm {
 	}
 
 	private void setStudentPrios() {
-		DBCollection settingsDB = mongoTemplate().getCollection("settings");
+		DBCollection settingsDB = mongoTemplate.getCollection("settings");
 		DBCursor cursor = settingsDB.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
-			StudentSettings s = mongoTemplate().getConverter().read(StudentSettings.class, obj);
+			StudentSettings s = mongoTemplate.getConverter().read(StudentSettings.class, obj);
 			allSettings.add(s);
 		}
 	}
 
 	private void setTeachers() {
-		DBCollection teachersDB = mongoTemplate().getCollection("teachers");
+		DBCollection teachersDB = mongoTemplate.getCollection("teachers");
 		DBCursor cursor = teachersDB.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
-			Teacher t = mongoTemplate().getConverter().read(Teacher.class, obj);
+			Teacher t = mongoTemplate.getConverter().read(Teacher.class, obj);
 			allTeachers.add(t);
 		}
 
@@ -598,12 +606,12 @@ public class Algorithm {
 		}
 	}
 
-	private void climbHill(int threshold) {
+	private boolean climbHill(int threshold) {
+		resetMinusPointsFromViolatedPrios();
 		for (Program p : allPrograms) {
 			for (Course c : p.getCourses()) {
 				if (c.getTeacher().getWeightedDayTimeWishes()[c.getDay()][c.getTime()] > threshold) {
 					Teacher teacher = c.getTeacher();
-
 					Random r = new Random();
 					int randomTime = 0;
 					if (c.getSlotsNeeded() == 2)
@@ -611,67 +619,84 @@ public class Algorithm {
 					else
 						randomTime = r.nextInt(7);
 					int randomDay = r.nextInt(5);
-
 					int iteration = 0;
 					// TODO: use Course to determine
 					// room type preferences
 					String roomTypeNeeded = "none";
 					Room room = null;
-
-					while (programTimeOccupiedOrTeacherBelowThreshold(p, c, randomTime, randomDay, threshold, iteration)
-							|| (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded)) == null
-							|| (teacher.priosDontFit(randomDay, randomTime) && iteration < 300)
-							|| (settingsViolated(p, randomDay, randomTime))
+					boolean setNew = true;
+					while (programTimeOccupiedOrTeacherBelowThreshold(p, c, randomTime, randomDay, threshold, iteration,
+							teacher) || (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded)) == null
+							|| (teacher.priosDontFit(randomDay, randomTime, false) && iteration < 300)
+							|| (settingsViolated(c, randomDay, randomTime) && iteration < 1000)
 							|| getNewProgramMinusPoints(p, randomDay, randomTime) > threshold * 2 && iteration < 300) {
 						iteration++;
-						if (iteration == 999 && !teacher.getViolatedConditions().isEmpty())
-							teacher.addMinusPoints(10);
 						randomTime = r.nextInt(7);
 						randomDay = r.nextInt(5);
 						if (c.getSlotsNeeded() == 2 && randomTime == 6)
 							randomTime -= 1;
-						if (iteration > 2000)
-							return;
+						if (iteration > 900) {
+							setNew = false;
+							break;
+						}
 					}
-					teacher.setFreeSlot(c.getDay(), c.getTime());
-					teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[c.getDay()][c.getTime()]);
-					//p.setFreeSlot(c.getDay(), c.getTime());
-					setProgramsFreeSlot(c, c.getDay(), c.getTime());
-					if (c.getSlotsNeeded() == 2) {
-						teacher.setFreeSlot(c.getDay(), c.getTime() + 1);
-						//p.setFreeSlot(c.getDay(), c.getTime() + 1);
-						setProgramsFreeSlot(c, c.getDay(), c.getTime() + 1);
-						teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[c.getDay()][c.getTime() + 1]);
-					}
-					//if (c.getSlotsNeeded() == 2 && randomTime == 6)
-					//  randomTime -= 1;
+					if (setNew) {
+						// add 10 points for every violated condition
+						if (teacher.priosDontFit(randomDay, randomTime, true)) {
+							teacher.addMinusPoints(teacher.getViolatedConditions().size() * 10);
+						}
+						teacher.setFreeSlot(c.getDay(), c.getTime());
+						teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[c.getDay()][c.getTime()]);
+						//p.setFreeSlot(c.getDay(), c.getTime());
+						setProgramsFreeSlot(c, c.getDay(), c.getTime());
+						if (c.getSlotsNeeded() == 2) {
+							teacher.setFreeSlot(c.getDay(), c.getTime() + 1);
+							//p.setFreeSlot(c.getDay(), c.getTime() + 1);
+							setProgramsFreeSlot(c, c.getDay(), c.getTime() + 1);
+							teacher.removeMinusPoints(teacher.getWeightedDayTimeWishes()[c.getDay()][c.getTime() + 1]);
+						}
+						//if (c.getSlotsNeeded() == 2 && randomTime == 6)
+						//  randomTime -= 1;
 
-					//p.setFullSlot(randomDay, randomTime);
-					setProgramsFullSlot(c, randomDay, randomTime);
+						//p.setFullSlot(randomDay, randomTime);
+						setProgramsFullSlot(c, randomDay, randomTime);
 
-					c.setDay(randomDay);
-					c.setTime(randomTime);
-					teacher.setFullSlot(randomDay, randomTime);
-					teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
-					if (c.getSlotsNeeded() == 2) {
-						teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime + 1]);
-						teacher.setFullSlot(randomDay, randomTime + 1);
-						//p.setFullSlot(randomDay, randomTime + 1);
-						setProgramsFullSlot(c, randomDay, randomTime + 1);
+						c.setDay(randomDay);
+						c.setTime(randomTime);
+						teacher.setFullSlot(randomDay, randomTime);
+						teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime]);
+						if (c.getSlotsNeeded() == 2) {
+							teacher.addMinusPoints(teacher.getWeightedDayTimeWishes()[randomDay][randomTime + 1]);
+							teacher.setFullSlot(randomDay, randomTime + 1);
+							//p.setFullSlot(randomDay, randomTime + 1);
+							setProgramsFullSlot(c, randomDay, randomTime + 1);
+						}
+						room.setOccupied(randomDay, randomTime);
+						c.setRoom(room);
+						c.setSet(true);
 					}
-					room.setOccupied(randomDay, randomTime);
-					c.setRoom(room);
-					c.setSet(true);
 				}
 			}
 
 		}
 
+		/*for (Teacher t : allTeachers) {
+			if (!t.getViolatedConditions().isEmpty())
+				t.addMinusPoints(t.getViolatedConditions().size() * 10);
+		}*/
 		for (Program p : allPrograms) {
 			p.resetMinusPoints();
 			addStudentMinusPoints(p);
 		}
+		return true;
+	}
 
+	private void resetMinusPointsFromViolatedPrios() {
+		for (Teacher t : allTeachers) {
+			if (!t.getViolatedConditions().isEmpty())
+				t.removeMinusPoints(t.getViolatedConditions().size() * 10);
+			t.getViolatedConditions().clear();
+		}
 	}
 
 	private int getNewProgramMinusPoints(Program p, int day, int time) {
@@ -683,20 +708,32 @@ public class Algorithm {
 		return minusPoints;
 	}
 
-	private boolean settingsViolated(Program p, int randomDay, int randomTime) {
+	private boolean settingsViolated(Course c, int randomDay, int randomTime) {
+		List<Integer> semesters = c.getSemesters();
+		List<Program> programs = new ArrayList<Program>();
 		boolean isViolated = false;
-		for (StudentSettings s : allSettings) {
-			if (s.getProgram().equals("IMI-B") && p.getType() == 0
-					|| s.getProgram().equals("IMI-M") && p.getType() == 1) {
-				if (s.getMinusPoints() == 10000) {
-					if (s.getType() == 0) {
-						isViolated = checkIfMaxHoursPerDaySettingIsViolated(p, randomDay, randomTime, s);
-					}
-					if (s.getType() == 1) {
-						isViolated = checkIfMaxBreakSettingIsViolated(p, randomDay, randomTime, s);
-					}
-					if (s.getType() == 2) {
-						isViolated = checkIfMaxDaysSettingIsViolated(p, randomDay, randomTime, s);
+		for (int i : semesters)
+			programs.add(allPrograms.get(i - 1));
+		for (Program p : programs) {
+			for (StudentSettings s : allSettings) {
+				if (s.getProgram().equals("IMI-B") && p.getType() == 0
+						|| s.getProgram().equals("IMI-M") && p.getType() == 1) {
+					if (s.getMinusPoints() == 10000) {
+						if (s.getType() == 0) {
+							isViolated = checkIfMaxHoursPerDaySettingIsViolated(p, randomDay, randomTime, s);
+							if (isViolated)
+								return true;
+						}
+						if (s.getType() == 1) {
+							isViolated = checkIfMaxBreakSettingIsViolated(p, randomDay, randomTime, s);
+							if (isViolated)
+								return true;
+						}
+						if (s.getType() == 2) {
+							isViolated = checkIfMaxDaysSettingIsViolated(p, randomDay, randomTime, s);
+							if (isViolated)
+								return true;
+						}
 					}
 				}
 			}
@@ -748,7 +785,12 @@ public class Algorithm {
 	}
 
 	private boolean programTimeOccupiedOrTeacherBelowThreshold(Program p, Course c, int randomTime, int randomDay,
-			int threshold, int iteration) {
+			int threshold, int iteration, Teacher teacher) {
+
+		if (teacher.getFullSlots()[randomDay][randomTime] == true)
+			return true;
+		if (c.getSlotsNeeded() == 2 && teacher.getFullSlots()[randomDay][randomTime + 1] == true)
+			return true;
 
 		if (p.isTimeOccupied(randomTime, randomDay) && c.getSlotsNeeded() == 1)
 			return true;
@@ -756,7 +798,7 @@ public class Algorithm {
 		if (c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))
 			return true;
 
-		if (iteration < 1000 && (c.getTeacher().getWeightedDayTimeWishes()[randomDay][randomTime] > threshold))
+		if (c.getTeacher().getWeightedDayTimeWishes()[randomDay][randomTime] > threshold)
 			return true;
 
 		return false;
@@ -797,14 +839,15 @@ public class Algorithm {
 	private int getMinusPoints() {
 		int minusPoints = 0;
 		for (Teacher t : allTeachers) {
-			int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
+			/*int[][] weightedDayTimeWishes = t.getWeightedDayTimeWishes();
 			boolean[][] isTeaching = t.getFullSlots();
 			for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 				for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
 					if (isTeaching[days][time])
 						minusPoints += weightedDayTimeWishes[days][time];
 				}
-			}
+			}*/
+			minusPoints += t.getMinusPoints();
 		}
 		for (Program p : allPrograms) {
 			minusPoints += p.getProgramMinusPoints();
@@ -825,6 +868,8 @@ public class Algorithm {
 	private void weightSingleSchedule(Teacher t) {
 		// 3 = auf keinen fall
 		// 0 = top
+		if (t.getFirstName().equals("1"))
+			System.out.println("x");
 		for (Prio p : t.getPrios()) {
 			if (p instanceof Schedule) {
 				int[] test = ((Schedule) p).getSchedule();
@@ -930,14 +975,14 @@ public class Algorithm {
 					while ((p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1
 							|| c.getSlotsNeeded() == 2 && p.isTimeOccupied(randomTime + 1, randomDay))))
 							|| (room = findAvailableRoom(randomDay, randomTime, roomTypeNeeded)) == null
-							|| (teacher.priosDontFit(randomDay, randomTime) && iteration < 1000
+							|| (teacher.priosDontFit(randomDay, randomTime, false) && iteration < 300
 									&& ((c.getSlotsNeeded() == 1 || c.getSlotsNeeded() == 2
-											&& teacher.priosDontFit(randomDay, randomTime + 1))))
-							|| ((settingsViolated(p, randomDay, randomTime) && iteration < 1000)
+											&& teacher.priosDontFit(randomDay, randomTime + 1, false))))
+							|| ((settingsViolated(c, randomDay, randomTime) && iteration < 1000)
 									&& ((c.getSlotsNeeded() == 1 || c.getSlotsNeeded() == 2
-											&& settingsViolated(p, randomDay, randomTime + 1) && iteration < 1000)))) {
-						//if (iteration == 9999)
-						//System.out.println("Prios cannot be satisfied for teacher " + teacher.getLastName());
+											&& settingsViolated(c, randomDay, randomTime + 1) && iteration < 1000)))) {
+						if (iteration == 999)
+							System.out.println("Prios cannot be satisfied for teacher " + teacher.getLastName());
 						iteration++;
 						randomTime = r.nextInt(7);
 						randomDay = r.nextInt(5);
@@ -1044,7 +1089,7 @@ public class Algorithm {
 						count++;
 						time++;
 					}
-					if (time >= 6 && fullSlots[days][6] == false)
+					if (time >= 6 && fullSlots[days][time] == false)
 						count = 0;
 					if (max < count)
 						max = count;

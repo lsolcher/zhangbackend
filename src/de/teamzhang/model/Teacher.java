@@ -19,7 +19,6 @@ public class Teacher implements Serializable {
 	private List<Course> courses = new ArrayList<Course>();
 	private int[][] weightedDayTimeWishes = new int[5][7];
 	private boolean[][] fullSlots = new boolean[5][7];
-	private int freeHours;
 	private List<Prio> prios = new ArrayList<Prio>();
 	private int minusPoints = 0;
 	private User user;
@@ -34,24 +33,6 @@ public class Teacher implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public boolean isBusy() {
-		// if ((isProf && teachingHours >= 6) || (!isProf && teachingHours >=
-		// 2))
-		// return true;
-		if (freeHours == 0)
-			return true;
-		else
-			return false;
-	}
-
-	public int getFreeHours() {
-		return freeHours;
-	}
-
-	public void setFreeHours(int freeHours) {
-		this.freeHours = freeHours;
 	}
 
 	public List<Prio> getPrios() {
@@ -123,16 +104,15 @@ public class Teacher implements Serializable {
 
 	}
 
-	public boolean priosDontFit(int day, int time) {
+	public boolean priosDontFit(int day, int time, boolean addMinusPoints) {
 		boolean prioDoesntFit = false;
-		violatedConditions.clear();
 		for (Prio p : prios) {
 			if (p instanceof FreeTextInputPrio)
 				;
 			else if (p instanceof SingleChoicePrio) {
 				prioDoesntFit = checkIfSingleChoicePrioFits((SingleChoicePrio) p, day, time);
-				if (prioDoesntFit == true) {
-					violatedConditions.add(p.getName() + " violated.");
+				if (prioDoesntFit == true && addMinusPoints) {
+					violatedConditions.add(p.getName() + " violated");
 				}
 			} else if (p instanceof SimplePrio) // no need to check, simplePrio is
 													// weighted in schedule and not
@@ -140,8 +120,8 @@ public class Teacher implements Serializable {
 				;
 			else if (p instanceof ExcludeDayCombinationPrio) {
 				prioDoesntFit = checkIfExcludeDayCombinationPrioFits((ExcludeDayCombinationPrio) p, day, time);
-				if (prioDoesntFit == true) {
-					violatedConditions.add(p.getName() + " violated.");
+				if (prioDoesntFit == true && addMinusPoints) {
+					violatedConditions.add(p.getName() + " violated");
 				}
 			}
 		}
@@ -200,15 +180,16 @@ public class Teacher implements Serializable {
 		int[][] weightedDayTimeWishes = getWeightedDayTimeWishes();
 		for (int days = 0; days < weightedDayTimeWishes.length; days++) {
 			for (int time = 0; time < weightedDayTimeWishes[days].length; time++) {
-				if (fullSlots[day][time] == true)
+				if (fullSlots[day][time] == true) {
 					count++;
-
+					break;
+				}
 			}
 		}
 		if (count > maxDays) {
-			fullSlots[day][checkTime] = false;
 			prioDoesntFit = true;
 		}
+		fullSlots[day][checkTime] = false;
 		return prioDoesntFit;
 	}
 
@@ -224,14 +205,12 @@ public class Teacher implements Serializable {
 					count++;
 				else if (count == time && fullSlots[day][time] == true)
 					count++;
-
 			}
 			if (count >= breakTime)
 				prioDoesntFit = true;
 			count = 0;
 		}
-		if (prioDoesntFit)
-			fullSlots[day][checkTime] = false;
+		fullSlots[day][checkTime] = false;
 		return prioDoesntFit;
 	}
 
@@ -264,6 +243,7 @@ public class Teacher implements Serializable {
 			fullSlots[day][checkTime] = false;
 			return true;
 		}
+		fullSlots[day][checkTime] = false;
 		return false;
 	}
 

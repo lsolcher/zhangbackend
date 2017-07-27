@@ -202,6 +202,9 @@ public class CalendarController extends AbstractController {
 						} catch (ClassCastException cce) {
 							cce.printStackTrace();
 							sws = Integer.parseInt((String) m.get("sws"));
+						} catch (NullPointerException npe) {
+							npe.printStackTrace();
+							sws = 2;
 						}
 						if (sws % 2 == 1)
 							sws += 1;
@@ -299,14 +302,18 @@ public class CalendarController extends AbstractController {
 
 	private void addSemesters(Course c, Map<?, ?> course) {
 		String semesters = (String) course.get("semester");
-		List<String> semesterList = Arrays.asList(semesters.split(","));
-		for (String s : semesterList) {
-			try {
-				int semesterNumber = Integer.parseInt(s.replaceAll(" ", ""));
-				c.addSemester(semesterNumber);
-			} catch (Exception e) {
-				e.printStackTrace();
+		try {
+			List<String> semesterList = Arrays.asList(semesters.split(","));
+			for (String s : semesterList) {
+				try {
+					int semesterNumber = Integer.parseInt(s.replaceAll(" ", ""));
+					c.addSemester(semesterNumber);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
+		} catch (NullPointerException n) {
+			n.printStackTrace();
 		}
 
 	}
