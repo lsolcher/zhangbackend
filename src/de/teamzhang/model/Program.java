@@ -18,7 +18,6 @@ public class Program implements Serializable {
 	private BigInteger id;
 	private String name;
 	int noOfDays;
-	List<Slot> assignedSlots;
 	List<Course> courseList = new ArrayList<Course>();
 	private boolean[][] fullSlots = new boolean[5][7];
 	private int semester;
@@ -77,24 +76,6 @@ public class Program implements Serializable {
 
 	public boolean hasMoreDays() {
 		return noOfDays < MAX_DAYS;
-	}
-
-	// max 4 slots per day constraint
-	public boolean hasMoreSlotsPerDay(int day) {
-		int cnt = 1;
-		for (Slot slot : assignedSlots) {
-			if (slot.getDay() == day) {
-				cnt++;
-				if (cnt > MAX_SLOTS_PER_DAY) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-
-	public void addSlot(Slot slot) {
-		assignedSlots.add(slot);
 	}
 
 	public BigInteger getId() {
