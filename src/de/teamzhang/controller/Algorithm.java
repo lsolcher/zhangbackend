@@ -140,10 +140,10 @@ public class Algorithm {
 				//System.out.println("Minuspoints: " + minusPoints);
 				for (int i = 100; i >= 0; i -= 25) {
 					climbHill(i);
-					minusPoints = getMinusPoints();
+					//minusPoints = getMinusPoints();
 				}
 				minusPoints = getMinusPoints();
-				System.out.println(minusPoints);
+				//System.out.println(minusPoints);
 				/*//System.out.println("Minuspoints after hillclimbing with threshold 100: " + minusPoints);
 				if (minusPoints < minusPointsThreshold) {
 					break;
@@ -173,24 +173,26 @@ public class Algorithm {
 						+ RANDOMGENERATIONMINUSPOINTSTHRESHOLD);
 			}
 			if (count % 200 == 0) {
-				minusPointsThreshold += 250;
+				minusPointsThreshold *= 1.1;
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
 			}
 		} while (minusPoints > minusPointsThreshold);
-		sb.append("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
-				+ " iterations and " + ((System.currentTimeMillis() - startTime) / 1000.0) + " seconds to create it.");
+		sb.append(
+				"Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count + " iterations and "
+						+ ((System.currentTimeMillis() - startTime) / 1000.0) + " seconds to create it.\\n");
 		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
 				+ " iterations and " + ((System.currentTimeMillis() - startTime) / 1000.0) + " seconds to create it.");
 		for (Program p : allPrograms) {
 			System.out.println(p.getName() + " has " + p.getProgramMinusPoints() + " points.");
-			sb.append(p.getName() + " has " + p.getProgramMinusPoints() + " points.");
+			sb.append(p.getName() + " has " + p.getProgramMinusPoints() + " points.\\n");
 		}
 		System.out.println("The following teacher wishes had to be violated to create this schedule:");
-		sb.append("The following teacher wishes had to be violated to create this schedule:");
+		sb.append("The following teacher wishes had to be violated to create this schedule:\\n");
 		for (Teacher t : allTeachers) {
 			if (!t.getViolatedConditions().isEmpty())
 				for (String s : t.getViolatedConditions()) {
-					System.out.println(s + " for teacher " + t.getFirstName() + " " + t.getLastName());
+					System.out.println(
+							s + " for teacher " + t.getFirstName() + " " + t.getLastName() + ". Added 10 points.\\n");
 					sb.append(s + " for teacher " + t.getFirstName() + " " + t.getLastName());
 				}
 		}
@@ -866,6 +868,8 @@ public class Algorithm {
 						minusPoints += weightedDayTimeWishes[days][time];
 				}
 			}*/
+			if (!t.getViolatedConditions().isEmpty())
+				t.addMinusPoints(t.getViolatedConditions().size() * 10);
 			minusPoints += t.getMinusPoints();
 		}
 		for (Program p : allPrograms) {

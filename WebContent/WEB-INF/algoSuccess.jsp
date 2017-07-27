@@ -32,6 +32,8 @@
 	<!-- libs end -->
 	<script>
 		var initCourses = '<% String schedules = (String) request.getAttribute("schedules"); out.print(schedules); %>';
+        var info = '<% String info = (String) request.getAttribute("info"); out.print(info); %>';
+
 		try {
 			initCourses = JSON.parse(initCourses);
 		console.log(initCourses);
