@@ -138,7 +138,7 @@ public class Algorithm {
 				hillclimbingReached = true;
 
 				//System.out.println("Minuspoints: " + minusPoints);
-				for (int i = 100; i >= 0; i -= 25) {
+				for (int i = 30; i >= 0; i -= 10) {
 					climbHill(i);
 					//minusPoints = getMinusPoints();
 				}
@@ -227,19 +227,23 @@ public class Algorithm {
 					for (Course c : p.getCourses()) {
 						if (c.getTime() == j && c.getDay() == i) {
 							builder.append(c.getName() + ", " + c.getTeacher().getLastName() + ", "
-									+ c.getRoom().getName() + ", " + c.getSlotsNeeded() + " Doppelstunde(n)"
-									+ ", Punkte: " + c.getTeacher().getWeightedDayTimeWishes()[i][j]);
+									+ c.getRoom().getName() + ", " + c.getRoom().getType() + ", " + c.getSlotsNeeded()
+									+ " Doppelstunde(n)" + ", Punkte: "
+									+ c.getTeacher().getWeightedDayTimeWishes()[i][j]);
 							cs.setFullSlot(c.getDay(), c.getTime(),
 									c.getName() + ", " + c.getTeacher().getLastName() + ", " + c.getRoom().getName()
-											+ ", " + c.getSlotsNeeded() + " Doppelstunde(n)" + ", Punkte: "
+											+ ", " + c.getRoom().getType() + ", " + c.getSlotsNeeded()
+											+ " Doppelstunde(n)" + ", Punkte: "
 											+ c.getTeacher().getWeightedDayTimeWishes()[i][j]);
 							if (c.getSlotsNeeded() == 2) {
 								builder.append(c.getName() + ", " + c.getTeacher().getLastName() + ", "
-										+ c.getRoom().getName() + ", " + c.getSlotsNeeded() + " Doppelstunde(n)"
-										+ ", Punkte: " + c.getTeacher().getWeightedDayTimeWishes()[i][j + 1]);
+										+ c.getRoom().getName() + ", " + c.getRoom().getType() + ", "
+										+ c.getSlotsNeeded() + " Doppelstunde(n)" + ", Punkte: "
+										+ c.getTeacher().getWeightedDayTimeWishes()[i][j + 1]);
 								cs.setFullSlot(c.getDay(), c.getTime() + 1,
 										c.getName() + ", " + c.getTeacher().getLastName() + ", " + c.getRoom().getName()
-												+ ", " + c.getSlotsNeeded() + " Doppelstunde(n)" + ", Punkte: "
+												+ ", " + c.getRoom().getType() + ", " + c.getSlotsNeeded()
+												+ " Doppelstunde(n)" + ", Punkte: "
 												+ c.getTeacher().getWeightedDayTimeWishes()[i][j + 1]);
 								j++;
 							}
@@ -404,17 +408,6 @@ public class Algorithm {
 		schedules.drop();
 	}
 
-	//  private void mockRooms() {
-	//      // TODO: remove after setRooms() 
-	//      // is implemented
-	//      for (Course c : allCourses) {
-	//          Room r = new Room();
-	//          r.setName("C441");
-	//          c.setRoom(r);
-	//      }
-	//
-	//  }
-
 	private void addTeachersToCourses() {
 		for (Teacher t : allTeachers) {
 			for (Course c : t.getCourses()) {
@@ -505,7 +498,7 @@ public class Algorithm {
 		// String csvFile = "/Users/krawallmieze/code/TeamZhang/zhangbackend/WebContent/resources/data/rooms.csv"; //TODO: right filepath
 		//BufferedReader reader = new BufferedReader(new InputStreamReader(
 		//request.getSession().getServletContext().getResourceAsStream("/resources/json/veranstaltungen.json")));
-		String csvFile = "/resources/data/rooms.csv"; //TODO: right filepath
+		//String csvFile = "/resources/data/rooms.csv"; //TODO: right filepath
 		BufferedReader br = null;
 		String row = "";
 		String separator = ",";
@@ -516,7 +509,7 @@ public class Algorithm {
 					request.getSession().getServletContext().getResourceAsStream("/resources/data/rooms.csv")));
 			while ((row = br.readLine()) != null) {
 
-				String[] room = row.split(separator);
+				String[] room = row.replace("Informatik,", "Informatik").split(separator);
 
 				Room r = new Room();
 				r.setName(room[0]);
@@ -634,7 +627,7 @@ public class Algorithm {
 					int iteration = 0;
 					// TODO: use Course to determine
 					// room type preferences
-					String roomTypeNeeded = "none";
+					String roomTypeNeeded = teacher.getRoomType(c);
 					Room room = null;
 					boolean setNew = true;
 					while (programTimeOccupiedOrTeacherBelowThreshold(c, randomTime, randomDay, threshold, iteration,
@@ -960,7 +953,7 @@ public class Algorithm {
 					int iteration = 0;
 					// TODO: use Course to determine
 					// room type preferences
-					String roomTypeNeeded = "none";
+					String roomTypeNeeded = teacher.getRoomType(c);
 					Room room = null;
 
 					while ((p.isTimeOccupied(randomTime, randomDay) && ((c.getSlotsNeeded() == 1

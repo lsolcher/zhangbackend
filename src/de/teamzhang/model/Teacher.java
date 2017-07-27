@@ -350,4 +350,20 @@ public class Teacher implements Serializable {
 		return violatedConditions;
 	}
 
+	public String getRoomType(Course c) {
+		for (Prio p : prios) {
+			if (p instanceof SingleChoicePrio)
+				if (p.getName().equals("Raumbeschaffenheit")) {
+					if (((SingleChoicePrio) p).isValidForAllCourses
+							|| ((SingleChoicePrio) p).getCourse() == c.getCourseID())
+						if (((SingleChoicePrio) p).getOption() == 0) {
+							return "Seminarraum";
+						} else if (((SingleChoicePrio) p).getOption() == 1) {
+							return "IT-Labor";
+						}
+				}
+		}
+		return "Seminarraum";
+	}
+
 }
