@@ -198,8 +198,7 @@ public class CalendarController extends AbstractController {
 						c.setName((String) course.get("kurzname"));
 						int sws = 0;
 						try {
-							if (sws != 0)
-								sws = (Integer) course.get("sws");
+							sws = (Integer) course.get("sws");
 						} catch (ClassCastException cce) {
 							cce.printStackTrace();
 							sws = Integer.parseInt((String) m.get("sws"));
