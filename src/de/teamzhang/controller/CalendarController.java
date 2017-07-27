@@ -236,19 +236,20 @@ public class CalendarController extends AbstractController {
 						}
 					} else if (m.get("type").equals("SimplePrio")) {
 						prio = new SimplePrio();
+						((SimplePrio) prio).setCourse(Integer.parseInt((String) m.get("course")));
 					} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
 						prio = new ExcludeDayCombinationPrio();
-						// if (!m.get("title").equals("Tage ausschließen")) {
+						// if (!m.get("title").equals("Tage ausschlieÃŸen")) {
 						//if (m.get("dayOne").equals(Type.class)) {
 						((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt((String) m.get("dayOne")));
 						//}
 						//if (m.get("dayOne").equals(Type.class)) {
 						((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt((String) m.get("dayTwo")));
 						//}
-						if (m.get("title").equals("Uhrzeit ausschlie�en")) {
+						if (m.get("title").equals("Uhrzeit ausschließen")) {
 							((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt((String) m.get("timeOne")));
 						}
-						if (m.get("title").equals("Uhrzeit ausschlie�en")) {
+						if (m.get("title").equals("Uhrzeit ausschließen")) {
 							((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt((String) m.get("timeTwo")));
 						}
 					} else if (m.get("type").equals("FreeTextInputPrio")) {

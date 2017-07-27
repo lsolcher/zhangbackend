@@ -1079,7 +1079,7 @@ public class Algorithm {
 						max = count;
 				}
 			}
-			if (max > studentMaxBreakValue) {
+			if (max >= studentMaxBreakValue) {
 				totalMinusPoints += minusPointsToAdd;
 				break;
 			}
@@ -1107,7 +1107,7 @@ public class Algorithm {
 			}
 		}
 		fullSlots[day][theTime] = false;
-		if (max > studentMaxBreakValue)
+		if (max >= studentMaxBreakValue)
 			return true;
 		return false;
 	}
