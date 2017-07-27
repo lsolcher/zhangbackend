@@ -55,7 +55,7 @@
               },
               {
                 title: 'MaxPausen',
-                options: [ '0','1','2', '3', '4'],
+                options: [ '1','2', '3', '4'],
                 text: 'Maximale zusammenhängende Pausen pro Tag: ',
                 prios: ['hoch', 'mittel', 'niedrig']
               }
