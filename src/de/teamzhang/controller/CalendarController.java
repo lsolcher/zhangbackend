@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -240,16 +239,16 @@ public class CalendarController extends AbstractController {
 					} else if (m.get("type").equals("ExcludeDayCombinationPrio")) {
 						prio = new ExcludeDayCombinationPrio();
 						// if (!m.get("title").equals("Tage ausschlie√üen")) {
-						if (m.get("dayOne").equals(Type.class)) {
-							((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt((String) m.get("dayOne")));
-						}
-						if (m.get("dayOne").equals(Type.class)) {
-							((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt((String) m.get("dayTwo")));
-						}
-						if (m.get("dayOne").equals(Type.class)) {
+						//if (m.get("dayOne").equals(Type.class)) {
+						((ExcludeDayCombinationPrio) prio).setDayOne(Integer.parseInt((String) m.get("dayOne")));
+						//}
+						//if (m.get("dayOne").equals(Type.class)) {
+						((ExcludeDayCombinationPrio) prio).setDayTwo(Integer.parseInt((String) m.get("dayTwo")));
+						//}
+						if (m.get("title").equals("Uhrzeit ausschlieﬂen")) {
 							((ExcludeDayCombinationPrio) prio).setTimeOne(Integer.parseInt((String) m.get("timeOne")));
 						}
-						if (m.get("dayOne").equals(Type.class)) {
+						if (m.get("title").equals("Uhrzeit ausschlieﬂen")) {
 							((ExcludeDayCombinationPrio) prio).setTimeTwo(Integer.parseInt((String) m.get("timeTwo")));
 						}
 					} else if (m.get("type").equals("FreeTextInputPrio")) {
