@@ -48,6 +48,7 @@
 
 	<div ng-show="infoWindow" ng-click="infoClose()" class="info-window">
 		<div class="info-container">
+			<h3>Algorithmus Feeback</h3>
 			<p>{{infoText}}</p>
 		</div>
 	</div>
