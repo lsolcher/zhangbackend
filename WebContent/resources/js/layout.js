@@ -38,6 +38,15 @@ $(document).ready(function() {
     var app = angular.module("zhang-app").controller('renderData', function($scope) {
 
         $scope.data = initCourses;
+        $scope.infoText = info;
+
+        $scope.info = function () {
+            $scope.infoWindow = true;
+        }
+
+        $scope.infoClose = function () {
+            $scope.infoWindow = false;
+        }
 
     });
 })();

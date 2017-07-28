@@ -36,14 +36,21 @@
 
 		try {
 			initCourses = JSON.parse(initCourses);
-		console.log(initCourses);
+			info = JSON.parse(info);
+			console.log(initCourses);
 		} catch(e) {
 			//console.log('NOOO', initCourses);
 			console.log(e.stack);
 		}
 	</script>
   </head>
-  <body>
+  <body ng-controller="renderData">
+
+	<div ng-show="infoWindow" ng-click="infoClose()" class="info-window">
+		<div class="info-container">
+			<p>{{infoText}}</p>
+		</div>
+	</div>
 
     <header>
       <div class="container">
@@ -66,7 +73,8 @@
 	<div class="container content-container">
 		<div class="row">
 			<div class="col-md-12 prop-wrapper">
-				<div ng-controller="renderData">
+				<button type="button" class="btn btn-default" id="info-button" ng-click="info()">Info</button>
+				<div>
 					<div ng-repeat="table in data" class="table-wrapper">
 						<h4>{{table.programName}}</h4>
 						<table>
