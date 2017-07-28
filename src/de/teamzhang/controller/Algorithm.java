@@ -189,13 +189,14 @@ public class Algorithm {
 			sb.append(p.getName() + " has " + p.getProgramMinusPoints() + " points.\\n");
 		}
 		System.out.println("The following teacher wishes had to be violated to create this schedule:");
-		sb.append("The following teacher wishes had to be violated to create this schedule:\\n");
+		//sb.append("The following teacher wishes had to be violated to create this schedule:\\n");
 		for (Teacher t : allTeachers) {
 			if (!t.getViolatedConditions().isEmpty())
 				for (String s : t.getViolatedConditions()) {
 					System.out.println(
 							s + " for teacher " + t.getFirstName() + " " + t.getLastName() + ". Added 10 points.\\n");
 					sb.append(s + " for teacher " + t.getFirstName() + " " + t.getLastName());
+					break;
 				}
 		}
 		minusPointsThreshold = 1000;
@@ -331,7 +332,8 @@ public class Algorithm {
 		System.out.println(serialize);
 		ModelAndView modelandview = new ModelAndView("algoSuccess");
 		modelandview.addObject("schedules", serialize);
-		modelandview.addObject("info", sb.toString());
+
+		modelandview.addObject("info", sb.toString().split("\\n"));
 		return modelandview;
 	}
 
