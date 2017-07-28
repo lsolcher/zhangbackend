@@ -179,14 +179,13 @@ public class Algorithm {
 				System.out.println("Iterations over " + count + ". New minuspoint-threshold: " + minusPointsThreshold);
 			}
 		} while (minusPoints > minusPointsThreshold);
-		sb.append(
-				"Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count + " iterations and "
-						+ ((System.currentTimeMillis() - startTime) / 1000.0) + " seconds to create it.\\n");
+		sb.append("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
+				+ " iterations and " + ((System.currentTimeMillis() - startTime) / 1000.0) + " seconds to create it.-");
 		System.out.println("Done! Generated a schedule with " + minusPoints + " minuspoints. It took " + count
 				+ " iterations and " + ((System.currentTimeMillis() - startTime) / 1000.0) + " seconds to create it.");
 		for (Program p : allPrograms) {
 			System.out.println(p.getName() + " has " + p.getProgramMinusPoints() + " points.");
-			sb.append(p.getName() + " has " + p.getProgramMinusPoints() + " points.\\n");
+			sb.append(p.getName() + " has " + p.getProgramMinusPoints() + " points.-");
 		}
 		System.out.println("The following teacher wishes had to be violated to create this schedule:");
 		//sb.append("The following teacher wishes had to be violated to create this schedule:\\n");
@@ -195,7 +194,7 @@ public class Algorithm {
 				for (String s : t.getViolatedConditions()) {
 					System.out.println(
 							s + " for teacher " + t.getFirstName() + " " + t.getLastName() + ". Added 10 points.\\n");
-					sb.append(s + " for teacher " + t.getFirstName() + " " + t.getLastName());
+					sb.append(s + " for teacher " + t.getFirstName() + " " + t.getLastName() + "-");
 					break;
 				}
 		}
@@ -333,7 +332,8 @@ public class Algorithm {
 		ModelAndView modelandview = new ModelAndView("algoSuccess");
 		modelandview.addObject("schedules", serialize);
 
-		modelandview.addObject("info", sb.toString().split("\\n"));
+		String info = sb.toString();
+		modelandview.addObject("info", info);
 		return modelandview;
 	}
 
