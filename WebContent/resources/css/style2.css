@@ -166,7 +166,7 @@ table tr:nth-child(odd) {
     OVERLAY OPENER
 **********************/
 .course-selector-wrapper {
-  position: absolute;
+  position: fixed;
   z-index: 8888;
   background: rgba(0,0,0,0.8);
   margin: 0 auto;
@@ -444,7 +444,7 @@ table tr:nth-child(odd) {
 }
 
 .calendar-body {
-  max-width: 300px;
+  max-width: 280px;
   display: inline-block;
   }
   .calendar-input {
@@ -778,5 +778,28 @@ button.toast-close-button {
   }
   #toast-container > div.rtl {
     padding: 15px 50px 15px 15px;
+  }
+}
+
+@media all and (max-width: 990px) {
+  .selected-priorities {
+    float: inherit;
+    margin: 12px 0px 62px;
+  }
+  .row {
+    width: 98%;
+    margin: 0 auto;
+  }
+}
+
+@media all and (max-width: 440px) {
+  .calendar-input {
+    width: 30px;
+  }
+  .week-day {
+    width: 30px;
+  }
+  .calendar-body {
+    max-width: 180px;
   }
 }
