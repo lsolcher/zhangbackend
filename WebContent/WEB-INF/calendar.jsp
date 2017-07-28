@@ -102,7 +102,7 @@
 
         <div class="col-md-5 calendar-wrapper">
           <h3 class="headline">Kalenderauswahl</h3>
-          <div class="calendar-content" ng-controller="prioController">
+          <div class="calendar-content noselect" ng-controller="prioController">
             <div class="week-days">
               <div class="week-day">MO</div>
               <div class="week-day">DI</div>

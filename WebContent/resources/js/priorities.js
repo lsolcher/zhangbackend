@@ -193,6 +193,7 @@
       scope.changeCourse = function(selected) {
         scope.prio.course = selected;
       }
+
     }
   });
 })();
