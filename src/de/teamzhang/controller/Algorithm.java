@@ -336,22 +336,27 @@ public class Algorithm {
 	}
 
 	private void checkCourseSplit() {
+		Course newCourse = new Course();
+		boolean addCourse = false;
 		for (Teacher t : allTeachers) {
 			for (Prio p : t.getPrios()) {
 				if (p instanceof SimplePrio) {
-					for (Course c : allCourses) {
+					for (Course c : t.getCourses()) {
 						if ((p.isValidForAllCourses() || c.getCourseID() == p.getCourse()) && c.getSlotsNeeded() == 2) {
 							c.setSlotsNeeded(1);
-							Course newCourse = new Course();
-							newCourse.setCourseID(c.getCourseID());
+							addCourse = true;
+							newCourse.setCourseID(c.getCourseID() + 9999);
 							newCourse.setName(c.getName());
 							newCourse.setSlotsNeeded(1);
-							newCourse.setTeacher(t);
-							newCourse.setProgram(c.getProgram());
+							//newCourse.setTeacher(t);
+							//newCourse.setProgram(c.getProgram());
 							newCourse.setSemester(c.getSemesters());
 							newCourse.setSet(false);
 						}
+
 					}
+					if (addCourse)
+						t.getCourses().add(newCourse);
 				}
 			}
 		}
